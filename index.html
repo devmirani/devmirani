@@ -87,6 +87,29 @@
 <script>
 const trades = [
   {
+    id: 5,
+    date: "05/05/2026",
+    entryTime: "7:15:13 PM",
+    entryPrice: 7319.00,
+    stopPrice: 7306.75,
+    setup: "LEVEL_RECLAIM",
+    result: "loss",
+    contracts: 5,
+    targets: [
+      { label: "T1", price: 7324.00, contracts: 5, status: "miss", pnl: 0 },
+      { label: "T2", price: 7331.00, contracts: 5, status: "miss", pnl: 0 },
+      { label: "T3", price: 7339.00, contracts: 5, status: "miss", pnl: 0 }
+    ],
+    times: [
+      { label: "Entry", value: "7:15:13 PM" },
+      { label: "Stopped", value: "59m 57s" }
+    ],
+    totalPts: -12.25,
+    totalPnl: -306.25,
+    exitNote: "Stopped out — no scale outs",
+    journal: ""
+  },
+  {
     id: 4,
     date: "05/06/2026",
     entryTime: "9:48:04 AM",
