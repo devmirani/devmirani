@@ -291,7 +291,9 @@ function filter(type, btn) {
 
 function toggleJournal(id) {
   const el = document.getElementById(`journal-${id}`);
-  el.classList.toggle('open');
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.journal-body').forEach(j => j.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
 }
 
 renderAll(trades);
