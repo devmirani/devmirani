@@ -85,7 +85,30 @@
 <div class="grid" id="grid"></div>
 
 <script>
-const trades = [
+var trades = [
+  {
+    id: 6,
+    date: "05/04/2026",
+    entryTime: "11:27:02 PM",
+    entryPrice: 7240.50,
+    stopPrice: 7230.00,
+    setup: "LEVEL_RECLAIM",
+    result: "win",
+    contracts: 7,
+    targets: [
+      { label: "T1", price: 7247.75, contracts: 6, status: "hit", pnl: 211.25 },
+      { label: "T2", price: 7257.75, contracts: 1, status: "hit", pnl: 86.25 }
+    ],
+    times: [
+      { label: "Entry", value: "11:27:02 PM" },
+      { label: "T1", value: "3h 28m" },
+      { label: "T2", value: "7h 11m" }
+    ],
+    totalPts: 60.75,
+    totalPnl: 297.50,
+    exitNote: "Position fully exited",
+    journal: ""
+  },
   {
     id: 5,
     date: "05/05/2026",
@@ -224,26 +247,32 @@ function statusLabel(t) {
 }
 
 function renderCard(trade) {
-  const isWin = trade.result === "win";
-  const tpsHtml = trade.targets.map(function(t) {
-    const ret = t.pnl !== 0 ? (t.pnl >= 0 ? "+$" : "-$") + Math.abs(t.pnl).toFixed(2) : "—";
-    return '<div class="tp-btn ' + statusClass(t.status) + '">' + statusLabel(t) + ' <span class="sub">(' + t.contracts + 'x)</span><span class="tp-return">' + ret + '</span></div>';
-  }).join('');
+  var isWin = trade.result === "win";
 
-  const timesHtml = trade.times.map(function(t) {
-    return '<div class="time-chip">' + t.label + ': <span>' + t.value + '</span></div>';
-  }).join('');
+  var tpsHtml = "";
+  for (var i = 0; i < trade.targets.length; i++) {
+    var t = trade.targets[i];
+    var ret = t.pnl !== 0 ? (t.pnl >= 0 ? "+$" : "-$") + Math.abs(t.pnl).toFixed(2) : "—";
+    tpsHtml += '<div class="tp-btn ' + statusClass(t.status) + '">' + statusLabel(t) + ' <span class="sub">(' + t.contracts + 'x)</span><span class="tp-return">' + ret + '</span></div>';
+  }
 
-  const tpInfoHtml = trade.targets.map(function(t) {
-    return '<div><div class="field-label">' + t.label + ':</div><div class="field-value">' + (t.price ? t.price.toFixed(2) : "—") + ' <span class="sub">(' + t.contracts + 'x)</span></div></div>';
-  }).join('');
+  var timesHtml = "";
+  for (var i = 0; i < trade.times.length; i++) {
+    timesHtml += '<div class="time-chip">' + trade.times[i].label + ': <span>' + trade.times[i].value + '</span></div>';
+  }
 
-  const journalHtml = trade.journal ? '<button class="journal-toggle" onclick="toggleJournal(' + trade.id + ')">▶ journal entry</button><div class="journal-body" id="journal-' + trade.id + '">' + trade.journal + '</div>' : '';
+  var tpInfoHtml = "";
+  for (var i = 0; i < trade.targets.length; i++) {
+    var t = trade.targets[i];
+    tpInfoHtml += '<div><div class="field-label">' + t.label + ':</div><div class="field-value">' + (t.price ? t.price.toFixed(2) : "—") + ' <span class="sub">(' + t.contracts + 'x)</span></div></div>';
+  }
 
-  const ptsClass = trade.totalPts < 0 ? "pts loss" : "pts";
-  const dolClass = trade.totalPnl < 0 ? "dollars loss" : "dollars";
-  const ptsStr = (trade.totalPts >= 0 ? "+" : "") + trade.totalPts.toFixed(2) + " pts";
-  const dolStr = (trade.totalPnl >= 0 ? "+$" : "-$") + Math.abs(trade.totalPnl).toFixed(2);
+  var journalHtml = trade.journal ? '<button class="journal-toggle" onclick="toggleJournal(' + trade.id + ')">&#9658; journal entry</button><div class="journal-body" id="journal-' + trade.id + '">' + trade.journal + '</div>' : '';
+
+  var ptsClass = trade.totalPts < 0 ? "pts loss" : "pts";
+  var dolClass = trade.totalPnl < 0 ? "dollars loss" : "dollars";
+  var ptsStr = (trade.totalPts >= 0 ? "+" : "") + trade.totalPts.toFixed(2) + " pts";
+  var dolStr = (trade.totalPnl >= 0 ? "+$" : "-$") + Math.abs(trade.totalPnl).toFixed(2);
 
   return '<div class="card ' + (isWin ? "" : "loss") + '" data-result="' + trade.result + '" data-setup="' + trade.setup + '">' +
     '<div class="card-header-row"><div><span class="card-price">' + trade.entryPrice.toFixed(2) + '</span><span class="card-label">Support Buy</span></div><span class="card-timestamp">' + trade.date + '</span></div>' +
@@ -258,10 +287,16 @@ function renderCard(trade) {
 }
 
 function renderAll(filtered) {
-  document.getElementById('grid').innerHTML = filtered.map(renderCard).join('');
-  const total = filtered.reduce(function(s, t) { return s + t.totalPnl; }, 0);
-  const wins = filtered.filter(function(t) { return t.result === "win"; }).length;
-  const totalEl = document.getElementById('total-pnl');
+  var html = "";
+  for (var i = 0; i < filtered.length; i++) {
+    html += renderCard(filtered[i]);
+  }
+  document.getElementById('grid').innerHTML = html;
+  var total = 0;
+  for (var i = 0; i < filtered.length; i++) { total += filtered[i].totalPnl; }
+  var wins = 0;
+  for (var i = 0; i < filtered.length; i++) { if (filtered[i].result === "win") wins++; }
+  var totalEl = document.getElementById('total-pnl');
   totalEl.textContent = (total >= 0 ? "+$" : "-$") + Math.abs(total).toFixed(2);
   totalEl.className = "stat-value" + (total < 0 ? " loss" : "");
   document.getElementById('win-rate').textContent = filtered.length ? Math.round(wins / filtered.length * 100) + "%" : "—";
@@ -269,17 +304,25 @@ function renderAll(filtered) {
 }
 
 function filter(type, btn) {
-  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  var btns = document.querySelectorAll('.filter-btn');
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
   btn.classList.add('active');
-  if (type === 'all') return renderAll(trades);
-  if (type === 'win' || type === 'loss') return renderAll(trades.filter(function(t) { return t.result === type; }));
-  renderAll(trades.filter(function(t) { return t.setup === type; }));
+  if (type === 'all') { renderAll(trades); return; }
+  if (type === 'win' || type === 'loss') {
+    var f = [];
+    for (var i = 0; i < trades.length; i++) { if (trades[i].result === type) f.push(trades[i]); }
+    renderAll(f); return;
+  }
+  var f = [];
+  for (var i = 0; i < trades.length; i++) { if (trades[i].setup === type) f.push(trades[i]); }
+  renderAll(f);
 }
 
 function toggleJournal(id) {
-  const el = document.getElementById("journal-" + id);
-  const isOpen = el.classList.contains('open');
-  document.querySelectorAll('.journal-body').forEach(function(j) { j.classList.remove('open'); });
+  var el = document.getElementById("journal-" + id);
+  var isOpen = el.classList.contains('open');
+  var all = document.querySelectorAll('.journal-body');
+  for (var i = 0; i < all.length; i++) { all[i].classList.remove('open'); }
   if (!isOpen) el.classList.add('open');
 }
 
