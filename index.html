@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Mirani</title>
+<title>Trade Journal</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #080c10; font-family: 'Courier New', monospace; color: #c9d1d9; min-height: 100vh; transition: background 0.2s, color 0.2s; }
@@ -423,6 +423,13 @@ var trades = [
 ];
 
 var setupDays = [
+  { date:"05/12/2026", setups:[
+    {level:7422,type:"FBD",priority:"aplus",notes:"Big low set at 10:30AM Monday from which ES rallied to daily highs. Primary A+ setup for Tuesday. Failed Breakdown of this low is the most actionable entry."},
+    {level:7402,type:"FBD",priority:"a",notes:"Low of day Monday — most interesting zone. Failed Breakdown of this daily low is actionable. We probably finally get a more proper dip if we fail below 7402 since this was the backtest of last Thursday's breakdown. CPI at 8:30AM — be on guard for traps/FBDs in first 30 min after print."},
+    {level:7435,type:"FBD",priority:"b",notes:"Small shelf of lows set between 11AM and 1:30PM Monday. Lower quality — too close to the highs. Only if we flush shelf (down to ~7428) and recover. Do not force this one."},
+    {level:7377,type:"DIRECT BID",priority:"b",notes:"Slow, controlled grind into zone only. If ES is knifing full speed, pass. Not a FBD — Mancini would not personally take direct bids."},
+    {level:7363,type:"FBD",priority:"b",notes:"Do not just buy 7363 — wait for it to defend then recover 7372 to get long. 7372 was a big low set ~11PM last Thursday. Lower quality level."}
+  ]},
   { date:"05/11/2026", setups:[
     {level:7391,type:"FBD",priority:"aplus",notes:"Shelf of lows formed 5:50AM-8:50AM. Primary long for Monday. Wait for 7378 to recover before entering."},
     {level:7337,type:"FBD",priority:"a",notes:"Failed Breakdown of yesterday's daily low. Quality long if we get down there. Elevator down sell required first."},
