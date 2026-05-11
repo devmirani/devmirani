@@ -451,9 +451,6 @@ function toggleWeek(num) {
   if (body.classList.contains("open")) {
     body.classList.remove("open");
     icon.classList.remove("open");
-    var drill = document.getElementById("drill-" + num);
-    drill.classList.remove("open");
-    drill.innerHTML = "";
   } else {
     body.classList.add("open");
     icon.classList.add("open");
@@ -470,18 +467,12 @@ function openDrillDown(weekNum, date) {
   for (var i = 0; i < dayTrades.length; i++) { cardsHtml += renderCard(dayTrades[i]); }
 
   var drill = document.getElementById("drill-" + weekNum);
-  drill.innerHTML =
-    "<button class='drill-back' onclick='closeDrillDown(" + weekNum + ")'><span class='drill-back-arrow'>&#8592;</span> Back to week</button>" +
-    "<div class='drill-title'>" + date + " — Trade Cards</div>" +
-    "<div class='drill-cards'>" + cardsHtml + "</div>";
+  var wasOpen = drill.classList.contains("open");
+  drill.innerHTML = "<div class='drill-title'>" + date + " — Trade Cards</div><div class='drill-cards'>" + cardsHtml + "</div>";
   drill.classList.add("open");
-  drill.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function closeDrillDown(weekNum) {
-  var drill = document.getElementById("drill-" + weekNum);
-  drill.classList.remove("open");
-  drill.innerHTML = "";
+  if (!wasOpen) {
+    drill.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
 }
 
 function filterTrades(type, btn) {
