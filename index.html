@@ -16,13 +16,11 @@
   .filters { padding: 20px 40px; display: flex; gap: 10px; flex-wrap: wrap; }
   .filter-btn { padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; font-family: 'Courier New', monospace; cursor: pointer; border: 1.5px solid #21262d; background: transparent; color: #8b949e; letter-spacing: 0.05em; }
   .filter-btn.active { border-color: #00e676; color: #00e676; }
-
-  /* Week blocks */
   .week-block { margin: 0 40px 32px; border: 1px solid #21262d; border-radius: 10px; overflow: hidden; }
   .week-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #0d1117; cursor: pointer; user-select: none; }
   .week-header:hover { background: #111820; }
   .week-left { display: flex; align-items: center; gap: 12px; }
-  .week-toggle-icon { font-size: 12px; color: #8b949e; transition: transform 0.2s; }
+  .week-toggle-icon { font-size: 12px; color: #8b949e; transition: transform 0.2s; display: inline-block; }
   .week-toggle-icon.open { transform: rotate(90deg); }
   .week-title { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.05em; }
   .week-dates { font-size: 11px; color: #8b949e; }
@@ -34,8 +32,6 @@
   .week-stat-value.neg { color: #e05c5c; }
   .week-body { display: none; border-top: 1px solid #21262d; }
   .week-body.open { display: block; }
-
-  /* Day rows inside week */
   .day-section { padding: 0 20px 24px; }
   .day-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 12px; border-bottom: 1px solid #161b22; margin-bottom: 16px; }
   .day-title { font-size: 13px; font-weight: 700; color: #c9d1d9; }
@@ -45,8 +41,6 @@
   .day-pnl.neg { color: #e05c5c; }
   .day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; }
   .no-trades { color: #8b949e; font-size: 12px; font-style: italic; padding: 4px 0 8px; }
-
-  /* Cards */
   .card { background: #080c10; border-radius: 10px; padding: 20px 24px; border-left: 3px solid #00e676; }
   .card.loss { border-left-color: #e05c5c; }
   .card-header-row { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -70,7 +64,7 @@
   .tp-hit { border: 1.5px solid #00e676; color: #00e676; }
   .tp-eod { border: 1.5px solid #f0a500; color: #f0a500; }
   .tp-stopped { border: 1.5px solid #e05c5c; color: #e05c5c; }
-  .tp-miss { border: 1.5px solid #444; color: #555; }
+  .tp-miss { border: 1.5px solid #444; color: #8b949e; }
   .tp-return { font-size: 9px; font-weight: 400; display: block; }
   .tp-tooltip { display: none; position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%); background: #161b22; border: 1px solid #21262d; border-radius: 4px; padding: 3px 8px; font-size: 10px; font-weight: 400; color: #c9d1d9; white-space: nowrap; z-index: 10; }
   .tp-btn:hover .tp-tooltip { display: block; }
@@ -89,6 +83,27 @@
   .img-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 999; align-items: center; justify-content: center; cursor: zoom-out; }
   .img-overlay.open { display: flex; }
   .img-overlay img { max-width: 90%; max-height: 90%; border-radius: 8px; border: 1px solid #21262d; }
+
+  /* Calendar */
+  .cal-section { margin: 0 40px 60px; }
+  .cal-section-title { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.05em; padding: 20px 0 16px; border-bottom: 1px solid #21262d; margin-bottom: 20px; }
+  .cal-nav { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .cal-nav-btn { background: transparent; border: 1px solid #21262d; color: #8b949e; font-family: 'Courier New', monospace; font-size: 13px; padding: 4px 12px; border-radius: 6px; cursor: pointer; }
+  .cal-nav-btn:hover { border-color: #444; color: #c9d1d9; }
+  .cal-month-label { font-size: 15px; font-weight: 700; color: #fff; min-width: 140px; text-align: center; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .cal-dow { text-align: center; font-size: 10px; color: #8b949e; padding: 6px 0; text-transform: uppercase; letter-spacing: 0.08em; }
+  .cal-cell { background: #0d1117; border-radius: 6px; min-height: 80px; padding: 8px; border: 1px solid #21262d; }
+  .cal-cell.empty { background: transparent; border-color: transparent; }
+  .cal-cell.today { border-color: #8b949e; }
+  .cal-day-num { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+  .cal-cell.has-trades .cal-day-num { color: #c9d1d9; font-weight: 700; }
+  .cal-pnl { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .cal-pnl.pos { color: #00e676; }
+  .cal-pnl.neg { color: #e05c5c; }
+  .cal-meta { font-size: 9px; color: #8b949e; line-height: 1.6; }
+  .cal-cell.green-bg { background: rgba(0,230,118,0.08); border-color: rgba(0,230,118,0.2); }
+  .cal-cell.red-bg { background: rgba(224,92,92,0.08); border-color: rgba(224,92,92,0.2); }
 </style>
 </head>
 <body>
@@ -117,41 +132,39 @@
 
 <div id="journal"></div>
 
+<div class="cal-section">
+  <div class="cal-section-title">// P&amp;L CALENDAR</div>
+  <div class="cal-nav">
+    <button class="cal-nav-btn" onclick="prevMonth()">&#8592;</button>
+    <div class="cal-month-label" id="cal-month-label"></div>
+    <button class="cal-nav-btn" onclick="nextMonth()">&#8594;</button>
+  </div>
+  <div class="cal-grid" id="cal-grid"></div>
+</div>
+
 <script>
 var chartMap = { 1: "https://i.imgur.com/go0WawU.png" };
 
 var weeks = [
   { num: 1, label: "Week 1", dates: "04/27 - 05/03", days: [
-    { name: "Sunday",    date: "04/27/2026" },
-    { name: "Monday",    date: "04/28/2026" },
-    { name: "Tuesday",   date: "04/29/2026" },
-    { name: "Wednesday", date: "04/30/2026" },
-    { name: "Thursday",  date: "05/01/2026" },
-    { name: "Friday",    date: "05/02/2026" }
+    { name: "Sunday", date: "04/27/2026" }, { name: "Monday", date: "04/28/2026" },
+    { name: "Tuesday", date: "04/29/2026" }, { name: "Wednesday", date: "04/30/2026" },
+    { name: "Thursday", date: "05/01/2026" }, { name: "Friday", date: "05/02/2026" }
   ]},
   { num: 2, label: "Week 2", dates: "05/04 - 05/10", days: [
-    { name: "Sunday",    date: "05/03/2026" },
-    { name: "Monday",    date: "05/04/2026" },
-    { name: "Tuesday",   date: "05/05/2026" },
-    { name: "Wednesday", date: "05/06/2026" },
-    { name: "Thursday",  date: "05/07/2026" },
-    { name: "Friday",    date: "05/08/2026" }
+    { name: "Sunday", date: "05/03/2026" }, { name: "Monday", date: "05/04/2026" },
+    { name: "Tuesday", date: "05/05/2026" }, { name: "Wednesday", date: "05/06/2026" },
+    { name: "Thursday", date: "05/07/2026" }, { name: "Friday", date: "05/08/2026" }
   ]},
   { num: 3, label: "Week 3", dates: "05/10 - 05/15", days: [
-    { name: "Sunday",    date: "05/10/2026" },
-    { name: "Monday",    date: "05/11/2026" },
-    { name: "Tuesday",   date: "05/12/2026" },
-    { name: "Wednesday", date: "05/13/2026" },
-    { name: "Thursday",  date: "05/14/2026" },
-    { name: "Friday",    date: "05/15/2026" }
+    { name: "Sunday", date: "05/10/2026" }, { name: "Monday", date: "05/11/2026" },
+    { name: "Tuesday", date: "05/12/2026" }, { name: "Wednesday", date: "05/13/2026" },
+    { name: "Thursday", date: "05/14/2026" }, { name: "Friday", date: "05/15/2026" }
   ]},
   { num: 4, label: "Week 4", dates: "05/18 - 05/24", days: [
-    { name: "Sunday",    date: "05/17/2026" },
-    { name: "Monday",    date: "05/18/2026" },
-    { name: "Tuesday",   date: "05/19/2026" },
-    { name: "Wednesday", date: "05/20/2026" },
-    { name: "Thursday",  date: "05/21/2026" },
-    { name: "Friday",    date: "05/22/2026" }
+    { name: "Sunday", date: "05/17/2026" }, { name: "Monday", date: "05/18/2026" },
+    { name: "Tuesday", date: "05/19/2026" }, { name: "Wednesday", date: "05/20/2026" },
+    { name: "Thursday", date: "05/21/2026" }, { name: "Friday", date: "05/22/2026" }
   ]}
 ];
 
@@ -245,7 +258,7 @@ var trades = [
     targets: [
       { label: "T1", price: 7368.50, contracts: 7, status: "hit", pnl: 175.00, exitTime: "2:08 PM" },
       { label: "T2", price: 7383.00, contracts: 2, status: "eod", pnl: 55.00, exitTime: "4:02 PM", exitPrice: 7369.00 },
-      { label: "T3", price: null,    contracts: 1, status: "stopped", pnl: -35.00, exitTime: "4:50 PM", exitPrice: 7356.50 }
+      { label: "T3", price: null, contracts: 1, status: "stopped", pnl: -35.00, exitTime: "4:50 PM", exitPrice: 7356.50 }
     ],
     times: [{ label: "Entry", value: "1:40:15 PM" }, { label: "T1", value: "27m 34s" }, { label: "T2", value: "2h 22m" }, { label: "T3", value: "3h 9m" }],
     totalPts: 46.50, totalPnl: 195.00, exitNote: "Position fully exited", journal: ""
@@ -255,7 +268,7 @@ var trades = [
     setup: "FBD", result: "win", contracts: 10, tradeLabel: "7345 Failed Breakdown",
     targets: [
       { label: "T1", price: 7358.50, contracts: 7, status: "hit", pnl: 175.00, exitTime: "6:21 PM" },
-      { label: "T2", price: 7366.50, contracts: 1, status: "hit", pnl: 65.00,  exitTime: "8:03 PM" },
+      { label: "T2", price: 7366.50, contracts: 1, status: "hit", pnl: 65.00, exitTime: "8:03 PM" },
       { label: "T3", price: 7380.00, contracts: 1, status: "hit", pnl: 132.50, exitTime: "1:13 AM" },
       { label: "T4", price: 7402.00, contracts: 1, status: "hit", pnl: 242.50, exitTime: "5:28 AM" }
     ],
@@ -301,14 +314,9 @@ function renderCard(tr) {
   var dStr = (tr.totalPnl >= 0 ? "+$" : "-$") + Math.abs(tr.totalPnl).toFixed(2);
   var hasChart = chartMap[tr.id] ? true : false;
   var dropContent = "";
-  if (hasChart) {
-    dropContent += "<img class='chart-img' src='" + chartMap[tr.id] + "' alt='chart' onclick='openImg(\"" + chartMap[tr.id] + "\")' />";
-  }
-  if (tr.journal) {
-    dropContent += "<p style='margin-top:10px;'>" + tr.journal + "</p>";
-  }
+  if (hasChart) dropContent += "<img class='chart-img' src='" + chartMap[tr.id] + "' alt='chart' onclick='openImg(\"" + chartMap[tr.id] + "\")' />";
+  if (tr.journal) dropContent += "<p style='margin-top:10px;'>" + tr.journal + "</p>";
   var toggle = (hasChart || tr.journal) ? "<button class='journal-toggle' onclick='toggleJournal(" + tr.id + ")'>&#9658; chart &amp; journal</button><div class='journal-body' id='journal-" + tr.id + "'>" + dropContent + "</div>" : "";
-
   return "<div class='card" + (win ? "" : " loss") + "'>" +
     "<div class='card-header-row'><div><span class='card-price'>" + tr.entryPrice.toFixed(2) + "</span><span class='card-label'>" + tr.tradeLabel + "</span></div><span class='card-timestamp'>" + tr.entryTime + "</span></div>" +
     "<div class='badge'>" + tr.setup + "</div>" +
@@ -322,82 +330,48 @@ function renderCard(tr) {
 
 function renderAll(list) {
   var html = "";
-  var total = 0;
-  var wins = 0;
-  var totalCount = list.length;
-
+  var total = 0; var wins = 0;
   for (var w = 0; w < weeks.length; w++) {
     var week = weeks[w];
-    var weekTrades = [];
+    var wt = [];
     for (var i = 0; i < list.length; i++) {
       for (var d = 0; d < week.days.length; d++) {
-        if (list[i].date === week.days[d].date) { weekTrades.push(list[i]); break; }
+        if (list[i].date === week.days[d].date) { wt.push(list[i]); break; }
       }
     }
-    var weekPnl = 0;
-    var weekWins = 0;
-    for (var i = 0; i < weekTrades.length; i++) {
-      weekPnl += weekTrades[i].totalPnl;
-      if (weekTrades[i].result === "win") weekWins++;
-    }
-    total += weekPnl;
-    wins += weekWins;
-
-    var weekWr = weekTrades.length ? Math.round(weekWins / weekTrades.length * 100) + "%" : "--";
-    var weekPnlStr = weekTrades.length ? (weekPnl >= 0 ? "+$" : "-$") + Math.abs(weekPnl).toFixed(2) : "--";
-    var weekPnlCls = weekPnl >= 0 ? "pos" : "neg";
-
+    var wp = 0; var ww = 0;
+    for (var i = 0; i < wt.length; i++) { wp += wt[i].totalPnl; if (wt[i].result === "win") ww++; }
+    total += wp; wins += ww;
+    var wr = wt.length ? Math.round(ww / wt.length * 100) + "%" : "--";
+    var wps = wt.length ? (wp >= 0 ? "+$" : "-$") + Math.abs(wp).toFixed(2) : "--";
+    var wpc = wp >= 0 ? "pos" : "neg";
     var dayHtml = "";
     for (var d = 0; d < week.days.length; d++) {
       var day = week.days[d];
-      var dayTrades = [];
-      for (var i = 0; i < weekTrades.length; i++) {
-        if (weekTrades[i].date === day.date) dayTrades.push(weekTrades[i]);
-      }
-      var dayPnl = 0;
-      for (var i = 0; i < dayTrades.length; i++) { dayPnl += dayTrades[i].totalPnl; }
-      var dayPnlStr = dayTrades.length ? (dayPnl >= 0 ? "+$" : "-$") + Math.abs(dayPnl).toFixed(2) : "";
-      var cards = dayTrades.length ? "" : "<div class='no-trades'>No trades</div>";
-      for (var i = 0; i < dayTrades.length; i++) { cards += renderCard(dayTrades[i]); }
-      dayHtml += "<div class='day-section'><div class='day-header'><div><span class='day-title'>" + day.name + "</span><span class='day-date'>" + day.date + "</span></div>" + (dayPnlStr ? "<span class='day-pnl " + (dayPnl >= 0 ? "pos" : "neg") + "'>" + dayPnlStr + "</span>" : "") + "</div><div class='day-grid'>" + cards + "</div></div>";
+      var dt = [];
+      for (var i = 0; i < wt.length; i++) { if (wt[i].date === day.date) dt.push(wt[i]); }
+      var dp = 0;
+      for (var i = 0; i < dt.length; i++) { dp += dt[i].totalPnl; }
+      var dps = dt.length ? (dp >= 0 ? "+$" : "-$") + Math.abs(dp).toFixed(2) : "";
+      var cards = dt.length ? "" : "<div class='no-trades'>No trades</div>";
+      for (var i = 0; i < dt.length; i++) { cards += renderCard(dt[i]); }
+      dayHtml += "<div class='day-section'><div class='day-header'><div><span class='day-title'>" + day.name + "</span><span class='day-date'>" + day.date + "</span></div>" + (dps ? "<span class='day-pnl " + (dp >= 0 ? "pos" : "neg") + "'>" + dps + "</span>" : "") + "</div><div class='day-grid'>" + cards + "</div></div>";
     }
-
-    html += "<div class='week-block'>" +
-      "<div class='week-header' onclick='toggleWeek(" + week.num + ")'>" +
-        "<div class='week-left'>" +
-          "<span class='week-toggle-icon' id='icon-" + week.num + "'>&#9658;</span>" +
-          "<span class='week-title'>" + week.label + "</span>" +
-          "<span class='week-dates'>" + week.dates + "</span>" +
-        "</div>" +
-        "<div class='week-right'>" +
-          "<div class='week-stat'><div class='week-stat-label'>P&amp;L</div><div class='week-stat-value " + weekPnlCls + "'>" + weekPnlStr + "</div></div>" +
-          "<div class='week-stat'><div class='week-stat-label'>Win Rate</div><div class='week-stat-value " + weekPnlCls + "'>" + weekWr + "</div></div>" +
-          "<div class='week-stat'><div class='week-stat-label'>Trades</div><div class='week-stat-value'>" + weekTrades.length + "</div></div>" +
-        "</div>" +
-      "</div>" +
-      "<div class='week-body' id='week-" + week.num + "'>" + dayHtml + "</div>" +
-    "</div>";
+    html += "<div class='week-block'><div class='week-header' onclick='toggleWeek(" + week.num + ")'><div class='week-left'><span class='week-toggle-icon' id='icon-" + week.num + "'>&#9658;</span><span class='week-title'>" + week.label + "</span><span class='week-dates'>" + week.dates + "</span></div><div class='week-right'><div class='week-stat'><div class='week-stat-label'>P&amp;L</div><div class='week-stat-value " + wpc + "'>" + wps + "</div></div><div class='week-stat'><div class='week-stat-label'>Win Rate</div><div class='week-stat-value " + wpc + "'>" + wr + "</div></div><div class='week-stat'><div class='week-stat-label'>Trades</div><div class='week-stat-value'>" + wt.length + "</div></div></div></div><div class='week-body' id='week-" + week.num + "'>" + dayHtml + "</div></div>";
   }
-
   document.getElementById("journal").innerHTML = html;
-
   var tel = document.getElementById("total-pnl");
   tel.textContent = (total >= 0 ? "+$" : "-$") + Math.abs(total).toFixed(2);
   tel.className = "stat-value" + (total < 0 ? " neg" : "");
-  document.getElementById("win-rate").textContent = totalCount ? Math.round(wins / totalCount * 100) + "%" : "--";
-  document.getElementById("trade-count").textContent = totalCount;
+  document.getElementById("win-rate").textContent = list.length ? Math.round(wins / list.length * 100) + "%" : "--";
+  document.getElementById("trade-count").textContent = list.length;
 }
 
 function toggleWeek(num) {
   var body = document.getElementById("week-" + num);
   var icon = document.getElementById("icon-" + num);
-  if (body.classList.contains("open")) {
-    body.classList.remove("open");
-    icon.classList.remove("open");
-  } else {
-    body.classList.add("open");
-    icon.classList.add("open");
-  }
+  if (body.classList.contains("open")) { body.classList.remove("open"); icon.classList.remove("open"); }
+  else { body.classList.add("open"); icon.classList.add("open"); }
 }
 
 function filterTrades(type, btn) {
@@ -428,10 +402,75 @@ function openImg(src) {
 }
 
 function closeImg() {
-  document.getElementById("img-overlay").classList.remove("open");
+  document.getElementById("img-overlay").classList.remove("open"); }
+
+// ---- CALENDAR ----
+var calYear = 2026;
+var calMonth = 4; // 0-indexed, 4 = May
+
+function buildDayMap() {
+  var map = {};
+  for (var i = 0; i < trades.length; i++) {
+    var t = trades[i];
+    var parts = t.date.split("/");
+    var key = parts[2] + "-" + parts[0] + "-" + parts[1];
+    if (!map[key]) map[key] = { pnl: 0, count: 0, wins: 0 };
+    map[key].pnl += t.totalPnl;
+    map[key].count++;
+    if (t.result === "win") map[key].wins++;
+  }
+  return map;
+}
+
+var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var dowNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+function renderCalendar() {
+  var map = buildDayMap();
+  var label = monthNames[calMonth] + " " + calYear;
+  document.getElementById("cal-month-label").textContent = label;
+  var firstDay = new Date(calYear, calMonth, 1).getDay();
+  var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  var today = new Date();
+  var html = "";
+  for (var d = 0; d < 7; d++) { html += "<div class='cal-dow'>" + dowNames[d] + "</div>"; }
+  for (var e = 0; e < firstDay; e++) { html += "<div class='cal-cell empty'></div>"; }
+  for (var day = 1; day <= daysInMonth; day++) {
+    var mm = String(calMonth + 1).padStart(2, "0");
+    var dd = String(day).padStart(2, "0");
+    var key = calYear + "-" + mm + "-" + dd;
+    var data = map[key];
+    var isToday = (today.getFullYear() === calYear && today.getMonth() === calMonth && today.getDate() === day);
+    var cls = "cal-cell";
+    if (isToday) cls += " today";
+    if (data) {
+      cls += " has-trades";
+      cls += data.pnl >= 0 ? " green-bg" : " red-bg";
+      var pnlStr = (data.pnl >= 0 ? "+$" : "-$") + Math.abs(data.pnl).toFixed(2);
+      var pnlCls = data.pnl >= 0 ? "pos" : "neg";
+      var wr = Math.round(data.wins / data.count * 100);
+      html += "<div class='" + cls + "'><div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + pnlCls + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win Rate: " + wr + "%</div></div>";
+    } else {
+      html += "<div class='" + cls + "'><div class='cal-day-num'>" + day + "</div></div>";
+    }
+  }
+  document.getElementById("cal-grid").innerHTML = html;
+}
+
+function prevMonth() {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendar();
+}
+
+function nextMonth() {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendar();
 }
 
 renderAll(trades);
+renderCalendar();
 </script>
 </body>
 </html>
