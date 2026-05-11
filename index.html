@@ -108,7 +108,18 @@
   .cal-dow { text-align: center; font-size: 10px; padding: 6px 0; text-transform: uppercase; letter-spacing: 0.08em; }
   .cal-dow.normal { color: #8b949e; }
   .cal-dow.total { color: #b57bee; }
-  .cal-cell { background: #0d1117; border-radius: 6px; min-height: 80px; padding: 8px; border: 1px solid #21262d; }
+  .cal-cell { background: #0d1117; border-radius: 6px; min-height: 80px; padding: 8px; border: 1px solid #21262d; position: relative; }
+  .cal-cell:hover .cal-timeline-popup { display: block; }
+  .cal-timeline-popup { display: none; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 12px 14px; z-index: 50; width: 280px; box-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+  .cal-timeline-popup-title { font-size: 10px; color: #8b949e; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cal-timeline-track { position: relative; height: 32px; width: 100%; }
+  .cal-timeline-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #21262d; transform: translateY(-50%); }
+  .cal-timeline-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; top: 50%; transform: translate(-50%, -50%); cursor: default; }
+  .cal-timeline-dot.entry { background: #00e676; border: 1.5px solid #0d1117; }
+  .cal-timeline-dot.exit { background: #e05c5c; border: 1.5px solid #0d1117; }
+  .cal-timeline-ticks { display: flex; justify-content: space-between; margin-top: 4px; }
+  .cal-timeline-tick { font-size: 8px; color: #8b949e; }
+  .cal-timeline-dot:hover::after { content: attr(data-tip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: #161b22; border: 1px solid #21262d; border-radius: 4px; padding: 3px 7px; font-size: 9px; color: #c9d1d9; white-space: nowrap; z-index: 60; }
   .cal-cell.empty { background: transparent; border-color: transparent; min-height: 80px; }
   .cal-cell.today { border-color: #8b949e; }
   .cal-cell.week-total-cell { background: #0d1117; border-color: rgba(181,123,238,0.3); }
@@ -420,6 +431,95 @@ function closeImg() {
 var calYear = 2026;
 var calMonth = 4; // May = 4
 
+function buildTimelineMap() {
+  var map = {};
+  var allEvents = [
+    { date: "05/04/2026", events: [
+      { type: "entry", time: "12:20 PM" }, { type: "exit", time: "12:22 PM" }, { type: "exit", time: "1:11 PM" },
+      { type: "entry", time: "12:39 PM" }, { type: "exit", time: "1:17 PM" }, { type: "exit", time: "4:05 PM" },
+      { type: "entry", time: "11:27 PM" }
+    ]},
+    { date: "05/05/2026", events: [
+      { type: "exit", time: "2:55 AM" }, { type: "exit", time: "6:39 AM" },
+      { type: "entry", time: "7:15 PM" }, { type: "exit", time: "8:15 PM" }
+    ]},
+    { date: "05/06/2026", events: [
+      { type: "entry", time: "9:48 AM" }, { type: "exit", time: "10:25 AM" }, { type: "exit", time: "10:41 AM" }
+    ]},
+    { date: "05/07/2026", events: [
+      { type: "entry", time: "12:32 PM" }, { type: "exit", time: "12:57 PM" },
+      { type: "entry", time: "1:40 PM" }, { type: "exit", time: "2:08 PM" }, { type: "exit", time: "4:02 PM" }, { type: "exit", time: "4:50 PM" },
+      { type: "entry", time: "6:20 PM" }, { type: "exit", time: "6:21 PM" }, { type: "exit", time: "8:03 PM" }
+    ]},
+    { date: "05/08/2026", events: [
+      { type: "exit", time: "1:13 AM" }, { type: "exit", time: "5:28 AM" }
+    ]},
+    { date: "05/10/2026", events: [
+      { type: "entry", time: "6:25 PM" }, { type: "exit", time: "6:42 PM" },
+      { type: "entry", time: "6:44 PM" }, { type: "exit", time: "6:50 PM" }, { type: "exit", time: "7:02 PM" }, { type: "exit", time: "9:23 PM" }
+    ]}
+  ];
+  for (var i = 0; i < allEvents.length; i++) {
+    map[allEvents[i].date] = allEvents[i].events;
+  }
+  return map;
+}
+
+function timeToOffset(timeStr) {
+  var parts = timeStr.split(" ");
+  var hm = parts[0].split(":");
+  var h = parseInt(hm[0]);
+  var m = parseInt(hm[1]);
+  var ampm = parts[1];
+  if (ampm === "PM" && h !== 12) h += 12;
+  if (ampm === "AM" && h === 12) h = 0;
+  var totalMins = h * 60 + m;
+  var startMins = 18 * 60; // 6 PM
+  var diff = totalMins - startMins;
+  if (diff < 0) diff += 24 * 60;
+  return diff / (24 * 60);
+}
+
+function buildTimelinePopup(dateStr, eventsMap) {
+  var events = eventsMap[dateStr];
+  if (!events || events.length === 0) return "";
+
+  var tickLabels = ["6 PM","12 AM","6 AM","12 PM","6 PM"];
+  var tickHtml = "";
+  for (var t = 0; t < tickLabels.length; t++) {
+    tickHtml += "<span class='cal-timeline-tick'>" + tickLabels[t] + "</span>";
+  }
+
+  // Group dots by approximate position to stack them
+  var posMap = {};
+  for (var i = 0; i < events.length; i++) {
+    var pct = Math.round(timeToOffset(events[i].time) * 1000) / 10;
+    var key = Math.round(pct);
+    if (!posMap[key]) posMap[key] = [];
+    posMap[key].push(events[i]);
+  }
+
+  var dotsHtml = "";
+  for (var key in posMap) {
+    var group = posMap[key];
+    for (var j = 0; j < group.length; j++) {
+      var ev = group[j];
+      var pct = parseFloat(key);
+      var topOffset = 50 + (j - (group.length - 1) / 2) * 10;
+      dotsHtml += "<div class='cal-timeline-dot " + ev.type + "' style='left:" + pct + "%;top:" + topOffset + "%;' data-tip='" + ev.time + " " + ev.type + "'></div>";
+    }
+  }
+
+  return "<div class='cal-timeline-popup'>" +
+    "<div class='cal-timeline-popup-title'>" + dateStr + " &mdash; 6PM to 6PM</div>" +
+    "<div class='cal-timeline-track'>" +
+      "<div class='cal-timeline-line'></div>" +
+      dotsHtml +
+    "</div>" +
+    "<div class='cal-timeline-ticks'>" + tickHtml + "</div>" +
+    "</div>";
+}
+
 function buildDayMap() {
   var map = {};
   for (var i = 0; i < trades.length; i++) {
@@ -438,6 +538,7 @@ var monthNames = ["January","February","March","April","May","June","July","Augu
 
 function renderCalendar() {
   var map = buildDayMap();
+  var tlMap = buildTimelineMap();
   document.getElementById("cal-month-label").textContent = monthNames[calMonth] + " " + calYear;
 
   var firstDow = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
@@ -488,9 +589,10 @@ function renderCalendar() {
       weekPnl += data.pnl; weekCount += data.count; weekWins += data.wins;
       var pnlStr = (data.pnl >= 0 ? "+$" : "-$") + Math.abs(data.pnl).toFixed(2);
       var pnlCls = data.pnl >= 0 ? "pos" : "neg";
+      var tl = buildTimelinePopup(calYear + "/" + mm + "/" + dd, tlMap);
       var bgCls = data.pnl >= 0 ? " green-bg" : " red-bg";
       var wr = Math.round(data.wins / data.count * 100);
-      html += "<div class='cal-cell has-trades" + bgCls + (isToday ? " today" : "") + "'><div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + pnlCls + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win%: " + wr + "</div></div>";
+      html += "<div class='cal-cell has-trades" + bgCls + (isToday ? " today" : "") + "'>" + tl + "<div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + pnlCls + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win%: " + wr + "</div></div>";
     } else {
       html += "<div class='cal-cell" + (isToday ? " today" : "") + "'><div class='cal-day-num'>" + day + "</div></div>";
     }
