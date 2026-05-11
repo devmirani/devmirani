@@ -208,7 +208,7 @@
   body.light .cal-pnl.neg { color: #c0392b; }
   .cal-meta { font-size: 9px; color: #8b949e; line-height: 1.6; }
 
-  /* Timeline popup — shown only on hover via JS */
+  /* Timeline popup */
   .cal-timeline-popup { display: none; position: fixed; background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 12px 14px; z-index: 9999; width: 260px; pointer-events: none; box-shadow: 0 4px 24px rgba(0,0,0,0.7); }
   body.light .cal-timeline-popup { background: #fff; border-color: #d0d7e3; }
   .cal-timeline-popup-title { font-size: 10px; color: #8b949e; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -225,6 +225,11 @@
   .macro-section { margin: 20px 40px 60px; }
   .macro-title { font-size: 15px; font-weight: 700; color: #fff; padding: 20px 0 16px; border-bottom: 1px solid #21262d; margin-bottom: 20px; }
   body.light .macro-title { color: #1a1f2e; border-bottom-color: #d0d7e3; }
+  .macro-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .macro-tab { padding: 5px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; font-family: 'Courier New', monospace; cursor: pointer; border: 1px solid #21262d; background: transparent; color: #8b949e; }
+  .macro-tab.active { border-color: #00e676; color: #00e676; }
+  body.light .macro-tab { border-color: #d0d7e3; color: #6b7280; }
+  body.light .macro-tab.active { border-color: #00a854; color: #00a854; }
   .macro-week-label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
   .macro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .macro-card { background: #0d1117; border-radius: 8px; padding: 14px 16px; border-left: 3px solid #21262d; }
@@ -232,8 +237,19 @@
   .macro-card.high   { border-left-color: #ef4444; }
   .macro-card.medium { border-left-color: #f0a500; }
   .macro-card.low    { border-left-color: #8b949e; }
-  .macro-card-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  /* Reported cards dimmed */
+  .macro-card.reported { opacity: 0.45; }
+  /* Upcoming earnings — highlighted */
+  .macro-card.upcoming-earn { border-left-color: #f0a500; box-shadow: 0 0 0 1px rgba(240,165,0,0.2); }
+  .macro-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+  .macro-card-name { font-size: 13px; font-weight: 700; color: #fff; }
   body.light .macro-card-name { color: #1a1f2e; }
+  .macro-type-badge { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+  .type-econ { background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.2); }
+  .type-earn { background: rgba(181,123,238,0.1); color: #b57bee; border: 1px solid rgba(181,123,238,0.2); }
+  .type-reported { background: rgba(139,148,158,0.1); color: #8b949e; border: 1px solid rgba(139,148,158,0.2); }
+  body.light .type-econ { color: #00a854; }
+  body.light .type-earn { color: #8b5cf6; }
   .macro-card-day  { font-size: 11px; color: #c9d1d9; margin-bottom: 2px; }
   body.light .macro-card-day { color: #374151; }
   .macro-card-time { font-size: 10px; color: #8b949e; margin-bottom: 8px; }
@@ -241,7 +257,8 @@
   .impact-high   { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
   .impact-medium { background: rgba(240,165,0,0.12); color: #f0a500; border: 1px solid rgba(240,165,0,0.25); }
   .impact-low    { background: rgba(139,148,158,0.12); color: #8b949e; border: 1px solid rgba(139,148,158,0.25); }
-  .macro-card-note { font-size: 10px; color: #8b949e; margin-top: 6px; }
+  .impact-reported { background: rgba(139,148,158,0.08); color: #8b949e; border: 1px solid rgba(139,148,158,0.2); }
+  .macro-card-note { font-size: 10px; color: #8b949e; margin-top: 6px; line-height: 1.5; }
 
   /* Setups page */
   .setup-cal-section { margin: 40px 40px 20px; }
@@ -318,9 +335,15 @@
     <div class="cal-grid" id="cal-grid"></div>
   </div>
 
-  <!-- Macro Events -->
+  <!-- Macro / Earnings Events -->
   <div class="macro-section">
-    <div class="macro-title">THIS WEEK'S KEY DATA</div>
+    <div class="macro-title">MAY / JUNE KEY EVENTS &amp; EARNINGS</div>
+    <div class="macro-tabs">
+      <button class="macro-tab active" onclick="setMacroView('week', this)">THIS WEEK</button>
+      <button class="macro-tab" onclick="setMacroView('month', this)">ALL MAY</button>
+      <button class="macro-tab" onclick="setMacroView('june', this)">JUNE</button>
+      <button class="macro-tab" onclick="setMacroView('earn', this)">EARNINGS ONLY</button>
+    </div>
     <div class="macro-week-label" id="macro-week-label"></div>
     <div class="macro-grid" id="macro-grid"></div>
   </div>
@@ -339,7 +362,7 @@
   <div class="setup-drill" id="setup-drill"></div>
 </div>
 
-<!-- Timeline popup (fixed position, shown via JS) -->
+<!-- Timeline popup -->
 <div class="cal-timeline-popup" id="cal-timeline-popup">
   <div class="cal-timeline-popup-title" id="cal-timeline-title"></div>
   <div class="cal-timeline-track">
@@ -440,19 +463,67 @@ var setupDays = [
   ]}
 ];
 
+// ─── MACRO + EARNINGS EVENTS ───────────────────────────────────────────────
+// status: "reported" = already happened, "upcoming" = not yet reported
+// type: "econ" | "earn"
 var macroEvents = [
-  {date:"05/12/2026",name:"CPI",time:"8:30 AM ET",impact:"high",note:"Headline: Fcst +0.6% MoM / +3.7% YoY | Core: Fcst +0.3% MoM / +2.7% YoY | Prev: +0.9% MoM / +3.3% YoY"},
-  {date:"05/13/2026",name:"PPI",time:"8:30 AM ET",impact:"high",note:"Final demand. Prev: +0.5% MoM / +4.0% YoY (Mar). Apr consensus not yet published."},
-  {date:"05/15/2026",name:"Jobless Claims",time:"8:30 AM ET",impact:"medium",note:"Weekly initial jobless claims. Fcst: 205K | Prev: 189K"},
-  {date:"05/22/2026",name:"Jobless Claims",time:"8:30 AM ET",impact:"medium",note:"Weekly initial jobless claims"},
-  {date:"05/28/2026",name:"GDP (2nd Est.)",time:"8:30 AM ET",impact:"high",note:"Q1 2026 GDP second estimate. Advance est: +2.0% annualized."},
-  {date:"05/28/2026",name:"PCE",time:"8:30 AM ET",impact:"high",note:"Apr PCE — Fed's preferred inflation metric. Prev (Mar): +3.5% YoY"},
-  {date:"05/29/2026",name:"Jobless Claims",time:"8:30 AM ET",impact:"medium",note:"Weekly initial jobless claims"},
-  {date:"06/05/2026",name:"NFP",time:"8:30 AM ET",impact:"high",note:"May Non-Farm Payrolls"},
-  {date:"06/10/2026",name:"CPI",time:"8:30 AM ET",impact:"high",note:"May CPI"},
-  {date:"06/11/2026",name:"PPI",time:"8:30 AM ET",impact:"high",note:"May PPI"},
-  {date:"06/17/2026",name:"FOMC",time:"2:00 PM ET",impact:"high",note:"Fed rate decision + press conference 2:30 PM. Current rate: 3.50-3.75%"},
-  {date:"06/25/2026",name:"PCE",time:"8:30 AM ET",impact:"high",note:"May PCE — Fed's preferred inflation metric"}
+  // ── REPORTED EARNINGS (Q1 2026, already out) ──
+  { date:"04/29/2026", name:"GOOGL Q1 2026", ticker:"GOOGL", time:"After Close", impact:"high", type:"earn", status:"reported",
+    note:"Reported 4/29. Revenue beat. Google Cloud +63% YoY. Raised 2026 capex outlook." },
+  { date:"04/29/2026", name:"MSFT Q3 FY2026", ticker:"MSFT", time:"After Close", impact:"high", type:"earn", status:"reported",
+    note:"Reported 4/29. Azure growth accelerated. Strong AI-driven cloud demand. Beat on EPS." },
+  { date:"04/29/2026", name:"META Q1 2026", ticker:"META", time:"After Close", impact:"high", type:"earn", status:"reported",
+    note:"Reported 4/29. Revenue +33% YoY. Raised full-year revenue guidance. Capex elevated for AI infra." },
+  { date:"04/29/2026", name:"AMZN Q1 2026", ticker:"AMZN", time:"After Close", impact:"high", type:"earn", status:"reported",
+    note:"Reported 4/29. AWS grew at highest rate in 15 quarters. $200B capex plan for 2026 reaffirmed." },
+  { date:"04/30/2026", name:"AAPL Q2 FY2026", ticker:"AAPL", time:"After Close", impact:"high", type:"earn", status:"reported",
+    note:"Reported 4/30. Beat estimates. Conservative capex vs peers (~$4.3B YTD). Services revenue strong." },
+  { date:"05/05/2026", name:"AMD Q1 2026", ticker:"AMD", time:"After Close", impact:"medium", type:"earn", status:"reported",
+    note:"Reported 5/5. Est. EPS $1.27 | Rev ~$9.8B. Data center GPU demand key focus." },
+
+  // ── UPCOMING EARNINGS (not yet reported) ──
+  { date:"05/20/2026", name:"NVDA Q1 FY2027", ticker:"NVDA", time:"After Close", impact:"high", type:"earn", status:"upcoming",
+    note:"Est. EPS $1.78 | Rev ~$78.0B. Biggest catalyst of the month. Blackwell GPU demand, China export restrictions, and data center capex guidance will move the market." },
+
+  // ── Q2 2026 EARNINGS (estimated — next cycle, July) ──
+  { date:"07/22/2026", name:"GOOGL Q2 2026", ticker:"GOOGL", time:"After Close", impact:"high", type:"earn", status:"estimated",
+    note:"~Est. date. Q2 2026. Est. EPS ~$2.86 | Rev ~$113.1B." },
+  { date:"07/29/2026", name:"MSFT Q4 FY2026", ticker:"MSFT", time:"After Close", impact:"high", type:"earn", status:"estimated",
+    note:"~Est. date. Q4 FY2026. Est. EPS ~$4.22 | Rev ~$87.5B." },
+  { date:"07/29/2026", name:"META Q2 2026", ticker:"META", time:"After Close", impact:"high", type:"earn", status:"estimated",
+    note:"~Est. date. Q2 2026. Est. EPS ~$7.24 | Rev ~$59.5B." },
+  { date:"07/30/2026", name:"AAPL Q3 FY2026", ticker:"AAPL", time:"After Close", impact:"high", type:"earn", status:"estimated",
+    note:"~Est. date. Q3 FY2026. Est. EPS ~$1.86 | Rev ~$108B." },
+  { date:"07/30/2026", name:"AMZN Q2 2026", ticker:"AMZN", time:"After Close", impact:"high", type:"earn", status:"estimated",
+    note:"~Est. date. Q2 2026. AWS growth trajectory key focus." },
+
+  // ── ECON EVENTS ──
+  { date:"05/12/2026", name:"CPI", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"Headline: Fcst +0.6% MoM / +3.7% YoY | Core: Fcst +0.3% MoM / +2.7% YoY | Prev: +0.9% MoM / +3.3% YoY" },
+  { date:"05/13/2026", name:"PPI", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"Final demand. Prev: +0.5% MoM / +4.0% YoY (Mar). Apr consensus not yet published." },
+  { date:"05/15/2026", name:"Jobless Claims", time:"8:30 AM ET", impact:"medium", type:"econ", status:"upcoming",
+    note:"Weekly initial jobless claims. Fcst: 205K | Prev: 189K" },
+  { date:"05/22/2026", name:"Jobless Claims", time:"8:30 AM ET", impact:"medium", type:"econ", status:"upcoming",
+    note:"Weekly initial jobless claims" },
+  { date:"05/28/2026", name:"GDP (2nd Est.)", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"Q1 2026 GDP second estimate. Advance est: +2.0% annualized." },
+  { date:"05/28/2026", name:"PCE", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"Apr PCE — Fed's preferred inflation metric. Prev (Mar): +3.5% YoY" },
+  { date:"05/29/2026", name:"Jobless Claims", time:"8:30 AM ET", impact:"medium", type:"econ", status:"upcoming",
+    note:"Weekly initial jobless claims" },
+  { date:"06/05/2026", name:"NFP", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"May Non-Farm Payrolls" },
+  { date:"06/10/2026", name:"CPI", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"May CPI" },
+  { date:"06/11/2026", name:"PPI", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"May PPI" },
+  { date:"06/17/2026", name:"FOMC", time:"2:00 PM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"Fed rate decision + press conference 2:30 PM. Current rate: 3.50-3.75%" },
+  { date:"06/25/2026", name:"PCE", time:"8:30 AM ET", impact:"high", type:"econ", status:"upcoming",
+    note:"May PCE — Fed's preferred inflation metric" },
+  { date:"06/24/2026", name:"Micron Q3 FY2026", ticker:"MU", time:"After Close", impact:"medium", type:"earn", status:"estimated",
+    note:"~Est. date. Q3 FY2026. Est. EPS ~$19.15 | Rev ~$33.5B. DRAM/HBM demand for AI." }
 ];
 
 var timelineEvents = {
@@ -652,8 +723,6 @@ function buildDayTradingMap() {
   return map;
 }
 
-var activePopupCell = null;
-
 function showTimeline(dateStr, cellEl) {
   var events = timelineEvents[dateStr];
   if (!events || !events.length) return;
@@ -678,10 +747,9 @@ function showTimeline(dateStr, cellEl) {
   popup.style.display = "block";
   popup.style.left = (rect.left + rect.width / 2 - 130) + "px";
   popup.style.top = (rect.top + window.scrollY - popup.offsetHeight - 10) + "px";
-  activePopupCell = cellEl;
 }
 
-function hideTimeline() { document.getElementById("cal-timeline-popup").style.display = "none"; activePopupCell = null; }
+function hideTimeline() { document.getElementById("cal-timeline-popup").style.display = "none"; }
 
 function renderCalendar() {
   var map = buildDayTradingMap();
@@ -738,25 +806,72 @@ function prevMonth() { calMonth--; if (calMonth<0){calMonth=11;calYear--;} rende
 function nextMonth() { calMonth++; if (calMonth>11){calMonth=0;calYear++;} renderCalendar(); }
 
 // Macro section
+var macroView = "week";
+
+function setMacroView(view, btn) {
+  macroView = view;
+  var btns = document.querySelectorAll(".macro-tab");
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+  btn.classList.add("active");
+  renderMacroSection();
+}
+
+function parseEventDate(dateStr) {
+  var p = dateStr.split("/");
+  return new Date(parseInt(p[2]), parseInt(p[0])-1, parseInt(p[1]));
+}
+
 function renderMacroSection() {
   var now = new Date();
   var sun = new Date(now); sun.setDate(now.getDate() - now.getDay()); sun.setHours(0,0,0,0);
   var sat = new Date(sun); sat.setDate(sun.getDate() + 6); sat.setHours(23,59,59,999);
+
   var evts = [];
   for (var i = 0; i < macroEvents.length; i++) {
-    var p = macroEvents[i].date.split("/");
-    var d = new Date(parseInt(p[2]), parseInt(p[0])-1, parseInt(p[1]));
-    if (d >= sun && d <= sat) evts.push(macroEvents[i]);
+    var ev = macroEvents[i];
+    var d = parseEventDate(ev.date);
+    if (macroView === "week" && d >= sun && d <= sat) evts.push({ev:ev, d:d});
+    else if (macroView === "month" && d.getMonth() === 4 && d.getFullYear() === 2026) evts.push({ev:ev, d:d});
+    else if (macroView === "june" && d.getMonth() === 5 && d.getFullYear() === 2026) evts.push({ev:ev, d:d});
+    else if (macroView === "earn" && ev.type === "earn") evts.push({ev:ev, d:d});
   }
-  function fmt(d) { return (d.getMonth()+1) + "/" + d.getDate(); }
-  document.getElementById("macro-week-label").textContent = "Week of " + fmt(sun) + " — " + fmt(sat) + ", " + sat.getFullYear();
+  evts.sort(function(a,b){ return a.d - b.d; });
+
+  function fmtDate(d) { return (d.getMonth()+1) + "/" + d.getDate(); }
+  var labels = { week: "Week of " + fmtDate(sun) + " — " + fmtDate(sat) + ", " + sat.getFullYear(), month: "All key events — May 2026", june: "All key events — June 2026", earn: "Mag 7 + Key Tech Earnings — May/June/July 2026" };
+  document.getElementById("macro-week-label").textContent = labels[macroView] || "";
+
   var grid = document.getElementById("macro-grid");
-  if (!evts.length) { grid.innerHTML = "<div style='color:#8b949e;font-size:13px;'>No major data releases this week.</div>"; return; }
+  if (!evts.length) { grid.innerHTML = "<div style='color:#8b949e;font-size:13px;'>No events for this period.</div>"; return; }
+
   var html = "";
   for (var i = 0; i < evts.length; i++) {
-    var ev = evts[i]; var p2 = ev.date.split("/");
-    var d2 = new Date(parseInt(p2[2]), parseInt(p2[0])-1, parseInt(p2[1]));
-    html += "<div class='macro-card " + ev.impact + "'><div class='macro-card-name'>" + ev.name + "</div><div class='macro-card-day'>" + dayNames[d2.getDay()] + ", " + (d2.getMonth()+1) + "/" + d2.getDate() + "</div><div class='macro-card-time'>" + ev.time + "</div><div class='macro-card-impact impact-" + ev.impact + "'>" + ev.impact + " impact</div><div class='macro-card-note'>" + ev.note + "</div></div>";
+    var ev = evts[i].ev; var d = evts[i].d;
+    var isReported = ev.status === "reported";
+    var isEstimated = ev.status === "estimated";
+    var isUpcoming = ev.status === "upcoming" && ev.type === "earn";
+
+    var typeBadge;
+    if (isReported) typeBadge = "<span class='macro-type-badge type-reported'>REPORTED</span>";
+    else if (isEstimated) typeBadge = "<span class='macro-type-badge type-earn'>~EST DATE</span>";
+    else if (ev.type === "earn") typeBadge = "<span class='macro-type-badge type-earn'>EARNINGS</span>";
+    else typeBadge = "<span class='macro-type-badge type-econ'>ECON</span>";
+
+    var impactBadge;
+    if (isReported) impactBadge = "<div class='macro-card-impact impact-reported'>REPORTED</div>";
+    else impactBadge = "<div class='macro-card-impact impact-" + ev.impact + "'>" + ev.impact + " impact</div>";
+
+    var cardCls = "macro-card " + ev.impact;
+    if (isReported) cardCls += " reported";
+    if (isUpcoming) cardCls += " upcoming-earn";
+
+    html += "<div class='" + cardCls + "'>" +
+      "<div class='macro-card-header'><div class='macro-card-name'>" + ev.name + (ev.ticker ? " <span style='font-size:10px;color:#8b949e;'>(" + ev.ticker + ")</span>" : "") + "</div>" + typeBadge + "</div>" +
+      "<div class='macro-card-day'>" + dayNames[d.getDay()] + ", " + (d.getMonth()+1) + "/" + d.getDate() + (isEstimated ? " ~est" : "") + "</div>" +
+      "<div class='macro-card-time'>" + ev.time + "</div>" +
+      impactBadge +
+      "<div class='macro-card-note'>" + ev.note + "</div>" +
+      "</div>";
   }
   grid.innerHTML = html;
 }
