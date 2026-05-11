@@ -589,7 +589,7 @@ function renderCalendar() {
       weekPnl += data.pnl; weekCount += data.count; weekWins += data.wins;
       var pnlStr = (data.pnl >= 0 ? "+$" : "-$") + Math.abs(data.pnl).toFixed(2);
       var pnlCls = data.pnl >= 0 ? "pos" : "neg";
-      var tl = buildTimelinePopup(calYear + "/" + mm + "/" + dd, tlMap);
+      var tl = buildTimelinePopup(mm + "/" + dd + "/" + calYear, tlMap);
       var bgCls = data.pnl >= 0 ? " green-bg" : " red-bg";
       var wr = Math.round(data.wins / data.count * 100);
       html += "<div class='cal-cell has-trades" + bgCls + (isToday ? " today" : "") + "'>" + tl + "<div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + pnlCls + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win%: " + wr + "</div></div>";
