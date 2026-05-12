@@ -516,6 +516,9 @@ var weeks = [
 ];
 
 var trades = [
+  { id:11, date:"05/11/2026", entryTime:"6:15 PM", entryPrice:7440.25, stopPrice:7435.00, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7435 Failed Breakdown",
+    targets:[{label:"T1",price:null,contracts:5,status:"stopped",pnl:-381.25,exitTime:"9:16 PM",exitPrice:7425.25}],
+    times:[{label:"Entry",value:"6:15 PM"},{label:"Stopped",value:"3h 1m 37s"}], totalPts:-15.00, totalPnl:-381.25, exitNote:"Stopped out", journal:"" },
   { id:10, date:"05/10/2026", entryTime:"6:25 PM", entryPrice:7397.50, stopPrice:7395.50, setup:"FBD", result:"loss", contracts:10, tradeLabel:"7391 Failed Breakdown",
     targets:[{label:"T1",price:7395.50,contracts:10,status:"stopped",pnl:-90.00,exitTime:"6:42 PM",exitPrice:7395.50}],
     times:[{label:"Entry",value:"6:25 PM"},{label:"Stopped",value:"16m 48s"}], totalPts:-2.00, totalPnl:-90.00, exitNote:"Stopped out", journal:"" },
