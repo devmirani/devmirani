@@ -381,6 +381,120 @@
   body.light .drill-watching-title { color: #8b5cf6; }
   .drill-watching-note { font-size: 11px; color: #a0aab8; margin-bottom: 16px; line-height: 1.6; }
 
+
+  /* Live Context Strip */
+  .live-strip { margin: 24px 40px 0; }
+  .live-strip-inner { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 20px 28px; position: relative; overflow: hidden; }
+  body.light .live-strip-inner { background: #fff; border-color: #d0d7e3; }
+  .live-strip-inner::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00e676, #b57bee, #378ADD); }
+  .live-strip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .live-strip-title { font-size: 11px; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; }
+  .live-strip-updated { font-size: 10px; color: #8b949e; }
+  .live-strip-grid { display: grid; grid-template-columns: 1.2fr 1.8fr 1fr 1fr 1fr 1fr; gap: 1px; background: #21262d; border-radius: 8px; overflow: hidden; }
+  body.light .live-strip-grid { background: #d0d7e3; }
+  .live-cell { background: #080c10; padding: 14px 16px; }
+  body.light .live-cell { background: #f4f6f9; }
+  .live-cell-label { font-size: 9px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; font-weight: 700; }
+  .live-cell-value { font-size: 18px; font-weight: 700; color: #e6edf3; line-height: 1; }
+  body.light .live-cell-value { color: #1a1f2e; }
+  .live-cell-value.green { color: #00e676; }
+  .live-cell-value.purple { color: #b57bee; }
+  .live-cell-value.blue { color: #378ADD; }
+  .live-cell-value.amber { color: #f0a500; }
+  .live-cell-value.red { color: #e05c5c; }
+  body.light .live-cell-value.green { color: #00a854; }
+  body.light .live-cell-value.purple { color: #8b5cf6; }
+  .live-cell-sub { font-size: 10px; color: #8b949e; margin-top: 3px; }
+  .live-bias-pill { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; }
+  .bias-bull { background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.3); }
+  .bias-neutral { background: rgba(240,165,0,0.1); color: #f0a500; border: 1px solid rgba(240,165,0,0.3); }
+  .bias-bear { background: rgba(224,92,92,0.1); color: #e05c5c; border: 1px solid rgba(224,92,92,0.3); }
+  body.light .bias-bull { color: #00a854; }
+  .live-setup-badge { display: inline-block; margin-top: 4px; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; background: rgba(181,123,238,0.1); color: #b57bee; border: 1px solid rgba(181,123,238,0.3); }
+  body.light .live-setup-badge { color: #8b5cf6; }
+  .live-target-row { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
+  .live-target-item { font-size: 10px; color: #8b949e; }
+  .live-target-item span { color: #e6edf3; font-weight: 700; }
+  body.light .live-target-item span { color: #1a1f2e; }
+
+
+  /* Live Page */
+  .live-page-section { margin: 32px 40px 0; }
+  .live-page-title { font-size: 11px; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; padding-bottom: 14px; border-bottom: 1px solid #21262d; margin-bottom: 20px; }
+  body.light .live-page-title { border-bottom-color: #d0d7e3; }
+
+  /* Bias + Setup hero */
+  .live-hero { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; margin-bottom: 20px; }
+  .live-hero-bias { background: #0d1117; border-radius: 12px; padding: 24px 28px; border: 1px solid #21262d; border-top: 3px solid #00e676; display: flex; flex-direction: column; justify-content: center; }
+  body.light .live-hero-bias { background: #fff; border-color: #d0d7e3; }
+  .live-hero-bias-label { font-size: 10px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .live-hero-bias-value { font-size: 42px; font-weight: 700; color: #00e676; line-height: 1; }
+  body.light .live-hero-bias-value { color: #00a854; }
+  .live-hero-bias-sub { font-size: 12px; color: #8b949e; margin-top: 8px; line-height: 1.6; }
+  .live-hero-setup { background: #0d1117; border-radius: 12px; padding: 24px 28px; border: 1px solid #21262d; border-top: 3px solid #b57bee; }
+  body.light .live-hero-setup { background: #fff; border-color: #d0d7e3; }
+  .live-hero-setup-label { font-size: 10px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .live-hero-setup-level { font-size: 42px; font-weight: 700; color: #b57bee; line-height: 1; display: inline-block; }
+  body.light .live-hero-setup-level { color: #8b5cf6; }
+  .live-hero-setup-type { display: inline-block; margin-left: 12px; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.3); vertical-align: middle; }
+  body.light .live-hero-setup-type { color: #00a854; }
+  .live-hero-setup-entry { font-size: 12px; color: #a0aab8; margin-top: 12px; line-height: 1.75; }
+  .live-hero-setup-stop { font-size: 12px; color: #e05c5c; margin-top: 8px; font-weight: 700; }
+  body.light .live-hero-setup-stop { color: #c0392b; }
+
+  /* Targets */
+  .live-targets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .live-target-card { background: #0d1117; border-radius: 10px; padding: 18px 20px; border: 1px solid #21262d; text-align: center; }
+  body.light .live-target-card { background: #fff; border-color: #d0d7e3; }
+  .live-target-card-label { font-size: 10px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .live-target-card-value { font-size: 28px; font-weight: 700; color: #00e676; }
+  body.light .live-target-card-value { color: #00a854; }
+  .live-target-card-value.dim { color: #a0aab8; font-size: 22px; }
+  .live-target-card-note { font-size: 10px; color: #8b949e; margin-top: 4px; }
+
+  /* Levels ladder */
+  .live-levels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .live-levels-card { background: #0d1117; border-radius: 10px; padding: 20px 24px; border: 1px solid #21262d; }
+  body.light .live-levels-card { background: #fff; border-color: #d0d7e3; }
+  .live-levels-card-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .live-levels-card-title.res { color: #e05c5c; }
+  .live-levels-card-title.sup { color: #00e676; }
+  body.light .live-levels-card-title.res { color: #c0392b; }
+  body.light .live-levels-card-title.sup { color: #00a854; }
+  .live-level-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #21262d; }
+  .live-level-row:last-child { border-bottom: none; }
+  body.light .live-level-row { border-bottom-color: #d0d7e3; }
+  .live-level-price { font-size: 15px; font-weight: 700; color: #e6edf3; }
+  body.light .live-level-price { color: #1a1f2e; }
+  .live-level-tag { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .tag-major { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+  .tag-aplus { background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.2); }
+  .tag-a { background: rgba(240,165,0,0.1); color: #f0a500; border: 1px solid rgba(240,165,0,0.2); }
+  .tag-b { background: rgba(139,148,158,0.1); color: #8b949e; border: 1px solid rgba(139,148,158,0.2); }
+  .tag-pivot { background: rgba(181,123,238,0.1); color: #b57bee; border: 1px solid rgba(181,123,238,0.2); }
+  body.light .tag-aplus { color: #00a854; }
+  .live-level-note { font-size: 10px; color: #8b949e; max-width: 200px; text-align: right; }
+
+  /* Week narrative */
+  .live-narrative { background: #0d1117; border-radius: 10px; padding: 20px 24px; border: 1px solid #21262d; margin-bottom: 20px; border-left: 3px solid #b57bee; }
+  body.light .live-narrative { background: #fff; border-color: #d0d7e3; }
+  .live-narrative-title { font-size: 11px; font-weight: 700; color: #b57bee; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+  body.light .live-narrative-title { color: #8b5cf6; }
+  .live-narrative-text { font-size: 12px; color: #a0aab8; line-height: 1.85; }
+
+  /* Week stat row */
+  .live-week-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 32px; }
+  .live-week-stat { background: #0d1117; border-radius: 8px; padding: 14px 16px; border: 1px solid #21262d; text-align: center; }
+  body.light .live-week-stat { background: #fff; border-color: #d0d7e3; }
+  .live-week-stat-label { font-size: 9px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+  .live-week-stat-value { font-size: 18px; font-weight: 700; }
+  .live-week-stat-value.pos { color: #00e676; }
+  .live-week-stat-value.neg { color: #e05c5c; }
+  .live-week-stat-value.neu { color: #e6edf3; }
+  body.light .live-week-stat-value.pos { color: #00a854; }
+  body.light .live-week-stat-value.neg { color: #c0392b; }
+  body.light .live-week-stat-value.neu { color: #1a1f2e; }
+
 </style>
 </head>
 <body>
@@ -399,6 +513,7 @@
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('journal-page', this)">Journal</button>
   <button class="nav-tab" onclick="switchTab('setups-page', this)">Setups</button>
+  <button class="nav-tab" onclick="switchTab('live-page', this)">Live</button>
 </div>
 
 <!-- JOURNAL PAGE -->
@@ -428,6 +543,8 @@
     <div class="cal-grid" id="cal-grid"></div>
   </div>
 
+
+
   <!-- Macro / Earnings Events -->
   <div class="macro-section">
     <div class="macro-title">MAY / JUNE KEY EVENTS &amp; EARNINGS</div>
@@ -454,6 +571,114 @@
   </div>
   <div class="setup-drill" id="setup-drill"></div>
 </div>
+
+<!-- LIVE PAGE -->
+<div id="live-page" class="page">
+
+  <!-- Bias + Primary Setup Hero -->
+  <div class="live-page-section">
+    <div class="live-page-title">&#9679; Live Market Context &mdash; Updated May 15, 2026 Pre-Market</div>
+
+    <div class="live-hero">
+      <div class="live-hero-bias">
+        <div class="live-hero-bias-label">Market Bias</div>
+        <div class="live-hero-bias-value">BULL</div>
+        <div class="live-hero-bias-sub">Fully parabolic. Two consecutive breakouts — 7450-55 range and 7496 overnight shelf. No pullback signal until both fail. Trend is up, defer to it.</div>
+      </div>
+      <div class="live-hero-setup">
+        <div class="live-hero-setup-label">Primary Setup — A+</div>
+        <div>
+          <span class="live-hero-setup-level">7507</span>
+          <span class="live-hero-setup-type">FBD</span>
+        </div>
+        <div class="live-hero-setup-entry">
+          Ideal sequence: ES dips to <strong style="color:#e6edf3;">7496</strong> (backtest of this morning's breakout shelf), then recovers <strong style="color:#e6edf3;">7507</strong>. That 7496 tag before recovery is the highest quality version.<br><br>
+          NAP trigger: Price holds above <strong style="color:#e6edf3;">7512</strong> (7507+5) for a few minutes.
+        </div>
+        <div class="live-hero-setup-stop">Stop: Below 7496</div>
+      </div>
+    </div>
+
+    <!-- Targets -->
+    <div class="live-targets-grid">
+      <div class="live-target-card">
+        <div class="live-target-card-label">T1 — Lock 75%</div>
+        <div class="live-target-card-value">7521</div>
+        <div class="live-target-card-note">First level up</div>
+      </div>
+      <div class="live-target-card">
+        <div class="live-target-card-label">T2 — Scale</div>
+        <div class="live-target-card-value">7542</div>
+        <div class="live-target-card-note">Second target</div>
+      </div>
+      <div class="live-target-card">
+        <div class="live-target-card-label">T3 — Runner</div>
+        <div class="live-target-card-value">7552</div>
+        <div class="live-target-card-note">Trail stop under higher lows</div>
+      </div>
+      <div class="live-target-card">
+        <div class="live-target-card-label">Extended Runner</div>
+        <div class="live-target-card-value dim">7559 / 7575</div>
+        <div class="live-target-card-note">Parabolic continuation only</div>
+      </div>
+    </div>
+
+    <!-- Key Levels -->
+    <div class="live-levels-grid">
+      <div class="live-levels-card">
+        <div class="live-levels-card-title res">&#9650; Resistances Above</div>
+        <div class="live-level-row"><span class="live-level-price">7542</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Next leg target</span></div>
+        <div class="live-level-row"><span class="live-level-price">7526</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">First wall above</span></div>
+        <div class="live-level-row"><span class="live-level-price">7521</span><span class="live-level-tag tag-a">T1</span><span class="live-level-note">First target</span></div>
+        <div class="live-level-row"><span class="live-level-price">7504</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">ATH zone</span></div>
+        <div class="live-level-row"><span class="live-level-price">7491</span><span class="live-level-tag tag-a">RES</span><span class="live-level-note">Prior resistance</span></div>
+      </div>
+      <div class="live-levels-card">
+        <div class="live-levels-card-title sup">&#9660; Supports Below</div>
+        <div class="live-level-row"><span class="live-level-price">7507</span><span class="live-level-tag tag-aplus">A+ FBD</span><span class="live-level-note">Primary setup level</span></div>
+        <div class="live-level-row"><span class="live-level-price">7496</span><span class="live-level-tag tag-pivot">PIVOT</span><span class="live-level-note">Ideal flush target</span></div>
+        <div class="live-level-row"><span class="live-level-price">7484</span><span class="live-level-tag tag-a">A</span><span class="live-level-note">Slow grind only</span></div>
+        <div class="live-level-row"><span class="live-level-price">7480</span><span class="live-level-tag tag-a">A FBD</span><span class="live-level-note">9:30AM low today</span></div>
+        <div class="live-level-row"><span class="live-level-price">7455-50</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Range breakout level</span></div>
+      </div>
+    </div>
+
+    <!-- Week Narrative -->
+    <div class="live-narrative">
+      <div class="live-narrative-title">&#9654; Week Narrative — May 11-15</div>
+      <div class="live-narrative-text">
+        ES entered the week after a relentless 5-day rally off the 7337 FBD from Thursday May 8 at 6PM. Tuesday brought CPI — a hot print that flushed ES 80 points from 7422 to 7363 at the open. The 7372 FBD triggered at 11:45AM and ES squeezed back hard. Wednesday, ES was rangebound 7363-7428 with 7402 as the pivot — normal two-way tape returned for the first time in weeks. The 7411 FBD at 9:55AM Wednesday triggered the range breakout, launching ES to new ATH above 7450. Thursday morning, ES put in a Level Reclaim of 7402 at 9:55AM and ripped 50+ points to new all time highs. Closing at the highs again — nothing to do. The trend is up, dips are being bought via Failed Breakdowns at every level, and the next leg targets 7542, 7552, 7559, 7575.
+      </div>
+    </div>
+
+    <!-- Week Stats -->
+    <div class="live-page-title" style="margin-top:0;">&#9651; This Week — Key Setups That Triggered</div>
+    <div class="live-week-stats">
+      <div class="live-week-stat">
+        <div class="live-week-stat-label">7402 FBD</div>
+        <div class="live-week-stat-value pos">+50 pts</div>
+      </div>
+      <div class="live-week-stat">
+        <div class="live-week-stat-label">7372 FBD</div>
+        <div class="live-week-stat-value pos">+47 pts</div>
+      </div>
+      <div class="live-week-stat">
+        <div class="live-week-stat-label">7411 FBD</div>
+        <div class="live-week-stat-value pos">+50+ pts</div>
+      </div>
+      <div class="live-week-stat">
+        <div class="live-week-stat-label">7428 Breakout</div>
+        <div class="live-week-stat-value pos">+22 pts</div>
+      </div>
+      <div class="live-week-stat">
+        <div class="live-week-stat-label">7411 Low FBD</div>
+        <div class="live-week-stat-value pos">+35 pts</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
 <div id="img-overlay" class="img-overlay" onclick="closeImg()">
@@ -566,6 +791,23 @@ var watchDays = [
       targets:[{label:"T1",price:7377},{label:"T2",price:7390}],
       contracts:3, risk:"$200 max (3 contracts to 7355 stop)" }
   ]},
+  { date:"05/15/2026", note:"Closing at highs again — nothing to do until elevator down sell. A+ only. Do NOT chase longs. Wait for the setup to come to you.", watches:[
+    { level:7507, label:"7507 Failed Breakdown", setup:"FBD", priority:"aplus",
+      entry:"Low set at 1:20PM today. Ideal sequence: ES dips to 7496 (backtest of morning breakout shelf), then recovers 7507. NAP: 7507+5=7512, hold above for a few minutes. The 7496 tag before recovery makes this the highest quality version of the setup.",
+      stop:"Below 7496.",
+      targets:[{label:"T1",price:7521},{label:"T2",price:7526},{label:"T3",price:7533}],
+      contracts:5, risk:"$275 max (5 contracts to 7496 stop)" },
+    { level:7480, label:"7480 Failed Breakdown", setup:"FBD", priority:"a",
+      entry:"Clear low set at 9:30AM today. Flush and recovery actionable. NAP: 7480+5=7485, hold above for a few minutes. If bulls can't stick this, nothing until 7455-50.",
+      stop:"Below 7470.",
+      targets:[{label:"T1",price:7496},{label:"T2",price:7507},{label:"T3",price:7521}],
+      contracts:5, risk:"$250 max (5 contracts to 7470 stop)" },
+    { level:7455, label:"7455 Backtest", setup:"LEVEL_RECLAIM", priority:"b",
+      entry:"Slow controlled grind only. Old resistance shelf that broke out yesterday. Do NOT buy if knifing on headlines — wait for trap below and recovery at minimum.",
+      stop:"Below 7441.",
+      targets:[{label:"T1",price:7467},{label:"T2",price:7480}],
+      contracts:3, risk:"$210 max (3 contracts to 7441 stop)" }
+  ]},
   { date:"05/14/2026", note:"Closing at highs again — nothing to do until elevator down sell triggers. EOD eval buffer watch. A+ only. Patience required.", watches:[
     { level:7450, label:"7450 Failed Breakdown", setup:"FBD", priority:"aplus",
       entry:"7455-50 was the week's range resistance, now backtest support. Wait for flush below 7450, then either clear acceptance or NAP (7450+5=7455, hold above for a few minutes). Bonus if dips to 7441 on the flush.",
@@ -603,6 +845,18 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"05/15/2026", setups:[
+    {level:7507,type:"FBD",priority:"aplus",notes:"19pt low set at 1:20PM today. Ideally ES tags 7496 on the dip (backtest of this morning's breakout resistance shelf) then recovers 7507. That 7496 tag + 7507 recovery = highest quality entry of the day."},
+    {level:7480,type:"FBD",priority:"a",notes:"Clear low set at 9:30AM this morning. Flush and recovery of this low is an actionable FBD. If bulls can't stick this, nothing until 7455-50."},
+    {level:7484,type:"FBD",priority:"a",notes:"Decent support in itself. Only buy on controlled slow dip into zone. If knifing full speed, wait for the FBD of the 7480 low instead."},
+    {level:7455,type:"BACKTEST",priority:"b",notes:"Big resistance shelf Mon-Wed that broke out yesterday. Backtest long only on slow controlled grind. Do not buy if knifing on headlines — at least wait for trap below and recovery. Below here ES sells back into the old range."},
+    {level:7421,type:"FBD",priority:"b",notes:"Decent support. Slow controlled sell only. If flushing full speed wait for flush and recovery before entering."},
+    {level:7392,type:"FBD",priority:"b",notes:"Strong support. If knifing, wait for it to defend then put in FBD of yesterday's 7399 daily low. High quality entry if it gets there."}
+  ],
+  bull:"ES remains fully parabolic. Most recent leg up triggered yesterday when ES broke out the week-long range at 7450-55. This morning, ES broke out another small overnight resistance shelf at 7496, commencing yet another leg up. No hint of pullback until ES loses 7496 AND then 7450-55. Strong bull case: ES defends 7496 (then recovers 7507) and continues up. Next targets: 7542, 7552, 7559, 7575. Ultra parabolic: won't even backtest 7496. If slightly larger dip, bulls want to hold 7450-55.",
+  bear:"No real bear case until 7450-55 fails. Possible short below 7450-55 — breakdown trade only, 60%+ failure rate. Wait for final bounce at 7450-55, short below lows of that bounce. Trigger ~7440. Even losing 7450-55 is not truly bearish — just produces a larger dip which can then be bought.",
+  summary:"General lean always to defer to the trend. Most recent leg up triggered yesterday on 7450-55 breakout. This morning broke out 7496 overnight shelf for another leg up. As long as backtests defend — next leg up targets 7542, 7552, 7559, 7575. Nothing to do at the highs. Wait for elevator down sell into a FBD."
+  },
   { date:"05/14/2026", setups:[
     {level:7450,type:"FBD",priority:"aplus",notes:"7455-50 was a big resistance shelf all week and today's range top. Now acting as backtest support after the breakout. A+ if ES flushes below 7450 and recovers — bonus if dips to 7441. Mancini's primary entry for Thursday. Only on slow controlled sell — if knifing on headlines, wait for full FBD trigger."},
     {level:7467,type:"FBD",priority:"a",notes:"1st support down from ATH. ES defended this at 1:55PM today and rallied 18pts. A flush and recovery here is actionable but risky since still close to highs. Lower quality due to proximity to highs."},
