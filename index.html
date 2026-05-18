@@ -1199,7 +1199,7 @@ function renderOptionsCard(tr) {
   var toggle = tr.journal ? "<button class='journal-toggle' onclick='toggleJournal(" + tr.id + ")'>&#9658; journal</button><div class='journal-body' id='journal-" + tr.id + "'>" + drop + "</div>" : "";
 
   return "<div class='card options'>" +
-    "<div class='card-header-row'><div><span class='card-price' style='color:#378ADD;'>" + entryStr + "</span><span class='card-label'>" + tr.tradeLabel + "</span></div><span class='card-timestamp'>" + tr.entryTime + "</span></div>" +
+    "<div class='card-header-row'><div><span class='card-price' style='color:#378ADD;font-size:16px;'>" + tr.tradeLabel + "</span></div><span class='card-timestamp'>" + tr.entryTime + "</span></div>" +
     "<div class='badge badge-options'>" + tr.setup.replace("_", " ") + "</div>" +
     "<div class='time-row'><div class='time-row-inner'>" + chips + "</div></div>" +
     "<div class='info-grid'>" +
@@ -1211,7 +1211,7 @@ function renderOptionsCard(tr) {
     "<div class='targets-inner'>" + tps + "</div>" +
     "<hr class='divider'>" +
     "<div class='card-footer'><div class='footer-label'>" + tr.exitNote + "</div><div>" +
-    "<span class='dollars" + (!win?" neg":"") + "' style='" + (win?"color:#378ADD":"") + "'>" + pnlStr + "</span>" +
+    "<span class='dollars" + (!win?" neg":"") + "' style='" + (win?"color:#00e676":"") + "'>" + pnlStr + "</span>" +
     "</div></div>" +
     toggle + "</div>";
 }
