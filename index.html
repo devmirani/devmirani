@@ -725,10 +725,10 @@ var trades = [
     targets:[
       {label:"T1",price:7466.00,contracts:10,status:"hit",pnl:250.00,exitTime:"10:21 AM"},
       {label:"T2",price:7471.00,contracts:3,status:"hit",pnl:150.00,exitTime:"1:59 PM"},
-      {label:"Runner",price:null,contracts:2,status:"miss",pnl:0,exitTime:null}
+      {label:"Runner",price:7417.00,contracts:2,status:"stopped",pnl:-440.00,exitTime:"4:53 PM",exitPrice:7417.00}
     ],
-    times:[{label:"Entry",value:"10:20 AM"},{label:"T1",value:"1m"},{label:"T2",value:"3h 39m"},{label:"Runner",value:"Open"}],
-    totalPts:31.00, totalPnl:400.00, exitNote:"T1 +$250, T2 +$150, 2 runners still open", journal:"Overnight elevator down to 7421 support held to the tick. Recovered 7455, took via NAP at 7461. T1 hit 1 minute after entry at 7466. Held rest, T2 at 7471 at 1:59PM. 2 runners still working." },
+    times:[{label:"Entry",value:"10:20 AM"},{label:"T1",value:"1m"},{label:"T2",value:"3h 39m"},{label:"Runner",value:"6h 33m"}],
+    totalPts:-19.00, totalPnl:-40.00, exitNote:"T1 +$250, T2 +$150, runners stopped at 7417 -$440", journal:"Overnight elevator down to 7421 support held to the tick. Recovered 7455, took via NAP at 7461. T1 hit 1 minute after entry at 7466. T2 at 7471 at 1:59PM. 2 runners stopped at 7417 at 4:53PM for -$440. Net trade: -$40." },
   { id:19, date:"05/14/2026", entryTime:"10:36 PM", entryPrice:7479.25, stopPrice:7486.25, setup:"FBD", result:"loss", contracts:4, tradeLabel:"H&S Neckline Short",
     targets:[{label:"Add",price:7477.25,contracts:2,status:"hit",pnl:0,exitTime:"1:08 AM",exitPrice:7477.25},{label:"Cover",price:7486.25,contracts:4,status:"stopped",pnl:-164.16,exitTime:"2:17 AM",exitPrice:7486.25}],
     times:[{label:"Entry 2x",value:"10:36 PM"},{label:"Add 2x",value:"1:08 AM"},{label:"Covered",value:"2:17 AM"}], totalPts:-3.25, totalPnl:-164.16, exitNote:"Added to short at 7477.25, all 4 covered at 7486.25", journal:"H&S pattern short off neckline break at 7479.25. Added 2 more at 7477.25 at 1AM bringing total to 4 short. Price reversed and covered all 4 at 7486.25 at 2:17AM for -$164.16. Breakdown trade against ATH trend in thin ETH — re-entry adding to loser is the key mistake." },
