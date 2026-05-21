@@ -695,6 +695,62 @@
     .week-right { display: none; }
   }
 
+
+  /* ─── PRICE LADDER ───────────────────────────────────────── */
+  .ladder-section { margin: 40px 40px 60px; }
+  .ladder-title { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; }
+  .ladder-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start; }
+  .ladder-rail-wrap { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; user-select: none; }
+  .ladder-rail { position: relative; height: 520px; }
+  .ladder-track { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: var(--border2); border-radius: 4px; }
+  .ladder-track-fill-above { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; background: rgba(240,79,79,0.35); border-radius: 4px; top: 0; transition: height 0.1s; }
+  .ladder-track-fill-below { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; background: rgba(0,230,118,0.35); border-radius: 4px; bottom: 0; transition: height 0.1s; }
+  .ladder-level { position: absolute; width: 100%; display: flex; align-items: center; gap: 8px; transform: translateY(-50%); pointer-events: none; }
+  .ladder-level-line { flex: 1; height: 1px; opacity: 0.4; }
+  .ladder-level-line.res { background: var(--red); }
+  .ladder-level-line.sup { background: var(--green); }
+  .ladder-level-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--bg2); }
+  .ladder-level-dot.tag-aplus { background: var(--green); }
+  .ladder-level-dot.tag-major { background: var(--red); }
+  .ladder-level-dot.tag-pivot { background: var(--purple); }
+  .ladder-level-dot.tag-a { background: var(--amber); }
+  .ladder-level-dot.tag-b { background: var(--text3); }
+  .ladder-level-price-label { font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; white-space: nowrap; min-width: 46px; }
+  .ladder-level-price-label.res { color: var(--red); }
+  .ladder-level-price-label.sup { color: var(--green); }
+  .ladder-level-tag-pill { font-size: 8px; font-weight: 700; padding: 1px 5px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .ladder-level-note-label { font-size: 9px; color: var(--text3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; }
+  .ladder-handle { position: absolute; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 24px; background: var(--bg3); border: 2px solid var(--blue); border-radius: 12px; cursor: grab; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(56,189,248,0.4); transition: box-shadow 0.15s; }
+  .ladder-handle:active { cursor: grabbing; box-shadow: 0 0 20px rgba(56,189,248,0.7); }
+  .ladder-handle-price { font-size: 9px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; pointer-events: none; }
+  .ladder-current-line { position: absolute; left: 0; right: 0; height: 1px; background: var(--blue); opacity: 0.5; transform: translateY(-50%); pointer-events: none; }
+  .ladder-info { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; position: sticky; top: 20px; }
+  .ladder-info-price { font-size: 32px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
+  .ladder-info-subtitle { font-size: 10px; color: var(--text3); margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+  .ladder-info-section { margin-bottom: 16px; }
+  .ladder-info-section-title { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+  .ladder-info-section-title.res { color: var(--red); }
+  .ladder-info-section-title.sup { color: var(--green); }
+  .ladder-info-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .ladder-info-row:last-child { border-bottom: none; }
+  .ladder-info-level { font-size: 13px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .ladder-info-level.res { color: var(--red); }
+  .ladder-info-level.sup { color: var(--green); }
+  .ladder-info-dist { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  .ladder-range-label { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .ladder-range-val { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  .ladder-input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .ladder-input { background: var(--bg3); border: 1px solid var(--border2); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 8px; width: 110px; outline: none; }
+  .ladder-input:focus { border-color: var(--blue); }
+  .ladder-input-label { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+  @media (max-width: 768px) {
+    .ladder-section { margin: 20px 16px 40px; }
+    .ladder-wrap { grid-template-columns: 1fr; }
+    .ladder-rail { height: 420px; }
+    .ladder-info { position: static; }
+    .ladder-level-note-label { display: none; }
+  }
+
 </style>
 </head>
 <body>
@@ -824,6 +880,45 @@
     <div class="setup-cal-grid" id="setup-cal-grid"></div>
   </div>
   <div class="setup-drill" id="setup-drill"></div>
+
+  <!-- PRICE LADDER -->
+  <div class="ladder-section">
+    <div class="ladder-title">&#9675; ES Price Ladder &mdash; Drag to Current Price</div>
+    <div class="ladder-input-row">
+      <div class="ladder-input-label">Current Price</div>
+      <input class="ladder-input" type="number" id="ladder-price-input" value="7442" step="0.25" oninput="ladderSetPrice(parseFloat(this.value))">
+    </div>
+    <div class="ladder-wrap">
+      <div class="ladder-rail-wrap">
+        <div class="ladder-range-label">
+          <span class="ladder-range-val" id="ladder-high-label"></span>
+          <span class="ladder-range-val" id="ladder-low-label"></span>
+        </div>
+        <div class="ladder-rail" id="ladder-rail">
+          <div class="ladder-track"></div>
+          <div class="ladder-track-fill-above" id="ladder-fill-above"></div>
+          <div class="ladder-track-fill-below" id="ladder-fill-below"></div>
+          <div class="ladder-current-line" id="ladder-current-line"></div>
+          <div class="ladder-handle" id="ladder-handle">
+            <span class="ladder-handle-price" id="ladder-handle-price">7442</span>
+          </div>
+        </div>
+      </div>
+      <div class="ladder-info" id="ladder-info">
+        <div class="ladder-info-price" id="ladder-info-price">7442.00</div>
+        <div class="ladder-info-subtitle">Current Price</div>
+        <div class="ladder-info-section">
+          <div class="ladder-info-section-title res">&#9650; Resistance Above</div>
+          <div id="ladder-above-list"></div>
+        </div>
+        <div class="ladder-info-section">
+          <div class="ladder-info-section-title sup">&#9660; Support Below</div>
+          <div id="ladder-below-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- LIVE PAGE -->
@@ -974,14 +1069,14 @@ var weeks = [
 ];
 
 var trades = [
-  { id:36, date:"05/20/2026", entryTime:"7:06 PM", entryPrice:7422.25, stopPrice:7415.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7415 Flush & Recover",
+  { id:36, date:"05/20/2026", entryTime:"7:06 PM", entryPrice:7422.25, stopPrice:7406.25, setup:"FBD", result:"win", contracts:5, tradeLabel:"7415 Flush & Recover",
     targets:[
-      {label:"T1",price:7427.25,contracts:1,status:"hit",pnl:25.00,exitTime:"9:06 PM"},
-      {label:"T2",price:7450.00,contracts:1,status:"open",pnl:0,exitTime:"Open"},
-      {label:"Runner",price:7472.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+      {label:"T1",price:7427.25,contracts:3,status:"hit",pnl:75.00,exitTime:"9:06 PM"},
+      {label:"T2",price:7442.00,contracts:1,status:"hit",pnl:98.75,exitTime:"10:26 PM"},
+      {label:"Runner",price:7452.75,contracts:1,status:"hit",pnl:152.50,exitTime:"1:10 AM"}
     ],
-    times:[{label:"Entry",value:"7:06 PM"},{label:"T1",value:"9:06 PM"},{label:"T2/Runner",value:"Open"}],
-    totalPts:1.67, totalPnl:25.00, exitNote:"T1 locked at 7427.25. 2 runners active — targets 7450 and 7472.", journal:"7415 flush and recover triggered post-market. Entered 7422.25 at 7:06PM. Locked T1 at 7427.25 at 9:06PM. Holding 2 runners with targets at 7450 and 7472." },
+    times:[{label:"Entry",value:"7:06 PM"},{label:"T1",value:"9:06 PM"},{label:"T2",value:"10:26 PM"},{label:"Runner",value:"1:10 AM"}],
+    totalPts:19.70, totalPnl:326.25, exitNote:"T1: 3 contracts at 7427.25. T2: 1 contract at 7442. Runner: 1 contract exited 7452.75 at 1:10AM.", journal:"7415 flush and recover triggered post-market. Entered 7422.25 at 7:06PM. T1 locked 3 contracts at 7427.25 (9:06PM). T2 locked 1 contract at 7442 (10:26PM). Runner exited at 7452.75 at 1:10AM." },
   { id:35, date:"05/20/2026", entryTime:"4:25 PM", entryPrice:7444.25, stopPrice:7432.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7432 Trap — NAP Entry",
     targets:[
       {label:"T1",price:7450.00,contracts:2,status:"hit",pnl:57.50,exitTime:"4:30 PM"},
@@ -1949,6 +2044,178 @@ renderAll(getFilteredTrades());
 renderCalendar();
 renderSetupCalendar();
 renderMacroSection();
+
+// ── PRICE LADDER ─────────────────────────────────────────────────────────────
+var ladderLevels = [
+  {price:7554,tag:"tag-major",label:"MAJOR",note:"Breakout target"},
+  {price:7507,tag:"tag-major",label:"MAJOR",note:"Breakout target"},
+  {price:7490,tag:"tag-major",label:"MAJOR",note:"Breakout target"},
+  {price:7473,tag:"tag-major",label:"MAJOR",note:"First breakout target"},
+  {price:7450,tag:"tag-major",label:"MAJOR",note:"Range top resistance"},
+  {price:7439,tag:"tag-b",label:"B",note:"Minor resistance"},
+  {price:7432,tag:"tag-pivot",label:"PIVOT",note:"First support / inside level"},
+  {price:7421,tag:"tag-b",label:"B",note:"Minor support"},
+  {price:7415,tag:"tag-major",label:"MAJOR",note:"Former resistance — backtest long"},
+  {price:7405,tag:"tag-b",label:"B",note:"Minor support"},
+  {price:7399,tag:"tag-major",label:"MAJOR",note:"Major support"},
+  {price:7390,tag:"tag-b",label:"B",note:"Minor support"},
+  {price:7383,tag:"tag-major",label:"MAJOR",note:"Major support"},
+  {price:7377,tag:"tag-aplus",label:"A+ FBD",note:"10AM low — primary setup"},
+  {price:7364,tag:"tag-aplus",label:"A+",note:"Ideal flush target"},
+  {price:7356,tag:"tag-major",label:"MAJOR",note:"Daily low — take profits fast"},
+  {price:7327,tag:"tag-major",label:"MAJOR",note:"Flush & recover required"},
+  {price:7285,tag:"tag-major",label:"MAJOR",note:"NVDA free fall scenario only"}
+];
+var ladderMin = 7270, ladderMax = 7570;
+var ladderCurrentPrice = 7442;
+var ladderDragging = false;
+
+function ladderPriceToY(price, railH) {
+  return railH - ((price - ladderMin) / (ladderMax - ladderMin)) * railH;
+}
+function ladderYToPrice(y, railH) {
+  var raw = ladderMax - (y / railH) * (ladderMax - ladderMin);
+  return Math.round(raw / 0.25) * 0.25;
+}
+
+function ladderRender() {
+  var rail = document.getElementById('ladder-rail');
+  if (!rail) return;
+  var railH = rail.offsetHeight || 520;
+  var price = ladderCurrentPrice;
+
+  // Remove old level elements
+  var old = rail.querySelectorAll('.ladder-level');
+  old.forEach(function(el){ el.remove(); });
+
+  // High/low labels
+  var hl = document.getElementById('ladder-high-label');
+  var ll = document.getElementById('ladder-low-label');
+  if(hl) hl.textContent = ladderMax;
+  if(ll) ll.textContent = ladderMin;
+
+  // Handle
+  var handle = document.getElementById('ladder-handle');
+  var handlePrice = document.getElementById('ladder-handle-price');
+  var currentLine = document.getElementById('ladder-current-line');
+  var y = ladderPriceToY(price, railH);
+  if(handle) { handle.style.top = y + 'px'; }
+  if(handlePrice) handlePrice.textContent = price.toFixed(2);
+  if(currentLine) currentLine.style.top = y + 'px';
+
+  // Track fills
+  var fillAbove = document.getElementById('ladder-fill-above');
+  var fillBelow = document.getElementById('ladder-fill-below');
+  if(fillAbove) { fillAbove.style.top = '0px'; fillAbove.style.height = y + 'px'; }
+  if(fillBelow) { fillBelow.style.bottom = '0px'; fillBelow.style.height = (railH - y) + 'px'; }
+
+  // Render level lines
+  ladderLevels.forEach(function(lvl) {
+    var ly = ladderPriceToY(lvl.price, railH);
+    if(ly < -20 || ly > railH + 20) return;
+    var isAbove = lvl.price > price;
+    var div = document.createElement('div');
+    div.className = 'ladder-level';
+    div.style.top = ly + 'px';
+
+    var side = isAbove ? 'res' : 'sup';
+    var pillColors = {
+      'tag-aplus':'background:rgba(0,230,118,0.1);color:var(--green);border:1px solid rgba(0,230,118,0.25)',
+      'tag-major':'background:rgba(240,79,79,0.1);color:var(--red);border:1px solid rgba(240,79,79,0.25)',
+      'tag-pivot':'background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.25)',
+      'tag-a':'background:rgba(251,191,36,0.1);color:var(--amber);border:1px solid rgba(251,191,36,0.25)',
+      'tag-b':'background:rgba(122,147,173,0.1);color:var(--text3);border:1px solid rgba(122,147,173,0.25)'
+    };
+
+    div.innerHTML =
+      '<span class="ladder-level-price-label ' + side + '">' + lvl.price.toFixed(2) + '</span>' +
+      '<span class="ladder-level-tag-pill" style="' + (pillColors[lvl.tag]||'') + '">' + lvl.label + '</span>' +
+      '<div class="ladder-level-line ' + side + '" style="opacity:' + (isAbove?'0.25':'0.2') + '"></div>' +
+      '<div class="ladder-level-dot ' + lvl.tag + '"></div>' +
+      '<span class="ladder-level-note-label">' + lvl.note + '</span>';
+    rail.appendChild(div);
+  });
+
+  // Info panel
+  var infoPrice = document.getElementById('ladder-info-price');
+  if(infoPrice) infoPrice.textContent = price.toFixed(2);
+
+  var above = ladderLevels.filter(function(l){ return l.price > price; }).sort(function(a,b){ return a.price - b.price; });
+  var below = ladderLevels.filter(function(l){ return l.price <= price; }).sort(function(a,b){ return b.price - a.price; });
+
+  var aboveList = document.getElementById('ladder-above-list');
+  var belowList = document.getElementById('ladder-below-list');
+
+  function makeRows(list, side) {
+    return list.slice(0,6).map(function(lvl){
+      var dist = Math.abs(lvl.price - price).toFixed(2);
+      var colorClass = side === 'res' ? 'res' : 'sup';
+      return '<div class="ladder-info-row">' +
+        '<span class="ladder-info-level ' + colorClass + '">' + lvl.price.toFixed(2) + ' <span style="font-size:8px;opacity:0.7;">' + lvl.label + '</span></span>' +
+        '<span class="ladder-info-dist">+' + dist + ' pts</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  if(aboveList) aboveList.innerHTML = makeRows(above, 'res');
+  if(belowList) belowList.innerHTML = makeRows(below, 'sup');
+
+  // Sync input
+  var inp = document.getElementById('ladder-price-input');
+  if(inp && document.activeElement !== inp) inp.value = price.toFixed(2);
+}
+
+function ladderSetPrice(p) {
+  if(isNaN(p)) return;
+  p = Math.max(ladderMin, Math.min(ladderMax, Math.round(p / 0.25) * 0.25));
+  ladderCurrentPrice = p;
+  ladderRender();
+}
+
+function ladderInitDrag() {
+  var handle = document.getElementById('ladder-handle');
+  var rail = document.getElementById('ladder-rail');
+  if(!handle || !rail) return;
+
+  function getY(e) {
+    var rect = rail.getBoundingClientRect();
+    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return Math.max(0, Math.min(rail.offsetHeight, clientY - rect.top));
+  }
+
+  handle.addEventListener('mousedown', function(e){ ladderDragging = true; e.preventDefault(); });
+  handle.addEventListener('touchstart', function(e){ ladderDragging = true; e.preventDefault(); }, {passive:false});
+
+  document.addEventListener('mousemove', function(e){
+    if(!ladderDragging) return;
+    ladderCurrentPrice = ladderYToPrice(getY(e), rail.offsetHeight);
+    ladderRender();
+  });
+  document.addEventListener('touchmove', function(e){
+    if(!ladderDragging) return;
+    e.preventDefault();
+    ladderCurrentPrice = ladderYToPrice(getY(e), rail.offsetHeight);
+    ladderRender();
+  }, {passive:false});
+
+  document.addEventListener('mouseup', function(){ ladderDragging = false; });
+  document.addEventListener('touchend', function(){ ladderDragging = false; });
+
+  // Also allow clicking anywhere on the rail to jump
+  rail.addEventListener('click', function(e){
+    if(e.target === handle || handle.contains(e.target)) return;
+    var rect = rail.getBoundingClientRect();
+    ladderCurrentPrice = ladderYToPrice(e.clientY - rect.top, rail.offsetHeight);
+    ladderRender();
+  });
+}
+
+function initLadder() {
+  ladderRender();
+  ladderInitDrag();
+  window.addEventListener('resize', ladderRender);
+}
+
 </script>
 </body>
 </html>
