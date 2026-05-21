@@ -1069,14 +1069,20 @@ var weeks = [
 ];
 
 var trades = [
+  { id:39, date:"05/21/2026", entryTime:"9:49 AM", entryPrice:62.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:1, tradeLabel:"SPY $742 Call", type:"options",
+    targets:[
+      {label:"Exit",price:271.00,contracts:1,status:"hit",pnl:209.00,exitTime:"1:52 PM"}
+    ],
+    times:[{label:"Entry",value:"9:49 AM"},{label:"Exit",value:"1:52 PM"}],
+    totalPts:0, totalPnl:209.00, exitNote:"Bought SPY $742 Call at $62. Sold at $271. +$209 profit.", journal:"" },
   { id:38, date:"05/21/2026", entryTime:"9:35 AM", entryPrice:7420.50, stopPrice:7415.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7415 Sweep FBD — NAP",
     targets:[
       {label:"T1",price:7425.50,contracts:3,status:"hit",pnl:75.00,exitTime:"9:52 AM"},
       {label:"T2",price:7444.00,contracts:1,status:"hit",pnl:117.50,exitTime:"1:12 PM"},
-      {label:"Runner",price:7472.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+      {label:"Runner",price:7483.00,contracts:1,status:"hit",pnl:312.50,exitTime:"1:55 PM"}
     ],
-    times:[{label:"Entry",value:"9:35 AM"},{label:"T1",value:"9:52 AM"},{label:"T2",value:"1:12 PM"},{label:"Runner",value:"Open"}],
-    totalPts:5.70, totalPnl:192.50, exitNote:"T1: 3 contracts at 7425.50. T2: 1 contract at 7444. Runner: 1 contract targeting 7472 still open.", journal:"9:35AM sweep of the 7415 low — clean flush and recover. NAP entry at 7420.50 with 5 contracts. T1 locked 3 at 7425.50 at 9:52AM. 2 runners working toward 7450 and 7472." },
+    times:[{label:"Entry",value:"9:35 AM"},{label:"T1",value:"9:52 AM"},{label:"T2",value:"1:12 PM"},{label:"Runner",value:"1:55 PM"}],
+    totalPts:19.50, totalPnl:505.00, exitNote:"T1: 3 contracts at 7425.50. T2: 1 contract at 7444. Runner: 1 contract exited 7483 at 1:55PM.", journal:"9:35AM sweep of the 7415 low — clean flush and recover. NAP entry at 7420.50 with 5 contracts. T1 locked 3 at 7425.50 at 9:52AM. 2 runners working toward 7450 and 7472." },
   { id:37, date:"05/21/2026", entryTime:"7:31 AM", entryPrice:7434.50, stopPrice:7424.50, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7426 Low FBD — NAP",
     targets:[
       {label:"T1",price:7450.00,contracts:3,status:"stopped",pnl:-150.00,exitTime:"8:15 AM"}
@@ -1656,7 +1662,7 @@ function renderCard(tr) {
     "<div class='time-row'><div class='time-row-inner'>" + chips + "</div></div>" +
     "<div class='info-grid'><div><div class='field-label'>Entry:</div><div class='field-value'>" + tr.entryPrice.toFixed(2) + "</div></div><div><div class='field-label'>Stop:</div><div class='field-value'>" + tr.stopPrice.toFixed(2) + "</div></div><div><div class='field-label'>Result:</div><div class='field-value " + tr.result + "'>" + (win ? "Win" : "Loss") + "</div></div><div><div class='field-label'>Contracts:</div><div class='field-value'>" + tr.contracts + "</div></div>" + tpInfo + "</div>" +
     "<div class='targets-inner'>" + tps + "</div><hr class='divider'>" +
-    "<div class='card-footer'><div class='footer-label'>" + tr.exitNote + "</div><div><span class='pts" + (tr.totalPts < 0 ? " neg" : "") + "'>" + pStr + "</span><span class='dollars" + (tr.totalPnl < 0 ? " neg" : "") + "'>" + dStr + "</span></div></div>" +
+    "<div class='card-footer'><div class='footer-label'>" + tr.exitNote + "</div><div><span class='dollars" + (tr.totalPnl < 0 ? " neg" : "") + "'>" + dStr + "</span></div></div>" +
     toggle + "</div>";
 }
 
