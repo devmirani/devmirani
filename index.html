@@ -874,13 +874,21 @@ var weeks = [
 ];
 
 var trades = [
+  { id:36, date:"05/20/2026", entryTime:"7:06 PM", entryPrice:7422.25, stopPrice:7415.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7415 Flush & Recover",
+    targets:[
+      {label:"T1",price:7427.25,contracts:1,status:"hit",pnl:25.00,exitTime:"9:06 PM"},
+      {label:"T2",price:7450.00,contracts:1,status:"open",pnl:0,exitTime:"Open"},
+      {label:"Runner",price:7472.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+    ],
+    times:[{label:"Entry",value:"7:06 PM"},{label:"T1",value:"9:06 PM"},{label:"T2/Runner",value:"Open"}],
+    totalPts:1.67, totalPnl:25.00, exitNote:"T1 locked at 7427.25. 2 runners active — targets 7450 and 7472.", journal:"7415 flush and recover triggered post-market. Entered 7422.25 at 7:06PM. Locked T1 at 7427.25 at 9:06PM. Holding 2 runners with targets at 7450 and 7472." },
   { id:35, date:"05/20/2026", entryTime:"4:25 PM", entryPrice:7444.25, stopPrice:7432.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7432 Trap — NAP Entry",
     targets:[
       {label:"T1",price:7450.00,contracts:2,status:"hit",pnl:57.50,exitTime:"4:30 PM"},
-      {label:"Runner",price:0,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+      {label:"Runner",price:7438.50,contracts:1,status:"stopped",pnl:-28.75,exitTime:"After Hours",exitPrice:7438.50}
     ],
-    times:[{label:"Entry",value:"4:25 PM"},{label:"T1",value:"4:30 PM"},{label:"Runner",value:"Open"}],
-    totalPts:5.75, totalPnl:57.50, exitNote:"T1 locked 2 contracts at 7450 (4:30PM). 1 contract runner still open post-close.", journal:"7432 trapped — saw the NAP trigger and got in at 7444.25. Locked T1 at 7450 within 5 minutes. Runner still working." },
+    times:[{label:"Entry",value:"4:25 PM"},{label:"T1",value:"4:30 PM"},{label:"Runner",value:"AH"}],
+    totalPts:1.92, totalPnl:28.75, exitNote:"T1 locked 2 contracts at 7450. Runner sold at 7438.50 on 7432 FBD trigger.", journal:"7432 trapped — NAP entry at 7444.25. T1 locked at 7450 within 5 minutes. Runner sold at 7438.50 when 7432 FBD triggered — used that as the exit signal." },
   { id:34, date:"05/20/2026", entryTime:"9:53 AM", entryPrice:7403.50, stopPrice:7388.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7402 Level Reclaim",
     targets:[
       {label:"T1",price:7410.25,contracts:3,status:"hit",pnl:101.25,exitTime:"10:16 AM"},
