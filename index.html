@@ -1069,7 +1069,21 @@ var weeks = [
 ];
 
 var trades = [
-  { id:36, date:"05/20/2026", entryTime:"7:06 PM", entryPrice:7422.25, stopPrice:7406.25, setup:"FBD", result:"win", contracts:5, tradeLabel:"7415 Flush & Recover",
+  { id:38, date:"05/21/2026", entryTime:"9:35 AM", entryPrice:7420.50, stopPrice:7415.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7415 Sweep FBD — NAP",
+    targets:[
+      {label:"T1",price:7425.50,contracts:3,status:"hit",pnl:75.00,exitTime:"9:52 AM"},
+      {label:"T2",price:7450.00,contracts:1,status:"open",pnl:0,exitTime:"Open"},
+      {label:"Runner",price:7472.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+    ],
+    times:[{label:"Entry",value:"9:35 AM"},{label:"T1",value:"9:52 AM"},{label:"T2/Runner",value:"Open"}],
+    totalPts:1.00, totalPnl:75.00, exitNote:"T1: 3 contracts locked at 7425.50. 2 runners open — targeting 7450 and 7472.", journal:"9:35AM sweep of the 7415 low — clean flush and recover. NAP entry at 7420.50 with 5 contracts. T1 locked 3 at 7425.50 at 9:52AM. 2 runners working toward 7450 and 7472." },
+  { id:37, date:"05/21/2026", entryTime:"7:31 AM", entryPrice:7434.50, stopPrice:7424.50, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7426 Low FBD — NAP",
+    targets:[
+      {label:"T1",price:7450.00,contracts:3,status:"stopped",pnl:-150.00,exitTime:"8:15 AM"}
+    ],
+    times:[{label:"Entry",value:"7:31 AM"},{label:"Stopped",value:"8:15 AM"}],
+    totalPts:-10.00, totalPnl:-150.00, exitNote:"Stopped out at 7424.50 at 8:15AM. 3:15AM low at 7426 held to the tick, jumped to 7470 by 4:26AM — became a prominent low. 7AM held 7415 to the tick, FBD of the 3:15AM low in play. Slow grind — shouldn't have engaged.", journal:"3:15AM low at 7426 was prominent — ES held to the tick and ripped to 7470. 7AM retested 7415, FBD of that 7426 low seemed in play. Used NAP (5pts up) entering 7434.50 at 7:31AM but the move was too slow. Shouldn't have engaged. Stopped at 7424.50." },
+  { id:36, date:"05/21/2026", entryTime:"7:06 PM", entryPrice:7422.25, stopPrice:7406.25, setup:"FBD", result:"win", contracts:5, tradeLabel:"7415 Flush & Recover",
     targets:[
       {label:"T1",price:7427.25,contracts:3,status:"hit",pnl:75.00,exitTime:"9:06 PM"},
       {label:"T2",price:7442.00,contracts:1,status:"hit",pnl:98.75,exitTime:"10:26 PM"},
