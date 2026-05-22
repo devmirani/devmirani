@@ -751,6 +751,64 @@
     .ladder-level-note-label { display: none; }
   }
 
+
+  /* ─── CONTEXT STRIP ──────────────────────────────────────── */
+  .ctx-strip { margin: 0 40px 32px; }
+  .ctx-strip-inner { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 16px; margin-bottom: 16px; }
+  .ctx-col { background: var(--bg2); border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); }
+  .ctx-bias-col { border-top: 3px solid var(--green); }
+  .ctx-setup-col { border-top: 3px solid var(--purple); }
+  .ctx-cases-col { border-top: 3px solid var(--border2); display: flex; flex-direction: column; }
+  .ctx-label { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+  .ctx-bias-value { font-size: 34px; font-weight: 700; color: var(--green); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 8px; }
+  .ctx-bias-sub { font-size: 11px; color: var(--text3); line-height: 1.6; }
+  .ctx-setup-level { font-size: 30px; font-weight: 700; color: var(--purple); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 8px; }
+  .ctx-setup-badge { display: inline-block; margin-left: 8px; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; background: rgba(0,230,118,0.1); color: var(--green); border: 1px solid rgba(0,230,118,0.25); vertical-align: middle; font-family: 'JetBrains Mono', monospace; }
+  .ctx-setup-entry { font-size: 11px; color: var(--text3); line-height: 1.65; margin-bottom: 8px; }
+  .ctx-setup-stop { font-size: 11px; color: var(--red); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .ctx-case { flex: 1; padding: 10px 12px; border-radius: 8px; background: var(--bg3); border-left: 3px solid var(--green); }
+  .ctx-case.bear { border-left-color: var(--red); }
+  .ctx-case-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; font-family: 'JetBrains Mono', monospace; color: var(--green); }
+  .ctx-case.bear .ctx-case-label { color: var(--red); }
+  .ctx-case-text { font-size: 11px; color: var(--text3); line-height: 1.55; }
+  .ctx-week-stats-wrap { background: var(--bg2); border-radius: 12px; padding: 16px 20px; border: 1px solid var(--border); }
+  .ctx-week-label { font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; }
+  .ctx-week-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .ctx-stat { text-align: center; }
+  .ctx-stat-label { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .ctx-stat-value { font-size: 16px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .ctx-stat-value.pos { color: var(--green); }
+  .ctx-stat-value.neg { color: var(--red); }
+  .ctx-stat-value.neu { color: var(--text); }
+
+  /* ─── CAL DRILL (trade cards under calendar) ──────────────── */
+  .cal-drill { margin-top: 20px; }
+  .cal-drill-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .cal-drill-title { font-size: 13px; font-weight: 700; color: var(--text); font-family: 'JetBrains Mono', monospace; }
+  .cal-drill-close { background: none; border: 1px solid var(--border2); color: var(--text3); font-size: 11px; padding: 4px 12px; border-radius: 8px; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.15s; }
+  .cal-drill-close:hover { color: var(--text); border-color: var(--text2); }
+  .cal-drill-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; }
+
+  /* hover highlight on cal cells with trades */
+  .cal-cell.has-trades { cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
+  .cal-cell.has-trades:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .cal-cell.has-trades.cal-active { transform: translateY(-3px); }
+
+  @media (max-width: 768px) {
+    .ctx-strip { margin: 16px 16px 20px; }
+    .ctx-strip-inner { grid-template-columns: 1fr; gap: 10px; }
+    .ctx-week-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .cal-drill-cards { grid-template-columns: 1fr; }
+  }
+
+
+  /* ─── ASSET TOGGLE ───────────────────────────────────────── */
+  .asset-toggle { padding: 20px 40px 0; display: flex; gap: 8px; }
+  .asset-btn { padding: 8px 24px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; cursor: pointer; border: 1px solid var(--border2); background: transparent; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.2s; }
+  .asset-btn:hover { color: var(--text2); border-color: var(--text2); }
+  .asset-btn.active { border-color: var(--blue); color: var(--blue); background: rgba(56,189,248,0.08); box-shadow: 0 0 0 1px rgba(56,189,248,0.15); }
+  @media (max-width: 768px) { .asset-toggle { padding: 14px 16px 0; } }
+
 </style>
 </head>
 <body>
@@ -768,25 +826,53 @@
 
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('journal-page', this)">Journal</button>
-  <button class="nav-tab" onclick="switchTab('setups-page', this)">Setups</button>
-  <button class="nav-tab" onclick="switchTab('live-page', this)">Live</button>
 </div>
 
 <!-- JOURNAL PAGE -->
 <div class="site-wrap"><div id="journal-page" class="page active">
-  <div class="filters">
-    <button class="filter-btn active" onclick="filterTrades('all', this)">ALL</button>
-    <button class="filter-btn" onclick="filterTrades('win', this)">WINS</button>
-    <button class="filter-btn" onclick="filterTrades('loss', this)">LOSSES</button>
-    <button class="filter-btn" onclick="filterTrades('FBD', this)">FBD</button>
-    <button class="filter-btn" onclick="filterTrades('SUPPORT_BOUNCE', this)">SUPPORT BOUNCE</button>
-    <button class="filter-btn" onclick="filterTrades('LEVEL_RECLAIM', this)">LEVEL RECLAIM</button>
-    <button class="filter-btn" onclick="filterTrades('SPY_CALL', this)">SPY OPTIONS</button>
+  <div class="asset-toggle">
+    <button class="asset-btn active" id="btn-all" onclick="switchAsset('all')">All</button>
+    <button class="asset-btn" id="btn-es" onclick="switchAsset('es')">ES Futures</button>
+    <button class="asset-btn" id="btn-spy" onclick="switchAsset('spy')">SPY Options</button>
   </div>
   <div class="dash-section" id="dash-section" style="padding-top:24px;"></div>
 
-
-  <div id="journal"></div>
+  <!-- Market Context Strip -->
+  <div class="ctx-strip" id="ctx-strip">
+    <div class="ctx-strip-inner">
+      <div class="ctx-col ctx-bias-col">
+        <div class="ctx-label">Market Bias</div>
+        <div class="ctx-bias-value">BULL</div>
+        <div class="ctx-bias-sub">Range broke out Thursday. Mode 2 continues. Lean: hold 7439 or 7415 (quick trap ok), continue to 7490, 7507, 7530.</div>
+      </div>
+      <div class="ctx-col ctx-setup-col">
+        <div class="ctx-label">Primary Setup — A+</div>
+        <div class="ctx-setup-level">7439 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Thu AM resistance → now first support. Slow grind only. Ideal: tag 7425, recover 7439. Backup: <strong>7415 FBD</strong> — shelf held twice to the tick.</div>
+        <div class="ctx-setup-stop">Stop: Below 7425 (7439) / Below 7407 (7415)</div>
+      </div>
+      <div class="ctx-col ctx-cases-col">
+        <div class="ctx-case bull">
+          <div class="ctx-case-label">&#9650; Bull Case</div>
+          <div class="ctx-case-text">Hold 7439 or 7415 (quick trap ok). Continue up to 7490, 7507, 7530. Blue skies above to ATH.</div>
+        </div>
+        <div class="ctx-case bear" style="margin-top:8px;">
+          <div class="ctx-case-label">&#9660; Bear Case</div>
+          <div class="ctx-case-text">Begins below 7415. Breakdown trade — 80% fail rate. Advanced setup only. Trigger: 7407.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ctx-week-stats-wrap">
+      <div class="ctx-week-label">&#9651; This Week — Key Setups That Triggered</div>
+      <div class="ctx-week-stats">
+        <div class="ctx-stat"><div class="ctx-stat-label">7377 FBD (Mon 3PM)</div><div class="ctx-stat-value pos">7374 → 7440s</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7377 FBD (Tue 12:20PM)</div><div class="ctx-stat-value pos">7355 → rip</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7415 FBD (Thu 9:52AM)</div><div class="ctx-stat-value pos">7411 → 7483+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Runner Still Active</div><div class="ctx-stat-value neu">10% from Thu</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7415</div></div>
+      </div>
+    </div>
+  </div>
 
   <!-- P&L Calendar -->
   <div class="cal-section">
@@ -797,7 +883,20 @@
       <button class="cal-nav-btn" onclick="nextMonth()">&#8594;</button>
     </div>
     <div class="cal-grid" id="cal-grid"></div>
+    <div class="cal-drill" id="cal-drill"></div>
   </div>
+
+  <!-- Setup Calendar -->
+  <div class="cal-section">
+    <div class="cal-section-title">SETUP CALENDAR</div>
+    <div class="cal-nav">
+      <button class="cal-nav-btn" onclick="prevSetupMonth()">&#8592;</button>
+      <div class="cal-month-label" id="setup-cal-month-label"></div>
+      <button class="cal-nav-btn" onclick="nextSetupMonth()">&#8594;</button>
+    </div>
+    <div class="setup-cal-grid" id="setup-cal-grid"></div>
+  </div>
+  <div class="setup-drill" id="setup-drill"></div>
 
 
 
@@ -869,19 +968,8 @@
   </div>
 </div>
 
-<!-- SETUPS PAGE -->
-</div><div class="site-wrap"><div id="setups-page" class="page">
-  <div class="setup-cal-section">
-    <div class="cal-nav">
-      <button class="cal-nav-btn" onclick="prevSetupMonth()">&#8592;</button>
-      <div class="cal-month-label" id="setup-cal-month-label"></div>
-      <button class="cal-nav-btn" onclick="nextSetupMonth()">&#8594;</button>
-    </div>
-    <div class="setup-cal-grid" id="setup-cal-grid"></div>
-  </div>
-  <div class="setup-drill" id="setup-drill"></div>
 
-  <!-- PRICE LADDER -->
+  <!-- PRICE LADDER REMOVED -->
   <div class="ladder-section">
     <div class="ladder-title">&#9675; ES Price Ladder &mdash; Drag to Current Price</div>
     <div class="ladder-input-row">
@@ -921,124 +1009,7 @@
 
 </div>
 
-<!-- LIVE PAGE -->
-</div><div class="site-wrap"><div id="live-page" class="page">
-
-  <!-- Bias + Primary Setup Hero -->
-  <div class="live-page-section">
-    <div class="live-page-title">&#9679; Live Market Context &mdash; Updated May 22, 2026 Pre-Market</div>
-
-    <div class="live-hero">
-      <div class="live-hero-bias">
-        <div class="live-hero-bias-label">Market Bias</div>
-        <div class="live-hero-bias-value">BULL</div>
-        <div class="live-hero-bias-sub">Range broke out Thursday. Mode 2 range-building continues. Range was mostly 7365/7377–7458 all week with 7415 as key pivot. Thursday ripped to 7483+. Lean: hold 7439 or 7415 (or quick trap), continue to 7490, 7507, 7530. React to triggers only.</div>
-      </div>
-      <div class="live-hero-setup">
-        <div class="live-hero-setup-label">Primary Setup — A+</div>
-        <div>
-          <span class="live-hero-setup-level">7355</span>
-          <span class="live-hero-setup-type">FBD</span>
-        </div>
-        <div class="live-hero-setup-entry">
-          Tuesday's daily low. Ideal: flush to <strong style="color:#e6edf3;">7345</strong> then recover 7355. NAP: hold above 7360 for a few minutes.<br><br>
-          Backup: <strong style="color:#e6edf3;">7385 Level Reclaim</strong> — test 7377, then recover 7385. Not a FBD, just a reclaim. Below 7345, next major support is 7318 — controlled grind only, wait for flush and recovery.
-        </div>
-        <div class="live-hero-setup-stop">Stop: Below 7345 (7355 FBD) / Below 7370 (7385 reclaim)</div>
-      </div>
-    </div>
-
-    <!-- Targets -->
-    <div class="live-targets-grid">
-      <div class="live-target-card">
-        <div class="live-target-card-label">T1 — Lock 75%</div>
-        <div class="live-target-card-value">7458</div>
-        <div class="live-target-card-note">Major support above</div>
-      </div>
-      <div class="live-target-card">
-        <div class="live-target-card-label">T2 — Scale</div>
-        <div class="live-target-card-value">7473</div>
-        <div class="live-target-card-note">First breakout level</div>
-      </div>
-      <div class="live-target-card">
-        <div class="live-target-card-label">T3 — Runner</div>
-        <div class="live-target-card-value">7490</div>
-        <div class="live-target-card-note">Next breakout target</div>
-      </div>
-      <div class="live-target-card">
-        <div class="live-target-card-label">Extended Targets</div>
-        <div class="live-target-card-value dim">7507 / 7530</div>
-        <div class="live-target-card-note">Continuation targets</div>
-      </div>
-    </div>
-
-    <!-- Key Levels -->
-    <div class="live-levels-grid">
-      <div class="live-levels-card">
-        <div class="live-levels-card-title res">&#9650; Resistances Above</div>
-        <div class="live-level-row"><span class="live-level-price">7530</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Extended target</span></div>
-        <div class="live-level-row"><span class="live-level-price">7507</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Continuation target — short attempt</span></div>
-        <div class="live-level-row"><span class="live-level-price">7490</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Breakout target — short attempt</span></div>
-        <div class="live-level-row"><span class="live-level-price">7483</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Thursday high — short attempt</span></div>
-        <div class="live-level-row"><span class="live-level-price">7473</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">First resistance above</span></div>
-        <div class="live-level-row"><span class="live-level-price">7464</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Major resistance</span></div>
-        <div class="live-level-row"><span class="live-level-price">7458</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">T1 target — major level</span></div>
-      </div>
-      <div class="live-levels-card">
-        <div class="live-levels-card-title sup">&#9660; Supports Below</div>
-        <div class="live-level-row"><span class="live-level-price">7441</span><span class="live-level-tag tag-b">B</span><span class="live-level-note">Minor support</span></div>
-        <div class="live-level-row"><span class="live-level-price">7439</span><span class="live-level-tag tag-aplus">A+ FBD</span><span class="live-level-note">Resistance all Thu AM — primary setup</span></div>
-        <div class="live-level-row"><span class="live-level-price">7429</span><span class="live-level-tag tag-b">B</span><span class="live-level-note">Minor support</span></div>
-        <div class="live-level-row"><span class="live-level-price">7425</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Ideal flush target for 7439 FBD</span></div>
-        <div class="live-level-row"><span class="live-level-price">7415</span><span class="live-level-tag tag-aplus">A+ FBD</span><span class="live-level-note">6pm Wed + 7am Thu shelf — held twice to tick</span></div>
-        <div class="live-level-row"><span class="live-level-price">7410</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Major support below 7415</span></div>
-        <div class="live-level-row"><span class="live-level-price">7395</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Major support</span></div>
-        <div class="live-level-row"><span class="live-level-price">7383</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Major support</span></div>
-        <div class="live-level-row"><span class="live-level-price">7377</span><span class="live-level-tag tag-a">A FBD</span><span class="live-level-note">Massive Thu 10AM low — highly actionable FBD</span></div>
-        <div class="live-level-row"><span class="live-level-price">7356</span><span class="live-level-tag tag-major">MAJOR</span><span class="live-level-note">Tuesday low — FBD only, take profits fast</span></div>
-      </div>
-    </div>
-
-    <!-- Week Narrative -->
-    <div class="live-narrative">
-      <div class="live-narrative-title">&#9654; Week Narrative — May 18–22 Recap</div>
-      <div class="live-narrative-text">
-        ES spent all week in a range (7365/7377 support, 7458 resistance) digesting the multi-week parabolic rally. Every dip was bought via the same setup: Failed Breakdown. Tuesday: elevator down to 7355, FBD of 7377 at 12:20PM, ripped to close. Wednesday: filled range to 7450+, NVDA earnings muted. Thursday: elevator down to 7411, FBD of 7415 shelf at 9:52AM, squeezed to 7483+. Range broke out Thursday. Heading into Friday: Mode 2 continues. Bulls need to hold 7439 or 7415 (quick trap ok). Next targets 7490, 7507, 7530 and blue skies to ATH above. Bear case begins below 7415 — breakdown trade, 80% failure rate, advanced only.
-      </div>
-    </div>
-
-    <!-- Week Stats -->
-    <div class="live-page-title" style="margin-top:0;">&#9651; This Week — Key Setups That Triggered</div>
-    <div class="live-week-stats">
-      <div class="live-week-stat">
-        <div class="live-week-stat-label">7415 FBD (Thu 9:35AM)</div>
-        <div class="live-week-stat-value pos">+$505</div>
-      </div>
-      <div class="live-week-stat">
-        <div class="live-week-stat-label">SPY $742 Call (Thu)</div>
-        <div class="live-week-stat-value pos">+$209</div>
-      </div>
-      <div class="live-week-stat">
-        <div class="live-week-stat-label">Thu Net P&amp;L</div>
-        <div class="live-week-stat-value pos">+$890</div>
-      </div>
-      <div class="live-week-stat">
-        <div class="live-week-stat-label">Primary Setup Fri</div>
-        <div class="live-week-stat-value neu">7439 FBD</div>
-      </div>
-      <div class="live-week-stat">
-        <div class="live-week-stat-label">Bear Case Trigger</div>
-        <div class="live-week-stat-value neg">Below 7415</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-
-</div>
-<div id="img-overlay" class="img-overlay" onclick="closeImg()">
+</div><div id="img-overlay" class="img-overlay" onclick="closeImg()">
   <img id="overlay-img" src="" alt="chart" />
 </div>
 
@@ -1069,6 +1040,12 @@ var weeks = [
 ];
 
 var trades = [
+  { id:40, date:"05/22/2026", entryTime:"12:38 AM", entryPrice:7490.00, stopPrice:7509.00, setup:"FBD", result:"loss", contracts:2, tradeLabel:"7490 Short — Hero Trade",
+    targets:[
+      {label:"Target",price:7377.00,contracts:2,status:"stopped",pnl:-190.00,exitTime:"9:37 AM"}
+    ],
+    times:[{label:"Entry",value:"12:38 AM"},{label:"Stopped",value:"9:37 AM"}],
+    totalPts:-19.00, totalPnl:-190.00, exitNote:"Shorted 7490 targeting 7377. ES trapped 7432 and bounced — exploded through 7490 to 7516 by 9:30AM. Stopped at 7509.", journal:"Hero trade — shorted 7490 hoping for a big move to 7377. ES dipped to trap 7432 then squeezed hard back through 7490 to 7516. Classic trap. Adam explicitly says he does not short and breakdown trades fail 80% of the time. Lesson reinforced." },
   { id:39, date:"05/21/2026", entryTime:"9:49 AM", entryPrice:62.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:1, tradeLabel:"SPY $742 Call", type:"options",
     targets:[
       {label:"Exit",price:271.00,contracts:1,status:"hit",pnl:209.00,exitTime:"1:52 PM"}
@@ -1643,6 +1620,7 @@ function renderOptionsCard(tr) {
     toggle + "</div>";
 }
 
+function buildTradeCard(tr) { return renderCard(tr); }
 function renderCard(tr) {
   var win = tr.result === "win";
   var isOptions = tr.setup === "SPY_CALL" || tr.setup === "SPY_PUT";
@@ -1805,8 +1783,7 @@ function openDrillDown(weekNum, date) {
 function filterTrades(type, btn) {
   var btns = document.querySelectorAll(".filter-btn");
   for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
-  btn.classList.add("active"); currentFilter = type;
-  renderAll(getFilteredTrades());
+  btn.classList.add("active");
 }
 
 function toggleWatchlist(id) {
@@ -1846,27 +1823,120 @@ function animateCount(el, target, isFloat, prefix, suffix, duration) {
   requestAnimationFrame(step);
 }
 
+
+function clearCalActive() {
+  var cells = document.querySelectorAll('.cal-cell.has-trades');
+  cells.forEach(function(c) {
+    c.classList.remove('cal-active');
+    c.style.borderColor = '';
+    c.style.boxShadow = '';
+    c.style.transform = '';
+  });
+}
+
+function calDrillOpen(dateStr) {
+  var drill = document.getElementById('cal-drill');
+  // Toggle off if same day clicked again
+  if (drill._activeDate === dateStr) {
+    calDrillClose();
+    return;
+  }
+  // Clear all highlights first
+  clearCalActive();
+  drill._activeDate = dateStr;
+  // Highlight only this cell
+  var activeCell = document.getElementById('calcell-' + dateStr.replace(/\//g, '-'));
+  if (activeCell) {
+    var isGreen = activeCell.classList.contains('green-bg');
+    activeCell.classList.add('cal-active');
+    activeCell.style.borderColor = isGreen ? 'var(--green)' : 'var(--red)';
+    activeCell.style.boxShadow = isGreen ? '0 0 0 1px rgba(0,230,118,0.5)' : '0 0 0 1px rgba(240,79,79,0.5)';
+    activeCell.style.transform = 'translateY(-3px)';
+  }
+  // Build trade cards
+  var dayTrades = trades.filter(function(t){ return t.date === dateStr; });
+  if (!dayTrades.length) { drill.innerHTML = ''; return; }
+  var cards = '';
+  for (var i = 0; i < dayTrades.length; i++) cards += buildTradeCard(dayTrades[i]);
+  var d = new Date(dateStr.replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2'));
+  var dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+  var dayPnl = dayTrades.reduce(function(s,t){ return s+t.totalPnl; }, 0);
+  var pnlStr = (dayPnl>=0?'+$':'-$') + Math.abs(dayPnl).toFixed(2);
+  drill.innerHTML = "<div class='cal-drill-header'><div class='cal-drill-title'>" + dayName + " " + dateStr + " &mdash; " + dayTrades.length + " trade" + (dayTrades.length>1?"s":"") + " &mdash; <span style='color:" + (dayPnl>=0?"var(--green)":"var(--red)") + ";'>" + pnlStr + "</span></div><button class='cal-drill-close' onclick='calDrillClose()'>&#10005; Close</button></div><div class='cal-drill-cards'>" + cards + "</div>";
+}
+
+function calDrillClose() {
+  var drill = document.getElementById('cal-drill');
+  drill.innerHTML = '';
+  drill._activeDate = null;
+  clearCalActive();
+}
+
+document.addEventListener('click', function(e) {
+  var calGrid = document.getElementById('cal-grid');
+  var calDrill = document.getElementById('cal-drill');
+  if (!calGrid || !calDrill) return;
+  if (calGrid.contains(e.target) || (calDrill.innerHTML && calDrill.contains(e.target))) return;
+  if (calDrill._activeDate) calDrillClose();
+});
+
+var currentAsset = 'all';
+
+function switchAsset(asset) {
+  currentAsset = asset;
+  document.getElementById('btn-all').classList.toggle('active', asset === 'all');
+  document.getElementById('btn-es').classList.toggle('active', asset === 'es');
+  document.getElementById('btn-spy').classList.toggle('active', asset === 'spy');
+  renderDashboard();
+}
+
 function renderDashboard() {
+  var isSpy = currentAsset === 'spy';
+  var isAll = currentAsset === 'all';
+  var filtered = trades.filter(function(t) {
+    if (isAll) return true;
+    return isSpy ? t.type === 'options' : t.type !== 'options';
+  });
   var total = 0, count = 0, wins = 0;
-  for (var i = 0; i < trades.length; i++) { total += trades[i].totalPnl; count++; if (trades[i].result === "win") wins++; }
+  for (var i = 0; i < filtered.length; i++) {
+    total += filtered[i].totalPnl;
+    count++;
+    if (filtered[i].result === 'win') wins++;
+  }
   var wr = count ? Math.round(wins/count*100) : 0;
-  var days = Object.keys(getDayMap()).length;
-  var cards = [
-    {label:"Total P&L", value:(total>=0?"+$":"-$")+Math.abs(total).toFixed(2), cls:total>=0?"pos":"neg", sub:count+" trades across "+days+" trading days", accent:total>=0?"var(--green)":"var(--red)", animVal:Math.abs(total), isFloat:true, prefix:total>=0?"+$":"-$", suffix:""},
-    {label:"Win Rate", value:wr+"%", cls:wr>=50?"pos":"neg", sub:wins+" wins &bull; "+(count-wins)+" losses", accent:wr>=50?"var(--green)":"var(--red)", animVal:wr, isFloat:false, prefix:"", suffix:"%"},
-    {label:"Total Trades", value:count, cls:"", sub:"Across "+days+" active days", accent:"var(--purple)", animVal:count, isFloat:false, prefix:"", suffix:""},
-    {label:"Win / Loss", value:wins+"/"+( count-wins), cls:"pos", sub:"Win rate: "+wr+"%", accent:"var(--green)", animVal:wins, isFloat:false, prefix:"", suffix:""}
-  ];
+  var days = 0;
+  if (!isSpy) { days = Object.keys(getDayMap()).length; }
+
+  var cards;
+  if (isSpy && !isAll) {
+    var totalPct = filtered.length ? (filtered.reduce(function(s,t){ return s + (t.entryPrice>0 ? (t.totalPnl/t.entryPrice)*100 : 0); }, 0) / filtered.length) : 0;
+    cards = [
+      {label:'Total P&L', value:(total>=0?'+$':'-$')+Math.abs(total).toFixed(2), cls:total>=0?'pos':'neg', sub:count+' options trade'+(count!==1?'s':''), accent:total>=0?'var(--green)':'var(--red)', animVal:Math.abs(total), isFloat:true, prefix:total>=0?'+$':'-$', suffix:'', dim:false},
+      {label:'Win Rate', value:'--', cls:'', sub:'N/A for options', accent:'var(--border2)', animVal:0, isFloat:false, prefix:'', suffix:'', dim:true},
+      {label:'Total Trades', value:'--', cls:'', sub:'N/A for options', accent:'var(--border2)', animVal:0, isFloat:false, prefix:'', suffix:'', dim:true},
+      {label:'Win / Loss', value:wins+'/'+(count-wins), cls:wins>=count-wins?'pos':'neg', sub:'Avg return: '+(totalPct>=0?'+':'')+totalPct.toFixed(0)+'%', accent:'var(--green)', animVal:wins, isFloat:false, prefix:'', suffix:'', dim:false}
+    ];
+  } else {
+    cards = [
+      {label:'Total P&L', value:(total>=0?'+$':'-$')+Math.abs(total).toFixed(2), cls:total>=0?'pos':'neg', sub:count+' trades across '+days+' trading days', accent:total>=0?'var(--green)':'var(--red)', animVal:Math.abs(total), isFloat:true, prefix:total>=0?'+$':'-$', suffix:'', dim:false},
+      {label:'Win Rate', value:wr+'%', cls:wr>=50?'pos':'neg', sub:wins+' wins &bull; '+(count-wins)+' losses', accent:wr>=50?'var(--green)':'var(--red)', animVal:wr, isFloat:false, prefix:'', suffix:'%', dim:false},
+      {label:'Total Trades', value:count, cls:'', sub:'Across '+days+' active days', accent:'var(--purple)', animVal:count, isFloat:false, prefix:'', suffix:'', dim:false},
+      {label:'Win / Loss', value:wins+'/'+(count-wins), cls:'pos', sub:'Win rate: '+wr+'%', accent:'var(--green)', animVal:wins, isFloat:false, prefix:'', suffix:'', dim:false}
+    ];
+  }
+
   var html = "<div class='dash-grid'>";
   for (var i = 0; i < cards.length; i++) {
     var c = cards[i];
-    html += "<div class='dash-card' style='--card-accent:"+c.accent+";'><div class='dash-card-label'>" + c.label + "</div><div class='dash-card-value" + (c.cls ? " " + c.cls : "") + "' id='dash-val-"+i+"'>" + c.value + "</div><div class='dash-card-sub'>" + c.sub + "</div></div>";
+    var dimStyle = c.dim ? "opacity:0.35;" : "";
+    html += "<div class='dash-card' style='--card-accent:" + c.accent + ";" + dimStyle + "'><div class='dash-card-label'>" + c.label + "</div><div class='dash-card-value" + (c.cls ? " " + c.cls : "") + "' id='dash-val-" + i + "'>" + c.value + "</div><div class='dash-card-sub'>" + c.sub + "</div></div>";
   }
   html += "</div>";
   document.getElementById("dash-section").innerHTML = html;
   for (var i = 0; i < cards.length; i++) {
-    var c = cards[i]; var el = document.getElementById("dash-val-"+i);
-    if (el && c.animVal > 0) animateCount(el, c.animVal, c.isFloat, c.prefix, c.suffix, 800);
+    var c = cards[i];
+    var el = document.getElementById('dash-val-'+i);
+    if (el && c.animVal > 0 && !c.dim) animateCount(el, c.animVal, c.isFloat, c.prefix, c.suffix, 800);
   }
 }
 
@@ -1910,7 +1980,11 @@ function renderCalendar() {
       var pnlStr = (data.pnl>=0?"+$":"-$")+Math.abs(data.pnl).toFixed(2);
       var bg = data.pnl>=0?" green-bg":" red-bg";
       var wr = Math.round(data.wins/data.count*100);
-      html += "<div class='cal-cell has-trades" + bg + (isToday?" today":"") + "'><div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + (data.pnl>=0?"pos":"neg") + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win%: " + wr + "</div></div>";
+      var setupData = null; for(var si=0;si<setupDays.length;si++){if(setupDays[si].date===dateStr){setupData=setupDays[si];break;}}
+      var setupBadges = ""; if(setupData){for(var si=0;si<setupData.setups.length;si++){var st=setupData.setups[si];setupBadges+="<span style='display:inline-block;margin:1px 2px;font-size:8px;padding:1px 5px;border-radius:4px;font-family:JetBrains Mono,monospace;background:rgba(167,139,250,0.12);color:var(--purple);border:1px solid rgba(167,139,250,0.25);font-weight:700;'>" + st.level + "</span>";}}
+      var normalContent = "<div class='cal-day-num'>" + day + "</div><div class='cal-pnl " + (data.pnl>=0?"pos":"neg") + "'>" + pnlStr + "</div><div class='cal-meta'>Trades: " + data.count + "<br>Win%: " + wr + "</div>";
+      var hoverContent = setupData ? "<div class='cal-day-num'>" + day + "</div><div style='font-size:9px;color:var(--purple);font-weight:700;font-family:JetBrains Mono,monospace;margin-bottom:3px;'>" + setupData.setups.length + " SETUP" + (setupData.setups.length>1?"S":"") + "</div>" + setupBadges : normalContent;
+      html += "<div class='cal-cell has-trades" + bg + (isToday?" today":"") + "' id='calcell-" + dateStr.replace(/\//g,"-") + "' onclick='calDrillOpen(\"" + dateStr + "\")'>"+  normalContent + "</div>";
     } else {
       html += "<div class='cal-cell" + (isToday?" today":"") + "'><div class='cal-day-num'>" + day + "</div></div>";
     }
@@ -2072,7 +2146,6 @@ function toggleMode() {
 
 
 renderDashboard();
-renderAll(getFilteredTrades());
 renderCalendar();
 renderSetupCalendar();
 renderMacroSection();
