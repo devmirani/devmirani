@@ -847,29 +847,29 @@
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7439 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Thu AM resistance → now first support. Slow grind only. Ideal: tag 7425, recover 7439. Backup: <strong>7415 FBD</strong> — shelf held twice to the tick.</div>
-        <div class="ctx-setup-stop">Stop: Below 7425 (7439) / Below 7407 (7415)</div>
+        <div class="ctx-setup-level">7485 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Monster low set Friday 4:45PM — ES rallied to today's highs from there. Clearly actionable FBD. Backup: <strong>7516 FBD</strong> — small shelf built 12–2PM Tue. Quick trap + recover.</div>
+        <div class="ctx-setup-stop">Stop: Below 7473 (7485 FBD) / Below 7503 (7516 FBD)</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Hold 7439 or 7415 (quick trap ok). Continue up to 7490, 7507, 7530. Blue skies above to ATH.</div>
+          <div class="ctx-case-text">Defend 7516 (quick trap ok), resume up to 7548, 7566. New range builds, then breakout to 7578, 7613. Ultra-bull: never tests 7458.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7415. Breakdown trade — 80% fail rate. Advanced setup only. Trigger: 7407.</div>
+          <div class="ctx-case-text">Begins below 7485. Breakdown trade — 80% fail rate. Advanced only. Final bounce at 7485, short below lows. Trigger ~7477.</div>
         </div>
       </div>
     </div>
     <div class="ctx-week-stats-wrap">
       <div class="ctx-week-label">&#9651; This Week — Key Setups That Triggered</div>
       <div class="ctx-week-stats">
-        <div class="ctx-stat"><div class="ctx-stat-label">7377 FBD (Mon 3PM)</div><div class="ctx-stat-value pos">7374 → 7440s</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">7377 FBD (Tue 12:20PM)</div><div class="ctx-stat-value pos">7355 → rip</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">7415 FBD (Thu 9:52AM)</div><div class="ctx-stat-value pos">7411 → 7483+</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Runner Still Active</div><div class="ctx-stat-value neu">10% from Thu</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7415</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7530 FBD (Tue 9:42AM)</div><div class="ctx-stat-value pos">7525 → 7555+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Adam Runner Active</div><div class="ctx-stat-value neu">From 7415 Thu</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Breakout Range</div><div class="ctx-stat-value pos">7458 → 7570+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Wed</div><div class="ctx-stat-value neu">7485 FBD</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7485</div></div>
       </div>
     </div>
   </div>
@@ -1032,14 +1032,26 @@ var weeks = [
     { name: "Tue", date: "05/19/2026" }, { name: "Wed", date: "05/20/2026" },
     { name: "Thu", date: "05/21/2026" }, { name: "Fri", date: "05/22/2026" }
   ]},
-  { num: 4, label: "Week 4", dates: "05/25 - 05/29", days: [
-    { name: "Sun", date: "05/24/2026" }, { name: "Mon", date: "05/25/2026" },
+  { num: 4, label: "Week 4", dates: "05/26 - 05/30", days: [
     { name: "Tue", date: "05/26/2026" }, { name: "Wed", date: "05/27/2026" },
-    { name: "Thu", date: "05/28/2026" }, { name: "Fri", date: "05/29/2026" }
+    { name: "Thu", date: "05/28/2026" }, { name: "Fri", date: "05/29/2026" }, { name: "Sat", date: "05/30/2026" }
   ]}
 ];
 
 var trades = [
+  { id:42, date:"05/26/2026", entryTime:"11:31 PM", entryPrice:7540.50, stopPrice:7538.50, setup:"FBD", result:"loss", contracts:3, tradeLabel:"AH Quick Exit",
+    targets:[
+      {label:"Exit",price:7538.50,contracts:3,status:"stopped",pnl:-30.00,exitTime:"11:33 PM"}
+    ],
+    times:[{label:"Entry",value:"11:31 PM"},{label:"Exit",value:"11:33 PM"}],
+    totalPts:-2.00, totalPnl:-30.00, exitNote:"Bought 3 MES at 7540.50, exited minutes later at 7538.50. Did not want to be in the trade.", journal:"Small overnight loss — got in then immediately didn't feel right about it. Exited quickly for -2pts. Discipline in getting out fast." },
+  { id:41, date:"05/26/2026", entryTime:"9:55 AM", entryPrice:7536.50, stopPrice:7525.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7530 Overnight Shelf FBD — NAP",
+    targets:[
+      {label:"T1",price:7541.50,contracts:2,status:"hit",pnl:50.00,exitTime:"9:59 AM"},
+      {label:"Runner",price:7578.00,contracts:1,status:"stopped",pnl:0.00,exitTime:"AH",exitPrice:7536.50}
+    ],
+    times:[{label:"Entry",value:"9:55 AM"},{label:"T1",value:"9:59 AM"},{label:"Runner",value:"AH"}],
+    totalPts:1.67, totalPnl:50.00, exitNote:"T1: 2 contracts at 7541.50. Runner exited flat at 7536.50 — no gain.", journal:"7530 overnight support shelf swept to 7525, recovered via NAP at 7535 zone. Top of range — not fully comfortable trading here. T1 locked at 7541.50. Runner exited flat." },
   { id:40, date:"05/22/2026", entryTime:"12:38 AM", entryPrice:7490.00, stopPrice:7509.00, setup:"FBD", result:"loss", contracts:2, tradeLabel:"7490 Short — Hero Trade",
     targets:[
       {label:"Target",price:7377.00,contracts:2,status:"stopped",pnl:-190.00,exitTime:"9:37 AM"}
@@ -1360,6 +1372,18 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"05/27/2026", setups:[
+    {level:7516,type:"FBD",priority:"a",notes:"First support. Small shelf of lows built 12pm–2pm Tuesday. Low quality FBD but actionable if sweeps shelf and recovers. Bonus if tags 7503 first. If 7503 fails, ES should sell off."},
+    {level:7503,type:"FBD",priority:"a",notes:"Decent support. Can buy on slow controlled grind into zone. If knifing, wait for flush and recovery. Below here 7485 is next."},
+    {level:7485,type:"FBD",priority:"aplus",notes:"Monster low set Friday 4:45PM from which ES rallied to today's highs. Failed Breakdown of this low is clearly actionable. Not much below until 7458."},
+    {level:7458,type:"FBD",priority:"aplus",notes:"Bottom of the old range. Slow grind only — can buy direct. If knifing wait for flush and recover. Strong bull case: ES never even gets here."},
+    {level:7438,type:"FBD",priority:"a",notes:"Nice low set ~2:45PM Thursday from which ES rallied to today's highs. Clearly actionable FBD. Not much below until 7408–7412 shelf."},
+    {level:7413,type:"FBD",priority:"b",notes:"Big shelf of lows set Wednesday and Thursday. Safer entry — wait for full 7408–7412 shelf to flush and recover rather than buying direct."}
+  ],
+  bull:"Digesting Friday/Monday breakout rally. Support mostly 7516. Quick trap of 7516 then head up to 7548, 7566. New range builds there, then next breakout leg targets 7578, 7613. Ultra-bull: never tests 7458 again.",
+  bear:"Begins below 7485. Breakdown trade — 80% fail rate, advanced only. For 7485 short: wait for final bounce/FBD, short below the low of that bounce. Likely ~7477 trigger.",
+  summary:"Wednesday May 27. Digestion day after big Friday/Monday breakout to 7570. Structure building with 7516 as key support. Lean: trap 7516 (or not even test it), resume up to 7548, 7566, 7578, 7613. React to triggers only."
+  },
   { date:"05/22/2026", setups:[
     {level:7439,type:"FBD",priority:"aplus",notes:"Was resistance all morning Thursday. First real support of interest. Only buy if price grinds slowly into it — if free falling, never buy. Ideal: tag 7425 then recover 7439. FBD of 7439 is the cleanest entry."},
     {level:7415,type:"FBD",priority:"aplus",notes:"Big shelf — 6pm low Wednesday AND the 7am Thursday low. Held to the tick twice. First high quality FBD setup. Below 7439 this is the obvious entry. Wait for flush and full recovery before entering."},
