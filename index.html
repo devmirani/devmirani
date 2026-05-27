@@ -830,6 +830,12 @@
     .lab-risk-grid { grid-template-columns: 1fr 1fr; }
   }
 
+
+  .lab-derived { font-size: 11px; color: var(--amber); font-family: 'JetBrains Mono', monospace; font-weight: 700; white-space: nowrap; min-width: 60px; }
+  .lab-tp-group { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .lab-tp-group:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .lab-tp-group-label { font-size: 9px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+
 </style>
 </head>
 <body>
@@ -1051,25 +1057,58 @@
 
       <div class="lab-section">
         <div class="lab-section-label">Stop Loss</div>
-        <div class="lab-row">
+        <div class="lab-tp-row">
           <span class="lab-input-label">Stop price:</span>
-          <input class="lab-input" id="lab-stop" type="number" step="0.25" placeholder="e.g. 7515" oninput="labUpdate()">
+          <input class="lab-input lab-input-sm" id="lab-stop" type="number" step="0.25" placeholder="e.g. 7515" oninput="labStopFromPrice()">
+          <span class="lab-derived" id="lab-stop-pts-display">-- pts</span>
+        </div>
+        <div class="lab-tp-row">
+          <span class="lab-input-label">Stop offset (pts):</span>
+          <input class="lab-input lab-input-sm" id="lab-stop-pts" type="number" step="0.25" placeholder="e.g. 10" oninput="labStopFromPts()">
+          <span class="lab-derived" id="lab-stop-price-display">--</span>
         </div>
       </div>
 
       <div class="lab-section">
         <div class="lab-section-label">Take Profit Levels</div>
-        <div class="lab-tp-row">
-          <span class="lab-input-label">TP1 offset (pts):</span>
-          <input class="lab-input lab-input-sm" id="lab-tp1" type="number" value="5" step="0.25" oninput="labUpdate()">
+        <div class="lab-tp-group">
+          <div class="lab-tp-group-label">TP1</div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Offset (pts):</span>
+            <input class="lab-input lab-input-sm" id="lab-tp1" type="number" value="5" step="0.25" oninput="labTpFromPts(1)">
+            <span class="lab-derived" id="lab-tp1-level">--</span>
+          </div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Level:</span>
+            <input class="lab-input lab-input-sm" id="lab-tp1-price" type="number" step="0.25" placeholder="price" oninput="labTpFromPrice(1)">
+            <span class="lab-derived" id="lab-tp1-pts">-- pts</span>
+          </div>
         </div>
-        <div class="lab-tp-row">
-          <span class="lab-input-label">TP2 offset (pts):</span>
-          <input class="lab-input lab-input-sm" id="lab-tp2" type="number" value="15" step="0.25" oninput="labUpdate()">
+        <div class="lab-tp-group">
+          <div class="lab-tp-group-label">TP2</div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Offset (pts):</span>
+            <input class="lab-input lab-input-sm" id="lab-tp2" type="number" value="15" step="0.25" oninput="labTpFromPts(2)">
+            <span class="lab-derived" id="lab-tp2-level">--</span>
+          </div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Level:</span>
+            <input class="lab-input lab-input-sm" id="lab-tp2-price" type="number" step="0.25" placeholder="price" oninput="labTpFromPrice(2)">
+            <span class="lab-derived" id="lab-tp2-pts">-- pts</span>
+          </div>
         </div>
-        <div class="lab-tp-row">
-          <span class="lab-input-label">TP3 offset (pts):</span>
-          <input class="lab-input lab-input-sm" id="lab-tp3" type="number" value="30" step="0.25" oninput="labUpdate()">
+        <div class="lab-tp-group">
+          <div class="lab-tp-group-label">TP3 / Runner</div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Offset (pts):</span>
+            <input class="lab-input lab-input-sm" id="lab-tp3" type="number" value="30" step="0.25" oninput="labTpFromPts(3)">
+            <span class="lab-derived" id="lab-tp3-level">--</span>
+          </div>
+          <div class="lab-tp-row">
+            <span class="lab-input-label">Level:</span>
+            <input class="lab-input lab-input-sm" id="lab-tp3-price" type="number" step="0.25" placeholder="price" oninput="labTpFromPrice(3)">
+            <span class="lab-derived" id="lab-tp3-pts">-- pts</span>
+          </div>
         </div>
       </div>
 
@@ -2430,12 +2469,100 @@ function labTpClick(tpNum) {
   labUpdate();
 }
 
+
+function labGetStopPrice() {
+  var v = parseFloat(document.getElementById('lab-stop').value);
+  return isNaN(v) ? null : v;
+}
+function labStopFromPrice() {
+  var entry = labGetEntry();
+  var stop = labGetStopPrice();
+  var ptsEl = document.getElementById('lab-stop-pts-display');
+  var ptsIn = document.getElementById('lab-stop-pts');
+  if (entry && stop) {
+    var pts = (entry - stop).toFixed(2);
+    if (ptsEl) ptsEl.textContent = pts + ' pts';
+    if (ptsIn && document.activeElement !== ptsIn) ptsIn.value = pts;
+  } else {
+    if (ptsEl) ptsEl.textContent = '-- pts';
+  }
+  labUpdate();
+}
+function labStopFromPts() {
+  var entry = labGetEntry();
+  var pts = parseFloat(document.getElementById('lab-stop-pts').value);
+  var priceEl = document.getElementById('lab-stop-price-display');
+  var priceIn = document.getElementById('lab-stop');
+  if (entry && !isNaN(pts)) {
+    var price = (entry - pts).toFixed(2);
+    if (priceEl) priceEl.textContent = price;
+    if (priceIn && document.activeElement !== priceIn) priceIn.value = price;
+  } else {
+    if (priceEl) priceEl.textContent = '--';
+  }
+  labUpdate();
+}
+function labTpFromPts(n) {
+  var entry = labGetEntry();
+  var pts = parseFloat(document.getElementById('lab-tp'+n).value);
+  var levelEl = document.getElementById('lab-tp'+n+'-level');
+  var priceIn = document.getElementById('lab-tp'+n+'-price');
+  if (entry && !isNaN(pts)) {
+    var level = (entry + pts).toFixed(2);
+    if (levelEl) levelEl.textContent = level;
+    if (priceIn && document.activeElement !== priceIn) priceIn.value = level;
+  } else {
+    if (levelEl) levelEl.textContent = '--';
+  }
+  labUpdate();
+}
+function labTpFromPrice(n) {
+  var entry = labGetEntry();
+  var price = parseFloat(document.getElementById('lab-tp'+n+'-price').value);
+  var ptsEl = document.getElementById('lab-tp'+n+'-pts');
+  var ptsIn = document.getElementById('lab-tp'+n);
+  if (entry && !isNaN(price)) {
+    var pts = (price - entry).toFixed(2);
+    if (ptsEl) ptsEl.textContent = pts + ' pts';
+    if (ptsIn && document.activeElement !== ptsIn) ptsIn.value = pts;
+  } else {
+    if (ptsEl) ptsEl.textContent = '-- pts';
+  }
+  labUpdate();
+}
+function labRefreshDerivedFields() {
+  var entry = labGetEntry();
+  if (!entry) return;
+  // Sync stop
+  var stopPrice = labGetStopPrice();
+  var stopPtsIn = document.getElementById('lab-stop-pts');
+  var stopPtsDisp = document.getElementById('lab-stop-pts-display');
+  if (stopPrice) {
+    var sPts = (entry - stopPrice).toFixed(2);
+    if (stopPtsDisp) stopPtsDisp.textContent = sPts + ' pts';
+    if (stopPtsIn) stopPtsIn.value = sPts;
+  }
+  // Sync TPs
+  [1,2,3].forEach(function(n) {
+    var ptsIn = document.getElementById('lab-tp'+n);
+    var priceIn = document.getElementById('lab-tp'+n+'-price');
+    var levelEl = document.getElementById('lab-tp'+n+'-level');
+    var ptsEl = document.getElementById('lab-tp'+n+'-pts');
+    var pts = parseFloat(ptsIn ? ptsIn.value : 0);
+    if (!isNaN(pts) && pts > 0) {
+      var level = (entry + pts).toFixed(2);
+      if (levelEl) levelEl.textContent = level;
+      if (priceIn && !priceIn.value) priceIn.value = level;
+    }
+  });
+}
+
 function labUpdate() {
+  labRefreshDerivedFields();
   var tp1 = parseFloat(document.getElementById('lab-tp1').value) || 5;
   var tp2 = parseFloat(document.getElementById('lab-tp2').value) || 15;
   var tp3 = parseFloat(document.getElementById('lab-tp3').value) || 30;
   var nap = parseFloat(document.getElementById('lab-nap-offset').value) || 5;
-  var stop = parseFloat(document.getElementById('lab-stop').value) || null;
   var entry = labGetEntry();
   var contracts = labGetContracts();
   var isNAP = labState.acceptance === 'NAP';
@@ -2456,9 +2583,15 @@ function labUpdate() {
     tp1c = 1; tp2c = 1; tp3c = 0;
   } else if (contracts === 3) {
     tp1c = 2; tp2c = 1; tp3c = 0;
+  } else if (contracts === 4) {
+    tp1c = 2; tp2c = 1; tp3c = 1;
+  } else if (contracts === 5) {
+    tp1c = 3; tp2c = 1; tp3c = 1;
   } else {
-    // 4+: T1 = total-2, T2 = 1, Runner = 1
-    tp1c = contracts - 2; tp2c = 1; tp3c = 1;
+    // 6+: T1 = ~70%, T2 = ~20%, Runner = 1
+    tp3c = 1;
+    tp2c = Math.max(1, Math.round((contracts - 1) * 0.20));
+    tp1c = contracts - tp2c - tp3c;
   }
   var contractSplit = [tp1c, tp2c, tp3c];
 
@@ -2481,9 +2614,24 @@ function labUpdate() {
       '</div>';
   }
 
-  // Stop loss calc
+  // Stop loss — use price input or pts input
+  var stopPrice = labGetStopPrice();
+  if (!stopPrice) {
+    var stopPtsVal = parseFloat(document.getElementById('lab-stop-pts').value);
+    if (!isNaN(stopPtsVal) && entry) stopPrice = entry - stopPtsVal;
+  }
+  var stop = stopPrice;
+
+  // Remaining risk: contracts not yet locked in TPs
+  var lockedContracts = 0;
+  for (var ri = 0; ri < tpData.length; ri++) {
+    if (contractSplit[ri] === 0) continue;
+    if (labState.labTpSelected[ri+1]) lockedContracts += contractSplit[ri];
+  }
+  var remainingContracts = contracts - lockedContracts;
   var maxRisk = stop && entry ? Math.abs(entry - stop) * contracts * 5 : null;
-  var maxGain = entry ? (tp1+tp2+tp3) * (contracts/3) * 5 : null;
+  var remainingRisk = stop && entry ? Math.abs(entry - stop) * remainingContracts * 5 : null;
+  var maxGain = entry ? (tp1 * contractSplit[0] + tp2 * (contractSplit[1]||0) + tp3 * (contractSplit[2]||0)) * 5 : null;
   var rrRatio = maxRisk && maxGain ? (maxGain/maxRisk).toFixed(1) : '--';
 
   // Entry display
@@ -2533,10 +2681,15 @@ function labUpdate() {
     '</div>';
 
   // Risk summary
+  var remainRiskStr = remainingContracts === 0 ? '$0.00' : (remainingRisk ? '-$'+remainingRisk.toFixed(2) : '--');
+  var remainRiskColor = remainingContracts === 0 ? 'var(--green)' : 'var(--red)';
   var riskHtml =
-    '<div class="lab-risk-item"><div class="lab-risk-label">Max Risk</div><div class="lab-risk-value neg">'+(maxRisk?'-$'+maxRisk.toFixed(2):'--')+'</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">Total Risk</div><div class="lab-risk-value neg">'+(maxRisk?'-$'+maxRisk.toFixed(2):'--')+'</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">Remaining Risk</div><div class="lab-risk-value" style="color:'+remainRiskColor+';">'+remainRiskStr+'</div></div>'+
     '<div class="lab-risk-item"><div class="lab-risk-label">R/R Ratio</div><div class="lab-risk-value neu">'+rrRatio+'R</div></div>'+
-    '<div class="lab-risk-item"><div class="lab-risk-label">Full Target</div><div class="lab-risk-value pos">'+(entry&&contracts?'+$'+(tp3*Math.max(1,Math.round(contracts*0.1))*5).toFixed(2):'--')+'</div></div>';
+    '<div class="lab-risk-item"><div class="lab-risk-label">Net P&L</div><div class="lab-risk-value pos">'+(lockedPnl?'+$'+lockedPnl.toFixed(2):'--')+'</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">Full Target</div><div class="lab-risk-value pos">'+(maxGain?'+$'+maxGain.toFixed(2):'--')+'</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">Contracts Left</div><div class="lab-risk-value neu">'+remainingContracts+'</div></div>';
   var rg = document.getElementById('lab-risk-grid');
   if (rg) rg.innerHTML = riskHtml;
 }
