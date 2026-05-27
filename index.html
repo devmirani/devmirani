@@ -696,55 +696,7 @@
   }
 
 
-  /* ─── PRICE LADDER ───────────────────────────────────────── */
-  .ladder-section { margin: 40px 40px 60px; }
-  .ladder-title { font-size: 10px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; }
-  .ladder-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: start; }
-  .ladder-rail-wrap { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; user-select: none; }
-  .ladder-rail { position: relative; height: 520px; }
-  .ladder-track { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: var(--border2); border-radius: 4px; }
-  .ladder-track-fill-above { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; background: rgba(240,79,79,0.35); border-radius: 4px; top: 0; transition: height 0.1s; }
-  .ladder-track-fill-below { position: absolute; left: 50%; transform: translateX(-50%); width: 4px; background: rgba(0,230,118,0.35); border-radius: 4px; bottom: 0; transition: height 0.1s; }
-  .ladder-level { position: absolute; width: 100%; display: flex; align-items: center; gap: 8px; transform: translateY(-50%); pointer-events: none; }
-  .ladder-level-line { flex: 1; height: 1px; opacity: 0.4; }
-  .ladder-level-line.res { background: var(--red); }
-  .ladder-level-line.sup { background: var(--green); }
-  .ladder-level-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--bg2); }
-  .ladder-level-dot.tag-aplus { background: var(--green); }
-  .ladder-level-dot.tag-major { background: var(--red); }
-  .ladder-level-dot.tag-pivot { background: var(--purple); }
-  .ladder-level-dot.tag-a { background: var(--amber); }
-  .ladder-level-dot.tag-b { background: var(--text3); }
-  .ladder-level-price-label { font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; white-space: nowrap; min-width: 46px; }
-  .ladder-level-price-label.res { color: var(--red); }
-  .ladder-level-price-label.sup { color: var(--green); }
-  .ladder-level-tag-pill { font-size: 8px; font-weight: 700; padding: 1px 5px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
-  .ladder-level-note-label { font-size: 9px; color: var(--text3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; }
-  .ladder-handle { position: absolute; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 24px; background: var(--bg3); border: 2px solid var(--blue); border-radius: 12px; cursor: grab; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(56,189,248,0.4); transition: box-shadow 0.15s; }
-  .ladder-handle:active { cursor: grabbing; box-shadow: 0 0 20px rgba(56,189,248,0.7); }
-  .ladder-handle-price { font-size: 9px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; pointer-events: none; }
-  .ladder-current-line { position: absolute; left: 0; right: 0; height: 1px; background: var(--blue); opacity: 0.5; transform: translateY(-50%); pointer-events: none; }
-  .ladder-info { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; position: sticky; top: 20px; }
-  .ladder-info-price { font-size: 32px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
-  .ladder-info-subtitle { font-size: 10px; color: var(--text3); margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
-  .ladder-info-section { margin-bottom: 16px; }
-  .ladder-info-section-title { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
-  .ladder-info-section-title.res { color: var(--red); }
-  .ladder-info-section-title.sup { color: var(--green); }
-  .ladder-info-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); }
-  .ladder-info-row:last-child { border-bottom: none; }
-  .ladder-info-level { font-size: 13px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-  .ladder-info-level.res { color: var(--red); }
-  .ladder-info-level.sup { color: var(--green); }
-  .ladder-info-dist { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
-  .ladder-range-label { display: flex; justify-content: space-between; margin-bottom: 8px; }
-  .ladder-range-val { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
-  .ladder-input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-  .ladder-input { background: var(--bg3); border: 1px solid var(--border2); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 8px; width: 110px; outline: none; }
-  .ladder-input:focus { border-color: var(--blue); }
-  .ladder-input-label { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
-  @media (max-width: 768px) {
-    .ladder-section { margin: 20px 16px 40px; }
+  
     .ladder-wrap { grid-template-columns: 1fr; }
     .ladder-rail { height: 420px; }
     .ladder-info { position: static; }
@@ -809,6 +761,75 @@
   .asset-btn.active { border-color: var(--blue); color: var(--blue); background: rgba(56,189,248,0.08); box-shadow: 0 0 0 1px rgba(56,189,248,0.15); }
   @media (max-width: 768px) { .asset-toggle { padding: 14px 16px 0; } }
 
+
+  /* ─── OPEN TP BUTTONS ────────────────────────────────────── */
+  .tp-open { border: 1.5px solid var(--border2); color: var(--text3); background: transparent; cursor: pointer; transition: all 0.15s; }
+  .tp-open:hover { border-color: var(--amber); color: var(--amber); background: rgba(251,191,36,0.06); }
+  .tp-open:hover .tp-potential { display: block; }
+  .tp-open.tp-locked { border-color: var(--amber); color: var(--amber); background: rgba(251,191,36,0.12); box-shadow: inset 0 0 0 1px rgba(251,191,36,0.3); }
+  .tp-potential { display: none; font-size: 9px; color: var(--amber); font-weight: 700; margin-top: 2px; }
+  .tp-pnl-display { transition: color 0.2s; }
+
+
+  /* ─── SETUP LAB ──────────────────────────────────────────── */
+  .lab-wrap { display: grid; grid-template-columns: 380px 1fr; gap: 24px; padding: 32px 40px 60px; align-items: start; }
+  .lab-builder { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .lab-header { margin-bottom: 24px; }
+  .lab-title { font-size: 13px; font-weight: 700; color: var(--text); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+  .lab-subtitle { font-size: 11px; color: var(--text3); }
+  .lab-section { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .lab-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .lab-section-label { font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+  .lab-setup-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lab-pill { padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; cursor: pointer; border: 1px solid var(--border2); background: transparent; color: var(--text3); transition: all 0.15s; }
+  .lab-pill:hover { border-color: var(--purple); color: var(--purple); }
+  .lab-pill.active { border-color: var(--purple); color: var(--purple); background: rgba(167,139,250,0.1); }
+  .lab-type-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lab-type-btn { padding: 6px 14px; border-radius: 8px; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; cursor: pointer; border: 1px solid var(--border2); background: transparent; color: var(--text3); transition: all 0.15s; }
+  .lab-type-btn:hover { border-color: var(--text2); color: var(--text2); }
+  .lab-type-btn.active { border-color: var(--blue); color: var(--blue); background: rgba(56,189,248,0.08); }
+  .lab-row { display: flex; align-items: center; gap: 10px; }
+  .lab-tp-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .lab-input-label { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; white-space: nowrap; min-width: 130px; }
+  .lab-input { background: var(--bg3); border: 1px solid var(--border2); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; padding: 7px 10px; border-radius: 8px; outline: none; width: 130px; transition: border-color 0.15s; }
+  .lab-input:focus { border-color: var(--blue); }
+  .lab-input-sm { width: 80px; }
+  .lab-notes { background: var(--bg3); border: 1px solid var(--border2); color: var(--text); font-family: 'Inter', sans-serif; font-size: 12px; padding: 10px 12px; border-radius: 8px; width: 100%; height: 90px; resize: vertical; outline: none; transition: border-color 0.15s; }
+  .lab-notes:focus { border-color: var(--blue); }
+
+  /* Preview column */
+  .lab-preview { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 20px; }
+  .lab-preview-label { font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'JetBrains Mono', monospace; margin-bottom: -8px; }
+
+  /* Risk box */
+  .lab-risk-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .lab-risk-title { font-size: 9px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'JetBrains Mono', monospace; margin-bottom: 14px; }
+  .lab-risk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .lab-risk-item { text-align: center; }
+  .lab-risk-label { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .lab-risk-value { font-size: 18px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .lab-risk-value.pos { color: var(--green); }
+  .lab-risk-value.neg { color: var(--red); }
+  .lab-risk-value.neu { color: var(--amber); }
+
+  /* Checklist */
+  .lab-checklist { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .lab-check { display: flex; align-items: flex-start; gap: 10px; font-size: 11px; color: var(--text3); margin-bottom: 10px; cursor: pointer; line-height: 1.5; }
+  .lab-check:last-child { margin-bottom: 0; }
+  .lab-check input { accent-color: var(--green); margin-top: 2px; width: 14px; height: 14px; flex-shrink: 0; cursor: pointer; }
+  .lab-check:has(input:checked) { color: var(--text); }
+
+  /* Lab card TP buttons */
+  .lab-tp-interactive { cursor: pointer; }
+  .lab-tp-interactive:hover { border-color: var(--amber) !important; color: var(--amber) !important; background: rgba(251,191,36,0.06) !important; }
+  .lab-tp-interactive.lab-tp-selected { border-color: var(--amber) !important; color: var(--amber) !important; background: rgba(251,191,36,0.15) !important; box-shadow: inset 0 0 0 1px rgba(251,191,36,0.3) !important; }
+
+  @media (max-width: 768px) {
+    .lab-wrap { grid-template-columns: 1fr; padding: 16px 16px 40px; }
+    .lab-preview { position: static; }
+    .lab-risk-grid { grid-template-columns: 1fr 1fr; }
+  }
+
 </style>
 </head>
 <body>
@@ -826,6 +847,7 @@
 
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('journal-page', this)">Journal</button>
+  <button class="nav-tab" onclick="switchTab('lab-page', this)">Setup Lab</button>
 </div>
 
 <!-- JOURNAL PAGE -->
@@ -969,44 +991,115 @@
 </div>
 
 
-  <!-- PRICE LADDER REMOVED -->
-  <div class="ladder-section">
-    <div class="ladder-title">&#9675; ES Price Ladder &mdash; Drag to Current Price</div>
-    <div class="ladder-input-row">
-      <div class="ladder-input-label">Current Price</div>
-      <input class="ladder-input" type="number" id="ladder-price-input" value="7460" step="0.25" oninput="ladderSetPrice(parseFloat(this.value))">
-    </div>
-    <div class="ladder-wrap">
-      <div class="ladder-rail-wrap">
-        <div class="ladder-range-label">
-          <span class="ladder-range-val" id="ladder-high-label"></span>
-          <span class="ladder-range-val" id="ladder-low-label"></span>
-        </div>
-        <div class="ladder-rail" id="ladder-rail">
-          <div class="ladder-track"></div>
-          <div class="ladder-track-fill-above" id="ladder-fill-above"></div>
-          <div class="ladder-track-fill-below" id="ladder-fill-below"></div>
-          <div class="ladder-current-line" id="ladder-current-line"></div>
-          <div class="ladder-handle" id="ladder-handle">
-            <span class="ladder-handle-price" id="ladder-handle-price">7442</span>
-          </div>
+</div>
+
+<!-- LAB PAGE -->
+</div><div class="site-wrap"><div id="lab-page" class="page">
+  <div class="lab-wrap">
+
+    <!-- LEFT: Builder -->
+    <div class="lab-builder">
+      <div class="lab-header">
+        <div class="lab-title">&#9679; Setup Lab</div>
+        <div class="lab-subtitle">Visualize before you trade. No excuses.</div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Setup Level</div>
+        <div class="lab-setup-pills" id="lab-setup-pills"></div>
+        <div class="lab-row" style="margin-top:10px;">
+          <span class="lab-input-label">Other / Override:</span>
+          <input class="lab-input" id="lab-entry-override" type="number" step="0.25" placeholder="e.g. 7530" oninput="labUpdate()">
         </div>
       </div>
-      <div class="ladder-info" id="ladder-info">
-        <div class="ladder-info-price" id="ladder-info-price">7442.00</div>
-        <div class="ladder-info-subtitle">Current Price</div>
-        <div class="ladder-info-section">
-          <div class="ladder-info-section-title res">&#9650; Resistance Above</div>
-          <div id="ladder-above-list"></div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Setup Type</div>
+        <div class="lab-type-grid">
+          <button class="lab-type-btn active" id="ltype-FBD" onclick="labSetType('FBD')">FBD</button>
+          <button class="lab-type-btn" id="ltype-RECLAIM" onclick="labSetType('RECLAIM')">Level Reclaim</button>
+          <button class="lab-type-btn" id="ltype-BOUNCE" onclick="labSetType('BOUNCE')">Support Bounce</button>
         </div>
-        <div class="ladder-info-section">
-          <div class="ladder-info-section-title sup">&#9660; Support Below</div>
-          <div id="ladder-below-list"></div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Acceptance Type</div>
+        <div class="lab-type-grid">
+          <button class="lab-type-btn active" id="lacc-NAP" onclick="labSetAcc('NAP')">Non-Acceptance (NAP)</button>
+          <button class="lab-type-btn" id="lacc-T1" onclick="labSetAcc('T1')">Type 1 Acceptance</button>
+          <button class="lab-type-btn" id="lacc-T2" onclick="labSetAcc('T2')">Type 2 Acceptance</button>
         </div>
+        <div class="lab-row" style="margin-top:10px;">
+          <span class="lab-input-label">NAP offset (pts):</span>
+          <input class="lab-input lab-input-sm" id="lab-nap-offset" type="number" value="5" step="0.25" oninput="labUpdate()">
+        </div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Contracts (MES)</div>
+        <div class="lab-type-grid">
+          <button class="lab-type-btn" id="lcon-3" onclick="labSetContracts(3)">3</button>
+          <button class="lab-type-btn active" id="lcon-5" onclick="labSetContracts(5)">5</button>
+          <button class="lab-type-btn" id="lcon-10" onclick="labSetContracts(10)">10</button>
+          <button class="lab-type-btn" id="lcon-other" onclick="labSetContracts(0)">Other</button>
+        </div>
+        <div class="lab-row" id="lab-contracts-custom-row" style="margin-top:10px;display:none;">
+          <span class="lab-input-label">Contracts:</span>
+          <input class="lab-input lab-input-sm" id="lab-contracts-custom" type="number" value="2" min="1" step="1" oninput="labUpdate()">
+        </div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Stop Loss</div>
+        <div class="lab-row">
+          <span class="lab-input-label">Stop price:</span>
+          <input class="lab-input" id="lab-stop" type="number" step="0.25" placeholder="e.g. 7515" oninput="labUpdate()">
+        </div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Take Profit Levels</div>
+        <div class="lab-tp-row">
+          <span class="lab-input-label">TP1 offset (pts):</span>
+          <input class="lab-input lab-input-sm" id="lab-tp1" type="number" value="5" step="0.25" oninput="labUpdate()">
+        </div>
+        <div class="lab-tp-row">
+          <span class="lab-input-label">TP2 offset (pts):</span>
+          <input class="lab-input lab-input-sm" id="lab-tp2" type="number" value="15" step="0.25" oninput="labUpdate()">
+        </div>
+        <div class="lab-tp-row">
+          <span class="lab-input-label">TP3 offset (pts):</span>
+          <input class="lab-input lab-input-sm" id="lab-tp3" type="number" value="30" step="0.25" oninput="labUpdate()">
+        </div>
+      </div>
+
+      <div class="lab-section">
+        <div class="lab-section-label">Pre-Trade Notes</div>
+        <textarea class="lab-notes" id="lab-notes" placeholder="Why this setup? What are you watching for?"></textarea>
+      </div>
+    </div>
+
+    <!-- RIGHT: Preview -->
+    <div class="lab-preview">
+      <div class="lab-preview-label">Live Preview</div>
+      <div id="lab-card-preview"></div>
+      <div class="lab-risk-box">
+        <div class="lab-risk-title">Risk / Reward Summary</div>
+        <div class="lab-risk-grid" id="lab-risk-grid"></div>
+      </div>
+      <div class="lab-checklist">
+        <div class="lab-risk-title">Pre-Trade Checklist</div>
+        <label class="lab-check"><input type="checkbox"> Elevator down sell confirmed</label>
+        <label class="lab-check"><input type="checkbox"> Significant low identified</label>
+        <label class="lab-check"><input type="checkbox"> Acceptance or NAP confirmed</label>
+        <label class="lab-check"><input type="checkbox"> Stop defined — will not let trade go full red</label>
+        <label class="lab-check"><input type="checkbox"> TP1 at first level up (75% locked)</label>
+        <label class="lab-check"><input type="checkbox"> Not trading 11AM–2PM chop window</label>
+        <label class="lab-check"><input type="checkbox"> Win already today &#8594; profit protection mode</label>
       </div>
     </div>
   </div>
-
+</div>
 </div>
 
 </div><div id="img-overlay" class="img-overlay" onclick="closeImg()">
@@ -1039,6 +1132,14 @@ var weeks = [
 ];
 
 var trades = [
+  { id:43, date:"05/26/2026", entryTime:"6:13 PM", entryPrice:7532.50, stopPrice:7515.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7530 Level Reclaim",
+    targets:[
+      {label:"T1",price:7537.50,contracts:3,status:"hit",pnl:75.00,exitTime:"7:21 PM"},
+      {label:"T2",price:7548.00,contracts:1,status:"hit",pnl:77.50,exitTime:"9:08 PM"},
+      {label:"Runner",price:7566.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+    ],
+    times:[{label:"Entry",value:"6:13 PM"},{label:"T1",value:"7:21 PM"},{label:"T2",value:"9:08 PM"},{label:"Runner",value:"Open"}],
+    totalPts:4.10, totalPnl:152.50, exitNote:"T1: 3 contracts at 7537.50. T2: 1 contract at 7548 (9:08PM). 1 runner still open.", journal:"7530 level reclaim after close. 5 contracts. T1 locked 3 at 7537.50 at 7:21PM. 2 runners working toward 7548." },
   { id:42, date:"05/26/2026", entryTime:"11:31 PM", entryPrice:7540.50, stopPrice:7538.50, setup:"FBD", result:"loss", contracts:3, tradeLabel:"AH Quick Exit",
     targets:[
       {label:"Exit",price:7538.50,contracts:3,status:"stopped",pnl:-30.00,exitTime:"11:33 PM"}
@@ -1644,6 +1745,49 @@ function renderOptionsCard(tr) {
     toggle + "</div>";
 }
 
+
+var tpLocked = {}; // tradeId-targetIdx -> locked state
+
+function getEffectivePnl(tr) {
+  var pnl = tr.totalPnl;
+  for (var i = 0; i < tr.targets.length; i++) {
+    var key = tr.id + '-' + i;
+    if (tpLocked[key] && tr.targets[i].status === 'open' && tr.targets[i].price > 0) {
+      pnl += (tr.targets[i].price - tr.entryPrice) * tr.targets[i].contracts * 5;
+    }
+  }
+  return pnl;
+}
+
+function tpClick(tradeId, tpIdx, potPnl, basePnl) {
+  var key = tradeId + '-' + tpIdx;
+  var btn = document.getElementById('tp-' + tradeId + '-' + tpIdx);
+  var pnlEl = document.getElementById('pnl-' + tradeId);
+  if (!btn || !pnlEl) return;
+
+  if (tpLocked[key]) {
+    // Unlock — revert
+    tpLocked[key] = false;
+    btn.classList.remove('tp-locked');
+    var base = (basePnl >= 0 ? '+$' : '-$') + Math.abs(basePnl).toFixed(2);
+    pnlEl.textContent = base;
+    pnlEl.className = 'dollars tp-pnl-display' + (basePnl < 0 ? ' neg' : '');
+  } else {
+    // Lock — show projected total
+    tpLocked[key] = true;
+    btn.classList.add('tp-locked');
+    var total = basePnl + potPnl;
+    var totalStr = (total >= 0 ? '+$' : '-$') + Math.abs(total).toFixed(2);
+    pnlEl.textContent = totalStr;
+    pnlEl.className = 'dollars tp-pnl-display' + (total < 0 ? ' neg' : '');
+    // Animate
+    animateCount(pnlEl, Math.abs(total), true, total >= 0 ? '+$' : '-$', '', 500);
+  }
+  // Refresh calendar and dashboard to reflect locked projections
+  renderCalendar();
+  renderDashboard();
+}
+
 function buildTradeCard(tr) { return renderCard(tr); }
 function renderCard(tr) {
   var win = tr.result === "win";
@@ -1653,8 +1797,17 @@ function renderCard(tr) {
   for (var i = 0; i < tr.targets.length; i++) {
     var t = tr.targets[i];
     var ret = t.pnl !== 0 ? (t.pnl >= 0 ? "+$" : "-$") + Math.abs(t.pnl).toFixed(2) : "--";
-    var tip = t.exitTime ? "<span class='tp-tooltip'>Exited " + t.exitTime + "</span>" : "";
-    tps += "<div class='tp-btn " + scClass(t.status) + "'>" + tip + scLabel(t) + " <span class='sub'>(" + t.contracts + "x)</span><span class='tp-return'>" + ret + "</span></div>";
+    var tip = t.exitTime && t.status !== "open" ? "<span class='tp-tooltip'>Exited " + t.exitTime + "</span>" : "";
+    if (t.status === "open") {
+      var potPnl = t.price > 0 ? (t.price - tr.entryPrice) * t.contracts * 5 : 0;
+      var potStr = potPnl > 0 ? "+$" + potPnl.toFixed(2) : "--";
+      tps += "<div class='tp-btn tp-open' id='tp-" + tr.id + "-" + i + "' onclick='tpClick(" + tr.id + "," + i + "," + potPnl.toFixed(2) + "," + tr.totalPnl.toFixed(2) + ")'>" +
+        t.label + " " + (t.price > 0 ? t.price.toFixed(2) : "--") + " <span class='sub'>(" + t.contracts + "x)</span>" +
+        "<span class='tp-potential'>▲ " + potStr + "</span>" +
+        "</div>";
+    } else {
+      tps += "<div class='tp-btn " + scClass(t.status) + "'>" + tip + scLabel(t) + " <span class='sub'>(" + t.contracts + "x)</span><span class='tp-return'>" + ret + "</span></div>";
+    }
   }
   var chips = "";
   for (var i = 0; i < tr.times.length; i++) chips += "<div class='time-chip'>" + tr.times[i].label + ": <span>" + tr.times[i].value + "</span></div>";
@@ -1676,7 +1829,7 @@ function renderCard(tr) {
     "<div class='time-row'><div class='time-row-inner'>" + chips + "</div></div>" +
     "<div class='info-grid'><div><div class='field-label'>Entry:</div><div class='field-value'>" + tr.entryPrice.toFixed(2) + "</div></div><div><div class='field-label'>Stop:</div><div class='field-value'>" + tr.stopPrice.toFixed(2) + "</div></div><div><div class='field-label'>Result:</div><div class='field-value " + tr.result + "'>" + (win ? "Win" : "Loss") + "</div></div><div><div class='field-label'>Contracts:</div><div class='field-value'>" + tr.contracts + "</div></div>" + tpInfo + "</div>" +
     "<div class='targets-inner'>" + tps + "</div><hr class='divider'>" +
-    "<div class='card-footer'><div class='footer-label'>" + tr.exitNote + "</div><div>" + (tr.type === "options" && tr.entryPrice > 0 && tr.totalPnl !== 0 ? "<span style='font-size:11px;font-weight:700;font-family:\"JetBrains Mono\",monospace;color:var(--blue);display:block;text-align:right;'>" + (tr.totalPnl >= 0 ? "+" : "") + ((tr.totalPnl / tr.entryPrice) * 100).toFixed(0) + "%</span>" : "") + "<span class='dollars" + (tr.totalPnl < 0 ? " neg" : "") + "'>" + dStr + "</span></div></div>" +
+    "<div class='card-footer'><div class='footer-label'>" + tr.exitNote + "</div><div>" + (tr.type === "options" && tr.entryPrice > 0 && tr.totalPnl !== 0 ? "<span style='font-size:11px;font-weight:700;font-family:\"JetBrains Mono\",monospace;color:var(--blue);display:block;text-align:right;'>" + (tr.totalPnl >= 0 ? "+" : "") + ((tr.totalPnl / tr.entryPrice) * 100).toFixed(0) + "%</span>" : "") + "<span class='dollars tp-pnl-display" + (tr.totalPnl < 0 ? " neg" : "") + "' id='pnl-" + tr.id + "'>" + dStr + "</span></div></div>" +
     toggle + "</div>";
 }
 
@@ -1692,7 +1845,7 @@ function renderAll(list) {
     var week = weeks[w]; var wt = [];
     for (var i = 0; i < list.length; i++) for (var d = 0; d < week.days.length; d++) if (list[i].date === week.days[d].date) { wt.push(list[i]); break; }
     var wp = 0; var ww = 0;
-    for (var i = 0; i < wt.length; i++) { wp += wt[i].totalPnl; if (wt[i].result === "win") ww++; }
+    for (var i = 0; i < wt.length; i++) { wp += getEffectivePnl(wt[i]); if (wt[i].result === "win") ww++; }
     var wr = wt.length ? Math.round(ww/wt.length*100) + "%" : "--";
     var wps = wt.length ? (wp >= 0 ? "+$" : "-$") + Math.abs(wp).toFixed(2) : "--";
     var wpc = wp >= 0 ? "pos" : "neg";
@@ -1700,7 +1853,7 @@ function renderAll(list) {
     for (var d = 0; d < week.days.length; d++) {
       var day = week.days[d]; var dt = []; var dp = 0;
       for (var i = 0; i < wt.length; i++) if (wt[i].date === day.date) dt.push(wt[i]);
-      for (var i = 0; i < dt.length; i++) dp += dt[i].totalPnl;
+      for (var i = 0; i < dt.length; i++) dp += getEffectivePnl(dt[i]);
       if (dt.length === 0) {
         // Check if this is a watch day
         var watchData = null;
@@ -1884,7 +2037,7 @@ function calDrillOpen(dateStr) {
   for (var i = 0; i < dayTrades.length; i++) cards += buildTradeCard(dayTrades[i]);
   var d = new Date(dateStr.replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2'));
   var dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
-  var dayPnl = dayTrades.reduce(function(s,t){ return s+t.totalPnl; }, 0);
+  var dayPnl = dayTrades.reduce(function(s,t){ return s+getEffectivePnl(t); }, 0);
   var pnlStr = (dayPnl>=0?'+$':'-$') + Math.abs(dayPnl).toFixed(2);
   drill.innerHTML = "<div class='cal-drill-header'><div class='cal-drill-title'>" + dayName + " " + dateStr + " &mdash; " + dayTrades.length + " trade" + (dayTrades.length>1?"s":"") + " &mdash; <span style='color:" + (dayPnl>=0?"var(--green)":"var(--red)") + ";'>" + pnlStr + "</span></div><button class='cal-drill-close' onclick='calDrillClose()'>&#10005; Close</button></div><div class='cal-drill-cards'>" + cards + "</div>";
 }
@@ -1923,7 +2076,7 @@ function renderDashboard() {
   });
   var total = 0, count = 0, wins = 0;
   for (var i = 0; i < filtered.length; i++) {
-    total += filtered[i].totalPnl;
+    total += getEffectivePnl(filtered[i]);
     count++;
     if (filtered[i].result === 'win') wins++;
   }
@@ -1972,7 +2125,7 @@ function buildDayTradingMap() {
     var t = trades[i]; var parts = t.date.split("/");
     var key = parts[2] + "-" + parts[0] + "-" + parts[1];
     if (!map[key]) map[key] = { pnl:0, count:0, wins:0, dateStr:t.date };
-    map[key].pnl += t.totalPnl; map[key].count++;
+    map[key].pnl += getEffectivePnl(t); map[key].count++;
     if (t.result === "win") map[key].wins++;
   }
   return map;
@@ -2173,185 +2326,207 @@ renderDashboard();
 renderCalendar();
 renderSetupCalendar();
 renderMacroSection();
+labInit();
 
-// ── PRICE LADDER ─────────────────────────────────────────────────────────────
-var ladderLevels = [
-  {price:7530,tag:"tag-major",label:"MAJOR",note:"Extended continuation target"},
-  {price:7519,tag:"tag-b",label:"B",note:"Minor resistance"},
-  {price:7507,tag:"tag-major",label:"MAJOR",note:"Continuation target — short attempt"},
-  {price:7496,tag:"tag-b",label:"B",note:"Minor resistance"},
-  {price:7490,tag:"tag-major",label:"MAJOR",note:"Breakout target — short attempt"},
-  {price:7483,tag:"tag-major",label:"MAJOR",note:"Thursday high"},
-  {price:7472,tag:"tag-major",label:"MAJOR",note:"Resistance — short attempt"},
-  {price:7464,tag:"tag-major",label:"MAJOR",note:"Major resistance"},
-  {price:7458,tag:"tag-major",label:"MAJOR",note:"T1 target — major support/resistance"},
-  {price:7450,tag:"tag-b",label:"B",note:"Former range top"},
-  {price:7441,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7439,tag:"tag-aplus",label:"A+ FBD",note:"Thu AM resistance — primary setup"},
-  {price:7429,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7425,tag:"tag-major",label:"MAJOR",note:"Ideal flush target for 7439 FBD"},
-  {price:7415,tag:"tag-aplus",label:"A+ FBD",note:"Shelf held twice to tick — key FBD"},
-  {price:7410,tag:"tag-major",label:"MAJOR",note:"Major support below 7415"},
-  {price:7405,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7395,tag:"tag-major",label:"MAJOR",note:"Major support"},
-  {price:7390,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7383,tag:"tag-major",label:"MAJOR",note:"Major support"},
-  {price:7377,tag:"tag-a",label:"A FBD",note:"Thu 10AM massive low — highly actionable"},
-  {price:7369,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7364,tag:"tag-major",label:"MAJOR",note:"Major support — flush target for 7377 FBD"},
-  {price:7356,tag:"tag-major",label:"MAJOR",note:"Tuesday low — FBD only, take profits fast"},
-  {price:7345,tag:"tag-b",label:"B",note:"Minor support"},
-  {price:7335,tag:"tag-major",label:"MAJOR",note:"Major support"},
-  {price:7311,tag:"tag-major",label:"MAJOR",note:"Major support"}
-];
-var ladderMin = 7300, ladderMax = 7550;
-var ladderCurrentPrice = 7460;
-var ladderDragging = false;
 
-function ladderPriceToY(price, railH) {
-  return railH - ((price - ladderMin) / (ladderMax - ladderMin)) * railH;
+
+// ── SETUP LAB ─────────────────────────────────────────────────────────────────
+var labState = {
+  selectedLevel: null,
+  overrideEntry: null,
+  type: 'FBD',
+  acceptance: 'NAP',
+  contracts: 5,
+  customContracts: 2,
+  stop: null,
+  tp1: 5, tp2: 15, tp3: 30,
+  napOffset: 5,
+  labTpSelected: {}
+};
+
+function labInit() {
+  // Populate setup pills from today's setups
+  var today = new Date();
+  var mm = String(today.getMonth()+1).padStart(2,'0');
+  var dd = String(today.getDate()).padStart(2,'0');
+  var yyyy = today.getFullYear();
+  var todayStr = mm+'/'+dd+'/'+yyyy;
+  var pillsEl = document.getElementById('lab-setup-pills');
+  if (!pillsEl) return;
+  // Find most recent setupDay
+  var found = null;
+  for (var i = 0; i < setupDays.length; i++) {
+    if (setupDays[i].date === todayStr) { found = setupDays[i]; break; }
+  }
+  // Fallback to most recent
+  if (!found && setupDays.length) found = setupDays[setupDays.length-1];
+  var html = '';
+  if (found) {
+    for (var i = 0; i < found.setups.length; i++) {
+      var s = found.setups[i];
+      html += '<button class="lab-pill" onclick="labSelectLevel(' + s.level + ', this)">' + s.level + ' <span style="font-size:8px;opacity:0.7;">' + s.type.replace('_',' ') + '</span></button>';
+    }
+  }
+  pillsEl.innerHTML = html || '<span style="font-size:11px;color:var(--text3);">No setups for today — use override below</span>';
+  labUpdate();
 }
-function ladderYToPrice(y, railH) {
-  var raw = ladderMax - (y / railH) * (ladderMax - ladderMin);
-  return Math.round(raw / 0.25) * 0.25;
+
+function labSelectLevel(level, btn) {
+  labState.selectedLevel = level;
+  labState.overrideEntry = null;
+  document.getElementById('lab-entry-override').value = '';
+  var pills = document.querySelectorAll('.lab-pill');
+  pills.forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  // Auto-fill stop suggestion (level - 15)
+  if (!document.getElementById('lab-stop').value) {
+    document.getElementById('lab-stop').value = (level - 15).toFixed(2);
+  }
+  labUpdate();
 }
 
-function ladderRender() {
-  var rail = document.getElementById('ladder-rail');
-  if (!rail) return;
-  var railH = rail.offsetHeight || 520;
-  var price = ladderCurrentPrice;
-
-  // Remove old level elements
-  var old = rail.querySelectorAll('.ladder-level');
-  old.forEach(function(el){ el.remove(); });
-
-  // High/low labels
-  var hl = document.getElementById('ladder-high-label');
-  var ll = document.getElementById('ladder-low-label');
-  if(hl) hl.textContent = ladderMax;
-  if(ll) ll.textContent = ladderMin;
-
-  // Handle
-  var handle = document.getElementById('ladder-handle');
-  var handlePrice = document.getElementById('ladder-handle-price');
-  var currentLine = document.getElementById('ladder-current-line');
-  var y = ladderPriceToY(price, railH);
-  if(handle) { handle.style.top = y + 'px'; }
-  if(handlePrice) handlePrice.textContent = price.toFixed(2);
-  if(currentLine) currentLine.style.top = y + 'px';
-
-  // Track fills
-  var fillAbove = document.getElementById('ladder-fill-above');
-  var fillBelow = document.getElementById('ladder-fill-below');
-  if(fillAbove) { fillAbove.style.top = '0px'; fillAbove.style.height = y + 'px'; }
-  if(fillBelow) { fillBelow.style.bottom = '0px'; fillBelow.style.height = (railH - y) + 'px'; }
-
-  // Render level lines
-  ladderLevels.forEach(function(lvl) {
-    var ly = ladderPriceToY(lvl.price, railH);
-    if(ly < -20 || ly > railH + 20) return;
-    var isAbove = lvl.price > price;
-    var div = document.createElement('div');
-    div.className = 'ladder-level';
-    div.style.top = ly + 'px';
-
-    var side = isAbove ? 'res' : 'sup';
-    var pillColors = {
-      'tag-aplus':'background:rgba(0,230,118,0.1);color:var(--green);border:1px solid rgba(0,230,118,0.25)',
-      'tag-major':'background:rgba(240,79,79,0.1);color:var(--red);border:1px solid rgba(240,79,79,0.25)',
-      'tag-pivot':'background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.25)',
-      'tag-a':'background:rgba(251,191,36,0.1);color:var(--amber);border:1px solid rgba(251,191,36,0.25)',
-      'tag-b':'background:rgba(122,147,173,0.1);color:var(--text3);border:1px solid rgba(122,147,173,0.25)'
-    };
-
-    div.innerHTML =
-      '<span class="ladder-level-price-label ' + side + '">' + lvl.price.toFixed(2) + '</span>' +
-      '<span class="ladder-level-tag-pill" style="' + (pillColors[lvl.tag]||'') + '">' + lvl.label + '</span>' +
-      '<div class="ladder-level-line ' + side + '" style="opacity:' + (isAbove?'0.25':'0.2') + '"></div>' +
-      '<div class="ladder-level-dot ' + lvl.tag + '"></div>' +
-      '<span class="ladder-level-note-label">' + lvl.note + '</span>';
-    rail.appendChild(div);
+function labSetType(t) {
+  labState.type = t;
+  ['FBD','RECLAIM','BOUNCE'].forEach(function(x){
+    document.getElementById('ltype-'+x).classList.toggle('active', x===t);
   });
+  labUpdate();
+}
 
-  // Info panel
-  var infoPrice = document.getElementById('ladder-info-price');
-  if(infoPrice) infoPrice.textContent = price.toFixed(2);
+function labSetAcc(a) {
+  labState.acceptance = a;
+  ['NAP','T1','T2'].forEach(function(x){
+    document.getElementById('lacc-'+x).classList.toggle('active', x===a);
+  });
+  labUpdate();
+}
 
-  var above = ladderLevels.filter(function(l){ return l.price > price; }).sort(function(a,b){ return a.price - b.price; });
-  var below = ladderLevels.filter(function(l){ return l.price <= price; }).sort(function(a,b){ return b.price - a.price; });
+function labSetContracts(n) {
+  labState.contracts = n;
+  [3,5,10,0].forEach(function(x){
+    var id = 'lcon-' + (x===0 ? 'other' : x);
+    var el = document.getElementById(id);
+    if(el) el.classList.toggle('active', n===x);
+  });
+  var customRow = document.getElementById('lab-contracts-custom-row');
+  if (customRow) customRow.style.display = n === 0 ? 'flex' : 'none';
+  labUpdate();
+}
 
-  var aboveList = document.getElementById('ladder-above-list');
-  var belowList = document.getElementById('ladder-below-list');
+function labGetEntry() {
+  var override = parseFloat(document.getElementById('lab-entry-override').value);
+  var base = !isNaN(override) ? override : (labState.selectedLevel || 0);
+  if (!base) return null;
+  var nap = parseFloat(document.getElementById('lab-nap-offset').value) || 5;
+  return labState.acceptance === 'NAP' ? base + nap : base;
+}
 
-  function makeRows(list, side) {
-    return list.slice(0,6).map(function(lvl){
-      var dist = Math.abs(lvl.price - price).toFixed(2);
-      var colorClass = side === 'res' ? 'res' : 'sup';
-      return '<div class="ladder-info-row">' +
-        '<span class="ladder-info-level ' + colorClass + '">' + lvl.price.toFixed(2) + ' <span style="font-size:8px;opacity:0.7;">' + lvl.label + '</span></span>' +
-        '<span class="ladder-info-dist">+' + dist + ' pts</span>' +
-        '</div>';
-    }).join('');
+function labGetContracts() {
+  if (labState.contracts === 0) return parseInt(document.getElementById('lab-contracts-custom').value) || 1;
+  return labState.contracts;
+}
+
+function labTpClick(tpNum) {
+  labState.labTpSelected[tpNum] = !labState.labTpSelected[tpNum];
+  labUpdate();
+}
+
+function labUpdate() {
+  var tp1 = parseFloat(document.getElementById('lab-tp1').value) || 5;
+  var tp2 = parseFloat(document.getElementById('lab-tp2').value) || 15;
+  var tp3 = parseFloat(document.getElementById('lab-tp3').value) || 30;
+  var nap = parseFloat(document.getElementById('lab-nap-offset').value) || 5;
+  var stop = parseFloat(document.getElementById('lab-stop').value) || null;
+  var entry = labGetEntry();
+  var contracts = labGetContracts();
+  var isNAP = labState.acceptance === 'NAP';
+  var baseLevel = labState.selectedLevel || parseFloat(document.getElementById('lab-entry-override').value) || null;
+
+  // TP prices and PnL
+  var tpData = [
+    { label:'T1', offset: tp1, pct:75 },
+    { label:'T2', offset: tp2, pct:15 },
+    { label:'Runner', offset: tp3, pct:10 }
+  ];
+  var contractSplit = [
+    Math.round(contracts * 0.75) || 1,
+    Math.max(1, Math.round(contracts * 0.15)),
+    Math.max(1, Math.round(contracts * 0.10))
+  ];
+  // Ensure splits don't exceed total
+  while (contractSplit[0]+contractSplit[1]+contractSplit[2] > contracts && contractSplit[2] > 1) contractSplit[2]--;
+  while (contractSplit[0]+contractSplit[1]+contractSplit[2] > contracts && contractSplit[1] > 1) contractSplit[1]--;
+
+  var lockedPnl = 0;
+  var tpHtml = '';
+  for (var i = 0; i < tpData.length; i++) {
+    var tp = tpData[i];
+    var price = entry ? entry + tp.offset : null;
+    var tpPnl = price && entry ? tp.offset * contractSplit[i] * 5 : 0;
+    var isSelected = labState.labTpSelected[i+1];
+    if (isSelected && tpPnl) lockedPnl += tpPnl;
+    var btnClass = 'tp-btn lab-tp-interactive' + (isSelected ? ' lab-tp-selected' : '');
+    var priceStr = price ? price.toFixed(2) : '--';
+    var pnlStr = tpPnl ? '+$'+tpPnl.toFixed(2) : '--';
+    tpHtml += '<div class="'+btnClass+'" onclick="labTpClick('+(i+1)+')" style="border:1.5px solid var(--border2);color:var(--text3);">'+
+      tp.label+' '+(price ? priceStr : '--')+
+      ' <span class="sub">('+contractSplit[i]+'x)</span>'+
+      '<span class="tp-return" style="color:var(--green);">'+pnlStr+'</span>'+
+      '</div>';
   }
 
-  if(aboveList) aboveList.innerHTML = makeRows(above, 'res');
-  if(belowList) belowList.innerHTML = makeRows(below, 'sup');
+  // Stop loss calc
+  var maxRisk = stop && entry ? Math.abs(entry - stop) * contracts * 5 : null;
+  var maxGain = entry ? (tp1+tp2+tp3) * (contracts/3) * 5 : null;
+  var rrRatio = maxRisk && maxGain ? (maxGain/maxRisk).toFixed(1) : '--';
 
-  // Sync input
-  var inp = document.getElementById('ladder-price-input');
-  if(inp && document.activeElement !== inp) inp.value = price.toFixed(2);
-}
+  // Entry display
+  var entryDisplay = entry ? entry.toFixed(2) : '--';
+  var baseDisplay = baseLevel && isNAP ? baseLevel.toFixed(2) + ' +' + nap + 'pts' : entryDisplay;
 
-function ladderSetPrice(p) {
-  if(isNaN(p)) return;
-  p = Math.max(ladderMin, Math.min(ladderMax, Math.round(p / 0.25) * 0.25));
-  ladderCurrentPrice = p;
-  ladderRender();
-}
+  // Build card
+  var preview = document.getElementById('lab-card-preview');
+  if (!preview) return;
+  var typeColor = labState.type==='FBD'?'var(--purple)':labState.type==='RECLAIM'?'var(--green)':'var(--blue)';
 
-function ladderInitDrag() {
-  var handle = document.getElementById('ladder-handle');
-  var rail = document.getElementById('ladder-rail');
-  if(!handle || !rail) return;
+  // Net PnL display
+  var netPnlStr = lockedPnl > 0 ? '+$'+lockedPnl.toFixed(2) : '--';
+  var netPnlColor = lockedPnl > 0 ? 'var(--green)' : 'var(--text3)';
 
-  function getY(e) {
-    var rect = rail.getBoundingClientRect();
-    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return Math.max(0, Math.min(rail.offsetHeight, clientY - rect.top));
-  }
+  preview.innerHTML =
+    '<div class="card" style="border-left-color:'+typeColor+';">'+
+    '<div class="card-header-row">'+
+      '<div><span class="card-price" style="color:'+typeColor+';">'+(baseLevel||'?')+'</span><span class="card-label">'+labState.type.replace('_',' ')+'</span></div>'+
+      '<span class="card-timestamp" style="color:var(--amber);">'+labState.acceptance+(isNAP?' +'+nap+'pts':'')+' entry</span>'+
+    '</div>'+
+    '<div class="badge" style="border-color:'+typeColor+';color:'+typeColor+';">'+labState.type+'</div>'+
+    '<div class="time-row"><div class="time-row-inner">'+
+      '<div class="time-chip">Base level: <span>'+(baseLevel||'--')+'</span></div>'+
+      '<div class="time-chip">Entry: <span>'+entryDisplay+'</span></div>'+
+      '<div class="time-chip">Contracts: <span>'+contracts+'</span></div>'+
+      (stop ? '<div class="time-chip">Stop: <span style="color:var(--red);">'+stop.toFixed(2)+'</span></div>' : '')+
+    '</div></div>'+
+    '<div class="info-grid">'+
+      '<div><div class="field-label">Entry Price:</div><div class="field-value">'+entryDisplay+'</div></div>'+
+      '<div><div class="field-label">Acceptance:</div><div class="field-value" style="color:var(--amber);">'+labState.acceptance+'</div></div>'+
+      '<div><div class="field-label">Max Risk:</div><div class="field-value loss">'+(maxRisk ? '-$'+maxRisk.toFixed(2) : '--')+'</div></div>'+
+      '<div><div class="field-label">Contracts:</div><div class="field-value">'+contracts+'</div></div>'+
+    '</div>'+
+    '<div class="targets-inner">'+tpHtml+'</div>'+
+    '<hr class="divider">'+
+    '<div class="card-footer">'+
+      '<div class="footer-label" style="font-size:11px;color:var(--text3);">Click TPs above to project P&L</div>'+
+      '<div><span class="dollars" style="color:'+netPnlColor+';">'+netPnlStr+'</span></div>'+
+    '</div>'+
+    '</div>';
 
-  handle.addEventListener('mousedown', function(e){ ladderDragging = true; e.preventDefault(); });
-  handle.addEventListener('touchstart', function(e){ ladderDragging = true; e.preventDefault(); }, {passive:false});
-
-  document.addEventListener('mousemove', function(e){
-    if(!ladderDragging) return;
-    ladderCurrentPrice = ladderYToPrice(getY(e), rail.offsetHeight);
-    ladderRender();
-  });
-  document.addEventListener('touchmove', function(e){
-    if(!ladderDragging) return;
-    e.preventDefault();
-    ladderCurrentPrice = ladderYToPrice(getY(e), rail.offsetHeight);
-    ladderRender();
-  }, {passive:false});
-
-  document.addEventListener('mouseup', function(){ ladderDragging = false; });
-  document.addEventListener('touchend', function(){ ladderDragging = false; });
-
-  // Also allow clicking anywhere on the rail to jump
-  rail.addEventListener('click', function(e){
-    if(e.target === handle || handle.contains(e.target)) return;
-    var rect = rail.getBoundingClientRect();
-    ladderCurrentPrice = ladderYToPrice(e.clientY - rect.top, rail.offsetHeight);
-    ladderRender();
-  });
-}
-
-function initLadder() {
-  ladderRender();
-  ladderInitDrag();
-  window.addEventListener('resize', ladderRender);
+  // Risk summary
+  var riskHtml =
+    '<div class="lab-risk-item"><div class="lab-risk-label">Max Risk</div><div class="lab-risk-value neg">'+(maxRisk?'-$'+maxRisk.toFixed(2):'--')+'</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">R/R Ratio</div><div class="lab-risk-value neu">'+rrRatio+'R</div></div>'+
+    '<div class="lab-risk-item"><div class="lab-risk-label">Full Target</div><div class="lab-risk-value pos">'+(entry&&contracts?'+$'+(tp3*Math.max(1,Math.round(contracts*0.1))*5).toFixed(2):'--')+'</div></div>';
+  var rg = document.getElementById('lab-risk-grid');
+  if (rg) rg.innerHTML = riskHtml;
 }
 
 </script>
