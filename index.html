@@ -2326,7 +2326,6 @@ renderDashboard();
 renderCalendar();
 renderSetupCalendar();
 renderMacroSection();
-labInit();
 
 
 
@@ -2448,18 +2447,25 @@ function labUpdate() {
     { label:'T2', offset: tp2, pct:15 },
     { label:'Runner', offset: tp3, pct:10 }
   ];
-  var contractSplit = [
-    Math.round(contracts * 0.75) || 1,
-    Math.max(1, Math.round(contracts * 0.15)),
-    Math.max(1, Math.round(contracts * 0.10))
-  ];
-  // Ensure splits don't exceed total
-  while (contractSplit[0]+contractSplit[1]+contractSplit[2] > contracts && contractSplit[2] > 1) contractSplit[2]--;
-  while (contractSplit[0]+contractSplit[1]+contractSplit[2] > contracts && contractSplit[1] > 1) contractSplit[1]--;
+  // Contract splits: lock 75% at T1, 1 at T2, 1 runner
+  // For small sizes: 3=2/1/0, 2=1/1/0, 1=1/0/0
+  var tp1c, tp2c, tp3c;
+  if (contracts === 1) {
+    tp1c = 1; tp2c = 0; tp3c = 0;
+  } else if (contracts === 2) {
+    tp1c = 1; tp2c = 1; tp3c = 0;
+  } else if (contracts === 3) {
+    tp1c = 2; tp2c = 1; tp3c = 0;
+  } else {
+    // 4+: T1 = total-2, T2 = 1, Runner = 1
+    tp1c = contracts - 2; tp2c = 1; tp3c = 1;
+  }
+  var contractSplit = [tp1c, tp2c, tp3c];
 
   var lockedPnl = 0;
   var tpHtml = '';
   for (var i = 0; i < tpData.length; i++) {
+    if (contractSplit[i] === 0) continue; // skip TPs with no contracts
     var tp = tpData[i];
     var price = entry ? entry + tp.offset : null;
     var tpPnl = price && entry ? tp.offset * contractSplit[i] * 5 : 0;
@@ -2484,9 +2490,15 @@ function labUpdate() {
   var entryDisplay = entry ? entry.toFixed(2) : '--';
   var baseDisplay = baseLevel && isNAP ? baseLevel.toFixed(2) + ' +' + nap + 'pts' : entryDisplay;
 
-  // Build card
+  // Build card — always render
   var preview = document.getElementById('lab-card-preview');
   if (!preview) return;
+  if (!baseLevel) {
+    preview.innerHTML = '<div style="border:1px dashed var(--border2);border-radius:12px;padding:32px;text-align:center;color:var(--text3);font-family:JetBrains Mono,monospace;font-size:12px;">&#8593; Select a setup level above<br>or enter an override price</div>';
+    var rg2 = document.getElementById('lab-risk-grid');
+    if (rg2) rg2.innerHTML = '<div class="lab-risk-item"><div class="lab-risk-label">Max Risk</div><div class="lab-risk-value neu">--</div></div><div class="lab-risk-item"><div class="lab-risk-label">R/R Ratio</div><div class="lab-risk-value neu">--</div></div><div class="lab-risk-item"><div class="lab-risk-label">Full Target</div><div class="lab-risk-value neu">--</div></div>';
+    return;
+  }
   var typeColor = labState.type==='FBD'?'var(--purple)':labState.type==='RECLAIM'?'var(--green)':'var(--blue)';
 
   // Net PnL display
