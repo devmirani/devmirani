@@ -875,29 +875,29 @@
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7485 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Monster low set Friday 4:45PM — ES rallied to today's highs from there. Clearly actionable FBD. Backup: <strong>7516 FBD</strong> — small shelf built 12–2PM Tue. Quick trap + recover.</div>
-        <div class="ctx-setup-stop">Stop: Below 7473 (7485 FBD) / Below 7503 (7516 FBD)</div>
+        <div class="ctx-setup-level">7516 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Multi-touch shelf 7514–7518 (4 touches). Keep smaller size — zone well tested. Full flush and recovery required. Backup: <strong>7485 FBD</strong> — Friday 4:45PM monster low, clearly actionable.</div>
+        <div class="ctx-setup-stop">Stop: Below 7503 (7516 FBD) / Below 7473 (7485 FBD)</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Defend 7516 (quick trap ok), resume up to 7548, 7566. New range builds, then breakout to 7578, 7613. Ultra-bull: never tests 7458.</div>
+          <div class="ctx-case-text">Fill range to 7565 (1 more trap below ok), then breakout to 7579, 7598, 7617. Lean with the trend.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7485. Breakdown trade — 80% fail rate. Advanced only. Final bounce at 7485, short below lows. Trigger ~7477.</div>
+          <div class="ctx-case-text">Begins below 7516. Advanced only. Final bounce at 7516, short below lows. Trigger ~7512.</div>
         </div>
       </div>
     </div>
     <div class="ctx-week-stats-wrap">
       <div class="ctx-week-label">&#9651; This Week — Key Setups That Triggered</div>
       <div class="ctx-week-stats">
-        <div class="ctx-stat"><div class="ctx-stat-label">7530 FBD (Tue 9:42AM)</div><div class="ctx-stat-value pos">7525 → 7555+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7518 FBD (Wed 11:55AM)</div><div class="ctx-stat-value pos">7516 → 7540+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7530 Reclaim (Wed 9:50AM)</div><div class="ctx-stat-value pos">7525 → 7545</div></div>
         <div class="ctx-stat"><div class="ctx-stat-label">Adam Runner Active</div><div class="ctx-stat-value neu">From 7415 Thu</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Breakout Range</div><div class="ctx-stat-value pos">7458 → 7570+</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Wed</div><div class="ctx-stat-value neu">7485 FBD</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7485</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Thu</div><div class="ctx-stat-value neu">7516 FBD</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7516</div></div>
       </div>
     </div>
   </div>
@@ -1131,6 +1131,20 @@ var weeks = [
 ];
 
 var trades = [
+  { id:47, date:"05/27/2026", entryTime:"1:14 PM", entryPrice:7521.75, stopPrice:7511.75, setup:"FBD", result:"win", contracts:6, tradeLabel:"7516 FBD — NAP",
+    targets:[
+      {label:"T1",price:7526.50,contracts:3,status:"hit",pnl:71.25,exitTime:"1:20 PM"},
+      {label:"T2",price:7542.00,contracts:2,status:"hit",pnl:202.50,exitTime:"4:09 PM"},
+      {label:"Runner",price:7545.50,contracts:1,status:"hit",pnl:118.75,exitTime:"4:25 PM"}
+    ],
+    times:[{label:"Entry",value:"1:14 PM"},{label:"T1",value:"1:20 PM"},{label:"T2",value:"4:09 PM"},{label:"Runner",value:"4:25 PM"}],
+    totalPts:12.42, totalPnl:392.50, exitNote:"T1: 3 @ 7526.50. T2: 2 @ 7542. Runner: 1 @ 7545.50 (4:25PM).", journal:"7516 FBD via NAP. 7516 swept to 7516ish, recovered, entered at 7521.75. T1 locked quickly. 2 runners working." },
+  { id:46, date:"05/27/2026", entryTime:"12:45 PM", entryPrice:7536.25, stopPrice:7523.75, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7530 Reclaim — NAP",
+    targets:[
+      {label:"T1",price:7540.00,contracts:5,status:"stopped",pnl:-312.50,exitTime:"1:06 PM"}
+    ],
+    times:[{label:"Entry",value:"12:45 PM"},{label:"Stopped",value:"1:06 PM"}],
+    totalPts:-12.50, totalPnl:-312.50, exitNote:"NAP entry at 7536.25. Barely missed T1 at 7540 — reversed back down to 7516. Stopped at 7523.75.", journal:"Second crack at 7530 reclaim using NAP. Just missed T1 at 7540 then ES reversed back to 7516 next support. Classic trap." },
   { id:44, date:"05/27/2026", entryTime:"10:00 AM", entryPrice:7535.25, stopPrice:7525.00, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7530 FBD",
     targets:[
       {label:"T1",price:7540.00,contracts:2,status:"hit",pnl:47.50,exitTime:"10:01 AM"},
@@ -1485,6 +1499,18 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"05/28/2026", setups:[
+    {level:7516,type:"FBD",priority:"aplus",notes:"Range support. Multi-touch shelf 7514–7518 (4 touches across Tue/Wed). FBD is actionable but keep smaller size — zone is well tested and odds of true breakdown increase. Wait for full flush and recovery before entry."},
+    {level:7530,type:"FBD",priority:"b",notes:"Key inside pivot. Very noisy — engaged over and over for days. Can wait for flush and recover but expect trappy action. Not something Adam would engage at this point."},
+    {level:7502,type:"FBD",priority:"a",notes:"Decent support. Don't just buy it — wait for it to hold then recover 7514–18 shelf to get long. Below 7502 ES could start to sell off."},
+    {level:7485,type:"FBD",priority:"aplus",notes:"Monster low set Friday 4:45PM. ES rallied to today's highs from here. FBD is clearly actionable. Not much below until 7458."},
+    {level:7458,type:"FBD",priority:"a",notes:"Bottom of old range. Slow grind only — can buy direct. If knifing wait for flush and recover. Strong bull case: ES never gets here."},
+    {level:7438,type:"FBD",priority:"a",notes:"Nice low set ~2:45PM Thursday. Clearly actionable FBD. Not much below until 7408–7412 shelf — safer to wait for full shelf flush and recover."}
+  ],
+  bull:"Range 7516–7565, 7530 key pivot inside. Fill range out (perhaps 1 more trap below), head up to 7565. 1 last dip there, then breakout targets 7579, 7598, 7617. Lean: defer to the trend.",
+  bear:"Begins below 7516. Breakdown trade — 80% fail rate, advanced only. Final bounce at 7516, short below lows. Trigger ~7512.",
+  summary:"Thursday May 28. ES rangebound 7516–7565, 7530 as key pivot. Mode 2 range day expected. Lean: fill range, 1 more trap below possible, then breakout to 7579, 7598, 7617. React to triggers only."
+  },
   { date:"05/27/2026", setups:[
     {level:7516,type:"FBD",priority:"a",notes:"First support. Small shelf of lows built 12pm–2pm Tuesday. Low quality FBD but actionable if sweeps shelf and recovers. Bonus if tags 7503 first. If 7503 fails, ES should sell off."},
     {level:7503,type:"FBD",priority:"a",notes:"Decent support. Can buy on slow controlled grind into zone. If knifing, wait for flush and recovery. Below here 7485 is next."},
