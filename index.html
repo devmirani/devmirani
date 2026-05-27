@@ -1131,13 +1131,13 @@ var weeks = [
 ];
 
 var trades = [
-  { id:44, date:"05/27/2026", entryTime:"10:00 AM", entryPrice:7535.25, stopPrice:7525.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7530 FBD",
+  { id:44, date:"05/27/2026", entryTime:"10:00 AM", entryPrice:7535.25, stopPrice:7525.00, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7530 FBD",
     targets:[
       {label:"T1",price:7540.00,contracts:2,status:"hit",pnl:47.50,exitTime:"10:01 AM"},
-      {label:"T2",price:7566.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+      {label:"T2",price:7520.25,contracts:1,status:"stopped",pnl:-75.00,exitTime:"11:44 AM"}
     ],
-    times:[{label:"Entry",value:"10:00 AM"},{label:"T1",value:"10:01 AM"},{label:"T2",value:"Open"}],
-    totalPts:1.58, totalPnl:47.50, exitNote:"T1: 2 contracts at 7540 (10:01AM). 1 runner targeting 7566.", journal:"" },
+    times:[{label:"Entry",value:"10:00 AM"},{label:"T1",value:"10:01 AM"},{label:"Stopped",value:"11:44 AM"}],
+    totalPts:-3.17, totalPnl:-27.50, exitNote:"T1: 2 contracts at 7540. Runner stopped at 7520.25 (11:44AM).", journal:"" },
   { id:43, date:"05/26/2026", entryTime:"6:13 PM", entryPrice:7532.50, stopPrice:7515.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7530 Level Reclaim",
     targets:[
       {label:"T1",price:7537.50,contracts:3,status:"hit",pnl:75.00,exitTime:"7:21 PM"},
