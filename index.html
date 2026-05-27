@@ -937,47 +937,7 @@
     </div>
     <div class="open-pos-grid" id="open-pos-grid">
 
-      <!-- CRWV Card -->
-      <div class="open-pos-card">
-        <div class="open-pos-card-header">
-          <div class="open-pos-emblem" style="background: linear-gradient(135deg, #1a0a2e, #3d1a6e); color: #a855f7;">CW</div>
-          <div class="open-pos-ticker-wrap">
-            <div class="open-pos-ticker">CRWV</div>
-            <div class="open-pos-company">CoreWeave, Inc. &mdash; NASDAQ</div>
-          </div>
-          <span class="open-pos-status">&#9679; OPEN</span>
-        </div>
-        <hr class="open-pos-divider">
-        <div class="open-pos-info-grid">
-          <div>
-            <div class="open-pos-field-label">Contract</div>
-            <div class="open-pos-field-value">$116 Call</div>
-          </div>
-          <div>
-            <div class="open-pos-field-label">Expiry</div>
-            <div class="open-pos-field-value amber">May 22, 2026</div>
-          </div>
-          <div>
-            <div class="open-pos-field-label">Entry Price</div>
-            <div class="open-pos-field-value">$100.00</div>
-          </div>
-          <div>
-            <div class="open-pos-field-label">Contracts</div>
-            <div class="open-pos-field-value">1</div>
-          </div>
-          <div>
-            <div class="open-pos-field-label">Entry Time</div>
-            <div class="open-pos-field-value">3:50 PM 05/18</div>
-          </div>
-          <div>
-            <div class="open-pos-field-label">Cost Basis</div>
-            <div class="open-pos-field-value">$100.00</div>
-          </div>
-        </div>
-        <div class="open-pos-note">
-          AI cloud infrastructure play. Stock at ~$103-107 today. $116 strike = OTM. 4 days to expiry. Needs a move above $116 to be ITM. NVIDIA disclosed stake in CRWV on 5/15.
-        </div>
-      </div>
+      <div class="open-pos-empty">No open positions.</div>
 
     </div>
   </div>
@@ -1171,6 +1131,13 @@ var weeks = [
 ];
 
 var trades = [
+  { id:44, date:"05/27/2026", entryTime:"10:00 AM", entryPrice:7535.25, stopPrice:7525.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7530 FBD",
+    targets:[
+      {label:"T1",price:7540.00,contracts:2,status:"hit",pnl:47.50,exitTime:"10:01 AM"},
+      {label:"T2",price:7566.00,contracts:1,status:"open",pnl:0,exitTime:"Open"}
+    ],
+    times:[{label:"Entry",value:"10:00 AM"},{label:"T1",value:"10:01 AM"},{label:"T2",value:"Open"}],
+    totalPts:1.58, totalPnl:47.50, exitNote:"T1: 2 contracts at 7540 (10:01AM). 1 runner targeting 7566.", journal:"" },
   { id:43, date:"05/26/2026", entryTime:"6:13 PM", entryPrice:7532.50, stopPrice:7515.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7530 Level Reclaim",
     targets:[
       {label:"T1",price:7537.50,contracts:3,status:"hit",pnl:75.00,exitTime:"7:21 PM"},
