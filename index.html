@@ -1145,6 +1145,33 @@ var trades = [
     ],
     times:[{label:"Entry",value:"12:45 PM"},{label:"Stopped",value:"1:06 PM"}],
     totalPts:-12.50, totalPnl:-312.50, exitNote:"NAP entry at 7536.25. Barely missed T1 at 7540 — reversed back down to 7516. Stopped at 7523.75.", journal:"Second crack at 7530 reclaim using NAP. Just missed T1 at 7540 then ES reversed back to 7516 next support. Classic trap." },
+  { id:51, date:"05/28/2026", entryTime:"10:07 AM", entryPrice:94.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:1, tradeLabel:"SPY $752 Call", type:"options",
+    targets:[
+      {label:"T1",price:172.00,contracts:1,status:"hit",pnl:125.00,exitTime:"10:07 AM"},
+      {label:"Runner",price:247.00,contracts:1,status:"hit",pnl:200.00,exitTime:"11:57 AM"}
+    ],
+    times:[{label:"Entry",value:"10:07 AM"},{label:"T1",value:"10:07 AM"},{label:"Runner",value:"11:57 AM"}],
+    totalPts:0, totalPnl:325.00, exitNote:"T1: 1 contract at $172 (+$125). Runner: 1 contract at $247 (+$200). Fully closed.", journal:"" },
+  { id:50, date:"05/28/2026", entryTime:"10:00 AM", entryPrice:7538.00, stopPrice:7525.00, setup:"LEVEL_RECLAIM", result:"win", contracts:2, tradeLabel:"7535 Reclaim — Runner",
+    targets:[
+      {label:"T1",price:7549.00,contracts:1,status:"hit",pnl:55.00,exitTime:"10:12 AM"},
+      {label:"Runner",price:7579.00,contracts:1,status:"hit",pnl:205.00,exitTime:"12:19 PM"}
+    ],
+    times:[{label:"Entry",value:"10:00 AM"},{label:"T1",value:"10:12 AM"},{label:"Runner",value:"12:19 PM"}],
+    totalPts:23.50, totalPnl:260.00, exitNote:"T1: 1 @ 7549 (10:12AM). Runner: 1 @ 7579 (12:19PM).", journal:"" },
+  { id:49, date:"05/28/2026", entryTime:"8:45 AM", entryPrice:7535.75, stopPrice:7525.00, setup:"LEVEL_RECLAIM", result:"win", contracts:6, tradeLabel:"7535 Reclaim",
+    targets:[
+      {label:"T1",price:7540.75,contracts:3,status:"hit",pnl:75.00,exitTime:"9:00 AM"},
+      {label:"T2",price:7544.50,contracts:3,status:"hit",pnl:131.25,exitTime:"10:12 AM"}
+    ],
+    times:[{label:"Entry",value:"8:45 AM"},{label:"T1",value:"9:00 AM"},{label:"T2",value:"10:12 AM"}],
+    totalPts:6.88, totalPnl:206.25, exitNote:"T1: 3 @ 7540.75 (9AM). T2: 3 @ 7544.50 (10:12AM). Fully closed.", journal:"" },
+  { id:48, date:"05/27/2026", entryTime:"7:20 PM", entryPrice:7547.50, stopPrice:7533.75, setup:"SUPPORT_BOUNCE", result:"loss", contracts:3, tradeLabel:"7540 Support Bounce",
+    targets:[
+      {label:"SL",price:7533.75,contracts:3,status:"stopped",pnl:-206.25,exitTime:"7:51 PM"}
+    ],
+    times:[{label:"Entry",value:"7:20 PM"},{label:"Stopped",value:"7:51 PM"}],
+    totalPts:-13.75, totalPnl:-206.25, exitNote:"3 contracts at 7547.50. Stopped at 7533.75 at 7:51PM.", journal:"" },
   { id:44, date:"05/27/2026", entryTime:"10:00 AM", entryPrice:7535.25, stopPrice:7525.00, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7530 FBD",
     targets:[
       {label:"T1",price:7540.00,contracts:2,status:"hit",pnl:47.50,exitTime:"10:01 AM"},
