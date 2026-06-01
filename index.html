@@ -869,34 +869,34 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias</div>
+        <div class="ctx-label">Market Bias — Updated Jun 2</div>
         <div class="ctx-bias-value">BULL</div>
-        <div class="ctx-bias-sub">Range broke out Thursday. Mode 2 continues. Lean: hold 7439 or 7415 (quick trap ok), continue to 7490, 7507, 7530.</div>
+        <div class="ctx-bias-sub">ATH parabola continues. New consolidation support 7574–77 since Thursday. Bulls want to hold 7620/7605. Lean: defer to trend. Next targets 7637, 7648, 7656, 7692.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7565 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Backtest of broken range. Safer entry: wait for 7565 to defend then recover <strong>7574 shelf</strong> (9:20PM Thu low). NAP: 7574+5=7579. Backup: <strong>7538 FBD</strong> — decent support below.</div>
-        <div class="ctx-setup-stop">Stop: Below 7555 (7565 FBD) / Below 7525 (7538 FBD)</div>
+        <div class="ctx-setup-level">7574–77 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Complex multi-touch shelf of lows since Thursday — today's daily low 7576 + Friday's low 7577. Ideal: sweep shelf (tag 7565 if possible) then recover 7575. NAP: hold above <strong>7580</strong> for a few minutes. No real quality entries until this level. 7605 too close to highs — wait for flush &amp; recover to ~7598 minimum.</div>
+        <div class="ctx-setup-stop">Stop: Below 7565 — loss here = probable collapse</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Defend 7565 (quick trap ok). Continue up to 7609, 7624, 7655. Ultra-bull: ES never gets near 7516.</div>
+          <div class="ctx-case-text">Parabolic: hold 7620/7605, won't even test 7574–77. Normal: defend 7574–77 (quick trap ok), continue up. Targets: 7637, 7648, 7656, 7692.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">No bear case until 7565 fails. Advanced only. Final bounce at 7565, short below lows. Trigger ~7555.</div>
+          <div class="ctx-case-text">Begins below 7565. Breakdown — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only.</div>
         </div>
       </div>
     </div>
     <div class="ctx-week-stats-wrap">
       <div class="ctx-week-label">&#9651; This Week — Key Setups That Triggered</div>
       <div class="ctx-week-stats">
-        <div class="ctx-stat"><div class="ctx-stat-label">7518 FBD Retest (Thu 7:30AM)</div><div class="ctx-stat-value pos">7518 → 7600+</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Fri Grind Higher</div><div class="ctx-stat-value pos">7600 → ATH</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Adam Runner Active</div><div class="ctx-stat-value neu">From 7415 Thu</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Mon</div><div class="ctx-stat-value neu">7565 FBD</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7518 FBD (Thu 1:30AM)</div><div class="ctx-stat-value pos">7518 → 7620+</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7574 FBD (Sun)</div><div class="ctx-stat-value pos">+35 pts</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">7585 FBD (Mon 9:40AM)</div><div class="ctx-stat-value pos">+24 pts</div></div>
+        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Tue</div><div class="ctx-stat-value neu">7574–77 FBD</div></div>
         <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7565</div></div>
       </div>
     </div>
@@ -1135,6 +1135,21 @@ var weeks = [
 ];
 
 var trades = [
+  { id:55, date:"06/01/2026", entryTime:"9:40 AM", entryPrice:117.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:3, tradeLabel:"SPY $759 Call", type:"options",
+    targets:[
+      {label:"T1",price:252.00,contracts:2,status:"hit",pnl:174.00,exitTime:"1:43 PM"},
+      {label:"Runner",price:4.00,contracts:1,status:"stopped",pnl:-35.00,exitTime:"EOD"}
+    ],
+    times:[{label:"Entry",value:"9:40 AM"},{label:"T1",value:"1:43 PM"},{label:"Runner",value:"EOD"}],
+    totalPts:0, totalPnl:139.00, exitNote:"T1: 2 contracts at $126 each. Runner: sold at $4. Net +$139.", journal:"" },
+  { id:54, date:"06/01/2026", entryTime:"9:35 AM", entryPrice:7588.25, stopPrice:7572.25, setup:"FBD", result:"win", contracts:5, tradeLabel:"7585 FBD",
+    targets:[
+      {label:"T1",price:7593.50,contracts:3,status:"hit",pnl:78.75,exitTime:"9:38 AM"},
+      {label:"T2",price:7608.25,contracts:1,status:"hit",pnl:100.00,exitTime:"12:55 PM"},
+      {label:"Runner",price:7623.50,contracts:1,status:"hit",pnl:176.25,exitTime:"1:43 PM"}
+    ],
+    times:[{label:"Entry",value:"9:35 AM"},{label:"T1",value:"9:38 AM"},{label:"T2",value:"12:55 PM"},{label:"Runner",value:"1:43 PM"}],
+    totalPts:19.75, totalPnl:355.00, exitNote:"T1: 3 @ 7593.50. T2: 1 @ 7608.25. Runner: 1 @ 7623.50 (1:43PM). Fully closed.", journal:"" },
   { id:47, date:"05/27/2026", entryTime:"1:14 PM", entryPrice:7521.75, stopPrice:7511.75, setup:"FBD", result:"win", contracts:6, tradeLabel:"7516 FBD — NAP",
     targets:[
       {label:"T1",price:7526.50,contracts:3,status:"hit",pnl:71.25,exitTime:"1:20 PM"},
@@ -1543,6 +1558,17 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/02/2026", setups:[
+    {level:7574,type:"FBD",priority:"aplus",notes:"Complex multi-touch shelf of lows 7574–77 since Thursday — today's daily low 7576 and Friday's low 7577. Ideal: sweep shelf (tag 7565 if possible) then recover 7575. NAP: hold above 7580 for a few minutes. Below 7565 = probable collapse."},
+    {level:7605,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down — too close to highs for a direct bid. If desperate, wait for flush and recover (ideal: dip to ~7598) before entering. Not a quality setup in itself."},
+    {level:7527,type:"FBD",priority:"a",notes:"10AM Thursday low from which ES rallied to today's highs. Failed Breakdown here is actionable if we sell down that far."},
+    {level:7516,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. 6:40AM Thursday ES set a huge low here — Failed Breakdown is highly actionable. High quality if it gets there."},
+    {level:7538,type:"FBD",priority:"b",notes:"Minor support. Only try on slow controlled grind — if knifing full speed, skip and wait for 7527 or 7516 FBD instead."}
+  ],
+  bull:"ATH parabola continues. ES broke out 7516–7565 multi-day range last Thursday, built new consolidation support 7574–77 since. Parabolic: bulls hold 7620/7605, won't test 7574–77. Normal: defend 7574–77 (quick trap ok), continue up. Next targets: 7637, 7648, 7656, 7692.",
+  bear:"Begins below 7565. Breakdown — 80% fail rate. Loss of 7565 = probable collapse. Final bounce at 7565, short below lows of bounce. Trigger ~7555. Advanced only.",
+  summary:"Tuesday June 2. ATH parabola — every micro dip gets bought. ES broke out 7516–7565 range Thursday, now consolidating 7574–77. No quality entries until 7574–77 FBD. 7605 first support too close to highs to bid directly. Defer to the trend — wait for elevator down sell into quality FBD, react, manage level to level."
+  },
   { date:"06/01/2026", setups:[
     {level:7585,type:"FBD",priority:"b",notes:"First support down. Well tested zone on Friday. Little interest in bidding this close to highs. If desperate, wait for flush and recover only."},
     {level:7565,type:"FBD",priority:"aplus",notes:"Backtest of range we broke out of yesterday. Can buy direct BUT safer alternative: wait for 7565 to defend then recover 7574 (9:20PM Thursday low). That shelf recovery = cleaner FBD entry."},
@@ -1772,8 +1798,8 @@ var macroEvents = [
 
 
 var currentFilter = "all";
-var calYear = 2026; var calMonth = 4;
-var setupCalYear = 2026; var setupCalMonth = 4;
+var calYear = 2026; var calMonth = 5;
+var setupCalYear = 2026; var setupCalMonth = 5;
 var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 var dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
