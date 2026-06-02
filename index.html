@@ -1156,13 +1156,20 @@ var weeks = [
 ];
 
 var trades = [
+  { id:58, date:"06/02/2026", entryTime:"9:47 AM", entryPrice:33.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:3, tradeLabel:"SPY $760 Call", type:"options",
+    targets:[
+      {label:"T1",price:54.00,contracts:2,status:"hit",pnl:42.00,exitTime:"10:47 AM"},
+      {label:"Runner",price:0,contracts:1,status:"stopped",pnl:-33.00,exitTime:"Expired"}
+    ],
+    times:[{label:"Entry",value:"9:47 AM"},{label:"T1",value:"10:47 AM"},{label:"Runner",value:"--"}],
+    totalPts:0, totalPnl:9.00, exitNote:"T1: 2 contracts @ $54 (+$42). Runner: expired worthless (-$33).", journal:"" },
   { id:57, date:"06/02/2026", entryTime:"10:05 AM", entryPrice:7606.25, stopPrice:7596.00, setup:"LEVEL_RECLAIM", result:"win", contracts:3, tradeLabel:"7605 Reclaim",
     targets:[
       {label:"T1",price:7611.25,contracts:2,status:"hit",pnl:50.00,exitTime:"10:13 AM"},
-      {label:"T2",price:7626.00,contracts:1,status:"open",pnl:0,exitTime:""}
+      {label:"T2",price:7621.00,contracts:1,status:"hit",pnl:73.75,exitTime:"3:42 PM"}
     ],
-    times:[{label:"Entry",value:"10:05 AM"},{label:"T1",value:"10:13 AM"},{label:"T2",value:"--"}],
-    totalPts:5.00, totalPnl:50.00, exitNote:"T1: 2 @ 7611.25 (+5pts, +$50). Runner: targeting 7626, stop 7596.", journal:"" },
+    times:[{label:"Entry",value:"10:05 AM"},{label:"T1",value:"10:13 AM"},{label:"T2",value:"3:42 PM"}],
+    totalPts:19.75, totalPnl:123.75, exitNote:"T1: 2 @ 7611.25 (+5pts, +$50). T2: 1 @ 7621 (+14.75pts, +$73.75).", journal:"" },
   { id:56, date:"06/02/2026", entryTime:"12:45 AM", entryPrice:7586.25, stopPrice:0, setup:"FBD", result:"win", contracts:3, tradeLabel:"7586 FBD — Overnight",
     targets:[
       {label:"T1",price:7591.25,contracts:2,status:"hit",pnl:50.00,exitTime:"1:01 AM"},
