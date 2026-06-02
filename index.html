@@ -1156,6 +1156,13 @@ var weeks = [
 ];
 
 var trades = [
+  { id:56, date:"06/02/2026", entryTime:"12:45 AM", entryPrice:7586.25, stopPrice:0, setup:"FBD", result:"win", contracts:3, tradeLabel:"7586 FBD — Overnight",
+    targets:[
+      {label:"T1",price:7591.25,contracts:2,status:"hit",pnl:50.00,exitTime:"1:01 AM"},
+      {label:"Runner",price:7606.75,contracts:1,status:"hit",pnl:102.50,exitTime:"4:23 AM"}
+    ],
+    times:[{label:"Entry",value:"12:45 AM"},{label:"T1",value:"1:01 AM"},{label:"Runner",value:"4:23 AM"}],
+    totalPts:25.50, totalPnl:152.50, exitNote:"T1: 2 @ 7591.25 (+5pts, +$50). Runner: 1 @ 7606.75 (+20.5pts, +$102.50).", journal:"" },
   { id:55, date:"06/01/2026", entryTime:"9:40 AM", entryPrice:117.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:3, tradeLabel:"SPY $759 Call", type:"options",
     targets:[
       {label:"T1",price:252.00,contracts:2,status:"hit",pnl:174.00,exitTime:"1:43 PM"},
