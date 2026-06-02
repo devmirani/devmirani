@@ -61,7 +61,7 @@
     justify-content: space-between;
     border-bottom: 1px solid var(--border);
     position: relative;
-    background: var(--bg2);
+    background: transparent;
   }
   header::after {
     content: "";
@@ -110,7 +110,7 @@
     gap: 2px;
     padding: 0 40px;
     border-bottom: 1px solid var(--border);
-    background: var(--bg2);
+    background: transparent;
   }
   .nav-tab {
     padding: 14px 22px;
@@ -251,25 +251,25 @@
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
   .cal-dow { text-align: center; font-size: 10px; padding: 6px 0; text-transform: uppercase; letter-spacing: 0.08em; }
   .cal-dow.normal { color: #a0aab8; }
-  .cal-dow.total { color: #b57bee; }
-  body.light .cal-dow.total { color: #8b5cf6; }
+  .cal-dow.total { color: #00e676; }
+  body.light .cal-dow.total { color: #00a854; }
   .cal-cell { background: #0d1117; border-radius: 6px; min-height: 80px; padding: 8px; border: 1px solid #21262d; position: relative; }
   body.light .cal-cell { background: #fff; border-color: #d0d7e3; }
   .cal-cell.empty { background: transparent; border-color: transparent; min-height: 80px; }
   .cal-cell.today { border-color: #a0aab8; }
-  .cal-cell.week-total-cell { border-color: rgba(181,123,238,0.3); }
-  body.light .cal-cell.week-total-cell { border-color: rgba(139,92,246,0.3); }
+  .cal-cell.week-total-cell { border-color: #21262d; background: var(--bg2); }
+  body.light .cal-cell.week-total-cell { border-color: #d0d7e3; background: var(--bg2); }
   .cal-cell.green-bg { background: rgba(0,230,118,0.08); border-color: rgba(0,230,118,0.25); }
   .cal-cell.red-bg { background: rgba(224,92,92,0.08); border-color: rgba(224,92,92,0.25); }
   body.light .cal-cell.green-bg { background: rgba(0,168,84,0.07); border-color: rgba(0,168,84,0.3); }
   body.light .cal-cell.red-bg { background: rgba(192,57,43,0.07); border-color: rgba(192,57,43,0.3); }
-  .cal-cell.week-green { background: rgba(0,230,118,0.05); border-color: rgba(181,123,238,0.4); }
-  .cal-cell.week-red { background: rgba(224,92,92,0.05); border-color: rgba(181,123,238,0.4); }
+  .cal-cell.week-green { background: var(--bg2); border-color: #21262d; }
+  .cal-cell.week-red { background: var(--bg2); border-color: #21262d; }
   .cal-day-num { font-size: 11px; color: #a0aab8; margin-bottom: 4px; }
   .cal-cell.has-trades .cal-day-num { color: #c9d1d9; font-weight: 700; }
   body.light .cal-cell.has-trades .cal-day-num { color: #1a1f2e; }
-  .cal-week-label { font-size: 10px; color: #b57bee; font-weight: 700; margin-bottom: 4px; }
-  body.light .cal-week-label { color: #8b5cf6; }
+  .cal-week-label { font-size: 10px; color: #a0aab8; font-weight: 700; margin-bottom: 4px; }
+  body.light .cal-week-label { color: #4a6580; }
   .cal-pnl { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
   .cal-pnl.pos { color: #00e676; }
   .cal-pnl.neg { color: #e05c5c; }
@@ -322,21 +322,21 @@
   .setup-cal-dow { text-align: center; font-size: 10px; color: #a0aab8; padding: 6px 0; text-transform: uppercase; letter-spacing: 0.08em; }
   .setup-cal-cell { background: #0d1117; border-radius: 6px; min-height: 80px; padding: 8px; border: 1px solid #21262d; cursor: default; }
   body.light .setup-cal-cell { background: #fff; border-color: #d0d7e3; }
-  .setup-cal-cell.has-setups { cursor: pointer; border-color: rgba(181,123,238,0.3); background: rgba(181,123,238,0.04); }
-  .setup-cal-cell.has-setups:hover { border-color: #b57bee; }
-  .setup-cal-cell.active-setup-day { border-color: #b57bee; background: rgba(181,123,238,0.1); }
+  .setup-cal-cell.has-setups { cursor: pointer; border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.04); }
+  .setup-cal-cell.has-setups:hover { border-color: var(--amber); }
+  .setup-cal-cell.active-setup-day { border-color: var(--amber); background: rgba(251,191,36,0.1); }
   .setup-cal-cell.empty { background: transparent; border-color: transparent; }
   .setup-cal-day-num { font-size: 11px; color: #a0aab8; margin-bottom: 6px; }
   .setup-cal-cell.has-setups .setup-cal-day-num { color: #c9d1d9; font-weight: 700; }
   body.light .setup-cal-cell.has-setups .setup-cal-day-num { color: #1a1f2e; }
-  .setup-cal-badge-count { font-size: 10px; color: #b57bee; font-weight: 700; margin-bottom: 4px; }
+  .setup-cal-badge-count { font-size: 10px; color: var(--amber); font-weight: 700; margin-bottom: 4px; }
   .setup-cal-titles { font-size: 9px; color: #a0aab8; line-height: 1.6; }
   .setup-drill { display: none; margin: 0 40px 60px; }
   .setup-drill.open { display: block; }
   .setup-drill-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 20px; padding-top: 24px; border-top: 1px solid #21262d; }
   body.light .setup-drill-title { color: #1a1f2e; border-top-color: #d0d7e3; }
   .setup-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .setup-card { background: #0d1117; border-radius: 10px; padding: 20px 24px; border-left: 3px solid #b57bee; }
+  .setup-card { background: #0d1117; border-radius: 10px; padding: 20px 24px; border-left: 3px solid var(--amber); }
   body.light .setup-card { background: #fff; }
   .setup-card.priority-aplus { border-left-color: #00e676; }
   .setup-card.priority-a { border-left-color: #f0a500; }
@@ -349,7 +349,7 @@
   .priority-aplus .setup-card-priority { background: rgba(0,230,118,0.1); color: #00e676; border: 1px solid rgba(0,230,118,0.3); }
   .priority-a .setup-card-priority { background: rgba(240,165,0,0.1); color: #f0a500; border: 1px solid rgba(240,165,0,0.3); }
   .priority-b .setup-card-priority { background: rgba(139,148,158,0.1); color: #a0aab8; border: 1px solid rgba(139,148,158,0.3); }
-  .setup-card-type { display: inline-block; margin-bottom: 12px; padding: 2px 10px; border: 1.5px solid #b57bee; border-radius: 6px; color: #b57bee; font-size: 11px; font-weight: 600; }
+  .setup-card-type { display: inline-block; margin-bottom: 12px; padding: 2px 10px; border: 1.5px solid var(--amber); border-radius: 6px; color: var(--amber); font-size: 11px; font-weight: 600; }
   .setup-card-notes-label { font-size: 10px; color: #a0aab8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
   .setup-card-notes { font-size: 12px; color: #e6edf3; line-height: 1.7; }
   body.light .setup-card-notes { color: #1a1f2e; }
@@ -394,17 +394,17 @@
   body.light .setup-context-card { background: #f0f2f7; border-color: #d0d7e3; }
   .setup-context-card.bull { border-left: 3px solid #00e676; }
   .setup-context-card.bear { border-left: 3px solid #e05c5c; }
-  .setup-context-card.summary { border-left: 3px solid #b57bee; }
+  .setup-context-card.summary { border-left: 3px solid var(--amber); }
   body.light .setup-context-card.bull { border-left-color: #00a854; }
   body.light .setup-context-card.bear { border-left-color: #c0392b; }
-  body.light .setup-context-card.summary { border-left-color: #8b5cf6; }
+  body.light .setup-context-card.summary { border-left-color: var(--amber); }
   .setup-context-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
   .setup-context-card.bull .setup-context-label { color: #00e676; }
   .setup-context-card.bear .setup-context-label { color: #e05c5c; }
-  .setup-context-card.summary .setup-context-label { color: #b57bee; }
+  .setup-context-card.summary .setup-context-label { color: var(--amber); }
   body.light .setup-context-card.bull .setup-context-label { color: #00a854; }
   body.light .setup-context-card.bear .setup-context-label { color: #c0392b; }
-  body.light .setup-context-card.summary .setup-context-label { color: #8b5cf6; }
+  body.light .setup-context-card.summary .setup-context-label { color: var(--amber); }
   .setup-context-text { font-size: 11px; color: #a0aab8; line-height: 1.75; }
   body.light .setup-context-text { color: #4b5563; }
 
@@ -708,18 +708,24 @@
   .ctx-strip { margin: 0 40px 32px; }
   .ctx-strip-inner { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 16px; margin-bottom: 16px; }
   .ctx-col { background: var(--bg2); border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); }
-  .ctx-bias-col { border-top: 3px solid var(--green); }
-  .ctx-setup-col { border-top: 3px solid var(--purple); }
+  .ctx-bias-col { border-top: 3px solid var(--green); background: rgba(0,230,118,0.06) !important; }
+  body.light .ctx-bias-col { background: rgba(0,168,84,0.07) !important; }
+  .ctx-bias-col.bearish { border-top-color: var(--red) !important; background: rgba(240,79,79,0.06) !important; }
+  .ctx-setup-col { border-top: 3px solid var(--amber); background: rgba(251,191,36,0.05) !important; }
+  body.light .ctx-setup-col { background: rgba(217,119,6,0.06) !important; }
   .ctx-cases-col { border-top: 3px solid var(--border2); display: flex; flex-direction: column; }
   .ctx-label { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
   .ctx-bias-value { font-size: 34px; font-weight: 700; color: var(--green); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 8px; }
+  .ctx-bias-col.bearish .ctx-bias-value { color: var(--red); }
   .ctx-bias-sub { font-size: 11px; color: var(--text3); line-height: 1.6; }
-  .ctx-setup-level { font-size: 30px; font-weight: 700; color: var(--purple); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 8px; }
-  .ctx-setup-badge { display: inline-block; margin-left: 8px; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; background: rgba(0,230,118,0.1); color: var(--green); border: 1px solid rgba(0,230,118,0.25); vertical-align: middle; font-family: 'JetBrains Mono', monospace; }
+  .ctx-setup-level { font-size: 30px; font-weight: 700; color: var(--amber); font-family: 'JetBrains Mono', monospace; line-height: 1; margin-bottom: 8px; }
+  .ctx-setup-badge { display: inline-block; margin-left: 8px; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; background: rgba(251,191,36,0.12); color: var(--amber); border: 1px solid rgba(251,191,36,0.3); vertical-align: middle; font-family: 'JetBrains Mono', monospace; }
   .ctx-setup-entry { font-size: 11px; color: var(--text3); line-height: 1.65; margin-bottom: 8px; }
   .ctx-setup-stop { font-size: 11px; color: var(--red); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-  .ctx-case { flex: 1; padding: 10px 12px; border-radius: 8px; background: var(--bg3); border-left: 3px solid var(--green); }
-  .ctx-case.bear { border-left-color: var(--red); }
+  .ctx-case { flex: 1; padding: 10px 12px; border-radius: 8px; background: rgba(0,230,118,0.07); border: 1px solid rgba(0,230,118,0.15); border-left: 3px solid var(--green); }
+  body.light .ctx-case { background: rgba(0,168,84,0.07); }
+  .ctx-case.bear { background: rgba(240,79,79,0.07); border: 1px solid rgba(240,79,79,0.15); border-left: 3px solid var(--red); }
+  body.light .ctx-case.bear { background: rgba(192,57,43,0.07); }
   .ctx-case-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; font-family: 'JetBrains Mono', monospace; color: var(--green); }
   .ctx-case.bear .ctx-case-label { color: var(--red); }
   .ctx-case-text { font-size: 11px; color: var(--text3); line-height: 1.55; }
@@ -761,7 +767,20 @@
   }
 
 
-  /* ─── ASSET TOGGLE ───────────────────────────────────────── */
+  /* ─── EQUITY CURVE ──────────────────────────────────────── */
+  .equity-wrap { margin: 20px 0 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px 24px 16px; }
+  .equity-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+  .equity-title { font-size: 10px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.09em; }
+  .equity-total { text-align: right; }
+  .equity-total-val { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .equity-total-val.pos { color: var(--green); }
+  .equity-total-val.neg { color: var(--red); }
+  .equity-total-sub { font-size: 10px; color: var(--text3); margin-top: 3px; }
+  .equity-canvas-wrap { position: relative; width: 100%; }
+  canvas#equity-canvas { width: 100%; height: 160px; display: block; }
+  .equity-footer { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+
+
   .asset-toggle { padding: 20px 40px 0; display: flex; gap: 8px; }
   .asset-btn { padding: 8px 24px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; cursor: pointer; border: 1px solid var(--border2); background: transparent; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.2s; }
   .asset-btn:hover { color: var(--text2); border-color: var(--text2); }
@@ -895,16 +914,6 @@
           <div class="ctx-case-label">&#9660; Bear Case</div>
           <div class="ctx-case-text">Begins below 7565. Breakdown — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only.</div>
         </div>
-      </div>
-    </div>
-    <div class="ctx-week-stats-wrap">
-      <div class="ctx-week-label">&#9651; This Week — Key Setups That Triggered</div>
-      <div class="ctx-week-stats">
-        <div class="ctx-stat"><div class="ctx-stat-label">7518 FBD (Thu 1:30AM)</div><div class="ctx-stat-value pos">7518 → 7620+</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">7574 FBD (Sun)</div><div class="ctx-stat-value pos">+35 pts</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">7585 FBD (Mon 9:40AM)</div><div class="ctx-stat-value pos">+24 pts</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Primary Setup Tue</div><div class="ctx-stat-value neu">7574–77 FBD</div></div>
-        <div class="ctx-stat"><div class="ctx-stat-label">Bear Case Trigger</div><div class="ctx-stat-value neg">Below 7565</div></div>
       </div>
     </div>
   </div>
@@ -2259,12 +2268,149 @@ function renderDashboard() {
     var dimStyle = c.dim ? "opacity:0.35;" : "";
     html += "<div class='dash-card' style='--card-accent:" + c.accent + ";" + dimStyle + "'><div class='dash-card-label'>" + c.label + "</div><div class='dash-card-value" + (c.cls ? " " + c.cls : "") + "' id='dash-val-" + i + "'>" + c.value + "</div><div class='dash-card-sub'>" + c.sub + "</div></div>";
   }
-  html += "</div>";
+  html += "</div><div class='equity-wrap'><div class='equity-header'><div class='equity-title'>&#9650; Equity Curve</div><div class='equity-total'><div class='equity-total-val " + (total>=0?'pos':'neg') + "'>" + (total>=0?'+$':'-$') + Math.abs(total).toFixed(2) + "</div><div class='equity-total-sub'>" + count + " trades &bull; " + (wr) + "% win rate</div></div></div><div class='equity-canvas-wrap'><canvas id='equity-canvas'></canvas></div><div class='equity-footer'><span id='equity-date-start'></span><span id='equity-date-end'></span></div></div>";
   document.getElementById("dash-section").innerHTML = html;
   for (var i = 0; i < cards.length; i++) {
     var c = cards[i];
     var el = document.getElementById('dash-val-'+i);
     if (el && c.animVal > 0 && !c.dim) animateCount(el, c.animVal, c.isFloat, c.prefix, c.suffix, 800);
+  }
+  renderEquityCurve(filtered, total);
+}
+
+function renderEquityCurve(filtered, totalPnl) {
+  var canvas = document.getElementById('equity-canvas');
+  if (!canvas) return;
+
+  // Sort trades chronologically by date then id
+  var sorted = filtered.slice().sort(function(a, b) {
+    var da = new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/,'$3-$1-$2'));
+    var db = new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/,'$3-$1-$2'));
+    if (da - db !== 0) return da - db;
+    return a.id - b.id;
+  });
+
+  // Build cumulative PnL points starting from 0
+  var points = [0];
+  var running = 0;
+  for (var i = 0; i < sorted.length; i++) {
+    running += getEffectivePnl(sorted[i]);
+    points.push(running);
+  }
+
+  var dpr = window.devicePixelRatio || 1;
+  var w = canvas.offsetWidth || canvas.parentElement.offsetWidth;
+  var h = 160;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  var pad = { top: 16, right: 16, bottom: 8, left: 52 };
+  var cw = w - pad.left - pad.right;
+  var ch = h - pad.top - pad.bottom;
+
+  var minV = Math.min.apply(null, points);
+  var maxV = Math.max.apply(null, points);
+  var range = maxV - minV || 1;
+  // Add 10% padding top/bottom
+  minV -= range * 0.08;
+  maxV += range * 0.08;
+  range = maxV - minV;
+
+  var n = points.length;
+  var xStep = n > 1 ? cw / (n - 1) : cw;
+
+  function xPos(i) { return pad.left + i * xStep; }
+  function yPos(v) { return pad.top + ch - ((v - minV) / range) * ch; }
+
+  var isLight = document.body.classList.contains('light');
+
+  // Zero line
+  var y0 = yPos(0);
+  ctx.strokeStyle = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(pad.left, y0);
+  ctx.lineTo(pad.left + cw, y0);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Y axis labels
+  ctx.font = '600 9px JetBrains Mono, monospace';
+  ctx.fillStyle = isLight ? 'rgba(74,101,128,0.8)' : 'rgba(122,147,173,0.8)';
+  ctx.textAlign = 'right';
+  var labelCount = 4;
+  for (var li = 0; li <= labelCount; li++) {
+    var lv = minV + (range / labelCount) * li;
+    var ly = yPos(lv);
+    var prefix = lv >= 0 ? '+$' : '-$';
+    ctx.fillText(prefix + Math.abs(lv).toFixed(0), pad.left - 6, ly + 3);
+    ctx.strokeStyle = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, ly);
+    ctx.lineTo(pad.left + cw, ly);
+    ctx.stroke();
+  }
+
+  // Gradient fill
+  var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + ch);
+  var finalPos = totalPnl >= 0;
+  if (finalPos) {
+    grad.addColorStop(0, 'rgba(0,230,118,0.22)');
+    grad.addColorStop(1, 'rgba(0,230,118,0)');
+  } else {
+    grad.addColorStop(0, 'rgba(240,79,79,0)');
+    grad.addColorStop(1, 'rgba(240,79,79,0.18)');
+  }
+  ctx.beginPath();
+  ctx.moveTo(xPos(0), yPos(points[0]));
+  for (var i = 1; i < n; i++) {
+    var cpx = (xPos(i-1) + xPos(i)) / 2;
+    ctx.bezierCurveTo(cpx, yPos(points[i-1]), cpx, yPos(points[i]), xPos(i), yPos(points[i]));
+  }
+  ctx.lineTo(xPos(n-1), yPos(0) > pad.top + ch ? pad.top + ch : yPos(0));
+  ctx.lineTo(xPos(0), yPos(0) > pad.top + ch ? pad.top + ch : yPos(0));
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Main line
+  ctx.beginPath();
+  ctx.moveTo(xPos(0), yPos(points[0]));
+  for (var i = 1; i < n; i++) {
+    var cpx2 = (xPos(i-1) + xPos(i)) / 2;
+    ctx.bezierCurveTo(cpx2, yPos(points[i-1]), cpx2, yPos(points[i]), xPos(i), yPos(points[i]));
+  }
+  ctx.strokeStyle = finalPos ? (isLight ? '#00a854' : '#00e676') : (isLight ? '#c0392b' : '#f04f4f');
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // Dots on win/loss transitions + endpoint
+  for (var i = 1; i < n; i++) {
+    var pnl = getEffectivePnl(sorted[i-1]);
+    var dotColor = pnl >= 0 ? (isLight ? '#00a854' : '#00e676') : (isLight ? '#c0392b' : '#f04f4f');
+    ctx.beginPath();
+    ctx.arc(xPos(i), yPos(points[i]), i === n-1 ? 4 : 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = dotColor;
+    ctx.fill();
+    if (i === n-1) {
+      ctx.strokeStyle = isLight ? '#fff' : '#080d14';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }
+
+  // Date labels
+  if (sorted.length > 0) {
+    var startEl = document.getElementById('equity-date-start');
+    var endEl = document.getElementById('equity-date-end');
+    if (startEl) startEl.textContent = sorted[0].date.slice(0,5);
+    if (endEl) endEl.textContent = sorted[sorted.length-1].date.slice(0,5);
   }
 }
 
