@@ -895,24 +895,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 2</div>
+        <div class="ctx-label">Market Bias — Updated Jun 3</div>
         <div class="ctx-bias-value">BULL</div>
-        <div class="ctx-bias-sub">ATH parabola continues. New consolidation support 7574–77 since Thursday. Bulls want to hold 7620/7605. Lean: defer to trend. Next targets 7637, 7648, 7656, 7692.</div>
+        <div class="ctx-bias-sub">Range continues since Friday: 7574–77 support, ~7620 resistance. 7587 is key inside level. Lean: fill range, trap support, then breakout. Next leg targets 7643, 7662, 7671, 7716. Slow, low-vol summer market — nothing to do near resistance but ride runner.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
         <div class="ctx-setup-level">7574–77 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Complex multi-touch shelf of lows since Thursday — today's daily low 7576 + Friday's low 7577. Ideal: sweep shelf (tag 7565 if possible) then recover 7575. NAP: hold above <strong>7580</strong> for a few minutes. No real quality entries until this level. 7605 too close to highs — wait for flush &amp; recover to ~7598 minimum.</div>
+        <div class="ctx-setup-entry">Massive 3+ touch shelf on Friday and Monday. Flush and recovery is actionable. Ideal: tag 7565 then recover 7575. NAP: hold above <strong>7582</strong> for a few minutes.<br><br>
+        Secondary: <strong>7587 FBD</strong> — 9AM today's low from which we rallied 45pts. Clear significant low, actionable FBD. Tag 7577 on this is even better.<br><br>
+        7604 first support — mid-range, no interest in buying direct unless controlled slow sell (not elevator down).</div>
         <div class="ctx-setup-stop">Stop: Below 7565 — loss here = probable collapse</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Parabolic: hold 7620/7605, won't even test 7574–77. Normal: defend 7574–77 (quick trap ok), continue up. Targets: 7637, 7648, 7656, 7692.</div>
+          <div class="ctx-case-text">Fill range (quick trap of 7574–77 ok), then breakout above 7620. Next leg targets 7643, 7662, 7671, 7716.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7565. Breakdown — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only.</div>
+          <div class="ctx-case-text">Begins under 7565. Breakdown trade — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only.</div>
         </div>
       </div>
     </div>
@@ -1600,6 +1602,18 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/03/2026", setups:[
+    {level:7574,type:"FBD",priority:"aplus",notes:"Massive 3+ touch shelf on Friday and Monday. Flush and recovery actionable. Ideal: tag 7565 then recover 7575. NAP: hold above 7582 for a few minutes. Below 7565 = probable collapse."},
+    {level:7587,type:"FBD",priority:"a",notes:"9AM today's low from which we rallied 45pts. Clear significant low — FBD is actionable. Tag 7577 on this is even better before recovering 7587."},
+    {level:7604,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down, mid-range. No interest in buying direct. Only try on controlled slow sell — if elevator down, skip entirely and wait for 7587 or 7574 FBD."},
+    {level:7527,type:"FBD",priority:"a",notes:"10AM Thursday low from which ES rallied to today's highs. FBD actionable if we get down there."},
+    {level:7517,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. Thursday 6:40AM huge low set here. FBD highly actionable."},
+    {level:7538,type:"FBD",priority:"b",notes:"One support. Only try bid on controlled grind — if knifing, skip and wait for 7527 or 7517 FBD."}
+  ],
+  bull:"Range since Friday: 7574–77 support, ~7620 resistance. 7587 key inside level. Fill range (quick trap of support ok), then breakout above 7620. Next leg targets 7643, 7662, 7671, 7716.",
+  bear:"Begins under 7565. Breakdown trade — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only — low win rate, high R/R.",
+  summary:"Wednesday June 3. ES rangebound since Friday (7574–77 / 7620). Slow summer market. No interest near resistance — just ride runner. Wait for elevator down into 7574–77 or 7587 FBD. React to triggers only, manage level to level."
+  },
   { date:"06/02/2026", setups:[
     {level:7574,type:"FBD",priority:"aplus",notes:"Complex multi-touch shelf of lows 7574–77 since Thursday — today's daily low 7576 and Friday's low 7577. Ideal: sweep shelf (tag 7565 if possible) then recover 7575. NAP: hold above 7580 for a few minutes. Below 7565 = probable collapse."},
     {level:7605,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down — too close to highs for a direct bid. If desperate, wait for flush and recover (ideal: dip to ~7598) before entering. Not a quality setup in itself."},
