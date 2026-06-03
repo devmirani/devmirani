@@ -895,26 +895,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 3</div>
+        <div class="ctx-label">Market Bias — Updated Jun 4</div>
         <div class="ctx-bias-value">BULL</div>
-        <div class="ctx-bias-sub">Range continues since Friday: 7574–77 support, ~7620 resistance. 7587 is key inside level. Lean: fill range, trap support, then breakout. Next leg targets 7643, 7662, 7671, 7716. Slow, low-vol summer market — nothing to do near resistance but ride runner.</div>
+        <div class="ctx-bias-sub">Range since Friday: 7573–76 support, ~7620 resistance. 7604 now a major inside level. Lean: fill range to 7604, perhaps dip, then push to 7620, 7636, 7665. Sell only under 7558.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7574–77 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Massive 3+ touch shelf on Friday and Monday. Flush and recovery is actionable. Ideal: tag 7565 then recover 7575. NAP: hold above <strong>7582</strong> for a few minutes.<br><br>
-        Secondary: <strong>7587 FBD</strong> — 9AM today's low from which we rallied 45pts. Clear significant low, actionable FBD. Tag 7577 on this is even better.<br><br>
-        7604 first support — mid-range, no interest in buying direct unless controlled slow sell (not elevator down).</div>
-        <div class="ctx-setup-stop">Stop: Below 7565 — loss here = probable collapse</div>
+        <div class="ctx-setup-level">7563 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Today's daily low. Ideal: flush to <strong>7558</strong> (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force before entering.<br><br>
+        <strong>7573–76 FBD</strong> — heavily tested all week, becoming a coin toss zone. Final bid ok but reliability fading. Below 7558 = probable flush.<br><br>
+        7587 reclaims of interest for mid-range entry on strength.</div>
+        <div class="ctx-setup-stop">Stop: Below 7558 — loss here = probable collapse lower</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Fill range (quick trap of 7574–77 ok), then breakout above 7620. Next leg targets 7643, 7662, 7671, 7716.</div>
+          <div class="ctx-case-text">Fill range to 7604 (quick trap first ok), then push to 7620, 7636, 7665. Range held all week — breakout imminent.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins under 7565. Breakdown trade — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only.</div>
+          <div class="ctx-case-text">Begins under 7558. Breakdown — 80% fail rate. Final bounce at 7558, short below lows. Trigger ~7555. Advanced only.</div>
         </div>
       </div>
     </div>
@@ -1158,6 +1158,12 @@ var weeks = [
 ];
 
 var trades = [
+  { id:60, date:"06/03/2026", entryTime:"10:15 AM", entryPrice:7597.00, stopPrice:7567.00, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7587 Reclaim",
+    targets:[
+      {label:"Stop",price:7567.00,contracts:5,status:"stopped",pnl:-750.00,exitTime:"12:25 PM"}
+    ],
+    times:[{label:"Entry",value:"10:15 AM"},{label:"Stop",value:"12:25 PM"}],
+    totalPts:-30.00, totalPnl:-750.00, exitNote:"Stopped out 5 @ 7567 (-30pts, -$750).", journal:"" },
   { id:59, date:"06/02/2026", entryTime:"9:35 PM", entryPrice:7623.25, stopPrice:7619.75, setup:"LEVEL_RECLAIM", result:"loss", contracts:3, tradeLabel:"7620 Reclaim",
     targets:[
       {label:"Stop",price:7619.75,contracts:3,status:"stopped",pnl:-52.50,exitTime:"9:42 PM"}
@@ -1608,6 +1614,18 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/04/2026", setups:[
+    {level:7563,type:"FBD",priority:"aplus",notes:"Today's daily low. Ideal: flush to 7558 (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force. Below 7558 = probable flush."},
+    {level:7573,type:"FBD",priority:"b",notes:"Heavily tested shelf all week — becoming a coin toss zone. Final bid attempt ok but reliability fading. If it fails convincingly, move to 7563 FBD."},
+    {level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Mid-range reclaim of interest for those wanting a strength entry. Not a primary setup but actionable on flush and recovery."},
+    {level:7527,type:"FBD",priority:"a",notes:"10AM last Thursday low from which ES rallied to current highs. FBD is actionable if we get down there."},
+    {level:7518,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf. Thursday 6:40AM huge low set here. FBD highly actionable if we reach this level."},
+    {level:7538,type:"FBD",priority:"b",notes:"One support below 7558. Only try on slow controlled grind — if knifing, skip and wait for 7527 or 7518 FBD."}
+  ],
+  bull:"Range since Friday: 7573–76 support, ~7620 resistance. 7604 now a major inside level. Fill range to 7604, perhaps quick trap first, then push to 7620, 7636, 7665.",
+  bear:"Begins under 7558. Breakdown — 80% fail rate. Final bounce at 7558, short below lows. Trigger ~7555. Advanced only.",
+  summary:"Thursday June 4. Range has held all week (7573–76 / 7620). 7604 major inside level. Wait for elevator down into 7563 or 7573–76 FBD. 7573–76 becoming less reliable — coin toss zone after heavy testing. Below 7558 = flush. Manage level to level."
+  },
   { date:"06/03/2026", setups:[
     {level:7574,type:"FBD",priority:"aplus",notes:"Massive 3+ touch shelf on Friday and Monday. Flush and recovery actionable. Ideal: tag 7565 then recover 7575. NAP: hold above 7582 for a few minutes. Below 7565 = probable collapse."},
     {level:7587,type:"FBD",priority:"a",notes:"9AM today's low from which we rallied 45pts. Clear significant low — FBD is actionable. Tag 7577 on this is even better before recovering 7587."},
