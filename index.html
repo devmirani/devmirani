@@ -1158,6 +1158,12 @@ var weeks = [
 ];
 
 var trades = [
+  { id:61, date:"06/03/2026", entryTime:"1:09 PM", entryPrice:7576.75, stopPrice:7569.25, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7574 Reclaim",
+    targets:[
+      {label:"Stop",price:7569.25,contracts:5,status:"stopped",pnl:-187.50,exitTime:"1:13 PM"}
+    ],
+    times:[{label:"Entry",value:"1:09 PM"},{label:"Stop",value:"1:13 PM"}],
+    totalPts:-7.50, totalPnl:-187.50, exitNote:"Stopped out 5 @ 7569.25 (-7.5pts, -$187.50).", journal:"" },
   { id:60, date:"06/03/2026", entryTime:"10:15 AM", entryPrice:7597.00, stopPrice:7567.00, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7587 Reclaim",
     targets:[
       {label:"Stop",price:7567.00,contracts:5,status:"stopped",pnl:-750.00,exitTime:"12:25 PM"}
