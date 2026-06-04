@@ -895,26 +895,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 4</div>
+        <div class="ctx-label">Market Bias — Updated Jun 5</div>
         <div class="ctx-bias-value">BULL</div>
-        <div class="ctx-bias-sub">Range since Friday: 7573–76 support, ~7620 resistance. 7604 now a major inside level. Lean: fill range to 7604, perhaps dip, then push to 7620, 7636, 7665. Sell only under 7558.</div>
+        <div class="ctx-bias-sub">Range expanded: 7604/7620 resistance, 7527 support. Everything in between = chop. Lean: fill range, then breakout to 7620, 7630, 7658, 7673. Nothing to do after today’s big rip — wait for next elevator down sell.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7563 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Today's daily low. Ideal: flush to <strong>7558</strong> (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force before entering.<br><br>
-        <strong>7573–76 FBD</strong> — heavily tested all week, becoming a coin toss zone. Final bid ok but reliability fading. Below 7558 = probable flush.<br><br>
-        7587 reclaims of interest for mid-range entry on strength.</div>
-        <div class="ctx-setup-stop">Stop: Below 7558 — loss here = probable collapse lower</div>
+        <div class="ctx-setup-level">7527 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Massive multi-touch shelf of lows at 7527–25 built between 7pm Wed and 7:30AM today. Flush and recovery is highly actionable. Bonus if we tag <strong>7517</strong> on this.<br><br>
+        <strong>7587 Reclaim</strong> — slow grind only, not elevator down. If knifing, skip and wait for flush &amp; recovery. Better if 7575 dips first then 7587 reclaims.<br><br>
+        7558: possible long if traps down to 7549 and recovers. No significant low available — lower quality.</div>
+        <div class="ctx-setup-stop">Stop: Below 7527 — bear case triggers under here</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Fill range to 7604 (quick trap first ok), then push to 7620, 7636, 7665. Range held all week — breakout imminent.</div>
+          <div class="ctx-case-text">Keep retracements minimal (7587/75 ideal). Fill range, then breakout targets 7620, 7630, 7658, 7673. Strong bull: won’t even test 7527 again.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins under 7558. Breakdown — 80% fail rate. Final bounce at 7558, short below lows. Trigger ~7555. Advanced only.</div>
+          <div class="ctx-case-text">Begins below 7527. Final bounce at 7527 or FBD, short below lows. Trigger ~7522. Advanced only — 80% fail rate.</div>
         </div>
       </div>
     </div>
@@ -1158,6 +1158,14 @@ var weeks = [
 ];
 
 var trades = [
+  { id:62, date:"06/04/2026", entryTime:"7:51 AM", entryPrice:7542.25, stopPrice:7525.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7527 Reclaim",
+    targets:[
+      {label:"T1",price:7547.25,contracts:3,status:"hit",pnl:75.00,exitTime:"8:31 AM"},
+      {label:"T2",price:7560.00,contracts:1,status:"hit",pnl:88.75,exitTime:"9:59 AM"},
+      {label:"Runner",price:7601.75,contracts:1,status:"hit",pnl:297.50,exitTime:"1:33 PM"}
+    ],
+    times:[{label:"Entry",value:"7:51 AM"},{label:"T1",value:"8:31 AM"},{label:"T2",value:"9:59 AM"},{label:"Runner",value:"1:33 PM"}],
+    totalPts:82.25, totalPnl:461.25, exitNote:"T1: 3 @ 7547.25 (+5pts, +$75). T2: 1 @ 7560 (+17.75pts, +$88.75). Runner: 1 @ 7601.75 (+59.5pts, +$297.50).", journal:"" },
   { id:61, date:"06/03/2026", entryTime:"1:09 PM", entryPrice:7576.75, stopPrice:7569.25, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7574 Reclaim",
     targets:[
       {label:"Stop",price:7569.25,contracts:5,status:"stopped",pnl:-187.50,exitTime:"1:13 PM"}
@@ -1620,6 +1628,17 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/05/2026", setups:[
+    {level:7527,type:"FBD",priority:"aplus",notes:"Massive multi-touch shelf at 7527-25 built between 7pm Wed and 7:30AM today. Flush and recovery highly actionable. Bonus if we tag 7517. Below 7527 = bear case triggers."},
+    {level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Slow grind only — if going elevator down, skip entirely. Better entry: 7575 dips first, then 7587 reclaims. If we flush 7587 and recover, that is a quality long."},
+    {level:7558,type:"FBD",priority:"b",notes:"Possible long if traps down to 7549 and recovers. No significant low available here so lower quality. Don't force it."},
+    {level:7502,type:"FBD",priority:"a",notes:"Next actionable quality FBD below 7527. Watch for flush and recovery here if 7527 fails."},
+    {level:7473,type:"FBD",priority:"a",notes:"Watch for Failed Breakdowns here if we get deeper selling."}
+  ],
+  bull:"Range expanded to 7604/7620 resistance, 7527 support. Chop between. Fill range, then breakout targets 7620, 7630, 7658, 7673. Strong bull case: retracements stay shallow at 7587/75.",
+  bear:"Begins below 7527. Final bounce at 7527 or FBD, short below lows. Trigger ~7522. Advanced only — 80% fail rate.",
+  summary:"Friday June 5. Big rip today off 7527 FBD — nothing to do near highs. Wait for next elevator down sell into 7527 shelf for the next quality entry. Everything between 7527 and 7620 is chop. Patience."
+  },
   { date:"06/04/2026", setups:[
     {level:7563,type:"FBD",priority:"aplus",notes:"Today's daily low. Ideal: flush to 7558 (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force. Below 7558 = probable flush."},
     {level:7573,type:"FBD",priority:"b",notes:"Heavily tested shelf all week — becoming a coin toss zone. Final bid attempt ok but reliability fading. If it fails convincingly, move to 7563 FBD."},
