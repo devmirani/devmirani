@@ -405,6 +405,10 @@
   body.light .setup-context-card.bull .setup-context-label { color: #5fa030; }
   body.light .setup-context-card.bear .setup-context-label { color: #a8172a; }
   body.light .setup-context-card.summary .setup-context-label { color: var(--amber); }
+  .setup-context-card.entry { border-left: 3px solid var(--blue); }
+  body.light .setup-context-card.entry { border-left-color: var(--blue); }
+  .setup-context-card.entry .setup-context-label { color: var(--blue); }
+  body.light .setup-context-card.entry .setup-context-label { color: var(--blue); }
   .setup-context-text { font-size: 11px; color: #a0aab8; line-height: 1.75; }
   body.light .setup-context-text { color: #4b5563; }
 
@@ -777,8 +781,15 @@
   .equity-total-val.neg { color: var(--red); }
   .equity-total-sub { font-size: 10px; color: var(--text3); margin-top: 3px; }
   .equity-canvas-wrap { position: relative; width: 100%; }
-  canvas#equity-canvas { width: 100%; height: 160px; display: block; }
+  canvas#equity-canvas { width: 100%; height: 160px; display: block; cursor: crosshair; }
   .equity-footer { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; }
+  .equity-tooltip { position: absolute; pointer-events: none; display: none; background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 7px 12px; font-size: 11px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; z-index: 20; transform: translateX(-50%); }
+  .equity-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--border2); }
+  .equity-tooltip::before { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--bg3); margin-top: -1px; z-index: 1; }
+  .equity-tooltip-pnl { font-weight: 700; }
+  .equity-tooltip-pnl.pos { color: var(--green); }
+  .equity-tooltip-pnl.neg { color: var(--red); }
+  .equity-tooltip-meta { font-size: 10px; color: var(--text3); margin-top: 2px; }
 
 
   .asset-toggle { padding: 20px 40px 0; display: flex; gap: 8px; }
@@ -894,27 +905,27 @@
   <!-- Market Context Strip -->
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
-      <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 5</div>
-        <div class="ctx-bias-value">BULL</div>
-        <div class="ctx-bias-sub">Range expanded: 7604/7620 resistance, 7527 support. Everything in between = chop. Lean: fill range, then breakout to 7620, 7630, 7658, 7673. Nothing to do after today’s big rip — wait for next elevator down sell.</div>
+      <div class="ctx-col ctx-bias-col bearish">
+        <div class="ctx-label">Market Bias — Updated Jun 8</div>
+        <div class="ctx-bias-value" style="color:var(--red);">BEAR</div>
+        <div class="ctx-bias-sub">Bears have control after 7527 shelf broke Friday — first big red day in weeks. Bulls need to recover 7410, then 7458, 7508, then ultimately backtest 7527. Bear case resumes below 7377.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7527 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Massive multi-touch shelf of lows at 7527–25 built between 7pm Wed and 7:30AM today. Flush and recovery is highly actionable. Bonus if we tag <strong>7517</strong> on this.<br><br>
-        <strong>7587 Reclaim</strong> — slow grind only, not elevator down. If knifing, skip and wait for flush &amp; recovery. Better if 7575 dips first then 7587 reclaims.<br><br>
-        7558: possible long if traps down to 7549 and recovers. No significant low available — lower quality.</div>
-        <div class="ctx-setup-stop">Stop: Below 7527 — bear case triggers under here</div>
+        <div class="ctx-setup-level">7410 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Massive shelf of lows from May 20–21 from which we rallied to current highs. ES backtested it at 3:30PM Friday and accepted extensively into close — high quality FBD zone. Targets: 7458, 7508, then 7527 backtest.<br><br>
+        <strong>7380 FBD</strong> — today's daily low. Flush to 7377 or 7358 then recover. Safer entry below 7410.<br><br>
+        <strong>7326 FBD</strong> — big low from May 6th. Flush to 7313 then recover 7326 even better.</div>
+        <div class="ctx-setup-stop">Stop: Below 7377 — bear case resumes, next support 7326</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Keep retracements minimal (7587/75 ideal). Fill range, then breakout targets 7620, 7630, 7658, 7673. Strong bull: won’t even test 7527 again.</div>
+          <div class="ctx-case-text">Recover 7410, push to 7458, 7508, then backtest 7527. Recovery of 7527 restores full bull control and resumes prior trajectory higher.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7527. Final bounce at 7527 or FBD, short below lows. Trigger ~7522. Advanced only — 80% fail rate.</div>
+          <div class="ctx-case-text">Bears hold control until key levels recover. Downside resumption below 7377. Final bounce at 7377, short below lows. Trigger ~7365. Advanced only.</div>
         </div>
       </div>
     </div>
@@ -1154,10 +1165,21 @@ var weeks = [
   { num: 5, label: "Week 5", dates: "06/01 - 06/06", days: [
     { name: "Mon", date: "06/01/2026" }, { name: "Tue", date: "06/02/2026" },
     { name: "Wed", date: "06/03/2026" }, { name: "Thu", date: "06/04/2026" }, { name: "Fri", date: "06/05/2026" }
+  ]},
+  { num: 6, label: "Week 6", dates: "06/08 - 06/13", days: [
+    { name: "Mon", date: "06/08/2026" }, { name: "Tue", date: "06/09/2026" },
+    { name: "Wed", date: "06/10/2026" }, { name: "Thu", date: "06/11/2026" }, { name: "Fri", date: "06/12/2026" }
   ]}
 ];
 
 var trades = [
+  { id:63, date:"06/08/2026", entryTime:"7:45 PM", entryPrice:7392.00, stopPrice:7382.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7380 FBD (Sunday)",
+    targets:[
+      {label:"T1",price:7397.00,contracts:2,status:"hit",pnl:50.00,exitTime:"7:47 PM"},
+      {label:"T2",price:7451.00,contracts:1,status:"hit",pnl:295.00,exitTime:"7:45 AM"}
+    ],
+    times:[{label:"Entry",value:"7:45 PM"},{label:"T1",value:"7:47 PM"},{label:"T2",value:"7:45 AM"}],
+    totalPts:64.00, totalPnl:345.00, exitNote:"T1: 2 @ 7397 (+5pts, +$50). T2: 1 @ 7451 (+59pts, +$295).", journal:"" },
   { id:62, date:"06/04/2026", entryTime:"7:51 AM", entryPrice:7542.25, stopPrice:7525.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7527 Reclaim",
     targets:[
       {label:"T1",price:7547.25,contracts:3,status:"hit",pnl:75.00,exitTime:"8:31 AM"},
@@ -1628,6 +1650,17 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/08/2026", setups:[
+    {level:7410,type:"FBD",priority:"aplus",notes:"Massive shelf of lows from May 20-21 from which we rallied to current highs. ES backtested at 3:30PM Friday and accepted into close. Flush and recovery is the trigger. NAP: hold above 7415 for a few minutes. Targets: 7458, 7508, 7527."},
+    {level:7380,type:"FBD",priority:"a",notes:"Friday's daily low. Flush to 7377 or 7358 then recover. Safer entry below 7410 if that level fails."},
+    {level:7326,type:"FBD",priority:"a",notes:"Big low from May 6th. Flush to 7313 then recover 7326 is even better. Next major support of interest below 7377."},
+    {level:7296,type:"FBD",priority:"b",notes:"Support of interest below 7326. Lower quality — wait for clean flush and recovery."}
+  ],
+  bull:"Recover 7410 (key trigger), push to 7458, 7508, then backtest 7527. Recovery of 7527 restores full bull control and resumes prior trajectory. Likely dip at 7527 backtest — if that recovers, resume uptrend.",
+  bear:"Bears have control until ES recovers key levels. Downside resumption begins below 7377. Final bounce at 7377, short below lows. Trigger ~7365. Don't buy any supports when bears strongly in control — wait for FBD triggers only.",
+  summary:"Monday June 8. First proper pullback in weeks — 7527 shelf broke Friday triggering Bear Case. First support down is 7410 — massive shelf from May 20-21, backtested Friday close. FBD here is the primary trigger. From there 7458, 7508, then 7527 backtest. Below 7410 is 7377 — don't buy direct, wait for FBD of today's daily low (~7380) flushing to 7377 or 7358. Below that is 7326 (May 6th low, flush to 7313 ideal). Then 7296, and nothing meaningful until 7248. Do NOT buy supports when bear case is active — only enter on clean FBD triggers.",
+  entry:"All week ES rangebound 7527-7620. Friday morning 7527 shelf finally broke, triggering Bear Case for first time in weeks — elevator down sell most of the day, largest red day in weeks. At 3:30PM ES backtested 7410 (May 20-21 shelf) from below and accepted extensively into close. No long trigger fired — never held 7415+ for the NAP. At 7:46AM Thursday the 7527 FBD was the last clean entry. Adam's runner from that trade trailed out under Friday's 7525 low, entering Monday with no position and a clean slate. No trade taken Friday. Waiting for 7410 FBD on Monday as the primary trigger."
+  },
   { date:"06/05/2026", setups:[
     {level:7527,type:"FBD",priority:"aplus",notes:"Massive multi-touch shelf at 7527-25 built between 7pm Wed and 7:30AM today. Flush and recovery highly actionable. Bonus if we tag 7517. Below 7527 = bear case triggers."},
     {level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Slow grind only — if going elevator down, skip entirely. Better entry: 7575 dips first, then 7587 reclaims. If we flush 7587 and recover, that is a quality long."},
@@ -1637,7 +1670,8 @@ var setupDays = [
   ],
   bull:"Range expanded to 7604/7620 resistance, 7527 support. Chop between. Fill range, then breakout targets 7620, 7630, 7658, 7673. Strong bull case: retracements stay shallow at 7587/75.",
   bear:"Begins below 7527. Final bounce at 7527 or FBD, short below lows. Trigger ~7522. Advanced only — 80% fail rate.",
-  summary:"Friday June 5. Big rip today off 7527 FBD — nothing to do near highs. Wait for next elevator down sell into 7527 shelf for the next quality entry. Everything between 7527 and 7620 is chop. Patience."
+  summary:"Friday June 5. Big rip today off 7527 FBD — nothing to do near highs. First support down is 7587. Won't engage this level but if it's a slow grind down, one can try the bid. If going elevator down, skip it — safer to wait for 7587 to flush and recover as a level reclaim. Better if 7575 dips first then 7587 reclaims. Below this is 7558 — not super high quality, no significant low available for a FBD. If traps 7558 down to 7549 and recovers, possible long. Nothing below there until 7527 — first actionable quality FBD. Massive multi-touch shelf at 7527-25 set between 7pm Wednesday and 7:30AM this morning. Flush and recovery is actionable, bonus if tags 7517. Below there 7502 is of interest, and watch for FBDs of 7473.",
+  entry:"All week ES had been rangebound 7574–77 to 7620. Overnight Wednesday, ES broke that range triggering an elevator down sell all the way to 7527 — the 10AM low from last Thursday. ES built a shelf at 7527 overnight and defended it, but didn't clearly trap it. At 7:35AM Thursday, ES swept that shelf down to 7525 and recovered — triggering the Failed Breakdown. Adam took the long via NAP: 7527 + 5 = 7532, entered at 7533 at 7:46AM. Managed level to level: locked 75% at 7537 (T1), more at 7549 (T2), left 10% runner. ES ripped back to backtest 7575 by 11AM and beyond. Green trade in books — profit protection mode, runner working, done trading for the day."
   },
   { date:"06/04/2026", setups:[
     {level:7563,type:"FBD",priority:"aplus",notes:"Today's daily low. Ideal: flush to 7558 (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force. Below 7558 = probable flush."},
@@ -2352,7 +2386,7 @@ function renderDashboard() {
     var dimStyle = c.dim ? "opacity:0.35;" : "";
     html += "<div class='dash-card' style='--card-accent:" + c.accent + ";" + dimStyle + "'><div class='dash-card-label'>" + c.label + "</div><div class='dash-card-value" + (c.cls ? " " + c.cls : "") + "' id='dash-val-" + i + "'>" + c.value + "</div><div class='dash-card-sub'>" + c.sub + "</div></div>";
   }
-  html += "</div><div class='equity-wrap'><div class='equity-header'><div class='equity-title'>&#9650; Equity Curve</div><div class='equity-total'><div class='equity-total-val " + (total>=0?'pos':'neg') + "'>" + (total>=0?'+$':'-$') + Math.abs(total).toFixed(2) + "</div><div class='equity-total-sub'>" + count + " trades &bull; " + (wr) + "% win rate</div></div></div><div class='equity-canvas-wrap'><canvas id='equity-canvas'></canvas></div><div class='equity-footer'><span id='equity-date-start'></span><span id='equity-date-end'></span></div></div>";
+  html += "</div><div class='equity-wrap'><div class='equity-header'><div class='equity-title'>&#9650; Equity Curve</div><div class='equity-total'><div class='equity-total-val " + (total>=0?'pos':'neg') + "'>" + (total>=0?'+$':'-$') + Math.abs(total).toFixed(2) + "</div><div class='equity-total-sub'>" + count + " trades &bull; " + (wr) + "% win rate</div></div></div><div class='equity-canvas-wrap'><canvas id='equity-canvas'></canvas><div class='equity-tooltip' id='equity-tooltip'></div></div><div class='equity-footer'><span id='equity-date-start'></span><span id='equity-date-end'></span></div></div>";
   document.getElementById("dash-section").innerHTML = html;
   for (var i = 0; i < cards.length; i++) {
     var c = cards[i];
@@ -2496,6 +2530,53 @@ function renderEquityCurve(filtered, totalPnl) {
     if (startEl) startEl.textContent = sorted[0].date.slice(0,5);
     if (endEl) endEl.textContent = sorted[sorted.length-1].date.slice(0,5);
   }
+
+  // Store dot positions for hover detection
+  var dotPositions = [];
+  for (var i = 1; i < n; i++) {
+    dotPositions.push({
+      x: xPos(i),
+      y: yPos(points[i]),
+      cumPnl: points[i],
+      tradePnl: getEffectivePnl(sorted[i-1]),
+      label: sorted[i-1].tradeLabel || sorted[i-1].setup,
+      date: sorted[i-1].date
+    });
+  }
+
+  var tooltip = document.getElementById('equity-tooltip');
+  if (!tooltip) return;
+
+  canvas.onmousemove = function(e) {
+    var rect = canvas.getBoundingClientRect();
+    var scaleX = canvas.width / dpr / rect.width;
+    var mx = (e.clientX - rect.left) * scaleX;
+    var my = (e.clientY - rect.top) * (canvas.height / dpr / rect.height);
+    var hit = null;
+    var minDist = 18;
+    for (var j = 0; j < dotPositions.length; j++) {
+      var dx = dotPositions[j].x - mx;
+      var dy = dotPositions[j].y - my;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < minDist) { minDist = dist; hit = dotPositions[j]; }
+    }
+    if (hit) {
+      var pnlStr = (hit.tradePnl >= 0 ? '+$' : '-$') + Math.abs(hit.tradePnl).toFixed(2);
+      var cumStr = (hit.cumPnl >= 0 ? '+$' : '-$') + Math.abs(hit.cumPnl).toFixed(2);
+      var cls = hit.tradePnl >= 0 ? 'pos' : 'neg';
+      tooltip.innerHTML = '<div class="equity-tooltip-pnl ' + cls + '">' + pnlStr + '</div><div class="equity-tooltip-meta">' + hit.label + '</div><div class="equity-tooltip-meta">Cumulative: ' + cumStr + '</div>';
+      var leftPct = (hit.x / (canvas.width / dpr)) * 100;
+      tooltip.style.left = leftPct + '%';
+      tooltip.style.top = (hit.y - tooltip.offsetHeight - 18) + 'px';
+      tooltip.style.display = 'block';
+      // After display, recalc with actual height
+      var th = tooltip.offsetHeight || 52;
+      tooltip.style.top = (hit.y - th - 18) + 'px';
+    } else {
+      tooltip.style.display = 'none';
+    }
+  };
+  canvas.onmouseleave = function() { tooltip.style.display = 'none'; };
 }
 
 // Calendar
@@ -2685,6 +2766,7 @@ function openSetupDrill(dateStr) {
     if (data.bull) context += "<div class='setup-context-card bull'><div class='setup-context-label'>&#9650; Bull Case</div><div class='setup-context-text'>" + data.bull + "</div></div>";
     if (data.bear) context += "<div class='setup-context-card bear'><div class='setup-context-label'>&#9660; Bear Case</div><div class='setup-context-text'>" + data.bear + "</div></div>";
     if (data.summary) context += "<div class='setup-context-card summary setup-context-full'><div class='setup-context-label'>&#9654; Mancini Summary</div><div class='setup-context-text'>" + data.summary + "</div></div>";
+    if (data.entry) context += "<div class='setup-context-card entry setup-context-full'><div class='setup-context-label'>&#9650; Mancini Trade Entry</div><div class='setup-context-text'>" + data.entry + "</div></div>";
     context += "</div>";
   }
   drill.innerHTML = "<div class='setup-drill-title'>" + dateStr + " — Pre-Market Setups</div><div class='setup-cards-grid'>" + cards + "</div>" + context;
