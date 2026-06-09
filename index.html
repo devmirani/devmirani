@@ -905,27 +905,27 @@
   <!-- Market Context Strip -->
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
-      <div class="ctx-col ctx-bias-col bearish">
-        <div class="ctx-label">Market Bias — Updated Jun 9</div>
-        <div class="ctx-bias-value" style="color:var(--red);">BEAR</div>
-        <div class="ctx-bias-sub">Bears still in control after 7527 breakdown. Bulls need to hold 7425 or 7390 first, then push to 7451, 7478, 7507, then 7527 backtest. Sell resumes under 7390.</div>
+      <div class="ctx-col ctx-bias-col">
+        <div class="ctx-label">Market Bias — Updated Jun 10</div>
+        <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
+        <div class="ctx-bias-sub">7275 FBD at 12:57PM ripped +100 back to 7390. Bulls need to recover 7390 now. General lean: they try. Path: 7427, 7460, 7508, 7527. Bear case begins below 7311. Sell &lt; 7311.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7425 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Shelf of lows set today — two bounces at 10AM (7429) and 1PM (7423). Flush and recovery is a lower quality, higher risk long given post-breakdown context. Be more suspicious of supports than usual.<br><br>
-        <strong>7390 FBD</strong> — nice low set ~2AM today from which we rallied to highs. Flush and recovery actionable. Bear case triggers below here.<br><br>
-        <strong>7358 FBD</strong> — today’s daily low. Actionable FBD below 7390. Below 7326 next.</div>
-        <div class="ctx-setup-stop">Stop: Below 7390 — bear case resumes, trigger ~7381</div>
+        <div class="ctx-setup-level">7331 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">1:48PM Tuesday set a clear low at 7331 from which ES rallied to HOD. Ideal: tag 7326 then recover 7331. NAP: hold above 7336 for a few minutes.<br><br>
+        <strong>7390 Level Reclaim</strong> — big Monday support shelf, now major resistance. Already accepted — still give it 5pt buffer + time (NAP). High complexity entry.<br><br>
+        <strong>7247 FBD</strong> — Tuesday's LOD. Actionable if revisited. Bonus if tags 7239. Below: 7202.</div>
+        <div class="ctx-setup-stop">Stop: Below 7326 (7331 FBD) / Bear case trigger below 7311</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Hold 7425 or 7390, rally to 7451, 7478, 7507, then 7527 backtest. Recovery of 7527 restores full bull control.</div>
+          <div class="ctx-case-text">Recover 7390 now → 7427, 7460, 7508, 7527. Recovery of 7527 restores full bull control. 7390 reclaim is the first big step.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7390. Final bounce at 7390 or FBD, short below lows. Trigger ~7381. Advanced only.</div>
+          <div class="ctx-case-text">Begins below 7311. Final bounce at 7311, short below lows ~7302. Breakdown trade only — advanced, low win rate. Not for newer traders.</div>
         </div>
       </div>
     </div>
@@ -1173,6 +1173,61 @@ var weeks = [
 ];
 
 var trades = [
+  { id:76, date:"06/09/2026", entryTime:"3:30 PM", entryPrice:7367.25, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:4, tradeLabel:"7358 Bounce",
+    targets:[
+      {label:"T1",price:7373.00,contracts:2,status:"hit",pnl:57.50,exitTime:"2:50 PM"},
+      {label:"T2",price:7387.50,contracts:1,status:"hit",pnl:101.25,exitTime:"3:56 PM"},
+      {label:"T3",price:7387.50,contracts:1,status:"hit",pnl:101.25,exitTime:"4:33 PM"}
+    ],
+    times:[{label:"Entry",value:"3:30 PM"},{label:"T1",value:"2:50 PM"},{label:"T2",value:"3:56 PM"},{label:"T3",value:"4:33 PM"}],
+    totalPts:46.25, totalPnl:260.00, exitNote:"T1: 2 @ 7373 (+5.75pts, +$57.50). T2: 1 @ 7387.50 (+20.25pts, +$101.25). T3: 1 @ 7387.50 (+20.25pts, +$101.25).", journal:"" },
+  { id:75, date:"06/09/2026", entryTime:"2:19 PM", entryPrice:7362.50, stopPrice:7352.50, setup:"LEVEL_RECLAIM", result:"win", contracts:4, tradeLabel:"7358 Reclaim",
+    targets:[
+      {label:"T1",price:7368.00,contracts:2,status:"hit",pnl:55.00,exitTime:"2:20 PM"},
+      {label:"T2",price:7383.00,contracts:1,status:"hit",pnl:102.50,exitTime:"2:38 PM"},
+      {label:"T3",price:7373.00,contracts:1,status:"hit",pnl:52.50,exitTime:"2:50 PM"}
+    ],
+    times:[{label:"Entry",value:"2:19 PM"},{label:"T1",value:"2:20 PM"},{label:"T2",value:"2:38 PM"},{label:"T3",value:"2:50 PM"}],
+    totalPts:36.50, totalPnl:210.00, exitNote:"T1: 2 @ 7368 (+5.5pts, +$55). T2: 1 @ 7383 (+20.5pts, +$102.50). T3: 1 @ 7373 (+10.5pts, +$52.50).", journal:"" },
+  { id:74, date:"06/09/2026", entryTime:"1:35 PM", entryPrice:7333.25, stopPrice:7225.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7326 FBD",
+    targets:[
+      {label:"T1",price:7339.25,contracts:2,status:"hit",pnl:60.00,exitTime:"1:36 PM"},
+      {label:"T2",price:7344.50,contracts:1,status:"hit",pnl:56.25,exitTime:"1:37 PM"},
+      {label:"T3",price:7356.25,contracts:1,status:"hit",pnl:115.00,exitTime:"1:43 PM"},
+      {label:"T4",price:7368.00,contracts:1,status:"hit",pnl:173.75,exitTime:"2:40 PM"}
+    ],
+    times:[{label:"Entry",value:"1:35 PM"},{label:"T1",value:"1:36 PM"},{label:"T2",value:"1:37 PM"},{label:"T3",value:"1:43 PM"},{label:"T4",value:"2:40 PM"}],
+    totalPts:75.25, totalPnl:405.00, exitNote:"T1: 2 @ 7339.25 (+6pts, +$60). T2: 1 @ 7344.50 (+11.25pts, +$56.25). T3: 1 @ 7356.25 (+23pts, +$115). T4: 1 @ 7368 (+34.75pts, +$173.75).", journal:"" },
+  { id:73, date:"06/09/2026", entryTime:"11:32 AM", entryPrice:7335.67, stopPrice:7323.50, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7326 FBD",
+    targets:[
+      {label:"Stop",price:7323.50,contracts:3,status:"stopped",pnl:-182.50,exitTime:"11:56 AM"}
+    ],
+    times:[{label:"Entry",value:"11:32 AM / 11:39 AM"},{label:"Stop",value:"11:56 AM"}],
+    totalPts:-12.17, totalPnl:-182.50, exitNote:"Scaled in: 1 @ 7335 (11:32AM), 2 @ 7336 (11:39AM). Stopped 3 @ 7323.50 (-12.17pts avg, -$182.50).", journal:"" },
+  { id:72, date:"06/09/2026", entryTime:"1:13 PM", entryPrice:73.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:1, tradeLabel:"SPY $732 Call", type:"options",
+    targets:[
+      {label:"T1",price:500.00,contracts:1,status:"hit",pnl:427.00,exitTime:"3:00 PM"}
+    ],
+    times:[{label:"Entry",value:"1:13 PM"},{label:"T1",value:"3:00 PM"}],
+    totalPts:0, totalPnl:427.00, exitNote:"1 contract @ $73 entry, sold @ $500 (+$427).", journal:"" },
+  { id:71, date:"06/09/2026", entryTime:"10:25 AM", entryPrice:104.00, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"loss", contracts:1, tradeLabel:"SPY $744 Call", type:"options",
+    targets:[
+      {label:"Stop",price:0,contracts:1,status:"stopped",pnl:-104.00,exitTime:"4:00 PM"}
+    ],
+    times:[{label:"Entry",value:"10:25 AM"},{label:"Stop",value:"4:00 PM"}],
+    totalPts:0, totalPnl:-104.00, exitNote:"Expired worthless. 1 contract @ $104 entry, expired at $0 (-$104).", journal:"" },
+  { id:70, date:"06/09/2026", entryTime:"10:01 AM", entryPrice:27.00, stopPrice:1.00, setup:"SUPPORT_BOUNCE", result:"loss", contracts:4, tradeLabel:"SPY $749 Call", type:"options",
+    targets:[
+      {label:"Stop",price:1.00,contracts:4,status:"stopped",pnl:-104.00,exitTime:"4:00 PM"}
+    ],
+    times:[{label:"Entry",value:"10:01 AM"},{label:"Stop",value:"4:00 PM"}],
+    totalPts:0, totalPnl:-104.00, exitNote:"Expired near worthless. 4 contracts @ $1 at close (-$26/contract, -$104).", journal:"" },
+  { id:69, date:"06/09/2026", entryTime:"11:00 AM", entryPrice:7401.50, stopPrice:7360.75, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7390 FBD",
+    targets:[
+      {label:"Stop",price:7360.75,contracts:5,status:"stopped",pnl:-1018.75,exitTime:"11:25 AM"}
+    ],
+    times:[{label:"Entry",value:"11:00 AM"},{label:"Stop",value:"11:25 AM"}],
+    totalPts:-40.75, totalPnl:-1018.75, exitNote:"Stopped out 5 @ 7360.75 (-40.75pts, -$1,018.75).", journal:"" },
   { id:68, date:"06/08/2026", entryTime:"4:31 PM", entryPrice:7413.00, stopPrice:0, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7407 FBD",
     targets:[
       {label:"Stop",price:7410.25,contracts:3,status:"stopped",pnl:-41.25,exitTime:"4:45 PM"}
@@ -1683,238 +1738,208 @@ var watchDays = [
 ];
 
 var setupDays = [
-  { date:"06/09/2026", setups:[
-    {level:7425,type:"FBD",priority:"b",notes:"Shelf of lows set today — bounces at 10AM (7429) and 1PM (7423). Lower quality, higher risk given post-breakdown context. Be more suspicious of supports than usual. Flush and recovery is the trigger."},
+  { date:"06/10/2026", setups:[{level:7390,type:"LEVEL_RECLAIM",priority:"a",notes:"Big Monday support shelf ES lost Tuesday morning to trigger the selloff — now major resistance. Already accepted but still use NAP (5pt buffer + time) before entering. High complexity entry."},
+    {level:7331,type:"FBD",priority:"aplus",notes:"1:48PM Tuesday set a clear low at 7331 from which ES rallied to HOD. A+ FBD — flush ideally to 7326 then recover 7331. NAP: hold above 7336 for a few minutes. Primary setup for Wednesday."},
+    {level:7311,type:"FBD",priority:"b",notes:"Bear case trigger. Do not bid direct — only via FBD. If knifing, wait for trap and recovery. Below 7311 nothing until 7247. Advanced only."},
+    {level:7247,type:"FBD",priority:"a",notes:"Tuesday's low of day. FBD actionable if revisited — bonus if ES tags 7239 on the flush. Nothing below there until 7202."}],
+  bull:"Bulls need to recover 7390 now. Path: 7427, 7460, 7508, 7527. 7527 is the Friday breakdown shelf — full reclaim there = full bull control. Use NAP on 7390 entry. After a 100pt vertical rip into Tuesday's close — little structure near highs. Give price time to build structure before engaging.",
+  bear:"Begins below 7311. Breakdown trade only — 60%+ failure rate. Short below ~7302 after final bounce at 7311. Low win rate / high R/R — advanced setup. Not for newer traders.",
+  summary:"Tuesday: ES lost 7390 support shelf (all day Monday), elevator down to 7247. Classic 7275 FBD at 12:57PM squeezed +100 back to 7390. Theme unchanged — buy the dips. Primary setup: 7331 FBD (Tuesday 1:48PM low, flush to 7326 ideal). 7390 reclaim is first big bull hurdle. 7527 is full bull reclaim target. CPI today at 8:30AM ET — high impact. Supports: 7383, 7377, 7370 (major), 7363, 7359 (major), 7353, 7345 (major), 7331, 7327 (major), 7320, 7311 (major), 7305, 7294, 7284 (major), 7274, 7265 (major), 7257, 7247 (major). Resistances: 7390 (major), 7401, 7410 (major), 7425 (major), 7438, 7460 (major), 7508 (major), 7527 (major).",
+  entry:"Tuesday: Adam held 10% long runner from Sunday 6:15PM 7380 FBD. Overnight Monday took the 7425 FBD via NAP at 11:45PM at 7430 — small size, limit orders in books. Locked 75% at 7438 (T1), more at 7452 (T2), left 10% runner. Runner stopped out below break-even at 10:48AM when 7390 lost. Tried 7390 FBD at 10:58AM via NAP at 7395 — only popped one level to 7401, cut runner at break-even. Sidelined after two trades. 7275 FBD triggered at 12:57PM — Adam longed small at 7283. Locked at 7307, left small runner. Still holding 10% runner heading into Wednesday."
+  },
+  { date:"06/09/2026", setups:[{level:7425,type:"FBD",priority:"b",notes:"Shelf of lows set today — bounces at 10AM (7429) and 1PM (7423). Lower quality, higher risk given post-breakdown context. Be more suspicious of supports than usual. Flush and recovery is the trigger."},
     {level:7390,type:"FBD",priority:"a",notes:"Nice low set ~2AM today from which we rallied to highs. Flush and recovery actionable. Bear case triggers below here — don't buy direct, wait for FBD."},
     {level:7358,type:"FBD",priority:"a",notes:"Today's daily low. Actionable FBD. If knifing at full speed, skip 7326 and wait for this to defend and recover 7358 to long."},
     {level:7326,type:"FBD",priority:"b",notes:"Strong support but be cautious in post-breakdown context. If knifing, skip it. Wait for it to defend and recover 7358 first."},
     {level:7307,type:"FBD",priority:"b",notes:"Level of interest below 7326."},
-    {level:7275,type:"FBD",priority:"b",notes:"Support below 7307."}
-  ],
+    {level:7275,type:"FBD",priority:"b",notes:"Support below 7307."}],
   bull:"Hold 7425 or 7390 (lowest), rally to 7451, 7478, 7507, then 7527 backtest. Recovery of 7527 restores full bull control and resumes prior trajectory. Nothing to add on strength — desperate traders can try 7451 recovery only.",
   bear:"Begins below 7390. Final bounce at 7390 or FBD, short below lows. Trigger ~7381. Advanced only — 80% fail rate. Context is more favorable for shorts now after 7527 breakdown.",
   summary:"Tuesday June 9. Still in post-breakdown context — bears in control until 7527 recovers. First support down is 7425 — shelf of lows from today (7429 and 7423 bounces). Lower quality, higher risk long given context. 7390 is below there — nice low from 2AM today, FBD actionable. Below 7390 bear case resumes. Below that is 7358 (today's daily low, FBD actionable), then 7326 (skip if knifing, wait for recovery of 7358 first). 7307 and 7275 below that. Key reminder: do not buy supports directly in a post-breakdown environment — only enter on clean FBD triggers.",
   entry:"Friday's 7527 shelf broke triggering Bear Case and big elevator down sell to 7359. Sunday 6PM futures open: ES muted near Friday's close. At 6:10PM ES pushed through 7380 (Friday's late-day low). Adam longed via NAP: 7380+5=7385, held above 7385 by 6:15PM. Entered at 7387. Managed level to level: locked 75% at 7394 (T1), more at 7410 (T2), left 10% runner. Monday morning runner kept paying — ES pushed toward 7458 per plan. Adam still holding 10% runner with stop under prior day's low heading into Tuesday."
   },
-  { date:"06/08/2026", setups:[
-    {level:7410,type:"FBD",priority:"aplus",notes:"Massive shelf of lows from May 20-21 from which we rallied to current highs. ES backtested at 3:30PM Friday and accepted into close. Flush and recovery is the trigger. NAP: hold above 7415 for a few minutes. Targets: 7458, 7508, 7527."},
+  { date:"06/08/2026", setups:[{level:7410,type:"FBD",priority:"aplus",notes:"Massive shelf of lows from May 20-21 from which we rallied to current highs. ES backtested at 3:30PM Friday and accepted into close. Flush and recovery is the trigger. NAP: hold above 7415 for a few minutes. Targets: 7458, 7508, 7527."},
     {level:7380,type:"FBD",priority:"a",notes:"Friday's daily low. Flush to 7377 or 7358 then recover. Safer entry below 7410 if that level fails."},
     {level:7326,type:"FBD",priority:"a",notes:"Big low from May 6th. Flush to 7313 then recover 7326 is even better. Next major support of interest below 7377."},
-    {level:7296,type:"FBD",priority:"b",notes:"Support of interest below 7326. Lower quality — wait for clean flush and recovery."}
-  ],
+    {level:7296,type:"FBD",priority:"b",notes:"Support of interest below 7326. Lower quality — wait for clean flush and recovery."}],
   bull:"Recover 7410 (key trigger), push to 7458, 7508, then backtest 7527. Recovery of 7527 restores full bull control and resumes prior trajectory. Likely dip at 7527 backtest — if that recovers, resume uptrend.",
   bear:"Bears have control until ES recovers key levels. Downside resumption begins below 7377. Final bounce at 7377, short below lows. Trigger ~7365. Don't buy any supports when bears strongly in control — wait for FBD triggers only.",
   summary:"Monday June 8. First proper pullback in weeks — 7527 shelf broke Friday triggering Bear Case. First support down is 7410 — massive shelf from May 20-21, backtested Friday close. FBD here is the primary trigger. From there 7458, 7508, then 7527 backtest. Below 7410 is 7377 — don't buy direct, wait for FBD of today's daily low (~7380) flushing to 7377 or 7358. Below that is 7326 (May 6th low, flush to 7313 ideal). Then 7296, and nothing meaningful until 7248. Do NOT buy supports when bear case is active — only enter on clean FBD triggers.",
   entry:"All week ES rangebound 7527-7620. Friday morning 7527 shelf finally broke, triggering Bear Case for first time in weeks — elevator down sell most of the day, largest red day in weeks. At 3:30PM ES backtested 7410 (May 20-21 shelf) from below and accepted extensively into close. No long trigger fired — never held 7415+ for the NAP. At 7:46AM Thursday the 7527 FBD was the last clean entry. Adam's runner from that trade trailed out under Friday's 7525 low, entering Monday with no position and a clean slate. No trade taken Friday. Waiting for 7410 FBD on Monday as the primary trigger."
   },
-  { date:"06/05/2026", setups:[
-    {level:7527,type:"FBD",priority:"aplus",notes:"Massive multi-touch shelf at 7527-25 built between 7pm Wed and 7:30AM today. Flush and recovery highly actionable. Bonus if we tag 7517. Below 7527 = bear case triggers."},
-    {level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Slow grind only — if going elevator down, skip entirely. Better entry: 7575 dips first, then 7587 reclaims. If we flush 7587 and recover, that is a quality long."},
+  { date:"06/05/2026", setups:[{level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Slow grind only — if going elevator down, skip entirely. Better entry: 7575 dips first, then 7587 reclaims. If we flush 7587 and recover, that is a quality long."},
     {level:7558,type:"FBD",priority:"b",notes:"Possible long if traps down to 7549 and recovers. No significant low available here so lower quality. Don't force it."},
+    {level:7527,type:"FBD",priority:"aplus",notes:"Massive multi-touch shelf at 7527-25 built between 7pm Wed and 7:30AM today. Flush and recovery highly actionable. Bonus if we tag 7517. Below 7527 = bear case triggers."},
     {level:7502,type:"FBD",priority:"a",notes:"Next actionable quality FBD below 7527. Watch for flush and recovery here if 7527 fails."},
-    {level:7473,type:"FBD",priority:"a",notes:"Watch for Failed Breakdowns here if we get deeper selling."}
-  ],
+    {level:7473,type:"FBD",priority:"a",notes:"Watch for Failed Breakdowns here if we get deeper selling."}],
   bull:"Range expanded to 7604/7620 resistance, 7527 support. Chop between. Fill range, then breakout targets 7620, 7630, 7658, 7673. Strong bull case: retracements stay shallow at 7587/75.",
   bear:"Begins below 7527. Final bounce at 7527 or FBD, short below lows. Trigger ~7522. Advanced only — 80% fail rate.",
   summary:"Friday June 5. Big rip today off 7527 FBD — nothing to do near highs. First support down is 7587. Won't engage this level but if it's a slow grind down, one can try the bid. If going elevator down, skip it — safer to wait for 7587 to flush and recover as a level reclaim. Better if 7575 dips first then 7587 reclaims. Below this is 7558 — not super high quality, no significant low available for a FBD. If traps 7558 down to 7549 and recovers, possible long. Nothing below there until 7527 — first actionable quality FBD. Massive multi-touch shelf at 7527-25 set between 7pm Wednesday and 7:30AM this morning. Flush and recovery is actionable, bonus if tags 7517. Below there 7502 is of interest, and watch for FBDs of 7473.",
   entry:"All week ES had been rangebound 7574–77 to 7620. Overnight Wednesday, ES broke that range triggering an elevator down sell all the way to 7527 — the 10AM low from last Thursday. ES built a shelf at 7527 overnight and defended it, but didn't clearly trap it. At 7:35AM Thursday, ES swept that shelf down to 7525 and recovered — triggering the Failed Breakdown. Adam took the long via NAP: 7527 + 5 = 7532, entered at 7533 at 7:46AM. Managed level to level: locked 75% at 7537 (T1), more at 7549 (T2), left 10% runner. ES ripped back to backtest 7575 by 11AM and beyond. Green trade in books — profit protection mode, runner working, done trading for the day."
   },
-  { date:"06/04/2026", setups:[
-    {level:7563,type:"FBD",priority:"aplus",notes:"Today's daily low. Ideal: flush to 7558 (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force. Below 7558 = probable flush."},
+  { date:"06/04/2026", setups:[{level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Mid-range reclaim of interest for those wanting a strength entry. Not a primary setup but actionable on flush and recovery."},
     {level:7573,type:"FBD",priority:"b",notes:"Heavily tested shelf all week — becoming a coin toss zone. Final bid attempt ok but reliability fading. If it fails convincingly, move to 7563 FBD."},
-    {level:7587,type:"LEVEL_RECLAIM",priority:"b",notes:"Mid-range reclaim of interest for those wanting a strength entry. Not a primary setup but actionable on flush and recovery."},
+    {level:7563,type:"FBD",priority:"aplus",notes:"Today's daily low. Ideal: flush to 7558 (major support) then recover 7563. Lock profits at 7576 first up, or wait for 7576 to recover with force. Below 7558 = probable flush."},
+    {level:7538,type:"FBD",priority:"b",notes:"One support below 7558. Only try on slow controlled grind — if knifing, skip and wait for 7527 or 7518 FBD."},
     {level:7527,type:"FBD",priority:"a",notes:"10AM last Thursday low from which ES rallied to current highs. FBD is actionable if we get down there."},
-    {level:7518,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf. Thursday 6:40AM huge low set here. FBD highly actionable if we reach this level."},
-    {level:7538,type:"FBD",priority:"b",notes:"One support below 7558. Only try on slow controlled grind — if knifing, skip and wait for 7527 or 7518 FBD."}
-  ],
+    {level:7518,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf. Thursday 6:40AM huge low set here. FBD highly actionable if we reach this level."}],
   bull:"Range since Friday: 7573–76 support, ~7620 resistance. 7604 now a major inside level. Fill range to 7604, perhaps quick trap first, then push to 7620, 7636, 7665.",
   bear:"Begins under 7558. Breakdown — 80% fail rate. Final bounce at 7558, short below lows. Trigger ~7555. Advanced only.",
   summary:"Thursday June 4. Range has held all week (7573–76 / 7620). 7604 major inside level. Wait for elevator down into 7563 or 7573–76 FBD. 7573–76 becoming less reliable — coin toss zone after heavy testing. Below 7558 = flush. Manage level to level."
   },
-  { date:"06/03/2026", setups:[
-    {level:7574,type:"FBD",priority:"aplus",notes:"Massive 3+ touch shelf on Friday and Monday. Flush and recovery actionable. Ideal: tag 7565 then recover 7575. NAP: hold above 7582 for a few minutes. Below 7565 = probable collapse."},
+  { date:"06/03/2026", setups:[{level:7604,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down, mid-range. No interest in buying direct. Only try on controlled slow sell — if elevator down, skip entirely and wait for 7587 or 7574 FBD."},
     {level:7587,type:"FBD",priority:"a",notes:"9AM today's low from which we rallied 45pts. Clear significant low — FBD is actionable. Tag 7577 on this is even better before recovering 7587."},
-    {level:7604,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down, mid-range. No interest in buying direct. Only try on controlled slow sell — if elevator down, skip entirely and wait for 7587 or 7574 FBD."},
+    {level:7574,type:"FBD",priority:"aplus",notes:"Massive 3+ touch shelf on Friday and Monday. Flush and recovery actionable. Ideal: tag 7565 then recover 7575. NAP: hold above 7582 for a few minutes. Below 7565 = probable collapse."},
+    {level:7538,type:"FBD",priority:"b",notes:"One support. Only try bid on controlled grind — if knifing, skip and wait for 7527 or 7517 FBD."},
     {level:7527,type:"FBD",priority:"a",notes:"10AM Thursday low from which ES rallied to today's highs. FBD actionable if we get down there."},
-    {level:7517,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. Thursday 6:40AM huge low set here. FBD highly actionable."},
-    {level:7538,type:"FBD",priority:"b",notes:"One support. Only try bid on controlled grind — if knifing, skip and wait for 7527 or 7517 FBD."}
-  ],
+    {level:7517,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. Thursday 6:40AM huge low set here. FBD highly actionable."}],
   bull:"Range since Friday: 7574–77 support, ~7620 resistance. 7587 key inside level. Fill range (quick trap of support ok), then breakout above 7620. Next leg targets 7643, 7662, 7671, 7716.",
   bear:"Begins under 7565. Breakdown trade — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555. Advanced only — low win rate, high R/R.",
   summary:"Wednesday June 3. ES rangebound since Friday (7574–77 / 7620). Slow summer market. No interest near resistance — just ride runner. Wait for elevator down into 7574–77 or 7587 FBD. React to triggers only, manage level to level."
   },
-  { date:"06/02/2026", setups:[
+  { date:"06/02/2026", setups:[{level:7605,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down — too close to highs for a direct bid. If desperate, wait for flush and recover (ideal: dip to ~7598) before entering. Not a quality setup in itself."},
     {level:7574,type:"FBD",priority:"aplus",notes:"Complex multi-touch shelf of lows 7574–77 since Thursday — today's daily low 7576 and Friday's low 7577. Ideal: sweep shelf (tag 7565 if possible) then recover 7575. NAP: hold above 7580 for a few minutes. Below 7565 = probable collapse."},
-    {level:7605,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down — too close to highs for a direct bid. If desperate, wait for flush and recover (ideal: dip to ~7598) before entering. Not a quality setup in itself."},
+    {level:7538,type:"FBD",priority:"b",notes:"Minor support. Only try on slow controlled grind — if knifing full speed, skip and wait for 7527 or 7516 FBD instead."},
     {level:7527,type:"FBD",priority:"a",notes:"10AM Thursday low from which ES rallied to today's highs. Failed Breakdown here is actionable if we sell down that far."},
-    {level:7516,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. 6:40AM Thursday ES set a huge low here — Failed Breakdown is highly actionable. High quality if it gets there."},
-    {level:7538,type:"FBD",priority:"b",notes:"Minor support. Only try on slow controlled grind — if knifing full speed, skip and wait for 7527 or 7516 FBD instead."}
-  ],
+    {level:7516,type:"FBD",priority:"aplus",notes:"Massive multi-touch support shelf since last Tuesday. 6:40AM Thursday ES set a huge low here — Failed Breakdown is highly actionable. High quality if it gets there."}],
   bull:"ATH parabola continues. ES broke out 7516–7565 multi-day range last Thursday, built new consolidation support 7574–77 since. Parabolic: bulls hold 7620/7605, won't test 7574–77. Normal: defend 7574–77 (quick trap ok), continue up. Next targets: 7637, 7648, 7656, 7692.",
   bear:"Begins below 7565. Breakdown — 80% fail rate. Loss of 7565 = probable collapse. Final bounce at 7565, short below lows of bounce. Trigger ~7555. Advanced only.",
   summary:"Tuesday June 2. ATH parabola — every micro dip gets bought. ES broke out 7516–7565 range Thursday, now consolidating 7574–77. No quality entries until 7574–77 FBD. 7605 first support too close to highs to bid directly. Defer to the trend — wait for elevator down sell into quality FBD, react, manage level to level."
   },
-  { date:"06/01/2026", setups:[
-    {level:7585,type:"FBD",priority:"b",notes:"First support down. Well tested zone on Friday. Little interest in bidding this close to highs. If desperate, wait for flush and recover only."},
-    {level:7565,type:"FBD",priority:"aplus",notes:"Backtest of range we broke out of yesterday. Can buy direct BUT safer alternative: wait for 7565 to defend then recover 7574 (9:20PM Thursday low). That shelf recovery = cleaner FBD entry."},
+  { date:"06/01/2026", setups:[{level:7585,type:"FBD",priority:"b",notes:"First support down. Well tested zone on Friday. Little interest in bidding this close to highs. If desperate, wait for flush and recover only."},
     {level:7574,type:"LEVEL_RECLAIM",priority:"aplus",notes:"9:20PM Thursday low — shelf from which ES rallied to Friday highs. If 7565 defends and 7574 recovers = high quality FBD entry. Use NAP: 7574+5=7579."},
+    {level:7565,type:"FBD",priority:"aplus",notes:"Backtest of range we broke out of yesterday. Can buy direct BUT safer alternative: wait for 7565 to defend then recover 7574 (9:20PM Thursday low). That shelf recovery = cleaner FBD entry."},
     {level:7538,type:"FBD",priority:"a",notes:"Decent support. Can try bid if price grinds slowly. If knifing full speed, skip it."},
     {level:7527,type:"FBD",priority:"aplus",notes:"10AM Thursday low — ES rallied to ATH from there. Clearly actionable FBD."},
     {level:7518,type:"FBD",priority:"aplus",notes:"Support since last Monday. Massive 6:40AM Thursday low. Highly actionable FBD. Key level."},
-    {level:7485,type:"FBD",priority:"a",notes:"Monster Friday 4:45PM low. Clearly actionable FBD. Not much below until 7458."}
-  ],
+    {level:7485,type:"FBD",priority:"a",notes:"Monster Friday 4:45PM low. Clearly actionable FBD. Not much below until 7458."}],
   bull:"Range 7516–7565 broke out. Ultra bull: defend 7565 on any dips, resume up to 7609, 7624, 7655. ES not getting near 7516 in this scenario.",
   bear:"No bear case until 7565 fails. Breakdown trade — 80% fail rate. Final bounce at 7565, short below lows. Trigger ~7555.",
   summary:"Monday June 1. ES at ATH after range breakout. Bulls defending 7565 breakout level. Primary setup: 7565 FBD + 7574 shelf recovery. Targets: 7609, 7624, 7655. React to triggers only."
   },
-  { date:"05/29/2026", setups:[
-    {level:7565,type:"FBD",priority:"b",notes:"First support after big rally. Not overly interesting — no significant lows here to engage for a clean FBD. If desperate, wait for flush and recover. Adam not interested in just buying first support after a big rally up."},
+  { date:"05/29/2026", setups:[{level:7565,type:"FBD",priority:"b",notes:"First support after big rally. Not overly interesting — no significant lows here to engage for a clean FBD. If desperate, wait for flush and recover. Adam not interested in just buying first support after a big rally up."},
     {level:7537,type:"FBD",priority:"a",notes:"Decent support. Can try the bid if price grinds slowly into this zone. If knifing full speed, skip it."},
     {level:7527,type:"FBD",priority:"aplus",notes:"Nice low set at 10AM Thursday from which ES rallied to high of day. Failed Breakdown of this low is actionable. Primary A+ setup."},
     {level:7517,type:"FBD",priority:"aplus",notes:"Support since Monday. 6:40AM Thursday set the most recent low here — massive low. FBD is actionable. Key level."},
     {level:7485,type:"FBD",priority:"a",notes:"Monster low set Friday 4:45PM. ES rallied to today's highs from here. Clearly actionable FBD. Not much below until 7458."},
-    {level:7458,type:"FBD",priority:"a",notes:"Bottom of old range. Slow grind only — can buy direct. If knifing wait for flush and recover."}
-  ],
+    {level:7458,type:"FBD",priority:"a",notes:"Bottom of old range. Slow grind only — can buy direct. If knifing wait for flush and recover."}],
   bull:"Range 7516–7565 broke out higher Thursday. Bulls want to defend breakout. Hold 7565 (or quick trap below), or 7528 lowest (or quick trap below). Continue up to 7600, 7620, 7636, 7649.",
   bear:"No bear case until 7528 fails. Breakdown trade — 80% fail rate, advanced only. Final bounce at 7528, short below lows. Trigger ~7522.",
   summary:"Friday May 29. Range 7516–7565 broke out Thursday. ES at ATH. Bulls defending breakout — hold 7565 or 7528. Targets: 7600, 7620, 7636, 7649. React to triggers only. No chasing."
   },
-  { date:"05/28/2026", setups:[
+  { date:"05/28/2026", setups:[{level:7530,type:"FBD",priority:"b",notes:"Key inside pivot. Very noisy — engaged over and over for days. Can wait for flush and recover but expect trappy action. Not something Adam would engage at this point."},
     {level:7516,type:"FBD",priority:"aplus",notes:"Range support. Multi-touch shelf 7514–7518 (4 touches across Tue/Wed). FBD is actionable but keep smaller size — zone is well tested and odds of true breakdown increase. Wait for full flush and recovery before entry."},
-    {level:7530,type:"FBD",priority:"b",notes:"Key inside pivot. Very noisy — engaged over and over for days. Can wait for flush and recover but expect trappy action. Not something Adam would engage at this point."},
     {level:7502,type:"FBD",priority:"a",notes:"Decent support. Don't just buy it — wait for it to hold then recover 7514–18 shelf to get long. Below 7502 ES could start to sell off."},
     {level:7485,type:"FBD",priority:"aplus",notes:"Monster low set Friday 4:45PM. ES rallied to today's highs from here. FBD is clearly actionable. Not much below until 7458."},
     {level:7458,type:"FBD",priority:"a",notes:"Bottom of old range. Slow grind only — can buy direct. If knifing wait for flush and recover. Strong bull case: ES never gets here."},
-    {level:7438,type:"FBD",priority:"a",notes:"Nice low set ~2:45PM Thursday. Clearly actionable FBD. Not much below until 7408–7412 shelf — safer to wait for full shelf flush and recover."}
-  ],
+    {level:7438,type:"FBD",priority:"a",notes:"Nice low set ~2:45PM Thursday. Clearly actionable FBD. Not much below until 7408–7412 shelf — safer to wait for full shelf flush and recover."}],
   bull:"Range 7516–7565, 7530 key pivot inside. Fill range out (perhaps 1 more trap below), head up to 7565. 1 last dip there, then breakout targets 7579, 7598, 7617. Lean: defer to the trend.",
   bear:"Begins below 7516. Breakdown trade — 80% fail rate, advanced only. Final bounce at 7516, short below lows. Trigger ~7512.",
   summary:"Thursday May 28. ES rangebound 7516–7565, 7530 as key pivot. Mode 2 range day expected. Lean: fill range, 1 more trap below possible, then breakout to 7579, 7598, 7617. React to triggers only."
   },
-  { date:"05/27/2026", setups:[
-    {level:7516,type:"FBD",priority:"a",notes:"First support. Small shelf of lows built 12pm–2pm Tuesday. Low quality FBD but actionable if sweeps shelf and recovers. Bonus if tags 7503 first. If 7503 fails, ES should sell off."},
+  { date:"05/27/2026", setups:[{level:7516,type:"FBD",priority:"a",notes:"First support. Small shelf of lows built 12pm–2pm Tuesday. Low quality FBD but actionable if sweeps shelf and recovers. Bonus if tags 7503 first. If 7503 fails, ES should sell off."},
     {level:7503,type:"FBD",priority:"a",notes:"Decent support. Can buy on slow controlled grind into zone. If knifing, wait for flush and recovery. Below here 7485 is next."},
     {level:7485,type:"FBD",priority:"aplus",notes:"Monster low set Friday 4:45PM from which ES rallied to today's highs. Failed Breakdown of this low is clearly actionable. Not much below until 7458."},
     {level:7458,type:"FBD",priority:"aplus",notes:"Bottom of the old range. Slow grind only — can buy direct. If knifing wait for flush and recover. Strong bull case: ES never even gets here."},
     {level:7438,type:"FBD",priority:"a",notes:"Nice low set ~2:45PM Thursday from which ES rallied to today's highs. Clearly actionable FBD. Not much below until 7408–7412 shelf."},
-    {level:7413,type:"FBD",priority:"b",notes:"Big shelf of lows set Wednesday and Thursday. Safer entry — wait for full 7408–7412 shelf to flush and recover rather than buying direct."}
-  ],
+    {level:7413,type:"FBD",priority:"b",notes:"Big shelf of lows set Wednesday and Thursday. Safer entry — wait for full 7408–7412 shelf to flush and recover rather than buying direct."}],
   bull:"Digesting Friday/Monday breakout rally. Support mostly 7516. Quick trap of 7516 then head up to 7548, 7566. New range builds there, then next breakout leg targets 7578, 7613. Ultra-bull: never tests 7458 again.",
   bear:"Begins below 7485. Breakdown trade — 80% fail rate, advanced only. For 7485 short: wait for final bounce/FBD, short below the low of that bounce. Likely ~7477 trigger.",
   summary:"Wednesday May 27. Digestion day after big Friday/Monday breakout to 7570. Structure building with 7516 as key support. Lean: trap 7516 (or not even test it), resume up to 7548, 7566, 7578, 7613. React to triggers only."
   },
-  { date:"05/22/2026", setups:[
+  { date:"05/22/2026", setups:[{level:7507,type:"LEVEL_RECLAIM",priority:"b",notes:"Second short attempt zone. Adam does not short."},
+    {level:7490,type:"LEVEL_RECLAIM",priority:"b",notes:"Short attempt zone for those who short. Adam does not short — long only. Resistance above current price."},
     {level:7439,type:"FBD",priority:"aplus",notes:"Was resistance all morning Thursday. First real support of interest. Only buy if price grinds slowly into it — if free falling, never buy. Ideal: tag 7425 then recover 7439. FBD of 7439 is the cleanest entry."},
     {level:7415,type:"FBD",priority:"aplus",notes:"Big shelf — 6pm low Wednesday AND the 7am Thursday low. Held to the tick twice. First high quality FBD setup. Below 7439 this is the obvious entry. Wait for flush and full recovery before entering."},
     {level:7377,type:"FBD",priority:"a",notes:"Massive low set at 10am Thursday. Multi-touch shelf from Sunday/Monday. Highly actionable FBD if we get there. Wait for flush to 7365 area and recovery above 7377."},
-    {level:7356,type:"FBD",priority:"b",notes:"Tuesday low of day — big support. Not much below there until 7336. FBD only, take profits fast."},
-    {level:7490,type:"LEVEL_RECLAIM",priority:"b",notes:"Short attempt zone for those who short. Adam does not short — long only. Resistance above current price."},
-    {level:7507,type:"LEVEL_RECLAIM",priority:"b",notes:"Second short attempt zone. Adam does not short."}
-  ],
+    {level:7356,type:"FBD",priority:"b",notes:"Tuesday low of day — big support. Not much below there until 7336. FBD only, take profits fast."}],
   bull:"ES continues complex range-building (Mode 2). Range mostly 7365/7377 to 7458 with 7415 as key pivot. Bull case: hold 7439 OR 7415 (or quick trap below either), continue up to 7490, 7507, 7530. Blue skies above to ATHs.",
   bear:"Begins below 7415. Breakdown trade — 80% fail rate, advanced setup only. For 7415 short: wait for final bounce or quick FBD, short below lows. Ideal trigger: 7407.",
   summary:"Friday May 22. ES broke out of the week-long range Thursday. Mode 2 range-building continues. 7439 and 7415 are the two key FBD setups. Lean: continue up to 7490, 7507, 7530. No crystal balls — react to triggers only."
   },
-  { date:"05/21/2026", setups:[
-    {level:7377,type:"FBD",priority:"aplus",notes:"Big low set at 10am today. Flush down to 7364 and recover 7377 = highest quality entry. Even better FBD entry. Below 7364 ES could free fall."},
+  { date:"05/21/2026", setups:[{level:7432,type:"FBD",priority:"a",notes:"First support down as of writing (~2pm). Small low set here around 2pm. Quick traps of that low actionable but low quality — earnings night trap plays are risky."},
     {level:7415,type:"LEVEL_RECLAIM",priority:"a",notes:"Former resistance, big highs set here Tuesday 1pm and 8am Wednesday before breakout. Normal conditions = good backtest long. With NVDA earnings — wait for slow grind into zone, not a knife catch. Flush and recover 7415 for best entry."},
-    {level:7432,type:"FBD",priority:"a",notes:"First support down as of writing (~2pm). Small low set here around 2pm. Quick traps of that low actionable but low quality — earnings night trap plays are risky."},
+    {level:7377,type:"FBD",priority:"aplus",notes:"Big low set at 10am today. Flush down to 7364 and recover 7377 = highest quality entry. Even better FBD entry. Below 7364 ES could free fall."},
     {level:7356,type:"FBD",priority:"b",notes:"Today's and yesterday's daily low. Take profits fast — zone is well tested. Hard to say if any FBD here will stick. Not much below until 7327."},
     {level:7327,type:"FBD",priority:"b",notes:"Decent support if free falling on NVDA. Wait for flush and recovery — do not knife catch."},
-    {level:7285,type:"FBD",priority:"b",notes:"Deep support. NVDA free fall scenario only. Flush and recovery required before entry."}
-  ],
+    {level:7285,type:"FBD",priority:"b",notes:"Deep support. NVDA free fall scenario only. Flush and recovery required before entry."}],
   bull:"ES rangebound since Sunday — support 7363/7377, resistance 7450. Almost ready to crack. Bull case: defend/trap 7377 (or 7364), fill range, then breakout. Breakout targets 7473, 7490, 7507, then 7554. 7415 and 7377 are key inside pivots.",
   bear:"Begins below 7363. Breakdown trade — 60%+ failure rate. Final bounce at 7363 or quick FBD, short below lows. Trigger ~7350. Advanced setup only.",
   summary:"NVDA earnings night. ES rangebound since Sunday — 7363/7377 support, 7450 resistance. Expect volatility and trapping post-earnings. React to triggers only. My lean: fill range then breakout to 7473, 7490, 7507. Do not predict NVDA reaction — wait for traps."
   },
-  { date:"05/20/2026", setups:[
+  { date:"05/20/2026", setups:[{level:7377,type:"LEVEL_RECLAIM",priority:"a",notes:"10+ touches Sunday/Monday, trapped and recovered today. Zone is heavily tested. One possible entry: test 7377 then recover 7385 = Level Reclaim of 7385. Not a FBD — no significant low being swept. Just a reclaim."},
     {level:7355,type:"FBD",priority:"aplus",notes:"Today's daily low — highest quality entry. Ideal: flush to 7345 and recover 7355. That 7345 tag before recovery is the best version. Below 7345 ES probably takes another deep elevator down sell."},
-    {level:7377,type:"LEVEL_RECLAIM",priority:"a",notes:"10+ touches Sunday/Monday, trapped and recovered today. Zone is heavily tested. One possible entry: test 7377 then recover 7385 = Level Reclaim of 7385. Not a FBD — no significant low being swept. Just a reclaim."},
     {level:7318,type:"FBD",priority:"b",notes:"Controlled grind into zone only. If free falling, wait for zone to trap below and recover for a safer entry. Long way down."},
-    {level:7284,type:"FBD",priority:"b",notes:"Do not buy directly — wait for flush and recovery. Very far down. Only relevant in a deep sell scenario."}
-  ],
+    {level:7284,type:"FBD",priority:"b",notes:"Do not buy directly — wait for flush and recovery. Very far down. Only relevant in a deep sell scenario."}],
   bull:"Range unchanged — 7377 support, 7450 resistance. 7402 and 7434 key inside pivots. Bull case: defend or trap below 7377, fill range to upside. Path: rally to 7434, 7450, final dip, then breakout to 7472, 7483, 7517. Recoveries of 7402 are a possible Level Reclaim long add-on.",
   bear:"Begins below 7345. Breakdown trade only — 60%+ failure rate. Final bounce at 7345 or quick FBD, then short below lows. Trigger ~7337.",
   summary:"Another Mode 2 range day. Range mostly 7377-7450 with 7402 and 7434 as key inside levels. 7377 tested 10+ times total — heavily tested zone. Lean is ES fills range to upside: 7403, 7434, 7450, perhaps dips, then breakout to 7472, 7483, 7517. React to triggers, do not predict."
   },
-  { date:"05/19/2026", setups:[
+  { date:"05/19/2026", setups:[{level:7415,type:"LEVEL_RECLAIM",priority:"b",notes:"Key pivot inside the range. Sweeps and recoveries of 7415 are a level reclaim long opportunity. Higher complexity entry — inside the range so only take on clean reclaim."},
     {level:7377,type:"FBD",priority:"aplus",notes:"Multi-touch support shelf with 9-10 touches today, lowest at 7374. Fairly weak now but may have one more trap left. Prefer to wait for FBD — ideally ES flushes to 7365 and recovers 7377. That flush to 7365 + recovery is the ideal version."},
     {level:7365,type:"FBD",priority:"aplus",notes:"Ideal flush target below 7377. If ES can tag 7365 then recover 7377, that is the highest quality entry. Below 7365 nothing until 7345."},
     {level:7345,type:"FBD",priority:"a",notes:"Decent support on controlled dip. If knifing full speed on a headline — do NOT knife catch. Wait for FBD of 7335 instead. May 7th low of day — flush and recovery is actionable."},
-    {level:7335,type:"FBD",priority:"a",notes:"Thursday May 7th low of day. Flush and recovery actionable. If collapsing into 7345 at least wait for it to trap and recover 7335 before entering."},
-    {level:7415,type:"LEVEL_RECLAIM",priority:"b",notes:"Key pivot inside the range. Sweeps and recoveries of 7415 are a level reclaim long opportunity. Higher complexity entry — inside the range so only take on clean reclaim."}
-  ],
+    {level:7335,type:"FBD",priority:"a",notes:"Thursday May 7th low of day. Flush and recovery actionable. If collapsing into 7345 at least wait for it to trap and recover 7335 before entering."}],
   bull:"Range morphed to 7377-7451. 3PM today we trapped range support and ripped. Bull case: fill out range to 7433, then 7451. Perhaps dip there then breakout. Breakout targets 7474, 7490, 7508. Level reclaim of 7415 is one add-on-strength entry but tricky after late day rip.",
   bear:"Begins below 7377. Breakdown trade only — 60%+ failure rate. Wait for final bounce at 7377 or quick failed breakdown, short below lows. Trigger ~7363.",
   summary:"Consolidation session. Range morphed to 7377-7451 with 7415 as big inside pivot. Everything inside = chop. Lean is price fills range to 7451, perhaps dips, then breaks out to 7474, 7490, 7508. Do not predict inside the range — wait on triggers, react, repeat."
   },
-  { date:"05/18/2026", setups:[
+  { date:"05/18/2026", setups:[{level:7435,type:"LEVEL_RECLAIM",priority:"a",notes:"Big level tested 4x today with one trap below at 9:55AM. Do not just bid it — wait for price to flush and recover 7435 for a Level Reclaim long. Very choppy and high risk on a direct bid."},
     {level:7421,type:"FBD",priority:"aplus",notes:"Today's daily low — obvious A+ setup for Monday. Sweep of this low and recovery is a clean FBD entry. Below there ES could flush hard with not much until 7398."},
     {level:7398,type:"FBD",priority:"aplus",notes:"Wednesday's big daily low from which ES ripped to this week's highs. Failed Breakdown of this is highly actionable. High quality entry if it gets there."},
-    {level:7435,type:"LEVEL_RECLAIM",priority:"a",notes:"Big level tested 4x today with one trap below at 9:55AM. Do not just bid it — wait for price to flush and recover 7435 for a Level Reclaim long. Very choppy and high risk on a direct bid."},
     {level:7377,type:"FBD",priority:"b",notes:"Decent support on controlled grind lower. If total free fall — do NOT knife catch. Wait for it to defend then recover 7384 to get long. That recovery of 7384 is the quality entry."},
-    {level:7364,type:"FBD",priority:"b",notes:"Tuesday's daily low. Failed Breakdown here is highly actionable. Long way down but high quality if it gets there."}
-  ],
+    {level:7364,type:"FBD",priority:"b",notes:"Tuesday's daily low. Failed Breakdown here is highly actionable. Long way down but high quality if it gets there."}],
   bull:"ES stuck in new range — 7421 support, 7472 resistance, with 7435 and 7458 as key inside levels. Everything inside = tactical chop. Bulls want to defend range (or quick trap below) then break it out. Setup: defend 7435 (or quick trap below 7421) then rip to 7458, 7472. Perhaps final dip there, then breakout targets 7496, 7508, 7520. Back to ATH above there. Limited low risk adds on strength — 7458 reclaim is one higher complexity entry.",
   bear:"Begins below 7421. Breakdown trade only — 60%+ failure rate. Wait for final bounce at 7421, short below lows of that bounce. Trigger ~7415. Not recommended for newer traders.",
   summary:"OPEX chop day. New range established: 7421 support, 7472 resistance, 7435 and 7458 key inside levels. Everything inside = pure chop. Trade level to level, one setup at a time, no predicting. Lean is ES fills range to the upside returning to 7472, perhaps dips there, then breakout to 7496, 7507, 7520."
   },
-  { date:"05/15/2026", setups:[
-    {level:7507,type:"FBD",priority:"aplus",notes:"19pt low set at 1:20PM today. Ideally ES tags 7496 on the dip (backtest of this morning's breakout resistance shelf) then recovers 7507. That 7496 tag + 7507 recovery = highest quality entry of the day."},
-    {level:7480,type:"FBD",priority:"a",notes:"Clear low set at 9:30AM this morning. Flush and recovery of this low is an actionable FBD. If bulls can't stick this, nothing until 7455-50."},
+  { date:"05/15/2026", setups:[{level:7507,type:"FBD",priority:"aplus",notes:"19pt low set at 1:20PM today. Ideally ES tags 7496 on the dip (backtest of this morning's breakout resistance shelf) then recovers 7507. That 7496 tag + 7507 recovery = highest quality entry of the day."},
     {level:7484,type:"FBD",priority:"a",notes:"Decent support in itself. Only buy on controlled slow dip into zone. If knifing full speed, wait for the FBD of the 7480 low instead."},
+    {level:7480,type:"FBD",priority:"a",notes:"Clear low set at 9:30AM this morning. Flush and recovery of this low is an actionable FBD. If bulls can't stick this, nothing until 7455-50."},
     {level:7455,type:"BACKTEST",priority:"b",notes:"Big resistance shelf Mon-Wed that broke out yesterday. Backtest long only on slow controlled grind. Do not buy if knifing on headlines — at least wait for trap below and recovery. Below here ES sells back into the old range."},
     {level:7421,type:"FBD",priority:"b",notes:"Decent support. Slow controlled sell only. If flushing full speed wait for flush and recovery before entering."},
-    {level:7392,type:"FBD",priority:"b",notes:"Strong support. If knifing, wait for it to defend then put in FBD of yesterday's 7399 daily low. High quality entry if it gets there."}
-  ],
+    {level:7392,type:"FBD",priority:"b",notes:"Strong support. If knifing, wait for it to defend then put in FBD of yesterday's 7399 daily low. High quality entry if it gets there."}],
   bull:"ES remains fully parabolic. Most recent leg up triggered yesterday when ES broke out the week-long range at 7450-55. This morning, ES broke out another small overnight resistance shelf at 7496, commencing yet another leg up. No hint of pullback until ES loses 7496 AND then 7450-55. Strong bull case: ES defends 7496 (then recovers 7507) and continues up. Next targets: 7542, 7552, 7559, 7575. Ultra parabolic: won't even backtest 7496. If slightly larger dip, bulls want to hold 7450-55.",
   bear:"No real bear case until 7450-55 fails. Possible short below 7450-55 — breakdown trade only, 60%+ failure rate. Wait for final bounce at 7450-55, short below lows of that bounce. Trigger ~7440. Even losing 7450-55 is not truly bearish — just produces a larger dip which can then be bought.",
   summary:"General lean always to defer to the trend. Most recent leg up triggered yesterday on 7450-55 breakout. This morning broke out 7496 overnight shelf for another leg up. As long as backtests defend — next leg up targets 7542, 7552, 7559, 7575. Nothing to do at the highs. Wait for elevator down sell into a FBD."
   },
-  { date:"05/14/2026", setups:[
+  { date:"05/14/2026", setups:[{level:7467,type:"FBD",priority:"a",notes:"1st support down from ATH. ES defended this at 1:55PM today and rallied 18pts. A flush and recovery here is actionable but risky since still close to highs. Lower quality due to proximity to highs."},
     {level:7450,type:"FBD",priority:"aplus",notes:"7455-50 was a big resistance shelf all week and today's range top. Now acting as backtest support after the breakout. A+ if ES flushes below 7450 and recovers — bonus if dips to 7441. Mancini's primary entry for Thursday. Only on slow controlled sell — if knifing on headlines, wait for full FBD trigger."},
-    {level:7467,type:"FBD",priority:"a",notes:"1st support down from ATH. ES defended this at 1:55PM today and rallied 18pts. A flush and recovery here is actionable but risky since still close to highs. Lower quality due to proximity to highs."},
     {level:7421,type:"FBD",priority:"b",notes:"Decent support. Only try a bid here on a slow controlled sell. If flushing full speed, wait for it to flush and recover before entering."},
-    {level:7392,type:"FBD",priority:"b",notes:"Strong support. If knifing into this zone, do not just buy it — wait for it to defend then put in a Failed Breakdown of today's 7399 daily low. High quality entry if it gets there but a long way down."}
-  ],
+    {level:7392,type:"FBD",priority:"b",notes:"Strong support. If knifing into this zone, do not just buy it — wait for it to defend then put in a Failed Breakdown of today's 7399 daily low. High quality entry if it gets there but a long way down."}],
   bull:"ES broke out of the week-long range (7363-7455) today driven by the 7411 FBD at 9:55AM. Bulls want to defend this breakout — 7450-55 on any backtest (or quick flush below and recover). From there price continues higher. Next targets: 7491, 7504, 7526. In extreme bull case ES won't even backtest 7450-55 and just continues up or traps 7467.",
   bear:"7363 has to fail to even start talking about a real bear case. Possible short below 7450-55 — breakdown trade only. Wait for a final bounce at 7450-55, then short below the lows of that bounce. Trigger around 7440. Note: 60%+ failure rate on breakdown trades. Not recommended for newer traders.",
   summary:"ATH breakout day. ES was rangebound 7455-7363 all week, today broke out via 7411 FBD at 9:55AM and ripped 50+ points to new all time highs. Closing at the highs again — nothing to do. Wait for elevator down sell into a quality FBD. Patience required after a big green day. First supports after a big rally go 1-2 levels then fail before the real one sticks."
   },
-  { date:"05/13/2026", setups:[
-    {level:7363,type:"FBD",priority:"aplus",notes:"Low of day Tuesday. Primary A+ setup for Wednesday. FBD of this level is actionable. Bonus if ES dips to 7355 first on the flush. Mancini's top pick for the day."},
-    {level:7390,type:"LEVEL_RECLAIM",priority:"a",notes:"Strong support. If ES dips to 7390 and recovers 7402, this represents a Level Reclaim long — 7402 is a clear horizontal line from Monday daily low and Tuesday morning lows. Only on a dip to 7390 then recovery of 7402."},
+  { date:"05/13/2026", setups:[{level:7390,type:"LEVEL_RECLAIM",priority:"a",notes:"Strong support. If ES dips to 7390 and recovers 7402, this represents a Level Reclaim long — 7402 is a clear horizontal line from Monday daily low and Tuesday morning lows. Only on a dip to 7390 then recovery of 7402."},
     {level:7377,type:"FBD",priority:"b",notes:"Possible support but only on a controlled, organized sell. If ES is knifing full speed into it, do not buy. Slow grind only."},
-    {level:7345,type:"FBD",priority:"b",notes:"Decent support below 7363. Only buy if its a controlled, slow sell — not if free falling. Below there, FBD of last Thursday's 7336 daily low is the next actionable zone."}
-  ],
+    {level:7363,type:"FBD",priority:"aplus",notes:"Low of day Tuesday. Primary A+ setup for Wednesday. FBD of this level is actionable. Bonus if ES dips to 7355 first on the flush. Mancini's top pick for the day."},
+    {level:7345,type:"FBD",priority:"b",notes:"Decent support below 7363. Only buy if its a controlled, slow sell — not if free falling. Below there, FBD of last Thursday's 7336 daily low is the next actionable zone."}],
   bull:"ES is now rangebound 7428–7363 with 7402 as the pivot. Bulls want ES to mature this range and build sideways structure. Near the top of the range now — may react at 7428 to get entries. When ES is ready to break, upside targets are 7442, 7450, perhaps dip again there, then all time highs at 7464, 7500+. No spots to add on strength — need a sell to get new entries.",
   bear:"Bear case begins below 7390. If 7390 fails, ES sells down to 7363 range support. For shorts: ideally see a final bounce at 7390 or a FBD that fizzles, then short below the bounce low — trigger around 7387 down. Note: breakdown trades have a 60%+ failure rate — low win rate, high R/R. Not recommended for newer traders.",
   summary:"The dip was bought yet again. ES rangebound 7428–7363, this will expand further. Lean is bulls fill it out then 7442, 7450, dip again, then off to ATH at 7464, 7500+. If 7390 fails — sell to 7363 range support. ES finally seeing normal two-way tape with multiple FBDs on the sell, then afternoon squeeze. Trade it one setup at a time, level to level, no predictions."
   },
-  { date:"05/12/2026", setups:[
+  { date:"05/12/2026", setups:[{level:7435,type:"FBD",priority:"b",notes:"Small shelf of lows set between 11AM and 1:30PM Monday. Lower quality — too close to the highs. Only if we flush shelf (down to ~7428) and recover. Do not force this one."},
     {level:7422,type:"FBD",priority:"aplus",notes:"Big low set at 10:30AM Monday from which ES rallied to daily highs. Primary A+ setup for Tuesday. Failed Breakdown of this low is the most actionable entry."},
     {level:7402,type:"FBD",priority:"a",notes:"Low of day Monday — most interesting zone. Failed Breakdown of this daily low is actionable. We probably finally get a more proper dip if we fail below 7402 since this was the backtest of last Thursday's breakdown. CPI at 8:30AM — be on guard for traps/FBDs in first 30 min after print."},
-    {level:7435,type:"FBD",priority:"b",notes:"Small shelf of lows set between 11AM and 1:30PM Monday. Lower quality — too close to the highs. Only if we flush shelf (down to ~7428) and recover. Do not force this one."},
     {level:7377,type:"DIRECT BID",priority:"b",notes:"Slow, controlled grind into zone only. If ES is knifing full speed, pass. Not a FBD — Mancini would not personally take direct bids."},
     {level:7363,type:"FBD",priority:"b",notes:"Do not just buy 7363 — wait for it to defend then recover 7372 to get long. 7372 was a big low set ~11PM last Thursday. Lower quality level."}
   ]},
-  { date:"05/11/2026", setups:[
-    {level:7391,type:"FBD",priority:"aplus",notes:"Shelf of lows formed 5:50AM-8:50AM. Primary long for Monday. Wait for 7378 to recover before entering."},
-    {level:7337,type:"FBD",priority:"a",notes:"Failed Breakdown of yesterday's daily low. Quality long if we get down there. Elevator down sell required first."},
-    {level:7345,type:"FBD",priority:"b",notes:"May have a bounce left but only on a slow, controlled sell. Do not take if ES is knifing."},
-    {level:7402,type:"BACKTEST",priority:"b",notes:"Resistance shelf from last Thursday. Backtest long on slow grind only. Mancini will not personally take this."}
+  { date:"05/11/2026", setups:[{level:7402,type:"BACKTEST",priority:"b",notes:"Resistance shelf from last Thursday. Backtest long on slow grind only. Mancini will not personally take this."}
   ]},
-  { date:"05/07/2026", setups:[
-    {level:7355,type:"FBD",priority:"aplus",notes:"Big low set at 12:30PM Wednesday from which ES ripped to daily highs. Primary A+ setup for Thursday."},
-    {level:7332,type:"FBD",priority:"a",notes:"Shelf of lows set 8AM-9:30AM Wednesday (wicks to 7327). Wait for whole shelf to sweep then recover 7332."},
+    {level:7391,type:"FBD",priority:"aplus",notes:"Shelf of lows formed 5:50AM-8:50AM. Primary long for Monday. Wait for 7378 to recover before entering."},
+    {level:7345,type:"FBD",priority:"b",notes:"May have a bounce left but only on a slow, controlled sell. Do not take if ES is knifing."},
+    {level:7337,type:"FBD",priority:"a",notes:"Failed Breakdown of yesterday's daily low. Quality long if we get down there. Elevator down sell required first."},
+  { date:"05/07/2026", setups:[{level:7355,type:"FBD",priority:"aplus",notes:"Big low set at 12:30PM Wednesday from which ES ripped to daily highs. Primary A+ setup for Thursday."},
     {level:7345,type:"FBD",priority:"a",notes:"Shallow support. Only on slow grind — do not knife catch. Wait for 7345 to defend then recover 7355."},
+    {level:7332,type:"FBD",priority:"a",notes:"Shelf of lows set 8AM-9:30AM Wednesday (wicks to 7327). Wait for whole shelf to sweep then recover 7332."},
     {level:7284,type:"FBD",priority:"b",notes:"Deeper support. Only relevant if upper levels fail."}
   ]},
   { date:"05/06/2026", setups:[
-    {level:7248,type:"FBD",priority:"aplus",notes:"Clear, obvious low set at 7:10AM Tuesday from which ES rallied to daily highs. Primary A+ setup for Wednesday."},
     {level:7279,type:"FBD",priority:"a",notes:"5-6 touch shelf of lows 11:30AM-1:10PM Tuesday. Higher risk — at top of trend leg."},
-    {level:7199,type:"FBD",priority:"a",notes:"Failed Breakdown of Monday's daily low. High quality if we get down there."},
-    {level:7213,type:"DIRECT BID",priority:"b",notes:"Slow grind only. Not a FBD — Mancini would not personally take direct bids."}
+    {level:7248,type:"FBD",priority:"aplus",notes:"Clear, obvious low set at 7:10AM Tuesday from which ES rallied to daily highs. Primary A+ setup for Wednesday."},
+    {level:7213,type:"DIRECT BID",priority:"b",notes:"Slow grind only. Not a FBD — Mancini would not personally take direct bids."},
+    {level:7199,type:"FBD",priority:"a",notes:"Failed Breakdown of Monday's daily low. High quality if we get down there."}
   ]}
 ];
 
