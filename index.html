@@ -906,26 +906,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col bearish">
-        <div class="ctx-label">Market Bias — Updated Jun 8</div>
+        <div class="ctx-label">Market Bias — Updated Jun 9</div>
         <div class="ctx-bias-value" style="color:var(--red);">BEAR</div>
-        <div class="ctx-bias-sub">Bears have control after 7527 shelf broke Friday — first big red day in weeks. Bulls need to recover 7410, then 7458, 7508, then ultimately backtest 7527. Bear case resumes below 7377.</div>
+        <div class="ctx-bias-sub">Bears still in control after 7527 breakdown. Bulls need to hold 7425 or 7390 first, then push to 7451, 7478, 7507, then 7527 backtest. Sell resumes under 7390.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7410 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Massive shelf of lows from May 20–21 from which we rallied to current highs. ES backtested it at 3:30PM Friday and accepted extensively into close — high quality FBD zone. Targets: 7458, 7508, then 7527 backtest.<br><br>
-        <strong>7380 FBD</strong> — today's daily low. Flush to 7377 or 7358 then recover. Safer entry below 7410.<br><br>
-        <strong>7326 FBD</strong> — big low from May 6th. Flush to 7313 then recover 7326 even better.</div>
-        <div class="ctx-setup-stop">Stop: Below 7377 — bear case resumes, next support 7326</div>
+        <div class="ctx-setup-level">7425 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Shelf of lows set today — two bounces at 10AM (7429) and 1PM (7423). Flush and recovery is a lower quality, higher risk long given post-breakdown context. Be more suspicious of supports than usual.<br><br>
+        <strong>7390 FBD</strong> — nice low set ~2AM today from which we rallied to highs. Flush and recovery actionable. Bear case triggers below here.<br><br>
+        <strong>7358 FBD</strong> — today’s daily low. Actionable FBD below 7390. Below 7326 next.</div>
+        <div class="ctx-setup-stop">Stop: Below 7390 — bear case resumes, trigger ~7381</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Recover 7410, push to 7458, 7508, then backtest 7527. Recovery of 7527 restores full bull control and resumes prior trajectory higher.</div>
+          <div class="ctx-case-text">Hold 7425 or 7390, rally to 7451, 7478, 7507, then 7527 backtest. Recovery of 7527 restores full bull control.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Bears hold control until key levels recover. Downside resumption below 7377. Final bounce at 7377, short below lows. Trigger ~7365. Advanced only.</div>
+          <div class="ctx-case-text">Begins below 7390. Final bounce at 7390 or FBD, short below lows. Trigger ~7381. Advanced only.</div>
         </div>
       </div>
     </div>
@@ -1173,6 +1173,26 @@ var weeks = [
 ];
 
 var trades = [
+  { id:66, date:"06/09/2026", entryTime:"11:40 PM", entryPrice:7429.75, stopPrice:7415.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7425 FBD (NAP)",
+    targets:[
+      {label:"T1",price:7446.25,contracts:3,status:"hit",pnl:247.50,exitTime:"6:45 AM"}
+    ],
+    times:[{label:"Entry",value:"11:40 PM"},{label:"T1",value:"6:45 AM"}],
+    totalPts:16.50, totalPnl:247.50, exitNote:"Held overnight, grind to 7451. Sold all 3 @ 7446.25 at 6:45AM (+16.5pts, +$247.50).", journal:"" },
+  { id:65, date:"06/08/2026", entryTime:"3:27 PM", entryPrice:7415.50, stopPrice:7403.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7407 FBD",
+    targets:[
+      {label:"T1",price:7420.00,contracts:2,status:"hit",pnl:45.00,exitTime:"3:28 PM"},
+      {label:"T2",price:7429.00,contracts:1,status:"open",pnl:0,exitTime:""}
+    ],
+    times:[{label:"Entry",value:"3:27 PM"},{label:"T1",value:"3:28 PM"},{label:"T2",value:"--"}],
+    totalPts:9.00, totalPnl:45.00, exitNote:"T1: 2 @ 7420 (+4.5pts, +$45). T2: 1 contract targeting 7429, stop 7403.", journal:"" },
+  { id:64, date:"06/08/2026", entryTime:"1:34 PM", entryPrice:7438.00, stopPrice:7422.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7429 FBD",
+    targets:[
+      {label:"T1",price:7443.00,contracts:2,status:"hit",pnl:50.00,exitTime:"2:06 PM"},
+      {label:"T2",price:7417.50,contracts:1,status:"stopped",pnl:-102.50,exitTime:"3:10 PM"}
+    ],
+    times:[{label:"Entry",value:"1:34 PM"},{label:"T1",value:"2:06 PM"},{label:"T2",value:"3:10 PM"}],
+    totalPts:-10.50, totalPnl:-52.50, exitNote:"T1: 2 @ 7443 (+5pts, +$50). T2: stopped 1 @ 7417.50 (-20.5pts, -$102.50).", journal:"" },
   { id:63, date:"06/08/2026", entryTime:"7:45 PM", entryPrice:7392.00, stopPrice:7382.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7380 FBD (Sunday)",
     targets:[
       {label:"T1",price:7397.00,contracts:2,status:"hit",pnl:50.00,exitTime:"7:47 PM"},
@@ -1650,6 +1670,19 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/09/2026", setups:[
+    {level:7425,type:"FBD",priority:"b",notes:"Shelf of lows set today — bounces at 10AM (7429) and 1PM (7423). Lower quality, higher risk given post-breakdown context. Be more suspicious of supports than usual. Flush and recovery is the trigger."},
+    {level:7390,type:"FBD",priority:"a",notes:"Nice low set ~2AM today from which we rallied to highs. Flush and recovery actionable. Bear case triggers below here — don't buy direct, wait for FBD."},
+    {level:7358,type:"FBD",priority:"a",notes:"Today's daily low. Actionable FBD. If knifing at full speed, skip 7326 and wait for this to defend and recover 7358 to long."},
+    {level:7326,type:"FBD",priority:"b",notes:"Strong support but be cautious in post-breakdown context. If knifing, skip it. Wait for it to defend and recover 7358 first."},
+    {level:7307,type:"FBD",priority:"b",notes:"Level of interest below 7326."},
+    {level:7275,type:"FBD",priority:"b",notes:"Support below 7307."}
+  ],
+  bull:"Hold 7425 or 7390 (lowest), rally to 7451, 7478, 7507, then 7527 backtest. Recovery of 7527 restores full bull control and resumes prior trajectory. Nothing to add on strength — desperate traders can try 7451 recovery only.",
+  bear:"Begins below 7390. Final bounce at 7390 or FBD, short below lows. Trigger ~7381. Advanced only — 80% fail rate. Context is more favorable for shorts now after 7527 breakdown.",
+  summary:"Tuesday June 9. Still in post-breakdown context — bears in control until 7527 recovers. First support down is 7425 — shelf of lows from today (7429 and 7423 bounces). Lower quality, higher risk long given context. 7390 is below there — nice low from 2AM today, FBD actionable. Below 7390 bear case resumes. Below that is 7358 (today's daily low, FBD actionable), then 7326 (skip if knifing, wait for recovery of 7358 first). 7307 and 7275 below that. Key reminder: do not buy supports directly in a post-breakdown environment — only enter on clean FBD triggers.",
+  entry:"Friday's 7527 shelf broke triggering Bear Case and big elevator down sell to 7359. Sunday 6PM futures open: ES muted near Friday's close. At 6:10PM ES pushed through 7380 (Friday's late-day low). Adam longed via NAP: 7380+5=7385, held above 7385 by 6:15PM. Entered at 7387. Managed level to level: locked 75% at 7394 (T1), more at 7410 (T2), left 10% runner. Monday morning runner kept paying — ES pushed toward 7458 per plan. Adam still holding 10% runner with stop under prior day's low heading into Tuesday."
+  },
   { date:"06/08/2026", setups:[
     {level:7410,type:"FBD",priority:"aplus",notes:"Massive shelf of lows from May 20-21 from which we rallied to current highs. ES backtested at 3:30PM Friday and accepted into close. Flush and recovery is the trigger. NAP: hold above 7415 for a few minutes. Targets: 7458, 7508, 7527."},
     {level:7380,type:"FBD",priority:"a",notes:"Friday's daily low. Flush to 7377 or 7358 then recover. Safer entry below 7410 if that level fails."},
