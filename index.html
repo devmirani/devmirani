@@ -1195,6 +1195,12 @@ var weeks = [
 ];
 
 var trades = [
+  { id:88, date:"06/11/2026", entryTime:"2:16 PM", entryPrice:60.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:1, tradeLabel:"SPY 738 Call",
+    targets:[
+      {label:"T1",price:149.00,contracts:1,status:"hit",pnl:89.00,exitTime:"2:30 PM"}
+    ],
+    times:[{label:"Entry",value:"2:16 PM"},{label:"T1",value:"2:30 PM"}],
+    totalPts:89.00, totalPnl:89.00, exitNote:"SPY 738 Call. Bought 1 @ $60 at 2:16PM. Sold 1 @ $149 at 2:30PM. +$89.00.", journal:"" },
   { id:87, date:"06/11/2026", entryTime:"12:20 PM", entryPrice:112.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:1, tradeLabel:"732 Call SPY",
     targets:[
       {label:"T1",price:390.00,contracts:1,status:"hit",pnl:278.00,exitTime:"1:30 PM"}
@@ -1211,10 +1217,10 @@ var trades = [
     targets:[
       {label:"T1",price:7264.50,contracts:7,status:"hit",pnl:306.25,exitTime:"8:15 PM"},
       {label:"T2",price:7279.50,contracts:2,status:"hit",pnl:237.50,exitTime:"8:17 PM"},
-      {label:"T3",price:7390.00,contracts:1,status:"open",pnl:0,exitTime:""}
+      {label:"T3",price:7388.25,contracts:1,status:"hit",pnl:672.50,exitTime:""}
     ],
-    times:[{label:"Entry",value:"7:31 PM"},{label:"Add",value:"7:36 PM"},{label:"T1",value:"8:15 PM"},{label:"T2",value:"8:17 PM"},{label:"T3",value:"open"}],
-    totalPts:47.50, totalPnl:543.75, exitNote:"Leg 1: 5 @ 7253.75 at 7:31PM. Leg 2: 5 @ 7257.75 at 7:36PM. Avg entry ~7255.75. T1: 7 @ 7264.50 (+$306.25). T2: 2 @ 7279.50 (+$237.50). T3: 1 MES open — targeting 7390. No stop.", journal:"" },
+    times:[{label:"Entry",value:"7:31 PM"},{label:"Add",value:"7:36 PM"},{label:"T1",value:"8:15 PM"},{label:"T2",value:"8:17 PM"},{label:"T3",value:"closed"}],
+    totalPts:182.00, totalPnl:1216.25, exitNote:"Leg 1: 5 @ 7253.75 at 7:31PM. Leg 2: 5 @ 7257.75 at 7:36PM. Avg entry ~7255.75. T1: 7 @ 7264.50 (+$306.25). T2: 2 @ 7279.50 (+$237.50). T3: 1 @ 7388.25 (+134.5pts, +$672.50).", journal:"" },
   { id:84, date:"06/10/2026", entryTime:"3:35 PM", entryPrice:7291.50, stopPrice:0, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7280 Flush & Recover",
     targets:[
       {label:"Add",price:7295.75,contracts:3,status:"hit",pnl:0,exitTime:"3:50 PM"},
