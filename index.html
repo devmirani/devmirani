@@ -906,26 +906,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 10</div>
-        <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
-        <div class="ctx-bias-sub">7275 FBD at 12:57PM ripped +100 back to 7390. Bulls need to recover 7390 now. General lean: they try. Path: 7427, 7460, 7508, 7527. Bear case begins below 7311. Sell &lt; 7311.</div>
+        <div class="ctx-label">Market Bias — Updated Jun 11</div>
+        <div class="ctx-bias-value" style="color:var(--red);">BEAR</div>
+        <div class="ctx-bias-sub">ES rangebound 7308–7390 all day, then cracked 7308 late. Bounces are being sold — 7390 rejected twice. Bears control below 7390. General lean: recover 7308 → 7327, 7358, 7390. Bear case begins below 7296.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7331 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">1:48PM Tuesday set a clear low at 7331 from which ES rallied to HOD. Ideal: tag 7326 then recover 7331. NAP: hold above 7336 for a few minutes.<br><br>
-        <strong>7390 Level Reclaim</strong> — big Monday support shelf, now major resistance. Already accepted — still give it 5pt buffer + time (NAP). High complexity entry.<br><br>
-        <strong>7247 FBD</strong> — Tuesday's LOD. Actionable if revisited. Bonus if tags 7239. Below: 7202.</div>
-        <div class="ctx-setup-stop">Stop: Below 7326 (7331 FBD) / Bear case trigger below 7311</div>
+        <div class="ctx-setup-level">7308 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">7308 tested to death all day — two precise touches plus one trap below. Wait for a larger FBD: ideal flush to 7296, recover 7308. NAP: hold above 7313 for a few minutes.<br><br>
+        <strong>7280 FBD</strong> — strong support, nothing below until 7247. Flush and recovery actionable.<br><br>
+        <strong>7247 FBD</strong> — Tuesday’s LOD. Obvious FBD if revisited. Below: 7215, then 7200 (massive May 4th low).</div>
+        <div class="ctx-setup-stop">Stop: Below 7296 (7308 FBD) / Bear case trigger below 7296</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Recover 7390 now → 7427, 7460, 7508, 7527. Recovery of 7527 restores full bull control. 7390 reclaim is the first big step.</div>
+          <div class="ctx-case-text">Recover 7308 → 7327, 7358, 7390. Recovery of 7390 restores meaningful control. Full control only at 7527. Bulls must hold 7308 and push.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7311. Final bounce at 7311, short below lows ~7302. Breakdown trade only — advanced, low win rate. Not for newer traders.</div>
+          <div class="ctx-case-text">Begins below 7296. FBD or final bounce at 7296, short below ~7285. Breakdown trade — advanced only, 60%+ failure rate. Low win rate / high R/R.</div>
         </div>
       </div>
     </div>
@@ -1173,6 +1173,74 @@ var weeks = [
 ];
 
 var trades = [
+  { id:85, date:"06/11/2026", entryTime:"7:31 PM", entryPrice:7253.75, stopPrice:0, setup:"FBD", result:"win", contracts:10, tradeLabel:"7247 FBD",
+    targets:[
+      {label:"T1",price:7264.50,contracts:7,status:"hit",pnl:306.25,exitTime:"8:15 PM"},
+      {label:"T2",price:7279.50,contracts:2,status:"hit",pnl:237.50,exitTime:"8:17 PM"},
+      {label:"T3",price:7390.00,contracts:1,status:"open",pnl:0,exitTime:""}
+    ],
+    times:[{label:"Entry",value:"7:31 PM"},{label:"Add",value:"7:36 PM"},{label:"T1",value:"8:15 PM"},{label:"T2",value:"8:17 PM"},{label:"T3",value:"open"}],
+    totalPts:47.50, totalPnl:543.75, exitNote:"Leg 1: 5 @ 7253.75 at 7:31PM. Leg 2: 5 @ 7257.75 at 7:36PM. Avg entry ~7255.75. T1: 7 @ 7264.50 (+$306.25). T2: 2 @ 7279.50 (+$237.50). T3: 1 MES open — targeting 7390. No stop.", journal:"" },
+  { id:84, date:"06/10/2026", entryTime:"3:35 PM", entryPrice:7291.50, stopPrice:0, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7280 Flush & Recover",
+    targets:[
+      {label:"Add",price:7295.75,contracts:3,status:"hit",pnl:0,exitTime:"3:50 PM"},
+      {label:"Exit",price:7279.25,contracts:5,status:"stopped",pnl:-370.00,exitTime:"3:59 PM"}
+    ],
+    times:[{label:"Entry",value:"3:35 PM"},{label:"Add",value:"3:50 PM"},{label:"Exit",value:"3:59 PM"}],
+    totalPts:-24.75, totalPnl:-370.00, exitNote:"Entered 2 MES @ 7291.50 at 3:35PM. Added 3 MES @ 7295.75 at 3:50PM. All 5 exited at 7279.25 at 3:59PM. No stop. Total: -$370.00.", journal:"" },
+  { id:83, date:"06/10/2026", entryTime:"1:50 PM", entryPrice:7321.75, stopPrice:7300.00, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7305 FBD",
+    targets:[
+      {label:"T1",price:7327.00,contracts:3,status:"hit",pnl:78.75,exitTime:"1:56 PM"},
+      {label:"T2",price:7296.75,contracts:1,status:"stopped",pnl:-125.00,exitTime:"2:50 PM"},
+      {label:"T3",price:7296.75,contracts:1,status:"stopped",pnl:-125.00,exitTime:"2:50 PM"}
+    ],
+    times:[{label:"Entry",value:"1:50 PM"},{label:"T1",value:"1:56 PM"},{label:"T2",value:"2:50 PM"},{label:"T3",value:"2:50 PM"}],
+    totalPts:-34.25, totalPnl:-171.25, exitNote:"T1: 3 @ 7327 (+5.25pts, +$78.75). T2 & T3: 2 @ 7296.75 (-25.00pts each, -$250.00 total).", journal:"" },
+  { id:82, date:"06/10/2026", entryTime:"11:41 AM", entryPrice:7338.00, stopPrice:7315.00, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7336 FBD",
+    targets:[
+      {label:"T1",price:7345.00,contracts:2,status:"hit",pnl:70.00,exitTime:"11:44 AM"},
+      {label:"T2",price:7302.50,contracts:1,status:"stopped",pnl:-177.50,exitTime:"1:36 PM"}
+    ],
+    times:[{label:"Entry",value:"11:41 AM"},{label:"T1",value:"11:44 AM"},{label:"T2",value:"1:36 PM"}],
+    totalPts:-21.50, totalPnl:-107.50, exitNote:"T1: 2 @ 7345 (+7.00pts, +$70.00). Runner stopped at 7302.50 (-35.50pts, -$177.50).", journal:"" },
+  { id:81, date:"06/10/2026", entryTime:"9:42 AM", entryPrice:7356.60, stopPrice:7350.00, setup:"FBD", result:"win", contracts:4, tradeLabel:"7348 FBD",
+    targets:[
+      {label:"T1",price:7366.25,contracts:1,status:"hit",pnl:48.25,exitTime:"9:42 AM"},
+      {label:"T2",price:7377.50,contracts:1,status:"hit",pnl:104.50,exitTime:"9:43 AM"},
+      {label:"T3",price:7331.00,contracts:1,status:"stopped",pnl:-128.00,exitTime:"11:11 AM"}
+    ],
+    times:[{label:"Entry",value:"9:42 AM"},{label:"T1",value:"9:42 AM"},{label:"T2",value:"9:43 AM"},{label:"T3",value:"11:11 AM"}],
+    totalPts:9.55, totalPnl:24.75, exitNote:"T1: 1 @ 7366.25 (+9.65pts, +$48.25). T2: 1 @ 7377.50 (+20.90pts, +$104.50). T3 runner stopped at 7331 (-25.60pts, -$128.00).", journal:"" },
+  { id:80, date:"06/10/2026", entryTime:"6:39 AM", entryPrice:7340.25, stopPrice:7304.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7331 FBD",
+    targets:[
+      {label:"T1",price:7345.00,contracts:3,status:"hit",pnl:71.25,exitTime:"6:45 AM"},
+      {label:"T2",price:7352.00,contracts:1,status:"hit",pnl:58.75,exitTime:"8:30 AM"},
+      {label:"T3",price:7366.25,contracts:1,status:"hit",pnl:130.00,exitTime:"9:42 AM"}
+    ],
+    times:[{label:"Entry",value:"6:39 AM"},{label:"T1",value:"6:45 AM"},{label:"T2",value:"8:30 AM"},{label:"T3",value:"9:42 AM"}],
+    totalPts:58.50, totalPnl:260.00, exitNote:"T1: 3 @ 7345 (+4.75pts, +$71.25). T2: 1 @ 7352 (+11.75pts, +$58.75). T3: 1 @ 7366.25 (+26.00pts, +$130.00).", journal:"" },
+  { id:79, date:"06/10/2026", entryTime:"11:05 PM", entryPrice:7377.25, stopPrice:7357.25, setup:"FBD", result:"loss", contracts:4, tradeLabel:"7370 Bounce Add-On",
+    targets:[
+      {label:"T1",price:7410.00,contracts:4,status:"stopped",pnl:-400.00,exitTime:"12:44 AM"}
+    ],
+    times:[{label:"Entry",value:"11:05 PM"},{label:"Stop",value:"12:44 AM"}],
+    totalPts:-20.00, totalPnl:-400.00, exitNote:"4 MES added at 7377.25 at 11:05AM. Never reached TP — all 4 stopped out at 7357.25 at 12:44AM (-20pts, -$400.00).", journal:"" },
+  { id:78, date:"06/10/2026", entryTime:"8:54 PM", entryPrice:7378.75, stopPrice:7360.00, setup:"FBD", result:"scratch", contracts:4, tradeLabel:"7370 Bounce",
+    targets:[
+      {label:"T1",price:7383.75,contracts:2,status:"hit",pnl:50.00,exitTime:"8:57 PM"},
+      {label:"T2",price:7390.00,contracts:1,status:"hit",pnl:56.25,exitTime:"9:17 PM"},
+      {label:"T3",price:7357.25,contracts:1,status:"stopped",pnl:-107.50,exitTime:"12:44 AM"}
+    ],
+    times:[{label:"Entry",value:"8:54 PM"},{label:"T1",value:"8:57 PM"},{label:"T2",value:"9:17 PM"},{label:"T3",value:"12:44 AM"}],
+    totalPts:0.75, totalPnl:-1.25, exitNote:"T1: 2 @ 7383.75 (+5.00pts, +$50.00). T2: 1 @ 7390 (+11.25pts, +$56.25). T3 runner stopped at 7357.25 (-21.5pts, -$107.50). Near scratch overall.", journal:"" },
+  { id:77, date:"06/10/2026", entryTime:"7:58 PM", entryPrice:7375.75, stopPrice:7360.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7370 Flush & Recover",
+    targets:[
+      {label:"T1",price:7383.00,contracts:3,status:"hit",pnl:108.75,exitTime:"8:02 PM"},
+      {label:"T2",price:7390.00,contracts:1,status:"hit",pnl:71.25,exitTime:"8:05 PM"},
+      {label:"T3",price:7383.75,contracts:1,status:"hit",pnl:40.00,exitTime:"9:57 PM"}
+    ],
+    times:[{label:"Entry",value:"7:58 PM"},{label:"T1",value:"8:02 PM"},{label:"T2",value:"8:05 PM"},{label:"T3",value:"9:57 PM"}],
+    totalPts:44.00, totalPnl:220.00, exitNote:"T1: 3 @ 7383 (+7.25pts, +$108.75). T2: 1 @ 7390 (+14.25pts, +$71.25). T3: 1 @ 7383.75 (+8.00pts, +$40.00).", journal:"" },
   { id:76, date:"06/09/2026", entryTime:"3:30 PM", entryPrice:7367.25, stopPrice:0, setup:"SUPPORT_BOUNCE", result:"win", contracts:4, tradeLabel:"7358 Bounce",
     targets:[
       {label:"T1",price:7373.00,contracts:2,status:"hit",pnl:57.50,exitTime:"2:50 PM"},
@@ -1738,6 +1806,17 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/11/2026", setups:[
+    {level:7308,type:"FBD",priority:"aplus",notes:"7308 tested all day — two precise touches plus one trap below. Don’t just buy it. Wait for a larger FBD: ideal flush to 7296 then recover 7308. NAP: hold above 7313 for a few minutes. Primary setup for Thursday."},
+    {level:7280,type:"FBD",priority:"a",notes:"Strong support. Nothing below until 7247. Flush and recovery is actionable. One can try a bid here if more risk tolerant."},
+    {level:7247,type:"FBD",priority:"a",notes:"Tuesday’s LOD. Obvious FBD if revisited. Below: 7215, then 7200 (massive May 4th low — watch FBDs there). 7160 great support under that."},
+    {level:7200,type:"FBD",priority:"b",notes:"Massive low set May 4th from which ES rallied to current highs. FBD here is high quality if reached. 7160 is great support below."}
+  ],
+  bull:"Recover 7308 → 7327, 7358, 7390. Recovery of 7390 restores meaningful bull control. Full control not restored until 7527. Bulls must hold and push through 7308 first.",
+  bear:"Begins below 7296. Breakdown trade only — 60%+ failure rate. Final bounce or FBD at 7296, short below ~7285. Advanced setup. Not for newer traders.",
+  summary:"Wednesday: ES rangebound 7308–7390 all day before cracking 7308 late. 7390 rejected twice — bounces are being sold. Classic Mode 2 range day. Adam’s 7327 reclaim pre-CPI worked perfectly: targets 7345, 7358, 7390 all hit. Still holding 10% runner from Tuesday 7275 FBD. 7390 is the bull/bear line — bears control below it. Supports: 7308 (major), 7296, 7284, 7280 (major), 7265, 7257, 7247 (major), 7231, 7223, 7215 (major), 7200 (major). Resistances: 7327 (major), 7354-58 (major), 7377 (major), 7390 (major), 7420 (major), 7451 (major), 7527 (major).",
+  entry:"Adam still holding 10% runner from Tuesday 12:57PM 7275 FBD. Today’s trade: 7327 reclaim FBD at 8:27AM, entered 7334 smaller size ahead of CPI. T1: 7345, left 25%. T2: 7358, left 10% runner. Profit protection mode after. Day range 7308–7390."
+  },
   { date:"06/10/2026", setups:[{level:7390,type:"LEVEL_RECLAIM",priority:"a",notes:"Big Monday support shelf ES lost Tuesday morning to trigger the selloff — now major resistance. Already accepted but still use NAP (5pt buffer + time) before entering. High complexity entry."},
     {level:7331,type:"FBD",priority:"aplus",notes:"1:48PM Tuesday set a clear low at 7331 from which ES rallied to HOD. A+ FBD — flush ideally to 7326 then recover 7331. NAP: hold above 7336 for a few minutes. Primary setup for Wednesday."},
     {level:7311,type:"FBD",priority:"b",notes:"Bear case trigger. Do not bid direct — only via FBD. If knifing, wait for trap and recovery. Below 7311 nothing until 7247. Advanced only."},
