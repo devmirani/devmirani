@@ -927,26 +927,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 11</div>
-        <div class="ctx-bias-value" style="color:var(--red);">BEAR</div>
-        <div class="ctx-bias-sub">ES rangebound 7308–7390 all day, then cracked 7308 late. Bounces are being sold — 7390 rejected twice. Bears control below 7390. General lean: recover 7308 → 7327, 7358, 7390. Bear case begins below 7296.</div>
+        <div class="ctx-label">Market Bias — Updated Jun 15 — ⚠️ Sep Contract (ESU2026)</div>
+        <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
+        <div class="ctx-bias-sub">7247 FBD Wednesday evening paid +200pts. Bulls recovered 7453 shelf. Range now 7440–7521. 7590 = next big magnet (last Friday’s breakdown shelf). Lean: hold 7440, rally to 7551, 7570, 7590. Bear case below 7440.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7308 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">7308 tested to death all day — two precise touches plus one trap below. Wait for a larger FBD: ideal flush to 7296, recover 7308. NAP: hold above 7313 for a few minutes.<br><br>
-        <strong>7280 FBD</strong> — strong support, nothing below until 7247. Flush and recovery actionable.<br><br>
-        <strong>7247 FBD</strong> — Tuesday’s LOD. Obvious FBD if revisited. Below: 7215, then 7200 (massive May 4th low).</div>
-        <div class="ctx-setup-stop">Stop: Below 7296 (7308 FBD) / Bear case trigger below 7296</div>
+        <div class="ctx-setup-level">7461 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Large low set at noon Friday from which ES rallied to HOD. High quality FBD — flush and recovery of 7461 is the primary entry. Much safer than just bidding the support.<br><br>
+        <strong>7484 FBD</strong> — small low at 2:15PM Friday. Messy shelf but actionable flush/recovery. Above: 7521 reclaim available for those who don’t mind the gamble.<br><br>
+        <strong>7427 FBD</strong> — Friday’s LOD. If 7440 fails, FBD of 7427 is obvious. Bonus if tags 7421.</div>
+        <div class="ctx-setup-stop">Stop: Below 7440 (bear case trigger) / Below 7421 (7427 FBD)</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Recover 7308 → 7327, 7358, 7390. Recovery of 7390 restores meaningful control. Full control only at 7527. Bulls must hold 7308 and push.</div>
+          <div class="ctx-case-text">Hold 7440, fill range to 7521, then push to 7551, 7570, 7590. 7590 = backtest of last Friday’s breakdown shelf — full bull reclaim target. Bulls in extreme control if 7440 holds without losing it.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7296. FBD or final bounce at 7296, short below ~7285. Breakdown trade — advanced only, 60%+ failure rate. Low win rate / high R/R.</div>
+          <div class="ctx-case-text">Begins below 7440. Final bounce at 7440, short below ~7435 trigger. Breakdown trade — advanced only, 60%+ failure rate. Low win rate / high R/R.</div>
         </div>
       </div>
     </div>
@@ -1846,6 +1846,29 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/15/2026", setups:[
+    {level:7521,type:"LEVEL_RECLAIM",priority:"b",notes:"Range resistance. 7521 reclaim available for those who don’t mind the risk — not a primary entry. Above: path to 7551, 7570, 7590."},
+    {level:7484,type:"FBD",priority:"a",notes:"Small low set at 2:15PM Friday. Messy shelf but flush and recovery is actionable. NAP: hold above 7489 for a few minutes."},
+    {level:7461,type:"FBD",priority:"aplus",notes:"Large low set at noon Friday from which ES rallied to HOD. High quality FBD — primary setup for Monday. Flush and recovery of 7461. Below: likely flush hard to 7440."},
+    {level:7427,type:"FBD",priority:"a",notes:"Friday’s LOD. If 7440 fails this is the obvious FBD. Bonus if tags 7421 on flush. Slow grind into 7440: can try bid. Knifing: wait for FBD of 7427."},
+    {level:7383,type:"FBD",priority:"b",notes:"Slow grind: can try direct bid. Knifing: wait for 7383 to hold then recover 7398. Below 7383 things get more concerning for bulls."}
+  ],
+  bull:"Hold 7440 → fill range to 7521 → push to 7551, 7570, 7590. 7590 = backtest of last Friday breakdown shelf, full bull reclaim target. Bulls in extreme control if 7440 never loses.",
+  bear:"Begins below 7440. Final bounce at 7440 or FBD, short below ~7435 trigger. Breakdown trade — advanced only, 60%+ failure rate.",
+  summary:"Friday: 7247 FBD Wednesday evening paid +200pts and launched a 2-day rally. Bulls recovered 7453 (big shelf lost Tuesday) — meaningful bull control restored. Friday was choppy consolidation 7440–7521. 7590 is next big magnet (last Friday’s breakdown shelf). NOTE: All levels now September contract (ESU2026) — rolled Sunday Jun 14 at 6PM. Supports: 7483-88 (major), 7461 (major), 7440 (major), 7419 (major), 7383 (major), 7337 (major), 7311 (major), 7277 (major), 7252 (major), 7223 (major). Resistances: 7521 (major), 7550 (major), 7570 (major), 7587 (major), 7611 (major).",
+  entry:"Adam still holding 10% runner from Wednesday 7:30PM 7247 FBD (rolled to Sep contract). Runner up ~+200pts by Friday 7:30AM at 7440s. No new trades Friday — profit protection mode. 7377 FBD at 9:44AM tweeted but not taken personally."
+  },
+  { date:"06/12/2026", setups:[
+    {level:7390,type:"LEVEL_RECLAIM",priority:"a",notes:"Major resistance — Friday Jun 6 breakdown shelf. Range resistance all week. 7390 reclaim = bulls regain meaningful control. Already well tested — weaker zone now. Not a primary entry but 7390 reclaims are an option for those who don’t mind the risk."},
+    {level:7320,type:"FBD",priority:"a",notes:"Key pivot inside range. Slow grind into 7320: can try direct bid. Knifing full speed: wait for 7320 to hold then recover 7335 to get long. Below 7320 likely heading back to 7270."},
+    {level:7270,type:"FBD",priority:"aplus",notes:"Big shelf of staggered lows — 11AM low 7263, 1PM low ~7270, 10:30PM low ~7270. Slow grind: try direct bid. Freefall: wait for 7263/7270 to lose then 7270 to recover. Primary setup for Friday. Below: FBD of 7232."},
+    {level:7232,type:"FBD",priority:"a",notes:"Thursday’s daily low. Obvious FBD if 7270 fails. 7215 is strong support under there — can buy slow grind or wait for 7215 to hold then recover 7232."}
+  ],
+  bull:"Hold 7320, fill range to 7390, then break out. Bulls in extreme control if ES doesn’t lose 7320 — direct push to 7390 then breakout. Targets: 7420, 7439, 7473, 7508, 7527 (full backtest of Jun 5 breakdown).",
+  bear:"Begins below 7270. Final bounce at 7270, short below ~7265 trigger. Breakdown trade — advanced only, 60%+ failure rate.",
+  summary:"Thursday: 7247 FBD at 7:30PM was 100% responsible for today’s 150pt rally. Classic institutional accumulation event — sold to 7232, recovered 7247 by 7:30PM, ripped. Still Mode 2 rangebound though: resistance 7390, support 7270. Key inside pivots 7335 and 7320. Note: Last full trading day of ESM2026 (June contract). Roll to ESU2026 effective Sunday Jun 14 at 6PM. Supports: 7377 (major), 7355 (major), 7336 (major), 7320 (major), 7295 (major), 7270 (major), 7247 (major), 7230 (major), 7215 (major), 7162 (major). Resistances: 7390 (major), 7420 (major), 7439 (major), 7473 (major), 7508 (major), 7527 (major).",
+  entry:"Adam holding 10% runner from Thursday 7:30PM 7247 FBD. Entered at 7254. T1: 7265, left 25%. T2: 7274, left 10% runner. Work done by 7:30AM Friday — runner up +90 at 7330."
+  },
   { date:"06/11/2026", setups:[
     {level:7308,type:"FBD",priority:"aplus",notes:"7308 tested all day — two precise touches plus one trap below. Don’t just buy it. Wait for a larger FBD: ideal flush to 7296 then recover 7308. NAP: hold above 7313 for a few minutes. Primary setup for Thursday."},
     {level:7280,type:"FBD",priority:"a",notes:"Strong support. Nothing below until 7247. Flush and recovery is actionable. One can try a bid here if more risk tolerant."},
