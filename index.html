@@ -893,6 +893,50 @@
   .screenshot-card-notes { font-size: 12px; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
 
 
+
+  /* ===== Daily Routine tab ===== */
+  .routine-header { padding: 32px 40px 8px; }
+  .routine-title { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
+  .routine-sub { font-size: 13px; color: var(--text3); margin-top: 4px; }
+  .routine-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 40px 8px; }
+  .routine-stat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .routine-stat-top { display: flex; align-items: center; justify-content: space-between; }
+  .routine-stat-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .routine-stat-icon { font-size: 16px; }
+  .routine-stat-value { font-size: 26px; font-weight: 700; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+  .routine-today { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin: 14px 40px; padding: 18px 20px; }
+  .routine-today-date { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .routine-progress-wrap { height: 8px; background: var(--bg3); border-radius: 6px; overflow: hidden; }
+  .routine-progress-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--amber)); transition: width 0.3s ease; }
+  .routine-progress-label { font-size: 11px; color: var(--text3); margin-top: 6px; }
+  .routine-grade { margin-top: 16px; }
+  .routine-grade-label { font-size: 13px; color: var(--text2); font-weight: 600; margin-bottom: 8px; }
+  .routine-grade-hint { color: var(--text3); font-weight: 400; font-size: 11px; }
+  .routine-grade-btns { display: flex; gap: 10px; }
+  .routine-grade-btn { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border2); background: var(--bg2); color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .routine-grade-btn:hover { border-color: var(--text3); }
+  .routine-grade-btn.yes.active { background: var(--green); border-color: var(--green); color: #10210a; }
+  .routine-grade-btn.no.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .routine-note { margin-top: 16px; }
+  .routine-note-label { font-size: 13px; color: var(--text2); font-weight: 600; margin-bottom: 8px; }
+  .routine-note-input { width: 100%; min-height: 70px; resize: vertical; background: var(--bg2); border: 1px solid var(--border2); border-radius: 8px; color: var(--text); font-size: 13px; padding: 10px 12px; font-family: inherit; box-sizing: border-box; line-height: 1.5; }
+  .routine-note-input:focus { outline: none; border-color: var(--green); }
+  .routine-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 14px 40px 48px; }
+  .routine-section-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 8px 8px 12px; }
+  .routine-section-head { font-size: 13px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 12px; margin: 4px 0 6px; }
+  .routine-task { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border-radius: 8px; cursor: pointer; transition: background 0.12s; }
+  .routine-task:hover { background: var(--bg3); }
+  .routine-check { flex: 0 0 20px; width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #10210a; margin-top: 1px; transition: all 0.15s; }
+  .routine-check.on { background: var(--green); border-color: var(--green); }
+  .routine-task-text { font-size: 13px; color: var(--text2); line-height: 1.45; }
+  .routine-task.done .routine-task-text { color: var(--text3); text-decoration: line-through; }
+  @media (max-width: 768px) {
+    .routine-header { padding: 20px 16px 8px; }
+    .routine-stats { grid-template-columns: repeat(2, 1fr); margin: 14px 16px 8px; gap: 10px; }
+    .routine-today { margin: 12px 16px; }
+    .routine-sections { grid-template-columns: 1fr; margin: 12px 16px 28px; }
+    .routine-stat-value { font-size: 22px; }
+  }
 </style>
 </head>
 <body>
@@ -911,6 +955,7 @@
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="switchTab('journal-page', this)">Journal</button>
   <button class="nav-tab" onclick="switchTab('lab-page', this)">Setup Lab</button>
+  <button class="nav-tab" onclick="switchTab('routine-page', this); renderRoutine();">Daily Routine</button>
   <button class="nav-tab" onclick="switchTab('screenshots-page', this)">Weekly Screenshots</button>
 </div>
 
@@ -927,26 +972,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 15 — ⚠️ Sep Contract (ESU2026)</div>
+        <div class="ctx-label">Market Bias — Updated Jun 16 — ⚠️ Sep Contract (ESU2026)</div>
         <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
-        <div class="ctx-bias-sub">7247 FBD Wednesday evening paid +200pts. Bulls recovered 7453 shelf. Range now 7440–7521. 7590 = next big magnet (last Friday’s breakdown shelf). Lean: hold 7440, rally to 7551, 7570, 7590. Bear case below 7440.</div>
+        <div class="ctx-bias-sub">7310 FBD last Wednesday evening paid the 250+pt rip into today. Hit the 7590 target (backtest of June 5 breakdown shelf) and pushed beyond to 7600+. Nothing to do up at the highs — good entries are lower at 7590, 7511. Targets up: 7650, 7672, 7702, then ATHs?</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7461 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Large low set at noon Friday from which ES rallied to HOD. High quality FBD — flush and recovery of 7461 is the primary entry. Much safer than just bidding the support.<br><br>
-        <strong>7484 FBD</strong> — small low at 2:15PM Friday. Messy shelf but actionable flush/recovery. Above: 7521 reclaim available for those who don’t mind the gamble.<br><br>
-        <strong>7427 FBD</strong> — Friday’s LOD. If 7440 fails, FBD of 7427 is obvious. Bonus if tags 7421.</div>
-        <div class="ctx-setup-stop">Stop: Below 7440 (bear case trigger) / Below 7421 (7427 FBD)</div>
+        <div class="ctx-setup-level">7590 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Major — backtest of the June 5 breakdown shelf, tagged + recovered today. Shelf of lows built 2AM–8:30AM. Retest from above: can try a bid. Knifing down: safer to wait for a flush of ~7590 then recover. Bonus if it tags 7570.<br><br>
+        <strong>7511 FBD</strong> — fills the Sunday gap, the other key level. Slow grind: bid. Knifing: wait for a flush to ~7502 then recover.<br><br>
+        <strong>7545 FBD</strong> — roughly Sunday’s gap-up open, big low here. Watch the FBD.</div>
+        <div class="ctx-setup-stop">Stop: Below 7570 (bear trigger) / below the flush low on each FBD</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Hold 7440, fill range to 7521, then push to 7551, 7570, 7590. 7590 = backtest of last Friday’s breakdown shelf — full bull reclaim target. Bulls in extreme control if 7440 holds without losing it.</div>
+          <div class="ctx-case-text">Bulls defend supports on the retrace. Strong case: hold 7590 (or quick trap below). Weaker case: fill the Sunday gap at 7511, don’t want much lower. Targets up: 7650, 7672, 7702, then perhaps ATHs.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7440. Final bounce at 7440, short below ~7435 trigger. Breakdown trade — advanced only, 60%+ failure rate. Low win rate / high R/R.</div>
+          <div class="ctx-case-text">Begins below 7570. Final bounce at 7570 then short beneath — ~7567 trigger. Breakdown trade — advanced only, 60%+ failure rate. Adam doesn’t take these.</div>
         </div>
       </div>
     </div>
@@ -1846,6 +1891,19 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/16/2026", setups:[
+    {level:7611,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down but too close to the highs to engage — nothing Adam would take here. If desperate: wait for 7611 to hold then recover 7620 to try long. Better entries are much lower."},
+    {level:7590,type:"FBD",priority:"aplus",notes:"Major — backtest of the June 5 breakdown shelf, tagged + recovered today. Shelf of lows built 2AM–8:30AM. On a retest from above can try a bid; if knifing down the safer entry is a flush of the ~7590 shelf and recovery. Bonus if it tags 7570. Primary setup for Tuesday."},
+    {level:7545,type:"FBD",priority:"a",notes:"Roughly Sunday’s gap-up open — big low here. Watch for the Failed Breakdown of this low. Flush and recovery actionable."},
+    {level:7511,type:"FBD",priority:"a",notes:"Major — fills the Sunday opening gap. The other ‘really interesting’ level alongside 7590. Slow grind: can try a direct bid. Knifing full speed: wait for a flush to ~7502 then recover 7511 to get long."},
+    {level:7482,type:"FBD",priority:"b",notes:"Watch for the Failed Breakdown here if 7511 fails. Flush and recovery is the trigger."},
+    {level:7462,type:"FBD",priority:"a",notes:"Good support below 7482. FBD actionable if reached — high quality on a flush and recovery."}
+  ],
+  bull:"Bulls defend supports on the next retrace. Strong bull case: hold 7590 (or quick trap below). Weaker bull case: retrace to fill the Sunday gap at 7511 — don’t want to see much lower. Upside targets 7650, 7672, 7702, then perhaps all-time highs.",
+  bear:"Begins below 7570. Ideally a final good bounce at 7570, then short beneath — ~7567 trigger. Breakdown trade, advanced only, 60%+ failure rate. Adam doesn’t take these.",
+  summary:"Monday: the 7310 Failed Breakdown last Wednesday evening (institutional accumulation — swept Tuesday’s 7310 daily low, recovered by 7:30PM) launched a 250+pt rip into today. Hit the 7590 target (backtest of the June 5 breakdown shelf) and pushed beyond to 7600+. Question now is whether ES has the energy for all-time highs. Nothing to do up at the highs — the good entries are lower at 7590 and 7511. NOTE: All levels September contract (ESU2026) — rolled Sunday Jun 14 at 6PM; June expires Friday Jun 19. Supports: 7611 (major), 7590 (major), 7570 (major), 7545 (major), 7511 (major), 7482 (major), 7462 (major), 7443-48 (major), 7422 (major), 7383-88 (major), 7368 (major), 7327 (major), 7310 (major). Resistances: 7639 (major), 7650 (major), 7673 (major), 7702 (major), 7728 (major), 7774 (major), 7781 (major), 7814 (major), 7831 (major).",
+  entry:"Adam still holding the 10% long runner from last Wednesday’s 7:30PM 7310 major FBD (rolled to Sep contract) — up ~250+pts. No new entries: nothing to do up at the highs, all good entries are lower (7590, 7511). Waiting / profit-protection mode until ES circles back to an elevator-down sell into a Failed Breakdown."
+  },
   { date:"06/15/2026", setups:[
     {level:7521,type:"LEVEL_RECLAIM",priority:"b",notes:"Range resistance. 7521 reclaim available for those who don’t mind the risk — not a primary entry. Above: path to 7551, 7570, 7590."},
     {level:7484,type:"FBD",priority:"a",notes:"Small low set at 2:15PM Friday. Messy shelf but flush and recovery is actionable. NAP: hold above 7489 for a few minutes."},
@@ -3393,6 +3451,197 @@ function openScreenshot(src) {
 document.addEventListener('DOMContentLoaded', function() { renderScreenshots(); });
 
 
+
+/* ===== Daily Routine engine ===== */
+var RKEY_DAILY = 'tj_routine_daily_v1';
+var RKEY_WEEKLY = 'tj_routine_weekly_v1';
+var _rmem = {};
+function rGet(k){ try { return localStorage.getItem(k); } catch(e){ return (k in _rmem) ? _rmem[k] : null; } }
+function rSet(k,v){ try { localStorage.setItem(k,v); } catch(e){ _rmem[k]=v; } }
+
+/* ---- EDIT YOUR TASKS HERE (ids must stay stable to keep saved check state) ---- */
+var routineTasks = {
+  premarket: [
+    {id:"pm1", text:"Read Mancini\u2019s newsletter; mark today\u2019s levels on the 5-min chart"},
+    {id:"pm2", text:"Identify the A+ / primary FBD zone and write the if/then plan"},
+    {id:"pm3", text:"Set price alerts at the key support shelves"},
+    {id:"pm4", text:"Update the journal ctx-strip + setup calendar with today\u2019s plan"},
+    {id:"pm5", text:"Confirm risk: daily max loss, contract size, hard stop"},
+    {id:"pm6", text:"Mindset reset \u2014 wipe bias, no predictions, react level-to-level"}
+  ],
+  session: [
+    {id:"se1", text:"Only engage at pre-planned zones on a confirmed setup (FBD / reclaim / NAP)"},
+    {id:"se2", text:"Wait for acceptance or the non-acceptance protocol \u2014 no knife-catching"},
+    {id:"se3", text:"Lock 75% at T1, scale at T2, trail the runner \u2014 every trade"},
+    {id:"se4", text:"Honor the stop; never let a green trade go full red"},
+    {id:"se5", text:"Skip the 11\u20132 chop window unless an A+ appears"},
+    {id:"se6", text:"Stop after the first win (hold runner) or two losses"}
+  ],
+  postmarket: [
+    {id:"po1", text:"Log every trade in the journal (entry, exits, runner status)"},
+    {id:"po2", text:"Screenshot the chart with annotations"},
+    {id:"po3", text:"Write the day\u2019s reflection note"},
+    {id:"po4", text:"Grade discipline \u2014 process, not P&L"}
+  ],
+  weekly: [
+    {id:"wk1", text:"Weekend: full review of the week\u2019s trades + screenshots"},
+    {id:"wk2", text:"TradingView replay/backtest reps on FBD setups"},
+    {id:"wk3", text:"Re-read a methodology / setup-type section"},
+    {id:"wk4", text:"Plan next week\u2019s macro + earnings events"}
+  ]
+};
+
+function rLoadDaily(){ var r=rGet(RKEY_DAILY); return r ? JSON.parse(r) : {}; }
+function rSaveDaily(o){ rSet(RKEY_DAILY, JSON.stringify(o)); }
+function rLoadWeekly(){ var r=rGet(RKEY_WEEKLY); return r ? JSON.parse(r) : {}; }
+function rSaveWeekly(o){ rSet(RKEY_WEEKLY, JSON.stringify(o)); }
+
+function rPad(n){ return n<10 ? '0'+n : ''+n; }
+function rDateKey(d){ return rPad(d.getMonth()+1)+'/'+rPad(d.getDate())+'/'+d.getFullYear(); }
+function rIsTradingDay(d){ var g=d.getDay(); return g!==0 && g!==6; }
+function rWeekKey(d){ var x=new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate()-x.getDay()); return rDateKey(x); }
+function rEsc(s){ return (''+s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function rLongDate(d){
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var mons=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return days[d.getDay()]+', '+mons[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+}
+function rDailyIds(){
+  return routineTasks.premarket.concat(routineTasks.session, routineTasks.postmarket).map(function(t){ return t.id; });
+}
+function rDayRec(data,key){ if(!data[key]) data[key]={checked:{},grade:null,note:''}; return data[key]; }
+function rIsComplete(data,key){
+  var ids=rDailyIds(); var rec=data[key]; if(!rec) return false;
+  for(var i=0;i<ids.length;i++){ if(!rec.checked[ids[i]]) return false; }
+  return true;
+}
+function rComputeStreak(data){
+  var today=new Date(); today.setHours(0,0,0,0); var tk=rDateKey(today);
+  var d=new Date(today); var streak=0;
+  for(var i=0;i<500;i++){
+    if(rIsTradingDay(d)){
+      var key=rDateKey(d);
+      if(rIsComplete(data,key)){ streak++; }
+      else { if(key===tk){ /* today in progress: grace */ } else { break; } }
+    }
+    d.setDate(d.getDate()-1);
+  }
+  return streak;
+}
+function rBestStreak(data){
+  var keys=Object.keys(data); if(keys.length===0) return rComputeStreak(data);
+  var today=new Date(); today.setHours(0,0,0,0);
+  var earliest=new Date(today);
+  keys.forEach(function(k){ var p=k.split('/'); var dd=new Date(+p[2],+p[0]-1,+p[1]); dd.setHours(0,0,0,0); if(dd<earliest) earliest=dd; });
+  var d=new Date(earliest); var best=0, run=0;
+  while(d<=today){
+    if(rIsTradingDay(d)){
+      if(rIsComplete(data,rDateKey(d))){ run++; if(run>best) best=run; } else { run=0; }
+    }
+    d.setDate(d.getDate()+1);
+  }
+  return best;
+}
+function rAdherence(data){
+  var today=new Date(); today.setHours(0,0,0,0); var d=new Date(today);
+  var count=0, yes=0, seen=0;
+  for(var i=0;i<90 && count<30;i++){
+    if(rIsTradingDay(d)){ count++; var rec=data[rDateKey(d)]; if(rec && rec.grade){ seen++; if(rec.grade==='yes') yes++; } }
+    d.setDate(d.getDate()-1);
+  }
+  return seen===0 ? null : Math.round(yes/seen*100);
+}
+function rStatCard(label,value,icon,color){
+  return '<div class="routine-stat"><div class="routine-stat-top"><div class="routine-stat-label">'+label+'</div><div class="routine-stat-icon">'+icon+'</div></div><div class="routine-stat-value" style="color:'+color+'">'+value+'</div></div>';
+}
+function rSectionCard(title, tasks, checkedMap, weeklyFlag, accent){
+  var rows='';
+  for(var i=0;i<tasks.length;i++){
+    var t=tasks[i]; var on=!!checkedMap[t.id];
+    rows += '<div class="routine-task'+(on?' done':'')+'" data-id="'+t.id+'" data-weekly="'+(weeklyFlag?'1':'0')+'">'+
+              '<div class="routine-check'+(on?' on':'')+'">'+(on?'&#10003;':'')+'</div>'+
+              '<div class="routine-task-text">'+t.text+'</div></div>';
+  }
+  return '<div class="routine-section-card"><div class="routine-section-head" style="border-left:3px solid '+accent+'">'+title+'</div>'+rows+'</div>';
+}
+function renderRoutine(){
+  var statsEl=document.getElementById('routine-stats');
+  var todayEl=document.getElementById('routine-today');
+  var secEl=document.getElementById('routine-sections');
+  if(!statsEl||!todayEl||!secEl) return;
+
+  var data=rLoadDaily(); var weekly=rLoadWeekly();
+  var today=new Date(); today.setHours(0,0,0,0);
+  var tk=rDateKey(today); var wk=rWeekKey(today);
+  var rec=rDayRec(data,tk); if(!weekly[wk]) weekly[wk]={};
+  var ids=rDailyIds(); var total=ids.length; var done=0;
+  ids.forEach(function(id){ if(rec.checked[id]) done++; });
+  var pct = total ? Math.round(done/total*100) : 0;
+  var streak=rComputeStreak(data); var best=rBestStreak(data); var adh=rAdherence(data);
+  var tradingToday=rIsTradingDay(today);
+
+  statsEl.innerHTML =
+    rStatCard('Current Streak', streak+(streak===1?' day':' days'), '&#128293;', 'var(--green)')+
+    rStatCard('Best Streak', best+(best===1?' day':' days'), '&#127942;', 'var(--amber)')+
+    rStatCard('Today', done+' / '+total, tradingToday?'&#9203;':'&#127784;', (done===total&&total>0)?'var(--green)':'var(--text)')+
+    rStatCard('Process Adherence', (adh===null?'&mdash;':adh+'%'), '&#9878;', (adh===null?'var(--text3)':(adh>=80?'var(--green)':(adh>=50?'var(--amber)':'var(--red)'))));
+
+  var gradeYes=rec.grade==='yes', gradeNo=rec.grade==='no';
+  todayEl.innerHTML =
+    '<div class="routine-today-date">'+rLongDate(today)+(tradingToday?'':' &middot; <span style="color:var(--amber)">Non-trading day (streak safe)</span>')+'</div>'+
+    '<div class="routine-progress-wrap"><div class="routine-progress-bar" style="width:'+pct+'%"></div></div>'+
+    '<div class="routine-progress-label">'+done+' of '+total+' daily tasks &middot; '+pct+'%'+(done===total&&total>0?' &middot; <span style="color:var(--green)">complete &#10003;</span>':'')+'</div>'+
+    '<div class="routine-grade"><div class="routine-grade-label">Did I follow my process today? <span class="routine-grade-hint">(independent of P&amp;L)</span></div>'+
+      '<div class="routine-grade-btns">'+
+        '<button class="routine-grade-btn yes'+(gradeYes?' active':'')+'" data-grade="yes">&#10003; Followed process</button>'+
+        '<button class="routine-grade-btn no'+(gradeNo?' active':'')+'" data-grade="no">&#10007; Broke a rule</button>'+
+      '</div></div>'+
+    '<div class="routine-note"><div class="routine-note-label">Reflection &mdash; what did I see, did I stick to the plan?</div>'+
+      '<textarea class="routine-note-input" placeholder="Notes for today...">'+rEsc(rec.note||'')+'</textarea></div>';
+
+  secEl.innerHTML =
+    rSectionCard('Pre-Market', routineTasks.premarket, rec.checked, false, 'var(--blue)')+
+    rSectionCard('Session', routineTasks.session, rec.checked, false, 'var(--green)')+
+    rSectionCard('Post-Market', routineTasks.postmarket, rec.checked, false, 'var(--amber)')+
+    rSectionCard('Weekly', routineTasks.weekly, weekly[wk], true, 'var(--purple)');
+}
+function rToggle(id, weeklyFlag){
+  var today=new Date(); today.setHours(0,0,0,0);
+  if(weeklyFlag){
+    var weekly=rLoadWeekly(); var wk=rWeekKey(today); if(!weekly[wk]) weekly[wk]={};
+    weekly[wk][id]=!weekly[wk][id]; rSaveWeekly(weekly);
+  } else {
+    var data=rLoadDaily(); var tk=rDateKey(today); var rec=rDayRec(data,tk);
+    rec.checked[id]=!rec.checked[id]; rSaveDaily(data);
+  }
+  renderRoutine();
+}
+function rSetGrade(g){
+  var data=rLoadDaily(); var tk=rDateKey(new Date()); var rec=rDayRec(data,tk);
+  rec.grade=(rec.grade===g)?null:g; rSaveDaily(data); renderRoutine();
+}
+function rSaveNote(el){
+  var data=rLoadDaily(); var tk=rDateKey(new Date()); var rec=rDayRec(data,tk);
+  rec.note=el.value; rSaveDaily(data);
+}
+function rInit(){
+  var sec=document.getElementById('routine-sections');
+  var tod=document.getElementById('routine-today');
+  if(!sec||!tod) return;
+  sec.addEventListener('click', function(e){
+    var row=e.target.closest ? e.target.closest('.routine-task') : null; if(!row) return;
+    rToggle(row.getAttribute('data-id'), row.getAttribute('data-weekly')==='1');
+  });
+  tod.addEventListener('click', function(e){
+    var b=e.target.closest ? e.target.closest('.routine-grade-btn') : null; if(!b) return;
+    rSetGrade(b.getAttribute('data-grade'));
+  });
+  tod.addEventListener('input', function(e){
+    if(e.target && e.target.classList && e.target.classList.contains('routine-note-input')) rSaveNote(e.target);
+  });
+  renderRoutine();
+}
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', rInit); } else { rInit(); }
 </script>
 
 <!-- SCREENSHOTS PAGE -->
@@ -3402,6 +3651,15 @@ document.addEventListener('DOMContentLoaded', function() { renderScreenshots(); 
     <div class="screenshots-sub">Chart snapshots with P&amp;L overlay &mdash; one card per week</div>
   </div>
   <div class="screenshots-grid" id="screenshots-grid"></div>
+</div></div>
+<div class="site-wrap"><div id="routine-page" class="page">
+  <div class="routine-header">
+    <div class="routine-title">Daily Routine</div>
+    <div class="routine-sub">Process over outcome &mdash; a day is a win when you run the checklist, regardless of P&amp;L.</div>
+  </div>
+  <div class="routine-stats" id="routine-stats"></div>
+  <div class="routine-today" id="routine-today"></div>
+  <div class="routine-sections" id="routine-sections"></div>
 </div></div>
 </body>
 </html>
