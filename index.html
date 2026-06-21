@@ -972,26 +972,26 @@
   <div class="ctx-strip" id="ctx-strip">
     <div class="ctx-strip-inner">
       <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 16 — ⚠️ Sep Contract (ESU2026)</div>
+        <div class="ctx-label">Market Bias — Updated Jun 19/22 — ⚠️ Sep Contract (ESU2026)</div>
         <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
-        <div class="ctx-bias-sub">7310 FBD last Wednesday evening paid the 250+pt rip into today. Hit the 7590 target (backtest of June 5 breakdown shelf) and pushed beyond to 7600+. Nothing to do up at the highs — good entries are lower at 7590, 7511. Targets up: 7650, 7672, 7702, then ATHs?</div>
+        <div class="ctx-bias-sub">Bulls bought the FOMC dip — the 3:45PM Wed 7482 FBD (elevator down 120pts to 7475, recovered) ripped to 7578+. Thursday was untradable chop consolidating 7578–7535. Lean: rip higher out of the range to 7590, 7611, 7640+. ⚠️ Fri Jun 19 is a short holiday session — levels mostly for Mon Jun 22; June contract expires Fri.</div>
       </div>
       <div class="ctx-col ctx-setup-col">
         <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7590 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">Major — backtest of the June 5 breakdown shelf, tagged + recovered today. Shelf of lows built 2AM–8:30AM. Retest from above: can try a bid. Knifing down: safer to wait for a flush of ~7590 then recover. Bonus if it tags 7570.<br><br>
-        <strong>7511 FBD</strong> — fills the Sunday gap, the other key level. Slow grind: bid. Knifing: wait for a flush to ~7502 then recover.<br><br>
-        <strong>7545 FBD</strong> — roughly Sunday’s gap-up open, big low here. Watch the FBD.</div>
-        <div class="ctx-setup-stop">Stop: Below 7570 (bear trigger) / below the flush low on each FBD</div>
+        <div class="ctx-setup-level">7535 <span class="ctx-setup-badge">FBD</span></div>
+        <div class="ctx-setup-entry">Major — big support shelf all day Thursday (midnight–11:45AM). FBD of this shelf + recovery is actionable; ideally ES loses 7531 (the shelf’s low) then recovers.<br><br>
+        <strong>7509 FBD</strong> — can bid on a slow grind into the zone; if knifing full throttle, wait for a flush + recover.<br><br>
+        <strong>7557</strong> — mild support mid-range, little to do; only a flush + recover (level reclaim) if desperate.</div>
+        <div class="ctx-setup-stop">Stop: Below 7531 (bear trigger ~7526) / below the flush low on each FBD</div>
       </div>
       <div class="ctx-col ctx-cases-col">
         <div class="ctx-case bull">
           <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Bulls defend supports on the retrace. Strong case: hold 7590 (or quick trap below). Weaker case: fill the Sunday gap at 7511, don’t want much lower. Targets up: 7650, 7672, 7702, then perhaps ATHs.</div>
+          <div class="ctx-case-text">Fill out the 7578–7535 range (perhaps trap it once), then rip to 7590, 7611, then 7640. ES bought the FOMC dip off the 7482 FBD — structural bull trend intact.</div>
         </div>
         <div class="ctx-case bear" style="margin-top:8px;">
           <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7570. Final bounce at 7570 then short beneath — ~7567 trigger. Breakdown trade — advanced only, 60%+ failure rate. Adam doesn’t take these.</div>
+          <div class="ctx-case-text">Begins below 7535. Final bounce or FBD there, then short beneath the lows of that bounce — ~7526 trigger. Breakdown trade — advanced only, 60%+ failure rate. Adam doesn’t take these.</div>
         </div>
       </div>
     </div>
@@ -1240,6 +1240,42 @@ var weeks = [
 ];
 
 var trades = [
+  { id:93, date:"06/17/2026", entryTime:"6:20 PM", entryPrice:7520.75, stopPrice:7505.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7514 Daily Low Reclaim",
+    targets:[
+      {label:"T1",price:7525.75,contracts:3,status:"hit",pnl:75.00,exitTime:"6:23 PM"},
+      {label:"T2",price:7534.75,contracts:1,status:"hit",pnl:70.00,exitTime:"7:20 PM"},
+      {label:"Runner",price:7578.00,contracts:1,status:"hit",pnl:286.25,exitTime:"9:26 AM"}
+    ],
+    times:[{label:"Entry",value:"6:20 PM"},{label:"T1",value:"6:23 PM"},{label:"T2",value:"7:20 PM"},{label:"Runner",value:"9:26 AM"}],
+    totalPts:86.25, totalPnl:431.25, exitNote:"7514 Daily Low Reclaim. Long 5 @ 7520.75 at 6:20PM, stop 7505. T1: 3 @ 7525.75 at 6:23PM (+$75.00). T2: 1 @ 7534.75 at 7:20PM (+$70.00). Runner: 1 @ 7578 at 9:26AM (+$286.25). Net +$431.25.", journal:"I took this trade shortly after market open at 6pm. ES had made its way up from the 7482 FBD to the daily low right before the 5pm close. Once market reopened, ES opened slightly above 7514 then retraced to about 7504 before getting back above 7514. We held above 7519 for a few mins and I got in here using the NAP (7514+5 = 7519). ES ran up to 7525.75 first up and I locked in TP1 around 6:23PM, then exactly 1 hr after that we got to 7534.75 and I took TP2 there. Leaving the last runner for the 7578 backtest." },
+  { id:92, date:"06/17/2026", entryTime:"11:46 AM", entryPrice:7587.00, stopPrice:7575.00, setup:"FBD", result:"loss", contracts:3, tradeLabel:"7578 FBD",
+    targets:[
+      {label:"T1",price:7592.00,contracts:2,status:"hit",pnl:50.00,exitTime:"12:03 PM"},
+      {label:"Runner",price:7573.00,contracts:1,status:"stopped",pnl:-70.00,exitTime:""}
+    ],
+    times:[{label:"Entry",value:"11:46 AM"},{label:"T1",value:"12:03 PM"},{label:"Runner",value:"stopped @ 7573"}],
+    totalPts:-4.00, totalPnl:-20.00, exitNote:"7578 FBD (small size). Long 3 @ 7587 at 11:46AM, stop 7575. T1: 2 @ 7592 at 12:03PM (+$50.00). Runner: 1 stopped @ 7573 (-$70.00). Net -$20.00.", journal:"I got in on this FBD a little bit late, a few points over ideal entry. The NAP entry was 7578+5 = 7583 and I got in at 7587. I got to TP1 at 7592 by 12:03 but that was the highest ES offered before crashing back down. I got out of my runner just below breakeven to not hurt me too much on this trade." },
+  { id:91, date:"06/16/2026", entryTime:"7:00 PM", entryPrice:7596.75, stopPrice:7580.00, setup:"FBD", result:"win", contracts:10, tradeLabel:"7590 FBD",
+    targets:[
+      {label:"T1",price:7600.00,contracts:7,status:"hit",pnl:113.75,exitTime:"8:30 PM"},
+      {label:"T2",price:7611.00,contracts:2,status:"hit",pnl:142.50,exitTime:"3:03 AM"},
+      {label:"T3",price:7576.50,contracts:1,status:"stopped",pnl:-101.25,exitTime:"10:41 AM"}
+    ],
+    times:[{label:"Entry",value:"7:00 PM"},{label:"T1",value:"8:30 PM"},{label:"T2",value:"3:03 AM"},{label:"T3",value:"10:41 AM"}],
+    totalPts:31.00, totalPnl:155.00, exitNote:"7590 FBD re-entry. Long 10 @ 7596.75 at 7:00PM, stop 7580. T1: 7 @ 7600 at 8:30PM (+$113.75). T2: 2 @ 7611 at 3:03AM (+$142.50). T3: 1 stopped @ 7576.50 at 10:41AM (-$101.25). Net +$155.00.", journal:"I took this trade a bit too early, I held through some drawdown while ES went back to retest 7590, it was about -6.75 drawdown max. Eventually ES around 8-8:30PM popped back above my entry and I secured profits at 7600 first up. Left 3 to run. Overnight I got a limit order fill for TP2 at 7611, sold 2 more and one left to go. When I woke up to check price ES was down to about my entry around the open at 9:30AM. We chopped around this 7590 zone from 6am to 10:30AM. We finally got some volatility around 10:45AM and we flushed Tuesday's 7578 daily low and I got stopped out around there to conclude my trade." },
+  { id:90, date:"06/16/2026", entryTime:"3:30 PM", entryPrice:7596.00, stopPrice:7583.25, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7590 FBD",
+    targets:[
+      {label:"Stop",price:7583.25,contracts:5,status:"stopped",pnl:-318.75,exitTime:"3:49 PM"}
+    ],
+    times:[{label:"Entry",value:"3:30 PM"},{label:"Stop",value:"3:49 PM"}],
+    totalPts:-63.75, totalPnl:-318.75, exitNote:"7590 FBD. Long 5 @ 7596 at 3:30PM, stop 7583.25. Stopped 5 @ 7583.25 at 3:49PM (-12.75 pts). Total -$318.75.", journal:"" },
+  { id:89, date:"06/16/2026", entryTime:"10:17 AM", entryPrice:33.00, stopPrice:0, setup:"SPY_PUT", result:"win", contracts:3, tradeLabel:"SPY $751 Put",
+    targets:[
+      {label:"T1",price:65.00,contracts:2,status:"hit",pnl:64.00,exitTime:"10:29 AM",exitPrice:65.00},
+      {label:"Runner",price:35.00,contracts:1,status:"hit",pnl:2.00,exitTime:null,exitPrice:35.00}
+    ],
+    times:[{label:"Entry",value:"10:17 AM"},{label:"T1",value:"10:29 AM"},{label:"Runner",value:"closed @ $35"}],
+    totalPts:66.00, totalPnl:66.00, exitNote:"SPY $751 Put. Bought 3 @ $33 at 10:17AM. Sold 2 @ $65 at 10:29AM (+$64.00). Runner (1) closed @ $35 (+$2.00). Total +$66.00.", journal:"" },
   { id:88, date:"06/11/2026", entryTime:"2:16 PM", entryPrice:60.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:1, tradeLabel:"SPY 738 Call",
     targets:[
       {label:"T1",price:149.00,contracts:1,status:"hit",pnl:89.00,exitTime:"2:30 PM"}
@@ -1891,6 +1927,44 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/19/2026", setups:[
+    {level:7557,type:"LEVEL_RECLAIM",priority:"b",notes:"Mild support in the middle of a tight range — little to do here. Adam wouldn’t engage. If desperate: wait for it to flush and recover, then long as a level reclaim."},
+    {level:7535,type:"FBD",priority:"aplus",notes:"Major — big support shelf all day Thursday (mostly midnight–11:45AM). A Failed Breakdown of this shelf and recovery is actionable. Ideally ES loses 7531 (the lowest point of the shelf) then recovers. Primary actionable zone."},
+    {level:7509,type:"FBD",priority:"a",notes:"Major — can try the bid here on a slow grind into the zone. If knifing full throttle, never knife-catch: wait for a flush and recover. Slow grind = can long it."},
+    {level:7475,type:"FBD",priority:"a",notes:"Yesterday’s daily low (~7475 FOMC flush low). Failed Breakdown of this on a flush and recover is the next setup below 7509."},
+    {level:7441,type:"FBD",priority:"b",notes:"Support below 7475. FBD actionable on a flush and recovery if reached."},
+    {level:7428,type:"FBD",priority:"b",notes:"The major June 12th low at ~7428. Watch for the Failed Breakdown here if ES knifes down that far."}
+  ],
+  bull:"Bulls can fill out the 7578–7535 range (perhaps trap it once) then rip to 7590, 7611, then 7640. ES bought the FOMC dip off the 7482 FBD and the structural bull trend is intact.",
+  bear:"Begins below 7535. Ideally a final bounce or Failed Breakdown there, then short beneath the lows of that bounce — likely ~7526 trigger. Breakdown trade, advanced only, 60%+ failure rate. Adam doesn’t take these.",
+  summary:"Thursday: bulls bought the FOMC dip. The standout was the 3:45PM Wednesday 7482 FBD — ES went elevator down 120pts after the 2PM FOMC to 7475, lost the major June 12 low at 7482, recovered, and ripped to 7578+. Thursday itself was untradable chop, consolidating mostly 7578–7535 (7578 = the Tuesday low lost on FOMC, backtested Thursday). Lean: ES can fill out the 7578–7535 range (perhaps trap once), then rip to 7590, 7611, 7640+. NOTE: Fri Jun 19 is a short holiday session — these levels are mostly for Mon Jun 22; June contract expires Fri Jun 19, all Sep (ESU2026). Supports: 7570 (major), 7557 (major), 7535 (major), 7509 (major), 7484-88 (major), 7463 (major), 7441 (major), 7418 (major), 7400 (major), 7383 (major), 7369 (major), 7337 (major), 7310 (major), 7287 (major), 7263 (major), 7251 (major), 7223 (major), 7210 (major), 7200 (major), 7174 (major), 7147 (major). Resistances: 7557 (major), 7570 (major), 7590 (major), 7611 (major), 7628 (major), 7640 (major), 7662 (major), 7693 (major), 7718 (major), 7774 (major), 7790 (major), 7814 (major), 7850 (major), 7867 (major), 7887 (major), 7916 (major).",
+  entry:"Adam holding the 10% runner from the 3:45PM Wednesday 7482 FBD (an A+ textbook FBD — elevator down 120pts to 7475, lost the June 12 low, recovered, ripped to 7578+), plus the long-held 10% from the 7310 FBD. Thursday was chop with no elevator-down sell — nothing to do but ride runners. Waiting for the next flush into a Failed Breakdown; primary zone the 7535 shelf, then 7509."
+  },
+  { date:"06/18/2026", setups:[
+    {level:7535,type:"FBD",priority:"b",notes:"First support down but used up — engaged numerous times Wednesday afternoon. Can bid, but safer to wait for ES to flush the zone and recover. Bulls’ objective is reclaiming 7578 overhead."},
+    {level:7509,type:"FBD",priority:"a",notes:"Major — bulls don’t want to see much lower than 7509/7502. Rather than bidding 7509 direct, the safer play is to wait for it to defend then recover today’s 7514 daily low, then long."},
+    {level:7482,type:"FBD",priority:"aplus",notes:"Major — good low from 3:45PM Friday. Adam calls the Failed Breakdown here an excellent setup. Flush and recovery is the trigger — the primary spot on a deeper dip."},
+    {level:7463,type:"FBD",priority:"a",notes:"Major — decent support below 7482. If knifing full speed into it, wait for a flush and recovery rather than bidding it randomly."},
+    {level:7429,type:"FBD",priority:"b",notes:"Friday’s 7429 daily low — the obvious Failed Breakdown setup if ES knifes down that far."}
+  ],
+  bull:"Bulls’ objective is to reclaim 7578 (this morning’s breakdown shelf). If ES sells more, bulls want a flush not much lower than 7509/7502, then a recovery of today’s 7514 daily low and a rip. Path: run to 7578, perhaps dip, then 7590, 7611, perhaps dip again, then 7635, 7669+. Add on strength via a 7559 reclaim.",
+  bear:"Begins below 7502/7509. Ideally a final good bounce there, then short beneath — ~7499 trigger. Breakdown trade, advanced only, 60%+ failure rate. Adam doesn’t take these.",
+  summary:"Wednesday (FOMC): ES finally got a volatility expansion. It lost 7590, sold to ~7514 on the 2PM FOMC elevator-down, then bounced — the long-awaited pullback that filled the Sunday opening gap and retraced the big rally off last Wednesday’s 7310 FBD. Adam’s day: 11:25AM 7578 FBD (NAP at 7583) won, then the 2:15PM 7545 FBD (NAP at 7550) won — both managed level-to-level, still holding the 10% 7310 runner. Bulls’ objective now: reclaim 7578 (this morning’s breakdown shelf). Lean: head up and backtest 7578, perhaps dip, then 7590, 7611, perhaps dip again, then 7635, 7669+. NOTE: Sep contract (ESU2026); June expires Fri Jun 19. Supports: 7535 (major), 7509 (major), 7482 (major), 7463 (major), 7418 (major), 7398 (major), 7378-83 (major), 7333-38 (major), 7295 (major), 7278 (major), 7245 (major), 7223 (major). Resistances: 7558 (major), 7578 (major), 7590 (major), 7611 (major), 7620 (major), 7635 (major), 7650 (major), 7669 (major), 7683 (major), 7723 (major), 7768 (major), 7788 (major), 7815 (major), 7840 (major), 7864 (major), 7902 (major).",
+  entry:"Adam still holding the 10% long runner from last Wednesday’s 7310 major FBD. Most recent entries were the 11:25AM 7578 FBD and the 2:15PM 7545 FBD Wednesday (both NAP longs, both managed level-to-level for wins). Profit-protection mode — waiting for the next elevator-down sell into a Failed Breakdown; primary dip zone 7482, with 7509 the bulls’ line."
+  },
+  { date:"06/17/2026", setups:[
+    {level:7611,type:"LEVEL_RECLAIM",priority:"b",notes:"Top major support now, with the down-trendline resistance ~7620–7621 (connects Mon & Tue highs). Too close to the highs to chase. Note: 7611 held exact at 6:20PM Mon eve and bounced — the long worked but Adam passed. If desperate: hold 7611, recover 7620 to try long."},
+    {level:7590,type:"FBD",priority:"aplus",notes:"Major — the June 5 breakdown shelf, backtested + recovered. Clear shelf of lows 2AM–8:30AM ~7590. On a retest from above can bid; if knifing down the safer entry is a flush of the ~7590 shelf and recovery. Bonus if it tags 7571. Didn’t trigger Tuesday (ES too strong, held above) — still the primary pullback zone."},
+    {level:7545,type:"FBD",priority:"a",notes:"Roughly Sunday’s gap-up open — big low here. Watch for the Failed Breakdown of this low. Flush and recovery actionable."},
+    {level:7511,type:"FBD",priority:"a",notes:"Major — fills the Sunday opening gap. The other key level with 7590. Slow grind: can try a direct bid. Knifing full speed: wait for a flush to ~7502 then recover 7511 to get long."},
+    {level:7482,type:"FBD",priority:"b",notes:"Watch for the Failed Breakdown here if 7511 fails. Flush and recovery is the trigger."},
+    {level:7462,type:"FBD",priority:"a",notes:"Good support below 7482. FBD actionable on a flush and recovery if reached."}
+  ],
+  bull:"Today ES flagged above 7590 in a ~7590–7620 range. Ultra bull case: hold 7590 (or quick trap below). Weaker bull case: retrace to fill the Sunday gap at 7511 — bulls don’t want to see much lower. Upside targets 7655, 7682, then ATHs to 7707, 7722+.",
+  bear:"Begins below 7570. Ideally a final good bounce at 7570, then short beneath — ~7567 trigger. Breakdown trade, advanced only, 60%+ failure rate. Adam doesn’t take these.",
+  summary:"Tuesday: ES coiled tight, consolidating/flagging the 7590–7620 range after the big Thu/Fri/Mon rally off last Wednesday’s 7310 FBD. Resistance is now a downward trendline ~7620–7621 (connecting Mon & Tue highs); support holding at 7590. The 7590 FBD never triggered — ES was too strong and held above. Lean: pullback now, ideally defend 7590 on a retrace (or quick trap below), then up to 7655, 7682, perhaps dip then ATHs 7707, 7722+. Deeper than 7590 is fine — gap fill at 7511. NOTE: Sep contract (ESU2026); June expires Fri Jun 19. ⚠️ FOMC today — Warsh’s first decision 2:00PM + presser 2:30PM ET; expect a headline-driven spike, wait for the FBD, don’t anticipate. Supports: 7611 (major), 7590 (major), 7571 (major), 7545-50 (major), 7511 (major), 7501 (major), 7483 (major), 7454 (major), 7421 (major), 7394 (major), 7372 (major), 7338-43 (major), 7303 (major), 7293 (major), 7278 (major), 7263 (major), 7223 (major), 7206 (major), 7174 (major), 7141 (major). Resistances: 7621 (major), 7655 (major), 7682 (major), 7707 (major), 7741 (major), 7761-65 (major), 7821 (major), 7839 (major).",
+  entry:"Adam still holding the 10% long runner from last Wednesday’s 7:30PM 7310 major FBD (Sep contract) through the Thu/Fri/Mon rally. No new entry Tuesday — ES held up at the highs with nothing to do. Waiting for an elevator-down sell into a Failed Breakdown; primary pullback zone 7590, then 7511."
+  },
   { date:"06/16/2026", setups:[
     {level:7611,type:"LEVEL_RECLAIM",priority:"b",notes:"First support down but too close to the highs to engage — nothing Adam would take here. If desperate: wait for 7611 to hold then recover 7620 to try long. Better entries are much lower."},
     {level:7590,type:"FBD",priority:"aplus",notes:"Major — backtest of the June 5 breakdown shelf, tagged + recovered today. Shelf of lows built 2AM–8:30AM. On a retest from above can try a bid; if knifing down the safer entry is a flush of the ~7590 shelf and recovery. Bonus if it tags 7570. Primary setup for Tuesday."},
@@ -2252,9 +2326,10 @@ function renderOptionsCard(tr) {
   var win = tr.result === "win";
   var pnlStr = (tr.totalPnl >= 0 ? "+$" : "-$") + Math.abs(tr.totalPnl).toFixed(2);
   var entryStr = "$" + tr.entryPrice.toFixed(2);
-  var _lastExit = 0;
-  for (var _oi = 0; _oi < tr.targets.length; _oi++) { var _ep = tr.targets[_oi].price || tr.targets[_oi].exitPrice || 0; if (_ep) { _lastExit = _ep; break; } }
-  var _pct = _lastExit && tr.entryPrice ? ((_lastExit - tr.entryPrice) / tr.entryPrice * 100) : 0;
+  // Return on the whole position: total P&L over total cost (entry x contracts).
+  // Identical to per-contract % for single-exit trades; correct for multi-exit/runner trades.
+  var _cost = tr.entryPrice * tr.contracts;
+  var _pct = _cost ? (tr.totalPnl / _cost * 100) : 0;
   var pctDisplay = _pct !== 0 ? (_pct >= 0 ? "+" : "") + _pct.toFixed(0) + "%" : "";
 
   // Build time chips
