@@ -1240,6 +1240,24 @@ var weeks = [
 ];
 
 var trades = [
+  { id:96, date:"06/21/2026", entryTime:"12:08 AM", entryPrice:7533.00, stopPrice:7526.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7531 Backtest Long",
+    targets:[
+      {label:"T1",price:7577.75,contracts:5,status:"hit",pnl:1118.75,exitTime:""}
+    ],
+    times:[{label:"Entry",value:"12:08 AM"},{label:"T1",value:"@ 7577.75"}],
+    totalPts:223.75, totalPnl:1118.75, exitNote:"7531 Backtest Long. Long 5 @ 7533 at 12:08AM, stop 7526. T1: 5 @ 7577.75 (+44.75 pts, +$1,118.75). Full position out at the 7578 resistance.", journal:"Shortly after midnight we got a reversal off the 7535 level and I decided to take this and put a stop loss of 6-10pts and go to sleep. I'm glad that I did because I woke up to TP1 full position +223 points. I recovered my loss from Sunday opening and I made enough profit to be able to start the week comfortably." },
+  { id:95, date:"06/21/2026", entryTime:"8:15 PM", entryPrice:7535.50, stopPrice:7532.75, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7521 FBD",
+    targets:[
+      {label:"Stop",price:7532.75,contracts:5,status:"stopped",pnl:-68.75,exitTime:"12:01 AM"}
+    ],
+    times:[{label:"Entry",value:"8:15 PM"},{label:"Stop",value:"12:01 AM"}],
+    totalPts:-13.75, totalPnl:-68.75, exitNote:"7521 FBD. Long 5 @ 7535.50 at 8:15PM, stop 7532.75. Stopped 5 @ 7532.75 at 12:01AM (-2.75 pts). Total -$68.75.", journal:"This was right after we put in a FBD of the 7421 set Friday at 1:30AM. This was a bit fast and the NAP settled around the 7535 level which is where I got in from, this time taking on 5 contracts. We reached to 7557 by 9pm but I was too stubborn to take any profits here. I could've recovered a big portion of my earlier loss but I didn't and eventually this went back down to below $0 and I took a small loss not being able to handle anymore Red." },
+  { id:94, date:"06/21/2026", entryTime:"6:30 PM", entryPrice:7542.50, stopPrice:7529.25, setup:"FBD", result:"loss", contracts:10, tradeLabel:"7535 FBD",
+    targets:[
+      {label:"Stop",price:7529.25,contracts:10,status:"stopped",pnl:-662.50,exitTime:""}
+    ],
+    times:[{label:"Entry",value:"6:30 PM"},{label:"Stop",value:"stopped"}],
+    totalPts:-132.50, totalPnl:-662.50, exitNote:"7535 FBD. Long 10 @ 7542.50 at 6:30PM. Stopped 10 @ 7529.25 (-13.25 pts). Total -$662.50.", journal:"I entered here after we trapped the Friday 9AM low down at 7533. In my head this was a double-dip FBD of the 7535 shelf and I entered using the NAP around 7540 after waiting a bit. Since this was before 8AM this was not a high quality entry, and one I should've stayed away from. Instead I doubled down with 10 contracts. I need to refrain from entering before 6pm if it's not a proper setup. Friday session was a holiday one but light volatility used up the 7535 setup; there was a lower low set around 8am Friday which was the right setup to wait for." },
   { id:93, date:"06/17/2026", entryTime:"6:20 PM", entryPrice:7520.75, stopPrice:7505.00, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7514 Daily Low Reclaim",
     targets:[
       {label:"T1",price:7525.75,contracts:3,status:"hit",pnl:75.00,exitTime:"6:23 PM"},
