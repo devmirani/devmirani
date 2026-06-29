@@ -1240,6 +1240,41 @@ var weeks = [
 ];
 
 var trades = [
+  { id:109, date:"06/29/2026", entryTime:"\u2014", entryPrice:28.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:3, tradeLabel:"SPY $740 Call",
+    targets:[
+      {label:"T1",price:55.00,contracts:2,status:"hit",pnl:54.00,exitTime:null,exitPrice:55.00},
+      {label:"Runner",price:0,contracts:1,status:"open",pnl:0,exitTime:null}
+    ],
+    times:[{label:"Entry",value:"\u2014"},{label:"T1",value:"\u2014"},{label:"Runner",value:"holding (open)"}],
+    totalPts:0, totalPnl:54.00, exitNote:"SPY $740 Call. Bought 3 @ $28. TP1: sold 2 @ $55 (+$54.00). Holding the last 1 as a runner (open). Realized +$54.00 so far; runner still working.", journal:"" },
+  { id:108, date:"06/29/2026", entryTime:"8:35 PM", entryPrice:7427.00, stopPrice:7418.00, setup:"FBD", result:"win", contracts:3, tradeLabel:"7421 FBD",
+    targets:[
+      {label:"T1",price:7435.25,contracts:2,status:"hit",pnl:82.50,exitTime:"Sun 8:42 PM"},
+      {label:"T2",price:7466.75,contracts:1,status:"hit",pnl:198.75,exitTime:"Mon 6:59 AM"}
+    ],
+    times:[{label:"Entry",value:"Sun 8:35 PM"},{label:"T1",value:"Sun 8:42 PM"},{label:"T2",value:"Mon 6:59 AM"}],
+    totalPts:56.25, totalPnl:281.25, exitNote:"MESU6, 3 lots \u2014 7421 Failed Breakdown long off the range floor (NAP trigger 7421+5=7426). Longed 7427.00 at 8:35PM Sun and held the runner overnight. T1: 2 @ 7435.25 at 8:42PM Sun (+$82.50). T2 runner: 1 @ 7466.75 at 6:59AM Mon (+$198.75, +39.75 pts). Net +$281.25. Clean planned-level entry and the overnight runner did the heavy lifting \u2014 textbook level-to-level, the opposite of Friday\u2019s green-to-red runner.", journal:"" },
+  { id:107, date:"06/26/2026", entryTime:"2:43 AM", entryPrice:7393.50, stopPrice:7373.50, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7392 FBD",
+    targets:[
+      {label:"T1",price:7401.00,contracts:3,status:"hit",pnl:112.50,exitTime:"2:47 AM"},
+      {label:"Exit",price:7373.50,contracts:2,status:"stopped",pnl:-200.00,exitTime:"9:11 AM"}
+    ],
+    times:[{label:"Entry",value:"2:43 AM"},{label:"T1",value:"2:47 AM"},{label:"Exit",value:"9:11 AM"}],
+    totalPts:-17.50, totalPnl:-87.50, exitNote:"MESU6, 5 lots \u2014 7392 Failed Breakdown long (Thu daily low; Adam flagged this zone low quality). Longed 7393.50 at 2:43AM. T1: 3 @ 7401.00 at 2:47AM (+$112.50, +7.5 pts) \u2014 correctly locked. The 2 runners weren\u2019t protected and stopped 20 pts below entry at 7373.50 at 9:11AM (-$200.00) when 7392 failed and sold off. A green trade went red: net -$87.50. Lesson: move the runner stop up after T1 \u2014 never let the whole trade go back red.", journal:"" },
+  { id:106, date:"06/25/2026", entryTime:"10:26 PM", entryPrice:7460.75, stopPrice:7449.50, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7459 Reclaim",
+    targets:[
+      {label:"T1",price:7466.00,contracts:3,status:"hit",pnl:78.75,exitTime:"Wed 11:01 PM"},
+      {label:"T2",price:7479.75,contracts:1,status:"hit",pnl:95.00,exitTime:"Thu 4:47 AM"},
+      {label:"Exit",price:7449.50,contracts:1,status:"stopped",pnl:-56.25,exitTime:"Thu 9:42 AM"}
+    ],
+    times:[{label:"Entry",value:"Wed 10:26 PM"},{label:"T1",value:"Wed 11:01 PM"},{label:"T2",value:"Thu 4:47 AM"},{label:"Exit",value:"Thu 9:42 AM"}],
+    totalPts:23.50, totalPnl:117.50, exitNote:"MESU6, 5 lots \u2014 patient re-entry of the same ~7459 long about 53 min after the impulse buy (#105) was cut. Longed 7460.75 at 10:26PM, just above the 7459 level. T1: 3 @ 7466.00 at 11:01PM (+$78.75). T2 runner: 1 @ 7479.75 at 4:47AM Thu (+$95.00). Last runner stopped below entry at 7449.50 at 9:42AM Thu (-$56.25). Net +$117.50. Same idea as the impulse buy \u2014 waiting for better timing turned it green and the overnight runner did the heavy lifting.", journal:"" },
+  { id:105, date:"06/25/2026", entryTime:"9:32 PM", entryPrice:7459.75, stopPrice:7458.75, setup:"IMPULSE LONG", result:"loss", contracts:5, tradeLabel:"Impulse Long",
+    targets:[
+      {label:"Exit",price:7458.75,contracts:5,status:"stopped",pnl:-25.00,exitTime:"Wed 9:33 PM"}
+    ],
+    times:[{label:"Entry",value:"Wed 9:32 PM"},{label:"Exit",value:"Wed 9:33 PM (41 sec)"}],
+    totalPts:-5.00, totalPnl:-25.00, exitNote:"Impulsive long (MES, 5 lots) \u2014 entered 7459.75 at 9:32PM mid-range with no setup trigger. Felt too soon, self-stopped 41 sec later at 7458.75 for -$25.00. Good discipline cutting it fast instead of hoping \u2014 then re-entered the same idea with better timing as #106.", journal:"" },
   { id:104, date:"06/24/2026", entryTime:"7:25 PM", entryPrice:7437.50, stopPrice:7424.00, setup:"FBD", result:"win", contracts:2, tradeLabel:"7424 FBD",
     targets:[
       {label:"T1",price:7472.00,contracts:1,status:"hit",pnl:172.50,exitTime:"Wed 9:52 AM"},
@@ -1999,6 +2034,35 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"06/29/2026", setups:[
+    {level:7530,type:"LEVEL_RECLAIM",priority:"a",notes:"The structural bull/bear line. Last Monday’s breakdown of the 7530 shelf has kept bears in control all week — for bulls to regain FULL control, 7530 must recover, and below it expect most rips to fizzle. Bull path: defend the range, work up, then backtest 7530. This is also the short spot for those who short (backtest of the breakdown; 7492 is a spot in advance)."},
+    {level:7453,type:"LEVEL_RECLAIM",priority:"b",notes:"Add-on-on-strength option — reclaims of 7453 are a possible long on the way up the range (7439 → 7453 → 7472 → 7492). Adam won’t force it."},
+    {level:7421,type:"FBD",priority:"b",notes:"The KEY PIVOT inside the 7368–7490 range and first big support down. Deeply trappy, noisy, heavily random — Adam won’t trade it. If desperate: wait for it to flush and recover (12:30PM Fri it set a small low here and rallied 30 pts; wait for a trap + recover). This is the 7421 level the Sunday-night long (#108) traded off."},
+    {level:7409,type:"FBD",priority:"b",notes:"Below 7421. Adam wouldn’t buy it directly, but if 7409 holds and then recovers 7421, that sets up the long up the range."},
+    {level:7390,type:"FBD",priority:"b",notes:"Below 7409. One can try a bid if price is grinding slowly into the zone. If ES is knifing full speed, wait for it to flush and recover first."},
+    {level:7368,type:"FBD",priority:"b",notes:"Nothing until 7368 (range floor). If grinding slowly, one can try the bid — but bears control, so direct support longs are low win rate (Adam doesn’t take them). Optional."},
+    {level:7357,type:"FBD",priority:"a",notes:"Friday’s daily low — the obvious Failed Breakdown below the range. Flush and recovery actionable."},
+    {level:7325,type:"FBD",priority:"aplus",notes:"Nothing below 7357 until 7325 — and the Failed Breakdown here is the HIGHEST-QUALITY entry on the board. Worth waiting for if ES knifes that far."}
+  ],
+  bull:"Overnight/early Friday ES put in a Failed Breakdown of the Thursday 7392 daily low and rallied. Bigger picture: ES is in a chop range 7368–7490 with 7421 the key pivot inside. Even bigger: last Monday’s breakdown of the 7530 shelf still has bears in control — expect most rips to fizzle until 7530 recovers. Bull case: bulls defend 7421 (or quick trap below), then head up range to 7439, 7453, 7472, 7492, then 7530. Spots to add on strength: nothing Adam would take, but 7453 reclaims are one spot.",
+  bear:"Begins below 7369. Breakdown trade — advanced only; ~80% of breakdowns trap, so expect 60%+ failure (low win rate, high R/R). For the short: ideally a final bounce or Failed Breakdown, then short beneath the lows of that bounce — likely ~7365 trigger down. Adam doesn’t take these.",
+  summary:"Monday (Jun 29 plan): SPX continues to coil — will it finally break out? After last Monday’s 7530 breakdown put bears in control all week, dip buys have been sharp but struggle to follow through, forming a tight week-long range. Friday delivered yet another Failed Breakdown: ES flushed the Thursday 7392 daily low to 7356 by 10:40PM Thu, recovered 7392 ~2:40AM Fri (NAP 7392+5=7397) and ripped. Adam took the 10:03AM 7397 reclaim (T1 7407, T2 7421, holding 10% runner) after cutting an 8:13AM low-quality attempt at 7387. The range is now morphing to ~7368–7490 with 7421 the key pivot. Still Mode 2; bears in control below 7530. Lean: defend the range, then work up 7439, 7453, 7472, 7492, then 7530. Sep contract (ESU2026). Supports: 7421 (major), 7418, 7409 (major), 7398, 7390 (major), 7388, 7382, 7369 (major), 7357 (major), 7347, 7337, 7325 (major), 7320, 7311 (major), 7294, 7286, 7275 (major), 7263, 7257, 7250, 7245 (major), 7235, 7228, 7222 (major). Resistances: 7428, 7437 (major), 7453 (major), 7458, 7472, 7482, 7492 (major), 7502, 7511 (major), 7521, 7530 (major), 7535, 7542, 7552, 7559 (major), 7570 (major), 7578, 7590, 7600, 7611 (major), 7620, 7630 (major), 7636, 7640 (major), 7656, 7662, 7672, 7682 (major), 7694, 7706, 7720 (major), 7733, 7740 (major), 7749, 7762, 7769, 7776 (major), 7788, 7800 (major), 7811, 7820, 7828 (major), 7839, 7850, 7866, 7883 (major).",
+  entry:"Adam holding the 10% long runner from Friday’s 10:03AM 7392/7397 reclaim (longed 7397, T1 7407, T2 7421, left 10%). Note this was a low-quality reclaim in a bear-controlled, heavily-trapped zone — he cut an earlier 8:13AM attempt at 7387 first. Profit-protection mode now — sit on the runner and wait for the next elevator-down sell. Monday’s actionable dips: 7421 is the key pivot but deeply trappy (needs a flush + recover); cleaner Failed Breakdowns are 7357 (Fri daily low) and especially 7325 (the highest-quality entry below). 7530 remains the structural bull/bear line."
+  },
+  { date:"06/26/2026", setups:[
+    {level:7530,type:"LEVEL_RECLAIM",priority:"a",notes:"The structural bull/bear line. Monday’s breakdown of the 7530 shelf keeps bears in control — for bulls to regain FULL control, 7530 must recover, and bears control below, so be suspect of bounce longevity. Bull path: fill out the range, then backtest 7530. This is also the short spot for those who short (backtest of Monday eve’s breakdown; 7492 is a spot in advance)."},
+    {level:7453,type:"LEVEL_RECLAIM",priority:"b",notes:"Add-on-on-strength option — reclaims of 7453 are a possible long on the way up the range (7439 → 7452 → 7472 → 7492). Adam won’t force it."},
+    {level:7421,type:"FBD",priority:"b",notes:"First major support and the bottom of the coiled range (~7421–7492). Trappy, unsafe, tested all week — Adam won’t trade it. If desperate: wait for the 12:45PM 7410 low to flush, then recover BOTH 7410 AND 7421 before trying a long."},
+    {level:7392,type:"FBD",priority:"b",notes:"Today’s (Thu) daily low — the next obvious Failed Breakdown below 7421. Lower quality due to context: this broad range has been trapped numerous times, so high risk it only pops a level or two then fails. Manage strictly level to level."},
+    {level:7372,type:"FBD",priority:"b",notes:"A spot to grab a few points for those desperate to trade — not something Adam would take. Few good longs below 7392."},
+    {level:7338,type:"FBD",priority:"a",notes:"A cleaner support below the range. If it’s a controlled dip into this zone, one can try the bid here. If ES is knifing, wait for it to flush and recover first."},
+    {level:7326,type:"FBD",priority:"b",notes:"The June 11th low. The Failed Breakdown of 7326 is actionable if ES knifes down that far."}
+  ],
+  bull:"ES has spent days stuck in a range mostly 7421–7492, now coiled tight and close to breaking. Thursday ES put in a big Failed Breakdown of Wednesday’s 7405 daily low and ripped to the 7470s — another trap of the multi-day range — tagging 7503+. Monday’s breakdown of the 7530 shelf still has bears in control until 7530 recovers. Bull case: ES can fill out the range then backtest 7530 — defend/trap 7421 (no lower than a trap of today’s 7392 daily low), then work up 7439, 7452, 7472, 7492, dip, then break to 7530. Spots to add on strength: nothing Adam would take, but reclaims of 7453 are an option.",
+  bear:"Begins below 7392. Breakdown trade — advanced only; ~80% of breakdowns trap, so expect 60%+ failure (low win rate, high R/R). For the 7392 short: ideally a final bounce or Failed Breakdown there, then short beneath the lows of that bounce — likely ~7388 trigger down. Adam doesn’t take these.",
+  summary:"Friday (Jun 26 plan): SPX is coiled tight — breakout/down incoming? ES has spent the week stuck mostly 7421–7492 and the range is almost ready to break. Thursday delivered two more textbook Failed Breakdowns: Wednesday late-day ES flushed the 7408 low to 7405 and ripped to 7490+, then Thursday ~930AM it went elevator down 7490→7393 and recovered the 7405 Wednesday low (~10:18AM) for a powerful FBD up to the 7470s, tagging 7503+. Still a Mode 2 rangebound week. Bigger picture unchanged: Monday’s 7530 breakdown keeps bears in control until 7530 recovers. Lean: ES works up the range — 7439, 7452, 7472, then 7492 — dip, then break to 7530; sell < 7392. Sep contract (ESU2026). Supports: 7438, 7428, 7421 (major), 7418, 7407, 7398 (major), 7392, 7383, 7372 (major), 7369, 7364, 7358 (major), 7351, 7338 (major), 7326, 7320, 7311 (major), 7294, 7286, 7276, 7262 (major), 7256, 7246, 7235, 7223 (major). Resistances: 7452 (major), 7460, 7472 (major), 7483, 7493 (major), 7502, 7512 (major), 7523, 7530-35 (major), 7542, 7551, 7558 (major), 7571, 7578 (major), 7588, 7600 (major), 7611 (major), 7620, 7628, 7635 (major), 7640, 7651 (major), 7661, 7668, 7682 (major), 7694, 7711, 7718 (major), 7727, 7737 (major), 7746, 7760 (major), 7765, 7786, 7797 (major), 7807, 7814, 7821 (major), 7832, 7843 (major), 7855 (major), 7861, 7875-80 (major), 7900 (major).",
+  entry:"Adam holding the 10% long runner from the Thursday 10:02AM 7405 Failed Breakdown: longed ~7415 above the NAP trigger (7405+5=7410), locked 75% at 7425, more at 7439, left 10% to run. He also took the Wednesday 3:18PM 7408 FBD (long 7415, T1 7425, T2 7439). Profit-protection mode now — sit on the runner and wait for the next elevator-down sell. Per his note, the only fresh Failed Breakdown is now of the 7392 daily low. Friday’s actionable dip zones: 7421 (trappy — needs 7410 + 7421 recovered), 7392 (today’s low), then 7338 on a controlled dip; 7530 remains the structural bull/bear line."
+  },
   { date:"06/25/2026", setups:[
     {level:7530,type:"LEVEL_RECLAIM",priority:"a",notes:"The bull/bear line and the backtest target. Monday’s breakdown of the 7530 shelf keeps bears in control — for bulls to regain FULL control, 7530 must recover, and bears control below, so be suspect of the longevity of bounces. Bull path: ES holds 7425 (lowest being a quick trap of today’s 7409 low), then pushes up 7439 → 7459 → 7503 → 7530. This is also the short spot for those who short (backtest of Monday eve’s breakdown; 7502 is a spot in advance)."},
     {level:7439,type:"LEVEL_RECLAIM",priority:"b",notes:"Add-on-on-strength option — reclaims of 7439 are a possible long. First major resistance on the path back up toward 7530. Adam won’t force it."},
