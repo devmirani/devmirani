@@ -6,7 +6,7 @@
 <title>Trade Journal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #2b2d30;
@@ -26,6 +26,21 @@
     --amber: #e09415;
     --card-bg: #313438;
     --accent-line: linear-gradient(90deg, #7dc44a, #e09415, #d42035);
+    --paper: #26282b;
+    --ink: #eef2ec;
+    --ink-soft: #9aa7ae;
+    --ink-faint: #6b767c;
+    --hairline: #3c3f43;
+    --today-accent: #b8935a;
+    --font-voice: 'Source Serif 4', Georgia, serif;
+  }
+  body.light {
+    --paper: #faf8f4;
+    --ink: #262421;
+    --ink-soft: #6b6459;
+    --ink-faint: #97907f;
+    --hairline: #e6e0d4;
+    --today-accent: #8a6a3c;
   }
   body.light {
     --bg: #f0f4f9;
@@ -712,6 +727,64 @@
   }
 
 
+  /* ─── TODAY PAGE (standalone, white / black, color only where it means something) ─── */
+  #today-page { background: #ffffff; min-height: 100vh; }
+  .today-layout { display: flex; align-items: flex-start; max-width: 980px; margin: 0 auto; }
+  .today-sidebar { width: 210px; flex-shrink: 0; padding: 56px 12px 60px 24px; border-right: 1px solid #ececec; position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+  .today-sidebar-title { font-size: 11px; color: #9a9a9a; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Inter', sans-serif; margin-bottom: 14px; }
+  .tsb-month { margin-bottom: 2px; }
+  .tsb-month-head { display: flex; align-items: center; gap: 6px; padding: 8px 6px; cursor: pointer; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 13px; color: #111111; font-weight: 500; user-select: none; }
+  .tsb-month-head:hover { background: #f5f5f5; }
+  .tsb-month-chevron { font-size: 10px; color: #9a9a9a; transition: transform 0.15s; width: 10px; }
+  .tsb-month.open > .tsb-month-head .tsb-month-chevron { transform: rotate(90deg); }
+  .tsb-list { display: none; flex-direction: column; gap: 1px; padding-left: 10px; }
+  .tsb-month.open .tsb-list { display: flex; }
+  .tsb-date { display: block; padding: 7px 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #666666; cursor: pointer; border-radius: 6px; transition: background 0.12s, color 0.12s; }
+  .tsb-date:hover { background: #7dc44a; color: #ffffff; }
+  .tsb-date.active { color: #111111; font-weight: 600; background: #f0ead9; }
+  .tsb-date.active:hover { background: #7dc44a; color: #ffffff; }
+  .today-wrap { flex: 1; min-width: 0; max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+  .today-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+  .today-date { font-size: 12px; color: #757575; letter-spacing: 0.04em; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+  .today-headline { font-family: var(--font-voice); font-size: 24px; color: #111111; margin-top: 4px; font-weight: 400; line-height: 1.3; }
+  .today-contract { font-size: 12px; color: #757575; font-family: 'JetBrains Mono', monospace; }
+  .today-control { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; font-family: 'Inter', sans-serif; }
+  .today-control.bull { background: #eaf3de; color: #3b6d11; }
+  .today-control.bear { background: #fcebeb; color: #a32d2d; }
+  .today-control.contested { background: #faeeda; color: #854f0b; }
+  .today-control.none { background: #f0f0f0; color: #9a9a9a; }
+  .today-runner { display: flex; align-items: center; gap: 10px; padding: 16px 4px; border-top: 1px solid #e4e4e4; border-bottom: 1px solid #e4e4e4; margin-bottom: 32px; }
+  .today-runner-dot { width: 7px; height: 7px; border-radius: 50%; background: #5a9c3f; flex-shrink: 0; }
+  .today-runner-dot.none { background: #c4c4c4; }
+  .today-runner-text { font-size: 14px; color: #111111; font-family: 'Inter', sans-serif; }
+  .today-runner-since { font-size: 12px; color: #9a9a9a; font-family: 'Inter', sans-serif; }
+  .today-section-label { font-size: 12px; color: #9a9a9a; margin-bottom: 14px; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
+  .today-levels { margin-bottom: 36px; }
+  .today-level-row { display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid #ececec; }
+  .today-level-row:last-child { border-bottom: none; }
+  .today-level-num { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #333333; min-width: 54px; }
+  .today-level-num.a { color: #a8720f; font-weight: 600; }
+  .today-level-pri { font-size: 11px; color: #b0b0b0; min-width: 14px; font-family: 'JetBrains Mono', monospace; }
+  .today-level-pri.a { color: #a8720f; }
+  .today-level-note { font-family: var(--font-voice); font-size: 14.5px; color: #444444; line-height: 1.65; }
+  .today-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px; }
+  .today-case-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .today-case-label.bull { color: #4a7d34; }
+  .today-case-label.bear { color: #a8362e; }
+  .today-case p { font-family: var(--font-voice); font-size: 14px; line-height: 1.7; color: #333333; margin: 0; }
+  .today-reading { margin-bottom: 32px; }
+  .today-reading p { font-family: var(--font-voice); font-size: 15.5px; line-height: 1.8; color: #111111; margin: 0; }
+  .today-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #f7f7f5; border-radius: 10px; margin: 0; }
+  .today-footer-text { font-size: 13px; color: #555555; font-family: 'Inter', sans-serif; }
+  .today-footer-btn { font-size: 12px; color: #111111; background: none; border: 1px solid #d6d6d6; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; transition: border-color 0.15s; }
+  .today-footer-btn:hover { border-color: #111111; }
+  @media (max-width: 768px) {
+    .today-layout { flex-direction: column; }
+    .today-sidebar { width: auto; position: static; max-height: none; border-right: none; border-bottom: 1px solid #ececec; padding: 24px 18px; }
+    .today-wrap { padding: 32px 18px 60px; }
+    .today-cases { grid-template-columns: 1fr; gap: 20px; }
+  }
+
   /* ─── CONTEXT STRIP ──────────────────────────────────────── */
   .ctx-strip { margin: 0 40px 32px; }
   .ctx-strip-inner { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 16px; margin-bottom: 16px; }
@@ -955,12 +1028,67 @@
 </header>
 
 <div class="nav-tabs">
-  <button class="nav-tab active" onclick="switchTab('journal-page', this)">Journal</button>
+  <button class="nav-tab active" onclick="switchTab('today-page', this)">Today</button>
+  <button class="nav-tab" onclick="switchTab('journal-page', this)">Journal</button>
   <button class="nav-tab" onclick="switchTab('lab-page', this)">Setup Lab</button>
 </div>
 
+<!-- TODAY PAGE -->
+<div class="site-wrap"><div id="today-page" class="page active">
+  <div class="today-layout">
+    <div class="today-sidebar">
+      <div class="today-sidebar-title">Plan archive</div>
+      <div id="today-sidebar-tree"></div>
+    </div>
+    <div class="today-wrap">
+      <div class="today-head">
+        <div>
+          <div class="today-date" id="td-date">Tuesday, July 28</div>
+          <div class="today-headline" id="td-headline">Have bulls dropped the ball?</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="today-contract">ESU2026</div>
+          <div class="today-control none" id="td-control">Not tracked</div>
+        </div>
+      </div>
+
+      <div class="today-runner" id="td-runner-row">
+        <span class="today-runner-dot" id="td-runner-dot"></span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runner from 7418 FBD</span>
+        <span class="today-runner-since" id="td-runner-since">since Wed 1:15PM</span>
+      </div>
+
+      <div class="today-levels">
+        <div class="today-section-label">Actionable</div>
+        <div id="td-levels"></div>
+      </div>
+
+      <div class="today-cases">
+        <div class="today-case">
+          <div class="today-case-label bull">Bull case</div>
+          <p id="td-bull">&mdash;</p>
+        </div>
+        <div class="today-case">
+          <div class="today-case-label bear">Bear case</div>
+          <p id="td-bear">&mdash;</p>
+        </div>
+      </div>
+
+      <div class="today-reading">
+        <div class="today-section-label">Reading the range</div>
+        <p id="td-summary">&mdash;</p>
+      </div>
+
+      <div class="today-footer">
+        <span class="today-footer-text">4 trades awaiting fills</span>
+        <button class="today-footer-btn" onclick="switchTab('journal-page', document.querySelectorAll('.nav-tab')[1])">Resolve &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div></div>
+
 <!-- JOURNAL PAGE -->
-<div class="site-wrap"><div id="journal-page" class="page active">
+<div class="site-wrap"><div id="journal-page" class="page">
   <div class="asset-toggle">
     <button class="asset-btn active" id="btn-all" onclick="switchAsset('all')">All</button>
     <button class="asset-btn" id="btn-es" onclick="switchAsset('es')">ES Futures</button>
@@ -968,34 +1096,6 @@
   </div>
   <div class="dash-section" id="dash-section" style="padding-top:24px;"></div>
 
-  <!-- Market Context Strip -->
-  <div class="ctx-strip" id="ctx-strip">
-    <div class="ctx-strip-inner">
-      <div class="ctx-col ctx-bias-col">
-        <div class="ctx-label">Market Bias — Updated Jun 23 — Sep (ESU2026)</div>
-        <div class="ctx-bias-value" style="color:var(--green);">BULL</div>
-        <div class="ctx-bias-sub">ES coiled tight in a Mode 2 range, ~7535–7590 since last Wed, with 7551 the key pivot. Sunday’s 8:04PM 7521 FBD ripped the low. Lean: fill the range, then break up to 7611, 7620, 7639+. ⚠️ 7535 has been tested to death since Thursday — dangerous to engage now, size way down.</div>
-      </div>
-      <div class="ctx-col ctx-setup-col">
-        <div class="ctx-label">Primary Setup — A+</div>
-        <div class="ctx-setup-level">7535 <span class="ctx-setup-badge">FBD</span></div>
-        <div class="ctx-setup-entry">First support / bottom of the range — but tested to death since Thursday with traps below. Dangerous even as a FBD; lower win rate now, so size way down. Rather than buying direct, watch the FBD of the 7528 low (wait for 7535 to recover, good momentum only).<br><br>
-        <strong>7509 FBD</strong> — slow grind: bid; safer to wait for 7509 to defend then recover the 7515 daily low. Take profits fast.<br><br>
-        <strong>7472 FBD</strong> — last Wednesday’s FOMC major low; a cleaner FBD spot below.</div>
-        <div class="ctx-setup-stop">Stop: Below 7509 (bear trigger ~7503) / below the flush low; size down in the range</div>
-      </div>
-      <div class="ctx-col ctx-cases-col">
-        <div class="ctx-case bull">
-          <div class="ctx-case-label">&#9650; Bull Case</div>
-          <div class="ctx-case-text">Range 7535–7590 (Mode 2), 7551 the pivot. Hold 7535 (or quick trap below) then up the range to 7551, 7578, 7590, dip, then break to 7611, 7639+. A 7551 reclaim is a risky add.</div>
-        </div>
-        <div class="ctx-case bear" style="margin-top:8px;">
-          <div class="ctx-case-label">&#9660; Bear Case</div>
-          <div class="ctx-case-text">Begins below 7509. Final bounce or FBD there, then short beneath the lows of that bounce — ~7503 trigger. Breakdown trade — advanced only, 60%+ failure rate. Adam doesn’t take these.</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- P&L Calendar -->
   <div class="cal-section">
@@ -1240,6 +1340,82 @@ var weeks = [
 ];
 
 var trades = [
+  { id:160, date:"07/30/2026", entryTime:"11:36 AM", entryPrice:47.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:2, tradeLabel:"SPY $740 Call (0DTE)", type:"options",
+    targets:[
+      {label:"T1",price:126.00,contracts:1,status:"hit",pnl:79.00,exitTime:"1:00 PM",exitPrice:126.00},
+      {label:"Runner",price:212.00,contracts:1,status:"hit",pnl:165.00,exitTime:"3:09 PM",exitPrice:212.00}
+    ],
+    times:[{label:"Entry",value:"11:36 AM"},{label:"T1",value:"1:00 PM (1 hr 24 min 18 sec)"},{label:"Runner",value:"3:09 PM (3 hr 33 min 1 sec)"}],
+    totalPts:0, totalPnl:244.00, exitNote:"SPY $740 30 Jul 26 (W) Call, 0DTE. Bought 2 @ $0.47 ($47/contract, $94 total basis) at 11:36AM. T1: sold 1 @ $1.26 (+$79.00) by 1:00PM. Left 1 to run \u2014 premium kept expanding, closed @ $2.12 (+$165.00) at 3:09PM. Total +$244.00 (+260% on cost). Excellent runner discipline, letting the second contract ride well past the first target instead of clipping it.", journal:"" },
+  { id:159, date:"07/30/2026", entryTime:"10:37 AM", entryPrice:62.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:2, tradeLabel:"SPY $742 Call (0DTE)", type:"options",
+    targets:[
+      {label:"T1",price:71.00,contracts:1,status:"hit",pnl:9.00,exitTime:"3:02 PM",exitPrice:71.00},
+      {label:"Runner",price:81.00,contracts:1,status:"hit",pnl:19.00,exitTime:"4:01 PM",exitPrice:81.00}
+    ],
+    times:[{label:"Entry",value:"10:37 AM"},{label:"T1",value:"3:02 PM (4 hr 24 min 50 sec)"},{label:"Runner",value:"4:01 PM (5 hr 23 min 26 sec)"}],
+    totalPts:0, totalPnl:28.00, exitNote:"SPY $742 30 Jul 26 (W) Call, 0DTE. Bought 2 @ $0.62 ($62/contract, $124 total basis) at 10:37AM. Premium sat mostly flat most of the day \u2014 T1: sold 1 @ $0.71 (+$9.00) at 3:02PM. Held the last contract into the close, sold @ $0.81 (+$19.00) at 4:01PM right at expiry. Total +$28.00 (+15% on cost). Modest strike relative to the $740 call (#160) opened the same morning \u2014 the $740s captured far more of the day\u2019s move.", journal:"" },
+  { id:158, date:"07/30/2026", entryTime:"11:51 AM", entryPrice:7422.50, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:4, tradeLabel:"7422 Reclaim (Add)",
+    targets:[
+      {label:"T1",price:7427.50,contracts:2,status:"hit",pnl:50.00,exitTime:"11:55 AM"},
+      {label:"T2",price:7442.50,contracts:1,status:"hit",pnl:100.00,exitTime:"12:16 PM"},
+      {label:"Runner",price:7486.75,contracts:1,status:"hit",pnl:321.25,exitTime:"4:05 PM"}
+    ],
+    times:[{label:"Entry",value:"11:51 AM"},{label:"T1",value:"11:55 AM (3 min 50 sec)"},{label:"T2",value:"12:16 PM (24 min 27 sec)"},{label:"Runner",value:"4:05 PM (4 hr 13 min 37 sec)"}],
+    totalPts:94.25, totalPnl:471.25, exitNote:"MESU6, 4 lots (2/1/1) \u2014 add on strength as ES reclaimed 7422 above the Thursday 7408 FBD trigger. Entered 7422.50 at 11:51AM. T1: sold 2 @ 7427.50 (+$50.00) within 4 minutes. T2: sold 1 more @ 7442.50 (+$100.00). Left 1 to run \u2014 held through the rest of the session and closed @ 7486.75 (+$321.25) after 4h13min, the best runner of the week. Total +$471.25.", journal:"" },
+  { id:157, date:"07/30/2026", entryTime:"9:25 AM", entryPrice:7409.75, stopPrice:0, setup:"FBD", result:"win", contracts:5, tradeLabel:"7408 FBD",
+    targets:[
+      {label:"T1",price:7414.75,contracts:3,status:"hit",pnl:75.00,exitTime:"9:29 AM"},
+      {label:"T2",price:7439.25,contracts:1,status:"hit",pnl:147.50,exitTime:"10:07 AM"},
+      {label:"Runner",price:7427.50,contracts:1,status:"hit",pnl:88.75,exitTime:"11:55 AM"}
+    ],
+    times:[{label:"Entry",value:"9:25 AM"},{label:"T1",value:"9:29 AM (4 min 52 sec)"},{label:"T2",value:"10:07 AM (42 min 2 sec)"},{label:"Runner",value:"11:55 AM (2 hr 30 min 24 sec)"}],
+    totalPts:62.25, totalPnl:311.25, exitNote:"MESU6, 5 lots (3/1/1) \u2014 long the Thursday 7408 Failed Breakdown, actionable per the plan. Entered 7409.75 at 9:25AM. T1: sold 3 @ 7414.75 (+$75.00) in under 5 minutes. T2: sold 1 more @ 7439.25 (+$147.50). Left 1 to run, closed @ 7427.50 (+$88.75) after 2.5 hours. Total +$311.25. Clean 3/1/1 execution on a plan-level setup.", journal:"" },
+  { id:156, date:"07/29/2026", entryTime:"11:33 PM", entryPrice:7375.38, stopPrice:7364.50, setup:"FBD", result:"loss", contracts:2, tradeLabel:"7373 Zone (Final Attempt)",
+    targets:[
+      {label:"Stop",price:7364.50,contracts:2,status:"stopped",pnl:-108.75,exitTime:"1:02 AM"}
+    ],
+    times:[{label:"Entry",value:"11:33 PM"},{label:"Stop",value:"1:02 AM (1 hr 28 min 57 sec)"}],
+    totalPts:-21.75, totalPnl:-108.75, exitNote:"MESU6, 2 lots (1+1 fills seconds apart at 7375.25/7375.50, consolidated to a blended 7375.38 entry) \u2014 final attempt at the 7373 zone before it broke down toward the 7324/7325 low Adam eventually caught on his 4:36PM FBD. Entered 11:33PM, stopped out in full at 7364.50 the next morning at 1:02AM for -$108.75. The zone was clearly used up by this point \u2014 five separate attempts here (#152\u2013#156) netted only a modest loss overall, a good example of a well-tested level losing reliability the more it gets traded.", journal:"" },
+  { id:155, date:"07/29/2026", entryTime:"9:14 PM", entryPrice:7379.50, stopPrice:0, setup:"FBD", result:"win", contracts:5, tradeLabel:"7373 Zone (3rd Attempt)",
+    targets:[
+      {label:"T1",price:7389.50,contracts:3,status:"hit",pnl:150.00,exitTime:"9:35 PM"},
+      {label:"Stop",price:7374.00,contracts:2,status:"stopped",pnl:-55.00,exitTime:"11:12 PM"}
+    ],
+    times:[{label:"Entry",value:"9:14 PM"},{label:"T1",value:"9:35 PM (21 min 10 sec)"},{label:"Stop",value:"11:12 PM (1 hr 57 min 45 sec)"}],
+    totalPts:19.00, totalPnl:95.00, exitNote:"MESU6, 5 lots (3/2) \u2014 third attempt working the 7373\u20137380 zone. Entered 7379.50 at 9:14PM. T1: sold 3 @ 7389.50 (+$150.00) in 21 minutes. Left 2 to work but gave it back, stopped out 2 @ 7374.00 nearly 2 hours later (-$55.00). Total +$95.00.", journal:"" },
+  { id:154, date:"07/29/2026", entryTime:"7:18 PM", entryPrice:7377.75, stopPrice:7368.50, setup:"FBD", result:"loss", contracts:2, tradeLabel:"7373 Zone (Chase)",
+    targets:[
+      {label:"Stop",price:7368.50,contracts:2,status:"stopped",pnl:-92.50,exitTime:"8:44 PM"}
+    ],
+    times:[{label:"Entry",value:"7:18 PM"},{label:"Stop",value:"8:44 PM (1 hr 25 min 48 sec)"}],
+    totalPts:-18.50, totalPnl:-92.50, exitNote:"MESU6, 2 lots \u2014 reactive add into the same 7373\u20137380 chop zone, entered 7377.75 at 7:18PM without a clean trigger. Held 1h25min before getting stopped out in full at 7368.50 for -$92.50. Reactive, mid-range entry rather than a planned level.", journal:"" },
+  { id:153, date:"07/29/2026", entryTime:"7:02 PM", entryPrice:7374.00, stopPrice:0, setup:"FBD", result:"win", contracts:10, tradeLabel:"7373 FBD (Retry)",
+    targets:[
+      {label:"T1",price:7378.00,contracts:7,status:"hit",pnl:140.00,exitTime:"7:08 PM"},
+      {label:"T2",price:7381.00,contracts:3,status:"hit",pnl:105.00,exitTime:"7:33 PM"}
+    ],
+    times:[{label:"Entry",value:"7:02 PM"},{label:"T1",value:"7:08 PM (6 min 42 sec)"},{label:"T2",value:"7:33 PM (30 min 53 sec)"}],
+    totalPts:49.00, totalPnl:245.00, exitNote:"MESU6, 10 lots (7/3) \u2014 second attempt at the 7373 zone after the first stop (#152). Entered 7374.00 at 7:02PM. T1: sold 7 @ 7378.00 (+$140.00) in under 7 minutes. T2: sold the remaining 3 @ 7381.00 (+$105.00) half an hour later. Total +$245.00 \u2014 recovered the prior loss with a cleaner read of the same level.", journal:"" },
+  { id:152, date:"07/29/2026", entryTime:"6:23 PM", entryPrice:7375.50, stopPrice:7368.75, setup:"FBD", result:"loss", contracts:5, tradeLabel:"7373 FBD (Stop)",
+    targets:[
+      {label:"Stop",price:7368.75,contracts:5,status:"stopped",pnl:-168.75,exitTime:"6:26 PM"}
+    ],
+    times:[{label:"Entry",value:"6:23 PM"},{label:"Stop",value:"6:26 PM (3 min 8 sec)"}],
+    totalPts:-33.75, totalPnl:-168.75, exitNote:"MESU6, 5 lots \u2014 long attempt at the 7373 Failed Breakdown Wednesday evening as ES continued lower post-FOMC. Entered 7375.50 at 6:23PM, stopped out the full position just over 3 minutes later at 7368.75 for -$168.75, the largest loss of the week. Level failed to hold on the first touch.", journal:"" },
+  { id:151, date:"07/29/2026", entryTime:"1:20 PM", entryPrice:7423.75, stopPrice:0, setup:"FBD", result:"win", contracts:10, tradeLabel:"7418 FBD (NAP)",
+    targets:[
+      {label:"T1",price:7435.25,contracts:7,status:"hit",pnl:402.50,exitTime:"2:00 PM"},
+      {label:"T2",price:7449.25,contracts:2,status:"hit",pnl:255.00,exitTime:"2:01 PM"},
+      {label:"Runner",price:7415.75,contracts:1,status:"stopped",pnl:-40.00,exitTime:"3:21 PM"}
+    ],
+    times:[{label:"Entry",value:"1:20 PM"},{label:"T1",value:"2:00 PM (40 min 1 sec)"},{label:"T2",value:"2:01 PM (41 min 49 sec)"},{label:"Runner",value:"3:21 PM (2 hr 1 min 10 sec)"}],
+    totalPts:123.50, totalPnl:617.50, exitNote:"MESU6, 10 lots (7/2/1) \u2014 long the 7418 Failed Breakdown via the non-acceptance protocol (7418+5=7423), entered 7423.75 at 1:20PM, five minutes after Adam\u2019s own 1:15PM entry. T1: sold 7 @ 7435.25 (+$402.50) in 40 minutes. T2: sold 2 more @ 7449.25 (+$255.00) shortly after \u2014 both fills landed right around the FOMC spike. Left 1 to run, but it gave the gain back and got stopped 2 hours later at 7415.75 (-$40.00), below the original entry. Total +$617.50. Clean scaling on the way up; the runner needed a trail once it printed new highs instead of round-tripping through breakeven.", journal:"" },
+  { id:150, date:"07/29/2026", entryTime:"1:10 PM", entryPrice:7413.50, stopPrice:0, setup:"FBD", result:"win", contracts:10, tradeLabel:"7408 FBD (Early/Scratch)",
+    targets:[
+      {label:"Exit",price:7414.25,contracts:10,status:"hit",pnl:37.50,exitTime:"1:12 PM"}
+    ],
+    times:[{label:"Entry",value:"1:10 PM"},{label:"Exit",value:"1:12 PM (1 min 51 sec)"}],
+    totalPts:7.50, totalPnl:37.50, exitNote:"MESU6, 10 lots \u2014 early long attempt near the 7408 NAP trigger (7408+5=7413) ahead of the 1:15PM 7418 FBD Adam flagged. Entered 7413.50 at 1:10PM, scratched the whole position 1min51sec later at 7414.25 for a scratch +$37.50 rather than risk sitting through more chop. Immediately re-entered on the cleaner 7418 NAP trigger (trade #151).", journal:"" },
   { id:149, date:"07/22/2026", entryTime:"9:06 AM", entryPrice:7518.25, stopPrice:0, setup:"FBD", result:"win", contracts:5, tradeLabel:"7506 FBD",
     targets:[
       {label:"T1",price:7523.25,contracts:3,status:"hit",pnl:75.00,exitTime:"9:17 AM"},
@@ -2314,7 +2490,63 @@ var watchDays = [
 ];
 
 var setupDays = [
-  { date:"07/23/2026", setups:[
+  { date:"07/31/2026", title:"Is the bottom in for SPX?", control:"bull", setups:[
+    {level:7418,type:"FBD",priority:"b",notes:"Multi-touch shelf of lows from last Thursday into Tuesday, now traded through and trapped so many times it\u2019s basically non-existent as a reliable level. Only worth engaging if it flushes and recovers cleanly."},
+    {level:7400,type:"FBD",priority:"a",notes:"Around 11:30AM Thursday, ES defended this level and set a large low from which it rallied 40+ points. A Failed Breakdown of this low is actionable \u2014 bonus if ES tags 7393 first."},
+    {level:7374,type:"FBD",priority:"b",notes:"Adam won\u2019t personally engage here, but for those desperate to long, some points are grabbable. Not much below until 7353."},
+    {level:7353,type:"FBD",priority:"a",notes:"Massive low set at 4AM Thursday \u2014 a Failed Breakdown here is quite high quality. Nothing below until the 7324 Wednesday daily low."},
+    {level:7324,type:"FBD",priority:"aplus",notes:"The Wednesday daily low \u2014 site of Thursday\u2019s major post-FOMC elevator down (lost the major June 11th low at 7325 by 1 point before recovering). The anchor level of the whole squeeze; a Failed Breakdown here would be the deepest, highest-quality setup on the board."}
+  ],
+  bull:"ES has spent the majority of the last week in a range \u2014 7506 resistance down to 7418 support (a multi-touch shelf from Thursday into Tuesday), though 7418 is now so traded through it\u2019s basically non-existent as a level. Thursday afternoon after FOMC, ES went elevator down 100+ points from the 7470s to 7324, losing the major June 11th low at 7325 by a single point, before recovering and ripping back above 7418. The bull case now is that bulls can defend this rally \u2014 ideally holding no lower than 7418, or just quick traps below 7402. From there ES can resume up toward 7482 and 7506, then react and potentially break out to 7533 and 7575+. Given how hard ES rallied Thursday, there\u2019s nowhere clean to add on strength without it looking like chasing.",
+  bear:"Begins below 7393 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he doesn\u2019t take these personally and treats them as advanced/low win rate (expect 60%+ to fail, with 2-3 in a row failing before one pays out huge). For the 7393 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely a 7388 trigger down.",
+  summary:"Friday (Jul 31 plan): Thursday's newsletter went out early ahead of Apple/Amazon earnings. Heading in, Adam was holding a 10% runner from Wednesday's 4:36PM 7325 FBD. The setup was a textbook Failed Breakdown in its purest form \u2014 after FOMC, ES went elevator down 100+ points from the 7470s to 7324 (losing the major June 11th low at 7325 by 1 point), recovered 7425 by 4:35PM, then ripped back above 7418 for a squeeze into the 7450s and beyond. By Thursday morning ES was holding near 7400, still riding that runner with little to do. Big picture: ES remains in the same 7418\u20137506 range it\u2019s spent most of the last week in, but 7418 is now so heavily traded through it\u2019s lost most of its reliability as a level. Friday's plan: 7418 (used up, lower priority), 7400 (actionable, bonus tag 7393), 7374 (low priority, grab points only if desperate), 7353 (high quality \u2014 massive 4AM Thursday low), 7324 (anchor level, the Wednesday daily low and site of Thursday's big squeeze). Bull case: defend no lower than 7418 (or quick traps below 7402), work up through 7482/7506, then breakout to 7533/7575+. Bear case: breakdown below 7393, trigger ~7388.",
+  },
+  { date:"07/30/2026", title:"Bulls tried to buy the FOMC dip, but was it a trap?", control:"contested", setups:[
+    {level:7418,type:"FBD",priority:"b",notes:"Today\u2019s Failed Breakdown shelf, now heavily tested and used up post-FOMC \u2014 no longer as reliable."},
+    {level:7408,type:"FBD",priority:"a",notes:"Big low set 1:40PM Wednesday from which ES rallied to 7450 after FOMC. A Failed Breakdown of this low is actionable, bonus if it tags 7393."},
+    {level:7373,type:"FBD",priority:"a",notes:"Low of day for much of Wednesday. Instead of buying direct, wait for this zone to defend then recover 7373. A Failed Breakdown here is actionable."},
+    {level:7342,type:"FBD",priority:"b",notes:"Nothing below 7373 until here \u2014 bears would be in full control at this point. Knife-catch only (Adam never does this), treat as a gamble."},
+    {level:7325,type:"FBD",priority:"b",notes:"Below 7342, watch for Failed Breakdowns here \u2014 major daily low from June 11th."}
+  ],
+  bull:"ES has spent the majority of the last week in a range: 7506 resistance (former Tue\u2013Thu support that failed last Thursday) down to 7418 support (a multi-touch shelf of lows Thursday into Tuesday). Wednesday, just prior to FOMC, ES put in a major Failed Breakdown of the 7418 shelf, selling to 7373 then recovering. In a strong bull case, ES holds 7418 (or a quick trap below), then works up the range to 7447, 7458, 7474, then 7506. Above 7506, ES is free to rally to 7575+. Spots to add on strength are complex here, but watch for reclaims of 7447.",
+  bear:"Begins below 7373 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he does not take these personally, considers them advanced/low win rate (expect 60%+ to fail, 2-3 in a row can fail before the 4th pays out huge). For the 7373 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely 7388 trigger down. For those who like shorts generally: 7474, 7548, and 7575 are zones Adam flags (he hasn\u2019t personally shorted in over a year).",
+  summary:"Thursday (Jul 30 plan): Wednesday's newsletter went out early ahead of Meta/MSFT earnings, covering an FOMC day. Heading in, Adam was holding a 10% runner from Tuesday's 3PM 7434 FBD. ES went elevator down from the 7450s to 7398 by 10:27AM, then backtested ~7418 from below and rejected to ~7370 by noon \u2014 no FBD trigger yet, but this set up clean Type-1 acceptance (sold off at the significant low, then returned to it). By 1:15PM, ES returned to and recovered 7418, confirming the acceptance pattern; Adam longed at ~7420, locked 75% at 7427 (T1), more at 7434 (T2), left a 10% runner \u2014 then FOMC hit and ES spiked further, ripping to 7450+. Big picture: ES has spent the majority of the last week in a range, 7418 support up to 7506 resistance (the former support that flipped to resistance after failing last Thursday). Today's action was bulls defending that range low exactly as flagged (\u201c7418 to 7506\u201d). Thursday's plan: 7418 (now heavily tested/used up, lower priority), 7408 (actionable, bonus tag 7393), 7373 (actionable, wait for defend+recover), 7342 (knife-catch only, bears in full control below here), 7325 (major June 11 low). Bull case: defend 7418, work up through 7447/7458/7474 to 7506, then breakout to 7575+. Bear case: breakdown below 7373, trigger ~7388.",
+  },
+  { date:"07/28/2026", title:"Have bulls dropped the ball in SPX?", control:"bear", setups:[
+    {level:7398,type:"FBD",priority:"b",notes:"First support down. Could bid direct but Adam never does this when bears control \u2014 no knife catching. Safer bet: wait for it to hold then recover both the Thursday 7412 daily low AND Monday\u2019s 7417 daily low \u2014 these two lows form a clear shelf."},
+    {level:7369,type:"FBD",priority:"a",notes:"Fairly long way down from 7398 with no quality entries in between. Massive low set June 26th from which ES rallied to the current July highs. A Failed Breakdown of this low is a high quality long."},
+    {level:7358,type:"FBD",priority:"a",notes:"Big support \u2014 bottomed here June 25th/26th, built a big shelf from which ES rallied the first three weeks of July. Wait for the flush and recovery (Failed Breakdown), don\u2019t just buy it outright."},
+    {level:7311,type:"FBD",priority:"a",notes:"Nothing below 7358 until here. Very strong support."}
+  ],
+  bull:"ES is stuck inside another range, now mostly bounded by 7506 resistance (former Tue\u2013Thu support that broke down and flipped to resistance) and 7434 support (a multi-touch shelf all day Friday into Monday, now well tested, noisy, and unreliable). Bull case: bulls recover 7434 again and work up the range to 7506, with 7459 and 7475 en route. Once 7506 clears, ES can head up to 7575. Spots to add on strength: recoveries of 7434 are actionable, but Adam flags this as lower win rate since the level is so heavily engaged/tested at this point.",
+  bear:"Begins below 7398 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he does not take these personally, considers them advanced/low win rate (expect 60%+ to fail, 2-3 in a row can fail before the 4th pays out huge). For the 7398 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely 7390 trigger down to be safe. For those who like shorts generally: 7506 (well tested now, may have one dip left in it), 7548, and 7575 are zones Adam flags (he hasn\u2019t personally shorted in over a year).",
+  summary:"Tuesday (Jul 28 plan): Friday/Monday delivered the 7434 shelf trade twice. Late Friday (~3:15PM) ES sold to 7432 and bounced hard \u2014 Adam took the same 7434 FBD trigger at 7441 (3:35PM), locked 75% at 7447, left 25% to run. That runner kept working through the Sunday 6PM gap-up (Iran headlines), locking more gains right at the open (~7492), then ran cleanly to 7506 exactly per Friday\u2019s plan (\u201cdefend 7434, head to 7506, react, then 7533/7547/7575+\u201d). Monday morning there was nothing to do until ~9:55AM, when ES went elevator down from the 7490s to 7421 (by 10:40AM) \u2014 recovering the 7434 shelf a second time by 10:48AM, triggering the FBD again via non-acceptance protocol. Adam took this at 7439/10:48AM, locked 75% at 7447, more at 7453, left a 10% runner into Tuesday. But 7506 itself \u2014 the former Tue\u2013Thu support that broke down last week \u2014 got backtested Monday evening and bulls could NOT recover it, meaning the shelf has not yet been reclaimed and bears retain some control there. ES is now stuck in a new range: 7434 support (heavily tested, unreliable) up to 7506 resistance (former support, not yet reclaimed). Tuesday\u2019s plan: 7398 first support (no knife catching \u2014 wait for it to hold then recover the 7412/7417 shelf), then a long gap down to 7369 (high quality, massive June 26 low), 7358 (big support, wait for FBD), 7311 (very strong, nothing below). Bull case: reclaim 7434, work up through 7459/7475 to 7506, and if 7506 clears, ES can properly rally to 7575. Bear case: breakdown below 7398, trigger ~7390.",
+  },
+  { date:"07/27/2026", title:"How much dip do bears have left in SPX?", control:"bear", setups:[
+    {level:7458,type:"FBD",priority:"b",notes:"First support of interest down. Could bid direct, but safer option is to wait for it to defend then recover 7464 to long."},
+    {level:7437,type:"FBD",priority:"b",notes:"Now a major 3\u20134-touch shelf of lows (Friday midnight through 10AM Friday). Very clear shelf, Failed Breakdowns actionable, but given how well-tested this zone is don\u2019t be shocked if it only produces a quick level or two scalp before turning back down."},
+    {level:7412,type:"FBD",priority:"a",notes:"Big low set 11:30AM Thursday from which ES bottomed. A Failed Breakdown here is actionable."},
+    {level:7391,type:"FBD",priority:"b",notes:"Knife-catching high-risk long only, for those who like it."},
+    {level:7369,type:"FBD",priority:"a",notes:"Nothing below 7391 until here. Massive low set June 26th from which ES rallied to the current July highs. A Failed Breakdown of this low is a high quality long."},
+    {level:7358,type:"FBD",priority:"a",notes:"Big support \u2014 bottomed here June 25th/26th, built a big shelf from which ES rallied the first three weeks of July. Wait for the flush and recovery (Failed Breakdown), don\u2019t just buy it outright."},
+    {level:7311,type:"FBD",priority:"a",notes:"Nothing below 7358 until here. Very strong support."}
+  ],
+  bull:"ES has spent all month inside a range mostly 7472/7506 support and 7627 resistance. Friday broke this range down and likely expanded it. 7434 has been a key support Friday, held all morning. Bull case: hold 7434 (or a quick trap below), then work back into the range \u2014 up to 7506, react, then 7533, 7547, 7575, then 7627. In an ultra bull case ES won\u2019t even test/trap 7434 again \u2014 bulls just hold 7458 and resume up. No easy adds on strength; a highly advanced spot would be the 7506 reclaim after a dip-return-acceptance sequence there.",
+  bear:"Begins below 7434 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he does not take these personally, considers them advanced/low win rate (expect 60%+ to fail, 2-3 in a row can fail before the 4th pays out huge). For the 7434 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely 7425 trigger down to be safe. For those who like shorts generally: 7506, 7547, and 7575 are all zones Adam flags (he hasn\u2019t personally shorted in over a year).",
+  summary:"Monday (Jul 27 plan): Friday played out the standard elevator-down \u2192 FBD \u2192 squeeze cycle. ES went elevator down from 7465 to 7434 overnight/early, losing the 7438 shelf (set midnight\u20133AM Friday); it recovered that shelf around 10:05AM and ripped to 7490+. Adam had already caught the move via Thursday evening\u2019s setup: a 7447 shelf recovery long at 7455 (4:30PM Thursday), locking 75% at 7459, leaving a 25% runner that pinged between 7435\u20137458 overnight with no volatility \u2014 he was fine giving it space since it was far from structural loss. That runner then ran to 7464 by 3:45AM Friday (handled via limit orders), locking more, leaving 10%. With a green trade banked and it being Friday, Adam wrapped up and just held the runner rather than engaging the 7438 FBD directly, though it was there for those who wanted it. Now holding a 10% runner from the 7455 FBD into Monday. Big picture: the whole rally off Thursday\u2019s 7411 low was really just a return trip to backtest the two shelves whose failure caused the original sell \u2014 7473 (lost Wednesday, triggered the drop) and 7506 (lost Thursday). ES remains rangebound as it has all month, largely 7473\u20137627 with 7506 a key level inside it. Not much for direct entries up here \u2014 need another elevator-down sell. Monday\u2019s plan: 7458 first support (safer to wait for defend+recover of 7464), 7437 now a well-tested 3-4 touch shelf (actionable but expect only a quick scalp), 7412 (actionable, bottomed here Thursday), 7391 (knife-catch only), 7369 (high quality, massive June 26 low), 7358 (big support, wait for FBD), 7311 (very strong, nothing below). Bull case: defend 7434 (or trap below), work back to 7506, react, then 7533/7547/7575+. Bear case: breakdown below 7434, trigger ~7425.",
+  },
+  { date:"07/24/2026", title:"Will bulls buy today\u2019s SPX dip?", control:"bear", setups:[
+    {level:7412,type:"FBD",priority:"a",notes:"First true support of interest \u2014 bears now control below the broken 7474 range, so supports are weaker/less reliable than usual. Big low set 11:30AM Thursday from which ES rallied to the 7450s. A Failed Breakdown of this low is actionable, bonus if it tags 7398 on the flush."},
+    {level:7391,type:"FBD",priority:"b",notes:"High-risk knife-catch long only for those who like it \u2014 bears control below 7474 so this is a lower quality spot."},
+    {level:7369,type:"FBD",priority:"a",notes:"Nothing below 7391 until here. Massive low set June 26th from which ES rallied to the current July highs. A Failed Breakdown of this low is a high quality long."},
+    {level:7358,type:"FBD",priority:"a",notes:"Big support \u2014 bottomed here June 25th/26th, built a big shelf from which ES rallied the first three weeks of July. Wait for the flush and recovery (Failed Breakdown), don\u2019t just buy it outright."},
+    {level:7311,type:"FBD",priority:"a",notes:"Nothing below 7358 until here. Very strong support."}
+  ],
+  bull:"For the last 3 weeks ES was rangebound 7474\u20137627; Thursday it lost support of that range and sold off, so it\u2019s now simply bears control below 7474, bulls control above. Bull case: ES attempts a backtest of 7474, ideally by defending Thursday\u2019s 7411 low (or a quick trap below). From there, resume up to 7474, react, then head up to 7506 \u2014 a bigger support from Tue/Wed/early Thursday, so the backtest there matters even more than 7474 and Adam expects a larger dip or reaction before ripping fully up the range. Spots to add on strength: reclaims of 7447, a large shelf of lows set 9:30\u201310:30AM Thursday from which ES rallied 40+ points.",
+  bear:"Begins below 7412 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he does not take these personally, considers them advanced/low win rate (expect 60%+ to fail, 2-3 in a row can fail before the 4th pays out huge). For the 7412 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely 7395 trigger down to be safe. Backtest shorts also available now that the range broke: 7474 is an obvious backtest short but lower win rate given Thursday\u2019s consolidation there; 7506 above it is a higher win rate backtest short zone (Adam doesn\u2019t take shorts personally, hasn\u2019t shorted in over a year).",
+  summary:"Friday (Jul 24 plan): Thursday brought the largest dip in several weeks and the first Bear Case trigger in weeks, breaking a 3-week 7474\u20137627 range. ES dipped to 7492 by 7:45AM setting up the 7506 FBD (already recovered overnight to 7526 around 4AM while Adam slept), but by 7:50AM it rejected back to 7504 without triggering Adam\u2019s entry. Price moved to the next planned level, 7473, selling through with no trigger into the 7450s by 9:30AM \u2014 the flagged Bear Case (short below 7473, trigger ~7465) played out to the 7440s for those who took it (Adam does not short personally). ES then bounced back to 7473 by 9:35AM where Adam longed via the non-acceptance protocol at 7478, locked 75% at 7483 (T1), left 25% to run \u2014 but ES rejected back down to 7449 by 10:15AM, forcing the runner to be cut a few points below break-even to preserve the gain (this trade is pending logging \u2014 needs broker fills). ES continued lower into noon, bottoming at 7411 before bouncing, with little else to do the rest of the day. With the range now broken, bears control below 7474 and bulls control above 7474. Friday\u2019s plan: first true support 7412 (FBD, bonus tag 7398), 7391 (high-risk knife-catch only), 7369 (high quality \u2014 massive June 26th low), 7358 (big support, wait for FBD), 7311 (very strong support, nothing between). Bull case is a backtest of 7474 defending the 7411 low, then reacting up through 7506. Bear case is a breakdown below 7412 (advanced/low win rate), trigger ~7395.",
+  },
+  { date:"07/23/2026", title:"3 weeks today, SPX has been rangebound. Will it leave the range this week?", control:"bull", setups:[
     {level:7533,type:"FBD",priority:"b",notes:"First support down. Nothing to engage here personally — if desperate and don\u2019t mind a lower win rate, at least wait for it to flush and recover a little before longing."},
     {level:7506,type:"FBD",priority:"a",notes:"Now a major two-touch shelf of lows — set 50pts here Tuesday 10AM, then 60+pts here again Wednesday 9:30AM. This is where Adam gets interested. A Failed Breakdown here is actionable, bonus if it tags 7492 on the flush first."},
     {level:7473,type:"FBD",priority:"a",notes:"Low of day Friday and Monday — big shelf of lows. If bulls can\u2019t stick this, ES very likely collapses. Any longs below here shouldn\u2019t be shocked if they only go a level (or less) before failing — be quick with profit takes."},
@@ -2325,7 +2557,7 @@ var setupDays = [
   bear:"Begins below 7473 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns, since the vast majority of breakdowns (~80%) trap; he does not take these personally and considers them advanced/low-win-rate (expect 60%+ to fail, 2-3 in a row can fail before the 4th pays out huge). For the 7473 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely 7465 trigger down.",
   summary:"Thursday (Jul 23 plan): Wednesday played out exactly per the Failed Breakdown / Elevator Down / Short Squeeze cycle Adam describes daily. ES sold off from the 7520s pre-market down to 7504 around 8:50AM, putting in a microscopic ~1pt Failed Breakdown of the 7506 major low (set Tuesday 9:30AM). Adam longed around 9AM/7513 as price held the non-acceptance protocol trigger (7506+5=7511) for a few minutes. Managed level to level: locked 75% at 7523 (T1), more at 7533 (T2), left 10% to run \u2014 still holding that runner into Thursday. ES then ripped all day, filling the range up to 7575 exactly as flagged in Tuesday\u2019s newsletter (\u201cmy general lean is we fill this range out to 7575, dip, then 7611, 7627\u201d). With the rip having used up Wednesday\u2019s entries, there\u2019s nothing to engage in advance for Thursday \u2014 entries are scarce in summer and only emerge after another elevator-down sell into a Failed Breakdown. First support 7533 (nothing to engage). 7506 is now a major two-touch shelf and is where Adam gets interested (bonus if it tags 7492 first). 7473 is the next major shelf below \u2014 if bulls can\u2019t hold it, likely collapse. Next quality long isn\u2019t until 7408, then 7357 below that. Bull case: fill the range out to 7627 (7575, react, 7595, 7611, 7627), then breakout toward old ATHs. Bear case: a breakdown short below 7473, advanced/low-win-rate only. Adam remains in Mode 2 (rangebound) conditions that have defined all of July, with 1-2 trades per week being typical in summer volatility.",
   },
-  { date:"07/22/2026", setups:[
+  { date:"07/22/2026", title:"The July range continues to mature in SPX. Breakout close?", control:"bull", setups:[
     {level:7533,type:"FBD",priority:"b",notes:"First support down. Nothing to engage here at all — no significant low present, just a broken-out resistance shelf from overnight. If desperate, at least wait for a probe below and recovery."},
     {level:7506,type:"FBD",priority:"a",notes:"Large significant low set at 9:30AM Tuesday. A Failed Breakdown here is actionable, bonus if it tags 7492 on the flush first."},
     {level:7473,type:"FBD",priority:"a",notes:"Low of day Friday and Monday — a big shelf of lows. If bulls can’t stick this, ES very likely collapses. Any longs below here shouldn’t be shocked if they only go a level (or less) before failing — be quick with profit takes."},
@@ -2337,7 +2569,7 @@ var setupDays = [
   summary:"Wednesday (Jul 22 plan): The July range continues to mature — breakout close? Sunday evening ES gapped down off the open to 7483, recovered 7490 (the exact zone flagged Friday: “wait for it to defend and recover 7490”), and worked back up range into Monday. Monday evening brought a double bottom at 7473 (low of day Friday and Monday) around 6:20PM — ES lacked the strength to flush the low cleanly but was bouncing off it, so Adam treated it like a Failed Breakdown anyway (long 5 points above 7473), locking 75% at 7483, more at 7490, left 10% to run — still holding that runner into Wednesday. A separate 7490 shelf-recovery long also triggered via the non-acceptance protocol around 9:30PM for anyone who missed the double bottom. Tuesday morning found ES already up at 7514 with nothing to do — pure profit-protection mode, just riding the runner. Tuesday itself pushed further up-range, setting a large significant low at 9:30AM at 7506, and now sits in the middle of the range — historically the worst region to trade, since FBD setups mostly trigger at range edges. ES has been stuck in the same 7473–7627 range all month, with 7575 the critical level lost Thursday. Lean for Wednesday: fill the range out further to 7575, dip, then onto 7611, 7627, perhaps dip again, then breakout to 7640, 7657, 7697. Sep contract (ESU2026). Supports: 7539, 7533 (major), 7523, 7512, 7506 (major), 7492 (major), 7483, 7473 (major), 7464, 7458 (major), 7453, 7444, 7439 (major), 7422 (major), 7409, 7398 (major), 7391, 7383, 7373 (major), 7364, 7358, 7349, 7341, 7333 (major), 7320, 7311 (major). Resistances: 7547 (major), 7554, 7563 (major), 7570, 7575 (major), 7588, 7595 (major), 7604, 7611 (major), 7620, 7628, 7636, 7640 (major), 7649, 7657 (major), 7661, 7666, 7673 (major), 7683, 7691, 7708 (major), 7711, 7724, 7736, 7744 (major), 7758, 7773, 7778 (major), 7791, 7801, 7812 (major), 7821, 7829 (major), 7843, 7849 (major), 7859 (major).",
   entry:"Adam still holding a 10% long runner from the Monday evening 6:20PM 7473 double-bottom entry (75% locked at 7483, more at 7490). Primary planned longs into Wednesday: 7533 is first support down but nothing to engage — no significant low present, just an overnight broken-out shelf; wait for a probe-and-recover if trading it at all. Below that, 7506 — Tuesday’s 9:30AM significant low, a Failed Breakdown here is actionable (bonus if it tags 7492 first). The key range-defining level is 7473 (Friday/Monday low of day, big shelf) — if bulls can’t hold this, ES likely collapses, so be quick with profit takes on any longs below it. No further quality long until 7408 (June 29th massive low, actionable FBD), then 7357 below that. No add-on-strength spots up here currently. Upside lean: fill the range to 7575, dip, then 7611, 7627, then eventual breakout to 7640+."
   },
-  { date:"07/21/2026", setups:[
+  { date:"07/21/2026", title:"Was that all the downside SPX bears get?", control:"bull", setups:[
     {level:7532,type:"LEVEL_RECLAIM",priority:"b",notes:"Add-on-strength spot only — nothing Adam would take personally, but if desperate, watch for engagements here: flushes-and-recoveries if ES is above it, or just recoveries if well below it."},
     {level:7504,type:"FBD",priority:"a",notes:"First support of interest — big low set at 10:40AM Monday. Wouldn’t buy directly, but if ES flushes it down to 7492 and recovers, this is an actionable long. Take profits level to level aggressively."},
     {level:7483,type:"FBD",priority:"b",notes:"Range support, held Sunday evening. Instead of buying directly, wait for it to hold then recover 7490 — a nice shelf of lows, last bounced out of around 2:40AM Monday."},
@@ -2350,7 +2582,7 @@ var setupDays = [
   summary:"Tuesday (Jul 21 plan): Was that all the downside SPX bears get? Futures opened Sunday at 6pm with a gap down on Iran headlines, selling to 7483 before bouncing and recovering 7490 — the exact zone flagged Friday (“wait for it to defend and recover 7490”). Adam grabbed the non-acceptance-protocol long at 7498 by 6:42PM, locked 75% at 7506, more at 7511, left 10% to run (still holding that runner into Tuesday). A second, lower-quality setup — the 7506 Failed Breakdown (a multi-hour 20+ point low) — also triggered around 8:15PM for anyone who missed the 7490 reclaim, chopping for hours before following through into Monday morning. Monday open found ES up at the big 7536-39 resistance shelf with nothing to do — pure profit-protection mode. ES has now been stuck in the same range for the entire month since the start of July: 7482 support to 7627 resistance, with 7575 the critical level lost Thursday that triggered the selloff. Monday itself saw a big low set at 10:40AM at 7504, and range support at 7483 held again overnight. Lean for Tuesday: bulls fill the range to the upside — hold above 7504 (or a quick trap), work up to backtest 7575, dip, then onto 7611 and 7627; breakout to 7694+ once ready. Sep contract (ESU2026). Supports: 7504 (major), 7490, 7483 (major), 7471 (major), 7459 (major), 7453, 7439 (major), 7422, 7418 (major), 7408, 7398 (major), 7390 (major), 7383, 7373, 7369 (major), 7359, 7351, 7346 (major), 7342, 7336 (major), 7326, 7311 (major). Resistances: 7515, 7522, 7532 (major), 7539, 7548 (major), 7555, 7564 (major), 7570, 7575 (major), 7586, 7597 (major), 7604, 7611 (major), 7620, 7627 (major), 7636, 7640-45 (major), 7655, 7661, 7669 (major), 7674, 7684, 7694 (major), 7705, 7716 (major), 7723, 7734, 7743, 7757 (major), 7771 (major), 7786, 7800, 7812, 7821 (major), 7827, 7841 (major), 7856, 7869, 7877 (major).",
   entry:"Adam still holding a 10% long runner from the 6:42PM Sunday 7490 reclaim entry at 7498 (75% locked at 7506, more at 7511). Primary planned longs into Tuesday: 7504 is first support of interest — wouldn’t buy directly, but a flush to 7492 and recovery is actionable (take profits aggressively level to level). Below that, 7483 — wait for it to hold then recover 7490 rather than buying outright. The next quality setup is the Failed Breakdown of Friday’s daily low at 7473 (ideal if it tags 7459 first and recovers) — a high-quality long, but be cautious below there as bounces could be quick scalps before further selloff. No further quality long until 7408 (June 29th massive low, actionable FBD), then 7357 below that. On strength, nothing Adam personally takes, but desperate traders can watch 7532 for engagements. Upside lean: hold above 7504, work up to backtest 7575, dip, then onto 7611 and 7627."
   },
-  { date:"07/20/2026", setups:[
+  { date:"07/20/2026", title:"Will bulls buy today\u2019s SPX dip?", control:"contested", setups:[
     {level:7539,type:"LEVEL_RECLAIM",priority:"b",notes:"Advanced add-on-strength entry — the 7534-39 zone is trappy and choppy right now. Recoveries here are actionable but Adam is passing on this one personally; would get in low 7540’s if taking it."},
     {level:7505,type:"FBD",priority:"a",notes:"First support down. Instead of buying directly, wait for the Failed Breakdown of the large low set here at 11:15AM Friday, from which ES rallied 35 points."},
     {level:7483,type:"FBD",priority:"b",notes:"Instead of buying directly, wait for it to defend and recover 7490."},
@@ -2363,7 +2595,7 @@ var setupDays = [
   summary:"Monday (Jul 20 plan): Will bulls buy today’s SPX dip? Tuesday ES trapped 7553 down to 7533, recovered, and ripped to the 7620’s by Thursday’s high. Thursday afternoon the 7570-75 zone — critical support for the prior week — finally broke: at 2:05PM ES swept 7575 down to 7573 and recovered; Adam took the non-acceptance-protocol long at 7580 (2:15PM), locked 75% at 7585, then got rejected to a new low at 7569 and cut the remainder near break-even to avoid going red. Late Thursday ES chopped right on the 7533 FBD trigger zone (7538-40) around 11:25PM with no momentum — Adam passed, wanting things moving quickly and decisively. Overnight ES went elevator down from the 7580’s to 7473, losing the overnight 7492 low and general 7482 support, then recovered both and ripped. Friday at 9:50AM Adam took the 7482 sweep-and-recovery long (swept to 7474, recovered, non-acceptance-protocol entry at 7493) — locked 75% at 7506, more at 7511, left 10% to run; still holding that runner into Monday. ES remains rangebound 7482 (July 2nd low) to 7611, with 7534-39 and 7575 the major inside pivots — 7575 in particular had been support most of the week and its loss triggered Friday’s selloff; it now needs to backtest and recover for bulls to retain control. Lean for Monday: ES works up to backtest 7575, perhaps dips there, then back up-range toward 7611. In a very strong bull case, ES won’t even revisit range support and instead holds 7506 (or a quick trap) before heading up direct. Sep contract (ESU2026). Supports: 7505 (major), 7490, 7483 (major), 7473, 7459 (major), 7454, 7447 (major), 7437, 7433, 7422 (major), 7418, 7408 (major), 7398, 7390 (major), 7381, 7374, 7368 (major), 7357 (major), 7351, 7342, 7336 (major), 7331, 7327 (major). Resistances: 7512, 7522, 7534-39 (major), 7546, 7554 (major), 7564, 7570, 7575 (major), 7585, 7594 (major), 7604, 7611 (major), 7621, 7627 (major), 7635, 7640 (major), 7649, 7655, 7660 (major), 7667, 7673, 7683 (major), 7687, 7694 (major), 7702, 7714, 7727 (major), 7738 (major), 7747, 7757, 7768 (major), 7777, 7791 (major), 7795, 7806 (major), 7815, 7820, 7836 (major), 7842, 7848, 7863 (major).",
   entry:"Adam holding a 10% long runner from Friday’s 9:50AM 7482 sweep-and-recovery entry at 7493 (75% locked at 7506, more at 7511). Primary planned longs into Monday: 7505 is first support down — instead of buying directly, wait for the Failed Breakdown of the 11:15AM Friday low there (35-point rally off it). Below that, 7483 — wait for it to defend and recover 7490 rather than buying outright. The next quality setup is the Failed Breakdown of Friday’s daily low at 7473 (ideal if it tags 7459 first and recovers) — a high-quality long, but be cautious below there as bounces could be quick scalps before further selloff. No further quality long until 7408 (June 29th massive low, actionable FBD), then 7357 below that. On strength, recoveries of 7534-39 are actionable but advanced/trappy — Adam is passing on this one personally (would enter low 7540’s if taking it). Upside lean: work up to backtest 7575, perhaps dip, then back up-range toward 7611."
   },
-  { date:"07/17/2026", setups:[
+  { date:"07/17/2026", control:"bull", setups:[
     {level:7594,type:"FBD",priority:"b",notes:"First support of interest down; has been a magnet all day Thursday and is now a used-up, trappy, unstable region. If trading it at all, wait for this to dip down to 7585 and recover."},
     {level:7575,type:"FBD",priority:"a",notes:"Thursday’s 945AM low of day, from which ES rallied 40 points. The Failed Breakdown here is obviously actionable. Also the bear-case trigger zone (ℐ7565 down) for those who short."},
     {level:7533,type:"FBD",priority:"a",notes:"Monday’s low of day. Instead of buying it directly, wait for the Failed Breakdown of Monday’s daily low."},
@@ -2378,7 +2610,7 @@ var setupDays = [
   summary:"Friday (Jul 17 plan): The coil in SPX keeps getting tighter — when does it break out? Tuesday ES trapped 7553 down to 7533, recovered, and ripped to 7611 (high of day). Wednesday/Thursday ES sold down to ~7575, bounced back to ~7611, but remains stuck inside the range. Thursday morning brought the 7594 Failed Breakdown (a 4:10AM 20+ point low), entered long at 7600 at 10:15AM — locked 75% at 7604, more at 7611, left 10% to run in profit-protection mode. Adam is also still holding his 10% long runner from the 7567-73 retest (9:35AM Tuesday). Since July 9th, ES has been in a Mode 2 (rangebound) consolidation that keeps morphing and expanding — currently mostly 7533 to 7611, with 7575 the new key pivot (up from 7570). Lean for Friday: fill the range out more (watch for traps of 7575), then breakout, with 7640 the first breakout target. 7594 is first support down but now a used-up, trappy region — wait for a dip to 7585 and recovery if trading it. Below that, 7575 (Thursday’s low of day, actionable FBD) and 7533 (Monday’s low) are both wait-for-the-Failed-Breakdown zones, not direct bids. Below that, 7482 is the major June-30th floor, with the safer/cleaner entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467, aggressive profit-taking). 7438 and 7423 (strong) sit further below, with 7408 (Monday June 29th low) the next watch beneath that. Sep contract (ESU2026). Supports: 7594 (major), 7585, 7575 (major), 7564, 7555 (major), 7546, 7540, 7533 (major), 7522, 7511, 7506, 7492, 7482 (major), 7467, 7460, 7454 (major), 7444, 7438, 7431, 7423 (major), 7408 (major), 7398, 7391, 7382 (major), 7374, 7369 (major), 7357, 7351 (major), 7342, 7336 (major), 7325, 7320, 7312 (major), 7304 (major). Resistances: 7606, 7611 (major), 7620, 7628, 7639 (major), 7650, 7656, 7661, 7668 (major), 7674 (major), 7678, 7682, 7696 (major), 7708, 7717, 7723, 7734 (major), 7741, 7746 (major), 7754, 7765, 7774 (major), 7781, 7788 (major), 7794, 7801 (major), 7806, 7817, 7835-40 (major), 7857, 7868, 7877 (major).",
   entry:"Adam holding the 10% long runner from Tuesday’s 9:35AM 7567-73 retest, plus the fresh 10% runner from Thursday’s 10:15AM 7594 Failed Breakdown entry at 7600 (75% locked 7604, more at 7611). Profit-protection mode — nothing else to do unless a runner stops below break-even and a new pre-planned setup emerges. Primary planned longs into Friday: wait for the Failed Breakdown of 7575 (Thursday’s low of day, actionable), then 7533 (Monday’s low) — both FBD-only, not direct bids. Below that, 7482 the major floor, with the safer entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) further down, 7408 the next watch. Upside on continued strength: fill the range, then breakout to 7639, 7656, then 7695."
   },
-  { date:"07/16/2026", setups:[
+  { date:"07/16/2026", control:"bull", setups:[
     {level:7594,type:"FBD",priority:"b",notes:"First support of interest down. No personal interest engaging here directly. If desperate to trade, wait for it to flush and recover."},
     {level:7570,type:"FBD",priority:"a",notes:"Wednesday’s low of day. A Failed Breakdown here is a high-quality trade. Also the bear-case trigger zone (ℐ7565 down) for those who short."},
     {level:7533,type:"FBD",priority:"a",notes:"Tuesday’s low of day. Instead of buying it directly, wait for the Failed Breakdown of yesterday’s daily low."},
@@ -2393,7 +2625,7 @@ var setupDays = [
   summary:"Thursday (Jul 16 plan): SPX coils even tighter — major move is close. Wednesday ES dipped to 7570, held (a slow controlled grind rather than a clean flush-and-recover), and ripped to 7611+. Adam took the 7570-73 long anyway given how scarce setups have been — locked 75% at 7585, more at 7597, and is still holding the 10% runner from that same Tuesday 9:35AM trade (no new position Wednesday; ES opened near 7600 with nothing to do). Since July 9th ES has been in a Mode 2 (rangebound) consolidation that keeps morphing and expanding — currently mostly 7533 to 7611, with 7570 the new key pivot. Lean for Thursday: fill the range out (watch for a trap of 7570), then breakout — targets 7639, 7656, then 7695. First support of interest is 7594, no personal interest engaging it directly. Below that, 7570 (Wednesday’s low, high-quality FBD) and 7533 (Tuesday’s low) are both wait-for-the-Failed-Breakdown zones, not direct bids. Below that, 7482 is the major June-30th floor, with the safer/cleaner entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467, aggressive profit-taking). 7438 and 7423 (strong) sit further below, with 7408 (Monday June 29th low) the next watch beneath that. Sep contract (ESU2026). Supports: 7604, 7594 (major), 7588, 7580, 7570 (major), 7564, 7555 (major), 7547, 7539, 7533 (major), 7523-25 (major), 7512, 7506, 7490, 7482 (major), 7473 (major), 7467, 7454 (major), 7439, 7423 (major), 7407, 7399, 7391, 7383 (major), 7368, 7358 (major), 7350, 7339 (major), 7328, 7320, 7312 (major), 7304, 7295, 7288 (major), 7276 (major), 7271, 7264 (major). Resistances: 7611 (major), 7621, 7628, 7639 (major), 7651, 7656 (major), 7661, 7667, 7675 (major), 7683, 7695 (major), 7705, 7717, 7728 (major), 7736 (major), 7751, 7762, 7772 (major), 7785, 7798 (major), 7809, 7824, 7829, 7838 (major), 7848, 7855 (major).",
   entry:"Adam still holding the 10% long runner from Tuesday’s 9:35AM 7567-73 retest — locked 75% at 7585, more at 7597, riding the last piece. Profit-protection mode, nothing else to do unless it stops below break-even and a new pre-planned setup emerges. No new position taken Wednesday. Primary planned longs into Thursday: wait for the Failed Breakdown of 7570 (Wednesday’s low of day, high-quality setup), then 7533 (Tuesday’s low) — both FBD-only, not direct bids. Below that, 7482 the major floor, with the safer entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) further down, 7408 the next watch. Upside on continued strength: fill the range, then breakout to 7639, 7656, then 7695."
   },
-  { date:"07/15/2026", setups:[
+  { date:"07/15/2026", control:"bull", setups:[
     {level:7570,type:"FBD",priority:"a",notes:"7573-70 is first support of interest. A slow-grind bid into the zone is fine, but the safer entry is to wait for the Failed Breakdown of the 7570 low — a 24+ point low set at noon Tuesday. Flush and recovery here is actionable."},
     {level:7547,type:"FBD",priority:"a",notes:"Cluster of lows set between 7–8:30AM Tuesday, roughly 7544-47. The Failed Breakdown of this cluster is actionable."},
     {level:7533,type:"FBD",priority:"a",notes:"Tuesday’s low of day. Instead of buying it directly, wait for the Failed Breakdown of today’s daily low. Also the bear-case trigger level (ℐ7528 down) for those who short."},
@@ -2408,7 +2640,7 @@ var setupDays = [
   summary:"Wednesday (Jul 15 plan): SPX continues to coil tight — breakout incoming? Tuesday ES trapped 7553 (Friday’s low of day) down to 7533, recovered to 7553, and ripped to 7611 (the high of day) — all inside the tight coil that’s been building since last Thursday. CPI hit at 8:30AM and spiked straight through the 7558 and 7573 trigger zones, too fast to engage; Adam eventually took the 7570-73 backtest at 9:35AM, scaling 75% at 7585, more at 7597, and is still holding a 10% runner from that trade. The range is now roughly 7533 to 7611, with 7573 the key inside pivot — everything inside it is chop. Lean for Wednesday: fill the range out (watch for traps of 7570-73 or 7533), then breakout through 7597, 7604, 7611, react, then to 7640+. First support of interest is 7570 (the 24+ point noon low) — safer to wait for its Failed Breakdown than bid directly. Below that, 7547 (7–8:30AM cluster of lows) and 7533 (today’s low of day) are both FBD-only zones, not direct bids. Below that, 7482 is the major June-30th floor, with the safer/cleaner entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467, aggressive profit-taking). 7438 and 7423 (strong) sit further below, with 7408 (Monday June 29th low) the next watch beneath that. Sep contract (ESU2026). Supports: 7573-70 (major), 7566, 7553, 7547 (major), 7540, 7533 (major), 7521, 7511 (major), 7505, 7490 (major), 7482, 7473 (major), 7459 (major), 7453, 7439, 7423 (major), 7418, 7409, 7397 (major), 7390, 7382, 7372 (major), 7368, 7364 (major), 7357, 7351, 7347, 7342, 7335 (major), 7328, 7320, 7313 (major), 7302, 7295 (major), 7287, 7276 (major). Resistances: 7581, 7587, 7591, 7597 (major), 7604, 7611 (major), 7621, 7627, 7636, 7640 (major), 7649, 7655, 7668, 7673 (major), 7682, 7695 (major), 7705, 7713, 7720 (major), 7726 (major), 7732, 7736, 7748, 7758 (major), 7766, 7776, 7785, 7792-96 (major), 7804, 7825 (major).",
   entry:"Adam holding a fresh 10% long runner from Tuesday’s 9:35AM 7567-73 retest — locked 75% at 7585, more at 7597, riding the last piece. Profit-protection mode, nothing else to do unless it stops below break-even and a new pre-planned setup emerges. Primary planned longs into Wednesday: the Failed Breakdown of the 7570 noon low (first, safer than a direct bid), then the 7–8:30AM 7544-47 cluster, then today’s 7533 low of day — all FBD-only, not direct bids. Below that, 7482 the major floor, with the safer entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) further down, 7408 the next watch. Upside on continued strength: 7597, 7604, 7611, react, then breakout to 7640+."
   },
-  { date:"07/14/2026", setups:[
+  { date:"07/14/2026", control:"bull", setups:[
     {level:7573,type:"FBD",priority:"b",notes:"First support (7573-67 zone). Not interested engaging with a direct buy, but if ES can recover 7573 with some speed, one can try engaging — take profits very aggressively since 7585 is a big resistance right above."},
     {level:7553,type:"FBD",priority:"a",notes:"Friday’s ~1030AM low — a highly significant low from which ES rallied 50+ points. Actionable Failed Breakdown; ideal if the sweep hits 7547 or lower first. Also the bear-case trigger level (ℐ7543 down) for those who short."},
     {level:7533,type:"FBD",priority:"a",notes:"Major support/resistance line for much of last week. Last Thursday, ES trapped below it 2x, setting a cluster of lows at 7527/7529. A controlled dip bid into 7533 is a fine trade, but the safer entry is to wait for that cluster to flush and recover — ideal if it tags 7521 or 7511 first."},
@@ -2425,7 +2657,7 @@ var setupDays = [
   summary:"Tuesday (Jul 14 plan): Are bulls running out of steam? ES hit 7597 Thursday, then ripped to 7625 Friday. Friday’s plan flagged 7553 as the line bulls needed to hold on any pullback (‘no lower than that 7553 Failed Breakdown or a full retrace down range is likely’) — Monday ES dipped to 7558 and defended it, holding the line. Since last Thursday ES has been stuck in a tight range, roughly 7567-73 to 7611, with 7585 the key pivot inside it. Adam is still holding his 10% long runner from the 730AM Failed Breakdown of last Wednesday’s Thursday-July-9th 7482 daily low. Lean for Tuesday: fill the range out then break it — no lower than a trap of 7553, then work up through 7585, react, 7611, react, perhaps a final dip, then breakout to 7640+. Reclaims of 7585 are an option to add on strength (not one Adam takes personally). Below 7553, 7533 is the next FBD zone (cluster of lows 7527/7529, tag 7521 or 7511), then 7482 the major June-30th floor, with the safer/cleaner entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467, aggressive profit-taking). 7438 and 7423 (strong) sit further below, with 7408 (Monday June 29th low) the next watch beneath that. Sep contract (ESU2026). Supports: 7573 (major), 7567, 7555, 7547 (major), 7541, 7533 (major), 7521, 7511 (major), 7507, 7495 (major), 7483 (major), 7472, 7459, 7452 (major), 7439 (major), 7432, 7422, 7418 (major), 7408 (major), 7399, 7390 (major), 7382, 7374 (major), 7364, 7358 (major), 7351, 7342, 7337 (major), 7320, 7311 (major), 7303, 7295 (major), 7286, 7276 (major). Resistances: 7578, 7585 (major), 7597 (major), 7605, 7611 (major), 7621 (major), 7629, 7639 (major), 7649, 7655 (major), 7668, 7674 (major), 7684, 7696 (major), 7709, 7720, 7730 (major), 7745, 7757 (major), 7770, 7783 (major), 7800, 7812, 7824 (major).",
   entry:"Adam holding the 10% long runner from the 730AM Failed Breakdown of last Wednesday’s Thursday-July-9th 7482 daily low — profit-protection mode, nothing to do but ride it. 7573-67 is first support but no direct-buy interest; would need a fast recovery of 7573 to engage, with aggressive profit-taking given 7585 resistance right above. Primary planned long into Tuesday is the 7553 zone — Friday’s ~1030AM significant low, actionable Failed Breakdown, ideal if the sweep tags 7547 or lower. Below that, 7533 (cluster of lows 7527/7529, tag 7521 or 7511), then 7482 the major floor, with the safer entry being the Failed Breakdown of last Wednesday’s 7467 daily low (tag 7454, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) further down, 7408 the next watch. Upside on continued strength: 7585, 7611, perhaps a final dip, then breakout to 7640+."
   },
-  { date:"07/13/2026", setups:[
+  { date:"07/13/2026", control:"bull", setups:[
     {level:7596,type:"FBD",priority:"b",notes:"First support down as of writing, but too close to the highs — no interest engaging here directly. If desperate to trade, wait for this region to trap and recover."},
     {level:7553,type:"FBD",priority:"a",notes:"Where Adam gets interested. Friday’s ~1030AM low — a highly significant low from which ES rallied 50+ points. The Failed Breakdown of this low is actionable; ideal if the sweep hits 7547 or lower first. Also the bear-case trigger level (ℐ7542 down) for those who short."},
     {level:7533,type:"FBD",priority:"a",notes:"Major support/resistance line for three days. Thursday trapped below it 2x, setting a cluster of lows at 7527/7529. One could bid a controlled dip into the zone, but the safer entry is to wait for that cluster to flush and recover — ideal if it tags 7521 or 7513 first."},
@@ -2442,7 +2674,7 @@ var setupDays = [
   summary:"Monday (Jul 13 plan): Has SPX finally broken out? Wednesday ES went elevator down overnight from the 7540s to the 7460s on more Iran-headline pressure, swept last Thursday’s 7482 low, recovered it for a Failed Breakdown, and ripped to 7533+. ES hit 7597 Thursday, then ripped to 7600+ Friday — expanding the range to the upside, though Adam is careful not to call that a confirmed breakout (no predictions, just react to what price does). Friday ES also sold to almost exactly 7555 (from up at 7600) and bounced 30+ points; Adam didn’t personally engage it. Adam is still holding his 10% long runner from the 730AM Failed Breakdown of last Thursday’s 7482 daily low. Lean for Monday: in the ultra-bull case ES keeps defending 7597 on dips; if it fails, bulls want no lower than the 7553 Failed Breakdown (Friday’s ~1030AM low, actionable, ideal if the sweep tags 7547 or lower) or a full retrace down-range is likely. Below that, 7533 is the cluster-of-lows setup (7527/7529, tag 7521 or 7513), then 7482 the major June-30th floor, with the safer/cleaner entry being the Failed Breakdown of Wednesday’s 7467 daily low (tag 7454, recover 7467, aggressive profit-taking). 7438 and 7423 (strong) sit further below, with 7408 (Monday June 29th low) the next Failed Breakdown watch beneath that. Upside targets: 7640, 7668, perhaps a dip, then 7695, then all-time highs. Sep contract (ESU2026). Supports: 7596 (major), 7587, 7578, 7570 (major), 7553 (major), 7547, 7540, 7533 (major), 7521 (major), 7513, 7501, 7492 (major), 7482, 7472, 7462 (major), 7454, 7438 (major), 7429, 7423 (major), 7409, 7398 (major), 7390, 7383, 7374 (major), 7365, 7358 (major), 7351, 7347, 7343, 7337 (major), 7332, 7326 (major), 7320, 7311 (major), 7302, 7294 (major), 7285, 7275 (major), 7271, 7256 (major), 7251, 7245, 7237 (major). Resistances: 7612 (major), 7621, 7627 (major), 7637, 7640 (major), 7649, 7655, 7656, 7668 (major), 7673, 7683 (major), 7695 (major), 7708, 7720, 7730, 7742 (major), 7754, 7763 (major), 7771, 7782 (major), 7794, 7805 (major), 7819, 7827 (major).",
   entry:"Adam holding the 10% long runner from the 730AM Failed Breakdown of last Thursday’s 7482 daily low — profit-protection mode, nothing to do but ride it. 7596 is first support but too close to highs, no personal interest there; Friday’s sweep to 7555 (from 7600, bounced 30+ points) wasn’t engaged either. Primary planned long into Monday is the 7553 zone — Friday’s ~1030AM significant low, actionable Failed Breakdown, ideal if the sweep tags 7547 or lower. Below that, 7533 (cluster of lows 7527/7529, tag 7521 or 7513), then 7482 the major floor, with the safer entry being the Failed Breakdown of Wednesday’s 7467 daily low (tag 7454, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) further down, 7408 the next watch. Upside on continued strength: 7640, 7668, dip possible, then 7695, then new highs."
   },
-  { date:"07/10/2026", setups:[
+  { date:"07/10/2026", control:"bull", setups:[
     {level:7555,type:"FBD",priority:"b",notes:"No supports of interest until here. Adam won’t engage personally as there’s no Failed Breakdown at this level — if desperate to trade, one can try a bid on a slow grind in."},
     {level:7533,type:"FBD",priority:"a",notes:"Where Adam gets interested. Major support/resistance line for two days, trapped below it 2x today setting a cluster of lows at 7527/7529. Safer entry is to wait for that cluster to flush and recover — ideal if it tags 7521 or 7513 first."},
     {level:7521,type:"FBD",priority:"b",notes:"Tag target inside the 7533 setup (flush 7533 → tag 7521 → recover 7533). Not a standalone long — it’s one of the two possible flush depths."},
@@ -2458,7 +2690,7 @@ var setupDays = [
   summary:"Friday (Jul 10 plan): SPX coiled for weeks — breakout incoming? Overnight into Wednesday, ES went elevator down from the 7540s to the 7460s on more Iran-headline pressure, swept last Thursday’s 7482 low, recovered it for a Failed Breakdown, and ripped to 7533+. Thursday the rally continued, working the range up to 7597. Adam is holding his 10% long runner from the 730AM Failed Breakdown of last Thursday’s 7482 daily low — nothing to do but ride it. ES remains rangebound since June 30th, now mostly 7482–7597. Lean for Friday: hold 7555 at the lowest (traps of 7533 lowest), then breakout the range to 7611, 7621, 7639+, eventually new all-time highs. Key setup is the 7533 zone — wait for the 7527/7529 cluster of lows to flush and recover, ideally tagging 7521 or 7513. Below that, 7482 is the major floor (since June 30th); the safer entry is the Failed Breakdown of Wednesday’s 7467 daily low, tagging 7454-58 and recovering 7467 — aggressive profit-taking expected since it has a high chance of only running a level or two before failing. 7438 and 7423 (strong) are supports further below, with 7408 (Monday June 29th low) the next Failed Breakdown watch beneath that. Sep contract (ESU2026). Supports: 7587, 7578, 7565 (major), 7558, 7555 (major), 7547, 7541, 7533 (major), 7521, 7513 (major), 7501, 7491 (major), 7482, 7472, 7459 (major), 7453, 7438 (major), 7421, 7417 (major), 7410, 7399, 7392, 7383 (major), 7373 (major), 7358, 7351 (major), 7347, 7337 (major), 7326, 7313 (major), 7303, 7296, 7287 (major), 7277 (major), 7267, 7263, 7252, 7244, 7237 (major). Resistances: 7597 (major), 7611, 7621 (major), 7628, 7639 (major), 7642, 7649 (major), 7656, 7661, 7668 (major), 7673, 7682 (major), 7695, 7707, 7710, 7716 (major), 7721, 7733 (major), 7741, 7749 (major), 7755, 7766, 7775-80 (major), 7796, 7812, 7819 (major).",
   entry:"Adam holding the 10% long runner from the 730AM Failed Breakdown of last Thursday’s 7482 daily low — profit-protection mode, nothing to do but ride it. No engage spot until 7555 (won’t trade it personally — no Failed Breakdown there). Primary planned long is the 7533 zone: wait for the 7527/7529 cluster of lows to flush and recover, ideally tagging 7521 or 7513. Below that, 7482 is the major floor; the safer/cleaner entry is the Failed Breakdown of Wednesday’s 7467 daily low (tag 7454-58, recover 7467) — take profits aggressively there. 7438 and 7423 (strong) are supports further down, 7408 the next Failed Breakdown watch. Upside on continued breakout: 7611, 7621, 7639+, then new highs. Range: mostly 7482–7597."
   },
-  { date:"07/08/2026", setups:[
+  { date:"07/08/2026", control:"bull", setups:[
     {level:7552,type:"FBD",priority:"b",notes:"First support down. Adam isn’t overly interested and won’t engage here, but on a slow grind into the zone one can try a bid."},
     {level:7540,type:"FBD",priority:"b",notes:"Used up after today’s Failed Breakdown. One can try the bid, but Adam prefers to wait for a better setup — the 7530 FBD below. In the bull case ES ideally doesn’t even test 7540 again (or just a quick trap below)."},
     {level:7530,type:"FBD",priority:"a",notes:"THE key setup. Today’s daily low. High-quality Failed Breakdown IF ES flushes 7530, tags 7521, and recovers 7530 — that specific flush-tag-recover is the high-conviction long. Also where the bear case begins (⁐7535 trigger down) for shorts."},
@@ -2471,7 +2703,7 @@ var setupDays = [
   summary:"Wednesday (Jul 8 plan): SPX coiled tight — breakout incoming? Another low-vol, low-volume summer session. The one volatility expansion came after the open: ES went elevator down from the 7580s to 7530 by 10:42AM, lost the Sunday ~7540 low, returned to 7540 by 10:49AM, and Adam took the 7540 Failed Breakdown via the non-acceptance protocol (7545 hold) at 11:55AM — locking 75% at 7553, more at 7565, 10% runner. ES remains consolidating since June 30th; last few days mostly 7540–7597, broadest form 7483–7597. Lean: fill the range out, then break out to 7611, 7641+. Key setup for Wed is the 7530 FBD (flush 7530, tag 7521, recover 7530 = high quality); 7552/7540 are used-up/low-interest, 7506 and 7459 the supports below. Adam still holds the Sunday 7421 10% runner plus the 7540 runner from today. Sep contract (ESU2026). Supports: 7552 (major), 7546, 7540 (major), 7530, 7521 (major), 7511, 7506 (major), 7492, 7483 (major), 7471, 7459, 7452 (major), 7439, 7422 (major), 7409 (major), 7399, 7391, 7383 (major), 7374, 7365 (major), 7357, 7350, 7342-7336 (major), 7331, 7319 (major), 7312, 7303 (major), 7296, 7286, 7275 (major), 7270, 7262 (major), 7258, 7245-50 (major), 7232, 7228, 7222 (major). Resistances: 7565 (major), 7578, 7587, 7597 (major), 7611 (major), 7619, 7628, 7636 (major), 7649, 7660 (major), 7668, 7674 (major), 7683, 7694 (major), 7709, 7715 (major), 7722, 7729, 7740 (major), 7755, 7764, 7770 (major), 7781 (major), 7789, 7794, 7806, 7811 (major), 7821 (major), 7830, 7836, 7852 (major), 7859, 7868 (major).",
   entry:"Adam holding runners into Wednesday — the 10% from Sunday’s 6:05PM 7421 FBD plus the 7540 Failed Breakdown from today (long via non-acceptance at 11:55AM, 75% out at 7553, more at 7565, 10% left). Profit-protection mode; A+ trigger is another elevator-down sell into a Failed Breakdown. The primary planned long is the 7530 FBD (flush 7530 → tag 7521 → recover 7530). 7552 first support (won’t engage), 7540 used up, 7506 and 7459 the supports below. Upside on a range breakout: 7578, 7597, 7611, 7641. Range: mostly 7540–7597, broadest 7483–7597 — coiled and possibly about to break out."
   },
-  { date:"07/07/2026", setups:[
+  { date:"07/07/2026", control:"bull", setups:[
     {level:7565,type:"FBD",priority:"b",notes:"First support down. A big shelf of resistance since Friday that broke out today, now flipped to support. On a slow grind into the zone one can long it — Adam won’t engage here personally."},
     {level:7552,type:"LEVEL_RECLAIM",priority:"b",notes:"Monday 9:20AM low. Conditional alt long: if ES doesn’t give a clean Failed Breakdown at 7540 but instead defends that low exactly, wait for it to then recover 7552 and go long."},
     {level:7540,type:"FBD",priority:"a",notes:"Where Adam gets interested — lots of options here. First option: the Failed Breakdown of the Sunday low (roughly here) — wait for it to flush and recover. Below 7540 ES likely sells hard, so be cautious about longing beneath it. Also where the bear case begins (⁐7535 trigger down) for those who short."},
@@ -2485,7 +2717,7 @@ var setupDays = [
   summary:"Tuesday (Jul 7 plan): Is the bottom in? Typical low-vol, low-volume summer trading. The driver was Thursday’s 4:15PM major Failed Breakdown — ES went elevator down 7594→7482 by 2:30PM, recovered the 7521 shelf, and Adam got long 7526 (via non-acceptance, 7521+5) at ~4:15PM, locking 75% at 7530, more at 7540, 10% runner that ripped through Friday and into Monday’s 7580+. ES has been rangebound since last Tuesday mostly 7511–7597 with 7521 the major pivot (Mode 2). Lean: ES can break the range out to 7611, then 7640+. Where Adam gets interested is 7540 (FBD of the Sunday low); 7565 is first support but he won’t engage; 7511 is more interesting on a flush-to-7504-and-recover; 7482 (Thursday’s low) and 7459 are the strong supports below. Adam still holds the Sunday 7421 10% runner plus the 7521 Thursday runner. Sep contract (ESU2026). Supports: 7565 (major), 7552, 7540 (major), 7530, 7522 (major), 7511 (major), 7504, 7492 (major), 7482 (major), 7472, 7459 (major), 7453, 7439 (major), 7421 (major), 7409 (major), 7398, 7390, 7382 (major), 7372, 7363 (major), 7358, 7347, 7342 (major), 7337 (major), 7331, 7327, 7320 (major), 7311, 7295 (major), 7287, 7276 (major), 7270, 7263, 7256, 7246 (major). Resistances: 7578 (major), 7587, 7597 (major), 7611 (major), 7619, 7628, 7636, 7640 (major), 7651, 7667 (major), 7674, 7682 (major), 7695, 7705 (major), 7715, 7731 (major), 7740, 7751, 7762 (major), 7769, 7777 (major), 7786, 7800 (major), 7809, 7820 (major), 7824, 7836, 7846, 7854 (major).",
   entry:"Adam holding runners into Tuesday — the 10% from Sunday’s 6:05PM 7421 FBD plus the 7521 Thursday 4:15PM Failed Breakdown (long 7526, 75% out at 7530, more at 7540, 10% left, which ripped through Friday and Monday). Profit-protection mode; A+ trigger is another elevator-down sell into a Failed Breakdown. Primary spot of interest is 7540 (FBD of the Sunday low) — below that ES likely sells hard, so cautious. 7565 first support (won’t engage), 7511 more interesting on a flush-and-recover, then 7482 and 7459 below. Upside on a range breakout: 7611, 7640, 7667. Range: 7511–7597, possibly breaking out."
   },
-  { date:"07/06/2026", setups:[
+  { date:"07/06/2026", control:"contested", setups:[
     {level:7521,type:"LEVEL_RECLAIM",priority:"a",notes:"THE key long. Multi-touch shelf of lows set late Wed into Thu AM. Its loss Thursday afternoon started the selling — it must recover to end it. The reclaim of 7521 is the actionable long (Adam tweeted this entry late day); opens 7540, 7578, 7597, react there then 7620+. Don’t buy 7511 directly — wait for this reclaim."},
     {level:7511,type:"FBD",priority:"b",notes:"Range floor (7511–7597 Mode 2 range). Heavily tested now and very trappy — Adam won’t buy it directly. Until 7521 recovers, Failed Breakdowns here may just pop a level and reject. Wait for the 7521 reclaim instead."},
     {level:7482,type:"FBD",priority:"a",notes:"Afternoon low — the base for much of the day. Failed Breakdowns here are actionable, especially if ES tags 7472 on the flush. Aggressively take profits: until 7521 recovers, FBDs may only pop one level and reject."},
@@ -2498,7 +2730,7 @@ var setupDays = [
   summary:"Monday (Jul 6 plan — resent from Fri, since Fri Jul 3 was the July 4th holiday / NYSE closed): Will today’s dip get bought? ES is now rangebound mostly 7511–7597 (Mode 2). Thursday ran to ~7597 by 10AM then went elevator down to 7482 by ~1:10PM; ES recovered the 7492 massive low (from 9:30AM Wed) and Adam took the FBD long at 7499 at 1:18PM via non-acceptance (7496 push), held through a dip to 7480, then popped into 2:20PM — locked 75% at 7502, more at 7512, 10% runner. The 7506 FBD earlier never got a clean trigger (chopped at 7511, 12:35–12:52). Key for Monday: 7521 is the major shelf inside the range and the loss of it started the selling — bulls must reclaim it to work up to 7540, 7578, 7597, then 7620+. Don’t buy 7511 directly (trappy). Adam still holds the Sunday 7421 10% runner plus the 9:35AM Thu 7511 runner. Sep contract (ESU2026). Supports: 7511 (major), 7501, 7492 (major), 7482 (major), 7473, 7459, 7454 (major), 7439, 7421 (major), 7409, 7399 (major), 7390, 7382, 7374, 7369 (major), 7364, 7358 (major), 7351, 7346 (major), 7341, 7337 (major), 7331, 7325, 7311 (major), 7303, 7294, 7288 (major), 7274, 7271 (major), 7266, 7262 (major), 7257, 7252 (major), 7244 (major), 7236, 7228, 7223 (major), 7211 (major), 7197, 7191 (major). Resistances: 7522 (major), 7530, 7540 (major), 7551, 7558, 7567, 7578 (major), 7588, 7598 (major), 7611, 7621 (major), 7628, 7637, 7651, 7655 (major), 7661, 7667 (major), 7673, 7683 (major), 7696 (major), 7704, 7710, 7723 (major), 7730, 7735 (major).",
   entry:"Adam holding runners into Monday — the 10% from Sunday’s 6:05PM 7421 FBD plus the 9:35AM Thursday 7511 FBD. Profit-protection mode; his A+ trigger is another elevator-down sell into a Failed Breakdown. The primary planned long is the 7521 reclaim (the shelf whose loss started Thursday’s afternoon selling) — that opens 7540, 7578, 7597. 7511 is support but too trappy to buy directly. Below: 7482 FBD (aggressive profit-taking), then 7454, the 7423 ATM zone, 7409. Range to work: 7511–7597 for possibly several days."
   },
-  { date:"07/02/2026", setups:[
+  { date:"07/02/2026", control:"bull", setups:[
     {level:7541,type:"FBD",priority:"b",notes:"First support as of writing. Adam won’t engage here personally, but on a slow, controlled grind into the zone one can try the bid. If ES is full-speed knifing down, wait for it to flush and recover — in a strong bull case ES just defends 7541 and continues up without ever revisiting 7511."},
     {level:7512,type:"FBD",priority:"b",notes:"The 7511–13 shelf — broke out from it Tuesday, backtested at 3:30AM Wed (rallied 26pts), then the 9:35AM Failed Breakdown fired right off it. Bull-case defense line: bulls want to hold 7511 on any dip, traps going no lower than 7492. One can try a bid on a controlled sell into it, but Adam personally won’t — he’ll only engage the FBD of today’s 7506 daily low."},
     {level:7506,type:"FBD",priority:"a",notes:"Adam’s spot. Today’s (Wed) daily low. This is the Failed Breakdown he’ll personally engage — wait for the flush-and-recover, then long."},
@@ -2512,7 +2744,7 @@ var setupDays = [
   summary:"Thursday (Jul 2 plan): Can bulls finish the July 4th week strong? Another textbook cycle — ES went elevator down from the 7560s to 7506 around 9:30AM Wed, flushing the 7511 major low (set 3:30AM), recovered by 9:35AM for the Failed Breakdown and ripped to 7578. Adam got long 7516 via the non-acceptance protocol, locked 75% at 7521, more at 7530, left 10% to run — now in profit-protection mode holding runners. Still one of the seasonally strongest, lowest-vol weeks of the year, so it’s a ride-the-runner week: engage again only on another deep elevator-down sell. Lean: defer to the trend — 7541 and 7511 (watch traps) are supports, keeping 7568 and 7597 live; digest there, then 7611+. Adam still holds the 10% runner from Sunday’s 6:05PM 7421 FBD plus the new 9:35AM 7511 runner. Sep contract (ESU2026). Supports: 7541 (major), 7530, 7523, 7512 (major), 7502, 7492, 7483 (major), 7472, 7459, 7453 (major), 7439, 7422 (major), 7410, 7399 (major), 7389, 7383, 7371 (major), 7364, 7357 (major), 7351, 7343, 7336 (major), 7326 (major), 7321, 7311 (major), 7301, 7295, 7286, 7277 (major), 7273, 7263 (major), 7257, 7245, 7234 (major), 7230, 7224 (major), 7216, 7210 (major), 7205, 7198 (major). Resistances: 7551, 7560, 7568 (major), 7578, 7587, 7597 (major), 7611 (major), 7620, 7627, 7636 (major), 7640, 7641 (major), 7656, 7661 (major), 7667, 7673 (major), 7683, 7694 (major), 7707, 7722 (major), 7730, 7740, 7752 (major), 7764, 7770, 7785 (major).",
   entry:"Adam holding two long runners into Thursday — the 10% from Sunday’s 6:05PM 7421 FBD, plus the new 9:35AM 7511 Failed Breakdown (long 7516 via non-acceptance, 75% out at 7521, more at 7530, 10% left). Profit-protection mode: sit on the runners and do nothing unless a new pre-planned setup triggers after another deep elevator-down sell. July 4th holiday week (seasonally strong, low vol) — a dip may be too much to ask. His personal engage spot is the 7506 daily-low FBD; 7492 is the high-quality one below (massive 9:30AM Tue low). 7541/7512 frame support up top, 7567 then 7597 the upside targets, then 7611/7636+."
   },
-  { date:"07/01/2026", setups:[
+  { date:"07/01/2026", control:"bull", setups:[
     {level:7542,type:"LEVEL_RECLAIM",priority:"b",notes:"Recover-for-long trigger. 7530 just flipped to support but sits right under the highs, so Adam won’t bid it directly. If you really want the long up here, wait for 7530 to DEFEND and then recover 7542 — only then go long."},
     {level:7530,type:"LEVEL_RECLAIM",priority:"b",notes:"The structural line bulls finally backtested today — the multi-day shelf broken last Monday. Now flipped to support, but it’s too close to current highs to engage cleanly, so Adam won’t trade it here. Also the backtest short spot for those who short."},
     {level:7511,type:"FBD",priority:"a",notes:"First true support of interest now. Slow grind into the zone — one can try a bid. If ES is knifing full speed down, no rush; wait a little for it to flush/settle rather than knife-catching."},
@@ -3858,6 +4090,128 @@ function openSetupDrill(dateStr) {
 function prevSetupMonth() { setupCalMonth--; if(setupCalMonth<0){setupCalMonth=11;setupCalYear--;} renderSetupCalendar(); }
 function nextSetupMonth() { setupCalMonth++; if(setupCalMonth>11){setupCalMonth=0;setupCalYear++;} renderSetupCalendar(); }
 
+/* ─── TODAY PAGE: sidebar tree + date selection ─────────────── */
+var TODAY_MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+function tdParseDate(d) {
+  // d is "MM/DD/YYYY"
+  var p = d.split("/");
+  return { m: parseInt(p[0],10), day: parseInt(p[1],10), y: parseInt(p[2],10) };
+}
+function tdWeekday(d) {
+  var p = tdParseDate(d);
+  return new Date(p.y, p.m - 1, p.day).getDay(); // 0=Sun..6=Sat
+}
+
+function buildTodaySidebarData() {
+  // group setupDays by month (desc), dates desc within month
+  var months = {}; // key "YYYY-MM" -> { label, y, m, dates: [] }
+  for (var i = 0; i < setupDays.length; i++) {
+    var sd = setupDays[i];
+    if (!sd.date) continue;
+    var p = tdParseDate(sd.date);
+    var key = p.y + "-" + (p.m < 10 ? "0" + p.m : p.m);
+    if (!months[key]) months[key] = { label: TODAY_MONTH_NAMES[p.m-1] + " " + p.y, y: p.y, m: p.m, dates: [] };
+    months[key].dates.push(sd.date);
+  }
+  var monthKeys = Object.keys(months).sort(function(a,b){ return b.localeCompare(a); });
+  return monthKeys.map(function(k){ return months[k]; });
+}
+
+function renderTodaySidebar() {
+  var data = buildTodaySidebarData();
+  var html = "";
+  for (var mi = 0; mi < data.length; mi++) {
+    var mo = data[mi];
+    var dates = mo.dates.slice().sort(function(a,b){ return tdParseDate(b).day - tdParseDate(a).day; });
+    var datesHtml = "";
+    for (var di = 0; di < dates.length; di++) {
+      var p = tdParseDate(dates[di]);
+      var label = TODAY_MONTH_NAMES[p.m-1].slice(0,3) + " " + p.day;
+      datesHtml += "<span class='tsb-date' data-date='" + dates[di] + "' onclick='selectTodayDate(\"" + dates[di] + "\")'>" + label + "</span>";
+    }
+    html += "<div class='tsb-month" + (mi===0 ? " open" : "") + "'>" +
+      "<div class='tsb-month-head' onclick='this.parentElement.classList.toggle(\"open\")'>" +
+        "<span class='tsb-month-chevron'>&#9656;</span><span>" + mo.label + "</span>" +
+      "</div>" +
+      "<div class='tsb-list'>" + datesHtml + "</div>" +
+    "</div>";
+  }
+  document.getElementById("today-sidebar-tree").innerHTML = html;
+}
+
+var TODAY_WEEKDAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+function selectTodayDate(dateStr) {
+  var sd = null;
+  for (var i = 0; i < setupDays.length; i++) { if (setupDays[i].date === dateStr) { sd = setupDays[i]; break; } }
+  if (!sd) return;
+  var p = tdParseDate(dateStr);
+  var wd = TODAY_WEEKDAY_NAMES[tdWeekday(dateStr)];
+
+  document.getElementById("td-date").textContent = wd + ", " + TODAY_MONTH_NAMES[p.m-1] + " " + p.day;
+  document.getElementById("td-headline").textContent = sd.title ? sd.title : ("Plan for " + TODAY_MONTH_NAMES[p.m-1] + " " + p.day);
+
+  var controlEl = document.getElementById("td-control");
+  var controlMap = { bull: "Bulls in control", bear: "Bears in control", contested: "Contested" };
+  if (sd.control && controlMap[sd.control]) {
+    controlEl.textContent = controlMap[sd.control];
+    controlEl.className = "today-control " + sd.control;
+  } else {
+    controlEl.textContent = "Not tracked";
+    controlEl.className = "today-control none";
+  }
+
+  // Runner status is only tracked live for the most recent plan on record.
+  var latestDate = null;
+  for (var li = 0; li < setupDays.length; li++) { if (setupDays[li].date) { latestDate = setupDays[li].date; break; } }
+  var isLatest = (dateStr === latestDate);
+  var runnerRow = document.getElementById("td-runner-row");
+  if (isLatest) {
+    runnerRow.style.display = "";
+    document.getElementById("td-runner-dot").className = "today-runner-dot";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runner from 7325 FBD";
+    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM";
+  } else {
+    runnerRow.style.display = "";
+    document.getElementById("td-runner-dot").className = "today-runner-dot none";
+    document.getElementById("td-runner-text").textContent = "Historical view \u2014 runner status not tracked here";
+    document.getElementById("td-runner-since").textContent = "";
+  }
+
+  var levelsHtml = "";
+  if (sd.setups && sd.setups.length) {
+    for (var j = 0; j < sd.setups.length; j++) {
+      var s = sd.setups[j];
+      var pri = s.priority || "";
+      var priClass = (pri === "a" || pri === "aplus") ? " a" : "";
+      levelsHtml += "<div class='today-level-row'>" +
+        "<span class='today-level-num" + priClass + "'>" + s.level + "</span>" +
+        "<span class='today-level-pri" + priClass + "'>" + pri + "</span>" +
+        "<span class='today-level-note'>" + (s.notes || "") + "</span>" +
+      "</div>";
+    }
+  } else {
+    levelsHtml = "<div class='today-level-row'><span class='today-level-note'>No levels recorded for this date.</span></div>";
+  }
+  document.getElementById("td-levels").innerHTML = levelsHtml;
+
+  document.getElementById("td-bull").textContent = sd.bull || "Not recorded for this date.";
+  document.getElementById("td-bear").textContent = sd.bear || "Not recorded for this date.";
+  document.getElementById("td-summary").textContent = sd.summary || "Not recorded for this date.";
+
+  // highlight active date in sidebar, expand its month if collapsed
+  var allDates = document.querySelectorAll(".tsb-date");
+  for (var k = 0; k < allDates.length; k++) allDates[k].classList.remove("active");
+  var activeEl = document.querySelector(".tsb-date[data-date='" + dateStr + "']");
+  if (activeEl) {
+    activeEl.classList.add("active");
+    var monthEl = activeEl.closest(".tsb-month");
+    if (monthEl) monthEl.classList.add("open");
+    activeEl.scrollIntoView({ block: "nearest" });
+  }
+}
+
 function toggleMode() {
   var body = document.body; var btn = document.getElementById("mode-btn");
   if (body.classList.contains("light")) { body.classList.remove("light"); btn.textContent = "☀ Light Mode"; }
@@ -3870,6 +4224,12 @@ function toggleMode() {
 renderDashboard();
 renderCalendar();
 renderSetupCalendar();
+renderTodaySidebar();
+(function(){
+  for (var i = 0; i < setupDays.length; i++) {
+    if (setupDays[i].date) { selectTodayDate(setupDays[i].date); break; }
+  }
+})();
 // Redraw the equity curve once the window has fully loaded (fonts/images can
 // reflow the layout after the first synchronous render) and on any resize or
 // orientation change, so it never stays blank due to a 0-width first paint.
