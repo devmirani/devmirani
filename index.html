@@ -1172,6 +1172,13 @@ var weeks = [
 ];
 
 var trades = [
+  { id:161, date:"07/31/2026", entryTime:"10:44 AM", entryPrice:27.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:3, tradeLabel:"SPY $746 Call (0DTE)", type:"options",
+    targets:[
+      {label:"T1",price:93.00,contracts:2,status:"hit",pnl:132.00,exitTime:"1:24 PM",exitPrice:93.00},
+      {label:"Runner",price:195.00,contracts:1,status:"hit",pnl:168.00,exitTime:"3:22 PM",exitPrice:195.00}
+    ],
+    times:[{label:"Entry",value:"10:44 AM"},{label:"T1",value:"1:24 PM (2 hr 40 min 39 sec)"},{label:"Runner",value:"3:22 PM (4 hr 38 min 35 sec)"}],
+    totalPts:0, totalPnl:300.00, exitNote:"SPY $746 31 Jul 26 (W) Call, 0DTE. Bought 3 @ $0.27 ($27/contract, $81 total basis) at 10:44AM. T1: sold 2 @ $0.93 (+$132.00) by 1:24PM. Held the last contract into the final hour, closed @ $1.95 (+$168.00) at 3:22PM right before expiry. Total +$300.00 (+370% on cost). Strong runner discipline \u2014 letting the last contract ride all the way to a near-7x premium expansion from entry instead of clipping early.", journal:"" },
   { id:160, date:"07/30/2026", entryTime:"11:36 AM", entryPrice:47.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:2, tradeLabel:"SPY $740 Call (0DTE)", type:"options",
     targets:[
       {label:"T1",price:126.00,contracts:1,status:"hit",pnl:79.00,exitTime:"1:00 PM",exitPrice:126.00},
@@ -2322,6 +2329,20 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/03/2026", title:"Can SPX continue the rally into August?", control:"bull", setups:[
+    {level:7492,type:"FBD",priority:"b",notes:"Micro support just under Friday\u2019s close/highs. Adam wouldn\u2019t buy this directly \u2014 too close to the highs to trust as a standalone trigger."},
+    {level:7473,type:"FBD",priority:"b",notes:"If 7492 is lost down to 7483 or 7473 and recovered, this would be a lower-quality long \u2014 usable, but not a clean setup."},
+    {level:7449,type:"FBD",priority:"a",notes:"ES set a nice low here at 11:35AM Friday and rallied to 7500+. A significant low \u2014 the Failed Breakdown here is actionable."},
+    {level:7427,type:"FBD",priority:"a",notes:"Friday\u2019s low of day. Nothing between here and 7449 \u2014 the Failed Breakdown here is actionable."},
+    {level:7400,type:"FBD",priority:"a",notes:"Thursday\u2019s defended level (11:30AM), a 20+ point low from which ES rallied 40+ points. Actionable \u2014 bonus if ES tags 7393 first."},
+    {level:7374,type:"FBD",priority:"b",notes:"Adam won\u2019t personally engage here, but for those desperate to long, some points are grabbable. Not much below until 7353."},
+    {level:7353,type:"FBD",priority:"a",notes:"Massive low set at 4AM \u2014 a Failed Breakdown here is quite high quality."},
+    {level:7324,type:"FBD",priority:"aplus",notes:"The Wednesday daily low \u2014 site of the huge post-FOMC elevator down and the anchor level of the entire week\u2019s squeeze. Nothing below it on the board."}
+  ],
+  bull:"ES has spent the majority of the last week in a range \u2014 7506 resistance, 7418 support \u2014 though 7418 is now so traded through it\u2019s basically non-existent. Wednesday afternoon ES flushed to 7324, recovered, and ripped back above 7418, taking it to 7506+ by Friday. The bull case now is that bulls can defend this rally: in a strong bull case, ES won\u2019t even lose 7492 (or just a quick trap below); in a more moderate bull case, ES won\u2019t lose 7449 (or a quick trap below). From there, continue up through 7530, 7547, then 7575 next. Since ES rallied all day Friday, there\u2019s nowhere clean to add on strength without it looking like chasing.",
+  bear:"Begins below 7449 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns since ~80% of breakdowns trap; he doesn\u2019t take these personally and treats them as advanced/low win rate (expect 60%+ to fail, with 2-3 in a row failing before one pays out huge). For the 7449 short: ideally a final bounce here, then short beneath the lows of that bounce \u2014 likely a 7444 trigger down.",
+  summary:"Monday (Aug 3 plan): Published Friday ahead of the weekend, this newsletter covers two quiet sessions on top of Wednesday\u2019s big move. Thursday afternoon, ahead of Apple/Amazon earnings, ES set up a Failed Breakdown of 7400 \u2014 but never got a clean acceptance or non-acceptance trigger; \u2018ES was far too strong to see this, and price simply continued to drift upwards.\u2019 Friday brought no new setup either \u2014 ES drifted higher overnight into range resistance, tagging 7506+, and Adam had \u2018nothing to do\u2019 beyond continuing to hold the 10% runner from Wednesday\u2019s 4:36PM 7325 FBD, now three sessions old. Big picture: 7418 is fully spent as a level, and the reference points for Monday have shifted much higher \u2014 7492 and 7449 are the new lines in the sand, with 7530/7547/7575+ as upside targets and a 7444 trigger for the bear case.",
+  },
   { date:"07/31/2026", title:"Is the bottom in for SPX?", control:"bull", setups:[
     {level:7418,type:"FBD",priority:"b",notes:"Multi-touch shelf of lows from last Thursday into Tuesday, now traded through and trapped so many times it\u2019s basically non-existent as a reliable level. Only worth engaging if it flushes and recovers cleanly."},
     {level:7400,type:"FBD",priority:"a",notes:"Around 11:30AM Thursday, ES defended this level and set a large low from which it rallied 40+ points. A Failed Breakdown of this low is actionable \u2014 bonus if ES tags 7393 first."},
@@ -2973,6 +2994,20 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "08/03/2026": {
+    intro: "No new trade this newsletter \u2014 Thursday\u2019s setup never triggered, and Friday was quiet by design. Adam spent both sessions simply riding the runner from Wednesday\u2019s 7325 FBD.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7400", setupLabel:"Failed Breakdown", time:"Thu afternoon", outcome:"notrigger", outcomeLabel:"No Trigger", note:"A 20+ point low defended around 11:30AM Thursday, ahead of Apple/Amazon earnings. Never got a clean acceptance or non-acceptance trigger \u2014 \u2018ES was far too strong to see this, and price simply continued to drift upwards.\u2019 No entry taken." }
+    ],
+    whatsDifferent: [
+      "First multi-day stretch with no new trade at all \u2014 Thursday's 7400 FBD never triggered and Friday had nothing to do; the 7325 runner from Wednesday is now three sessions old, the longest hold of the week.",
+      "The reference levels shift dramatically higher \u2014 7418 (last week's key level) is fully retired; Monday's plan is built around 7492 and 7449 instead, roughly 70-140 points higher.",
+      "Bear trigger jumps from 7388/7444-adjacent territory to 7444 specifically, well above where the bear case started earlier in the week \u2014 a sign of how far the rally has pushed the whole board up.",
+      "Upside targets extend into new territory \u2014 7530, 7547, 7575+ \u2014 levels that weren't even on the resistance list a few days ago.",
+      "The newsletter itself skips a day for the first time this week \u2014 published Friday for Monday's plan, the normal day-to-day cadence breaks over the weekend."
+    ]
+  },
   "07/31/2026": {
     intro: "Thursday's newsletter recap covers Wednesday afternoon's rollercoaster: two Failed Breakdown levels that never triggered, then a much deeper flush that finally paid off \u2014 the trade Adam was still holding a runner from as of Friday's plan.",
     adamTrade: {
@@ -3121,7 +3156,7 @@ function renderDissectPage(dateStr) {
     newsletterEmptyEl.style.display = "none";
 
     document.getElementById("ds-intro").textContent = d.intro || "";
-    document.getElementById("ds-adam-trade").innerHTML = d.adamTrade ? renderAdamCard(d.adamTrade) : "<p class='dissect-empty-note'>No specific trade referenced for Adam's own position this day.</p>";
+    document.getElementById("ds-adam-trade").innerHTML = d.adamTrade ? renderAdamCard(d.adamTrade) : "<p class='dissect-empty-note'>No new trade this day \u2014 Adam was holding an existing runner rather than entering fresh. See the note above for details.</p>";
 
     var recapHtml = "";
     for (var i = 0; i < (d.recapSetups || []).length; i++) recapHtml += renderRecapCard(d.recapSetups[i]);
@@ -4192,7 +4227,7 @@ function selectTodayDate(dateStr) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
     document.getElementById("td-runner-text").textContent = "Holding 10% runner from 7325 FBD";
-    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM";
+    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM (3 sessions)";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
