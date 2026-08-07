@@ -699,6 +699,7 @@
   .tsb-list { display: none; flex-direction: column; gap: 1px; padding-left: 10px; }
   .tsb-month.open .tsb-list { display: flex; }
   .tsb-date { display: block; padding: 7px 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #666666; cursor: pointer; border-radius: 6px; transition: background 0.12s, color 0.12s; }
+  .tsb-date.tsb-week-start { margin-top: 7px; padding-top: 13px; border-top: 1px solid #e2e2e2; }
   .tsb-date:hover { background: #7dc44a; color: #ffffff; }
   .tsb-date.active { color: #111111; font-weight: 600; background: #f0ead9; }
   .tsb-date.active:hover { background: #7dc44a; color: #ffffff; }
@@ -2329,6 +2330,20 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/10/2026", title:"Is SPX coiling for another breakout?", control:"bull", setups:[
+    {level:7751,type:"FBD",priority:"b",notes:"Heavily used-up shelf now \u2014 risky to just buy directly since it\u2019s tested to death. Better to wait for the Failed Breakdown of 7744 just below instead."},
+    {level:7744,type:"FBD",priority:"a",notes:"A significant low set 10:30AM Friday from which ES rallied to the highs of day. Very actionable \u2014 bonus if it flushes to 7734 or 7724 in the process."},
+    {level:7724,type:"FBD",priority:"a",notes:"A nice shelf of lows from noon Thursday to midnight Friday. Actionable \u2014 below here ES likely collapses."},
+    {level:7710,type:"FBD",priority:"b",notes:"Not a ton here and Adam won\u2019t buy it directly, but it\u2019s a long spot for those who want it; safer to wait for a flush-and-recover."},
+    {level:7673,type:"FBD",priority:"b",notes:"Same drill as 7710 \u2014 not much here, but tradeable for those who want a lower win-rate long."},
+    {level:7650,type:"FBD",priority:"b",notes:"Overnight resistance shelf from last Monday into Tuesday that broke out to fuel the recent squeeze. A backtest long is on the table, though Adam prefers the safer entry just below."},
+    {level:7632,type:"FBD",priority:"a",notes:"The safer, preferred entry \u2014 a massive low set ~5:30AM Wednesday from which ES rallied to 7700+. Use the non-acceptance protocol, entering above 7637 on strength/momentum. Nothing below for a long way."},
+    {level:7567,type:"FBD",priority:"b",notes:"A shelf ES broke out through Thursday morning. Backtest long available, but Adam won\u2019t take this one personally."}
+  ],
+  bull:"After the 400+ point rally off the 7325 FBD, ES is now in consolidation/digestion mode \u2014 mostly a 7800\u20137724 range with 7751 as the key pivot inside it. The bull case for Monday is that ES fills out this range further, ideally holding 7751 (or just a quick trap below), before breaking out to 7820, 7840, then 7893. No clean spots to add on strength here, but for those who want one, watch for sweeps and recoveries of 7767.",
+  bear:"Begins below 7724 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, and even a well-executed breakdown short should expect 60%+ to fail (2-3 losses in a row before one pays out huge). For the 7724 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7720 trigger down.",
+  summary:"Monday (Aug 10 plan): Thursday evening ES chopped between 7725 and 7748 with no trigger. Friday morning, Adam checked price at 7:30AM to find ES at 7755, sat waiting for the 7756+ non-acceptance trigger, and got it at 8:25AM as ES popped to 7757 \u2014 he longed there. Locked 75% at 7763 (T1), locked more at 7772 (T2), left 10% to run. Clean win, no other trades taken \u2014 profit-protection mode for the rest of the day while ES ran to new highs. Big picture: after last week\u2019s 400+ point leg, ES is now digesting the move in a 7800\u20137724 range with 7751 as the key pivot; 7751 itself is now too tested to trust directly, so 7744 becomes the new primary actionable level for Monday, with 7820/7840/7893 as breakout targets and a 7720 trigger below 7724 for the bear case.",
+  },
   { date:"08/07/2026", title:"SPX finally dips after a 3-day lockout rally \u2014 will it get bought?", control:"bull", setups:[
     {level:7751,type:"FBD",priority:"b",notes:"Massive shelf with 6\u20137 touches (built from noon Tuesday into Wednesday) plus a couple traps below \u2014 lost mid-day Thursday, breaking the post-squeeze consolidation lower. Adam won\u2019t buy this one directly, but it\u2019s a long spot for those who want it; safer to wait for a flush-and-recover."},
     {level:7673,type:"FBD",priority:"b",notes:"Same drill as 7751 \u2014 not a ton here, but tradeable for those who want a lower win-rate long."},
@@ -2339,6 +2354,32 @@ var setupDays = [
   bull:"Bulls need to recover 7751 to resume up directly, which would see 7767, 7783, then 7800 \u2014 likely another dip there before the next set of targets: 7820, 7865, then 7881. Recoveries of 7751 represent a long entry, with recoveries of 7767 representing another such entry.",
   bear:"Nothing resembling a genuine bear case until 7516 fails \u2014 over 250 points down \u2014 and even that would just take ES back into the old range. Below 7710 is a higher-risk breakdown trade (Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, expect 60%+ of these to fail, with 2-3 losses in a row before one pays out huge). For the 7719 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7705 trigger down.",
   summary:"Friday (Aug 7 plan): Tuesday evening brought a new trade \u2014 after ES went elevator down from 7766 to 7745, losing the 7751 low, Adam longed the recovery at 7764 around 6:20PM. Price went nowhere overnight, and by Thursday morning, with zero momentum after 12+ hours pinned at 7764, Adam trimmed down to a 25% runner; when ES finally broke below the 7751 shelf around 11AM, he cut it back to his core 10% \u2014 now folded into the same runner he\u2019s carried since Wednesday July 30\u2019s 7325 FBD, well over a week old. ES continued drifting lower into the 7730s and stayed offered into early afternoon, marking the first real down day after Monday\u2013Wednesday\u2019s 400+ point parabolic run off the 7325 low. Big picture: the whole board has shifted up again \u2014 7751 is now the key shelf bulls need to recover (vs. 7549/7517 on Tuesday\u2019s plan), with 7767/7783/7800 as the recovery targets and 7710 as the line where a true bear/breakdown case would start to matter.",
+  },
+  { date:"08/06/2026", title:"After 400+ points of parabolic upside \u2014 is SPX resting for its next leg?", control:"bull", setups:[
+    {level:7751,type:"FBD",priority:"a",notes:"A messy, trappy horizontal zone after Wednesday's noon sweep-and-recover of 7763. Don\u2019t buy it outright \u2014 wait for the Failed Breakdown, and prefer entries just above 7763 once it recovers."},
+    {level:7707,type:"FBD",priority:"b",notes:"Below 7751 is a massive dead zone with no major supports since ES ripped right through here on the way up. Adam won\u2019t engage this, but if you want to, at least wait for a flush and recovery."},
+    {level:7673,type:"FBD",priority:"b",notes:"Same drill as 7707 \u2014 not much here, but tradeable for those who want a lower win-rate long."},
+    {level:7650,type:"FBD",priority:"b",notes:"Overnight resistance shelf from last Monday into Tuesday that broke out to fuel the recent squeeze. A backtest long is on the table, though Adam prefers the safer entry just below."},
+    {level:7632,type:"FBD",priority:"a",notes:"The safer, preferred entry \u2014 a massive low set ~5:30AM Tuesday from which ES rallied to 7700+. Use the non-acceptance protocol, entering above 7637 on strength/momentum. Nothing below for a long way."},
+    {level:7567,type:"FBD",priority:"b",notes:"A shelf ES broke out through Tuesday morning. Backtest long available, but Adam won\u2019t take this one personally."}
+  ],
+  bull:"In a parabolic bull case ES won\u2019t even get close to 7516 \u2014 it will defend the 7650 resistance shelf on any dip (or a quick trap below). If ES stays in lockout rally, it will simply consolidate above 7764 and below 7800 (likely flagging there) before resuming up to 7820, 7856, then 7876. Nowhere to add on strength way up here; if there\u2019s zero dip at all, the only option is recoveries of 7783.",
+  bear:"Nothing resembling a bear case until 7516 fails, which is over 250 points down \u2014 and even that failing wouldn\u2019t be bearish, it would just take ES back into the old range. Below 7751 is a higher-risk breakdown trade (Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, expect 60%+ of these to fail, with 2-3 losses in a row before one pays out huge). For the 7751 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7745 trigger down.",
+  summary:"Thursday (Aug 6 plan): Tuesday evening's flagged 7632 low never got tested \u2014 ES was too strong to dip anywhere near it and just kept drifting upward with no entry. Wednesday opened near 7800, spiked to the 7820s for fresh all-time highs, then finally cooled off \u2014 a small elevator-down sell to 7751 around noon swept the 7763 low (set 4PM Tuesday) and recovered it by 12:15PM. Adam passed on the immediate long in the moment, but added a small piece of size late in the day at 7768 on that same 7763 FBD via the non-acceptance protocol, right before this newsletter went out. Big picture: after three straight days of parabolic upside, ES is finally showing the first signs of consolidation \u2014 7763/7751 is now the pivot zone, with 7707/7673/7650/7632 as the support ladder below and 7820/7856/7876 as the next upside targets if the range holds.",
+  },
+  { date:"08/05/2026", title:"SPX goes parabolic to ATH\u2019s \u2014 where to buy the dip?", control:"bull", setups:[
+    {level:7707,type:"FBD",priority:"b",notes:"First micro support, but too close to the highs to trust directly \u2014 Adam won\u2019t touch it personally. If you want to trade it, wait for a flush and recovery."},
+    {level:7673,type:"FBD",priority:"b",notes:"Same drill as 7707 \u2014 not much here, but tradeable for those who want a lower win-rate long."},
+    {level:7650,type:"FBD",priority:"b",notes:"Overnight resistance shelf that ripped straight through \u2014 Adam won\u2019t personally trade the backtest here; just below is the spot that actually interests him."},
+    {level:7632,type:"FBD",priority:"a",notes:"The preferred entry \u2014 a massive low set ~5:30AM Tuesday from which ES rallied to 7700+. Use the non-acceptance protocol, entering above 7637 on strength/momentum. Nothing below for a long way."},
+    {level:7567,type:"FBD",priority:"b",notes:"A shelf ES broke out through Monday morning. Backtest long available, but Adam won\u2019t take this one personally."},
+    {level:7549,type:"FBD",priority:"a",notes:"Complex shelf of lows \u2014 set at 4:20AM Monday, swept down to 7542 at 9:40AM, then ripped to 7600+. A Failed Breakdown of the entire shelf is actionable: want to see 7542 sweep, then recover 7549 to long."},
+    {level:7517,type:"FBD",priority:"b",notes:"Nothing between here and 7549. If price is grinding slowly into this zone, a bid here is reasonable."},
+    {level:7499,type:"FBD",priority:"a",notes:"Friday\u2019s 5PM close level \u2014 ES gapped up from here Sunday, creating a large low. A Failed Breakdown here is actionable, bonus if ES tags 7483."}
+  ],
+  bull:"This rally broke ES out of the 7418\u20137516 range it had been stuck in for over a week and went parabolic \u2014 bulls fully control above 7516, meaning a sell there would only be a backtest of the breakout zone. In a true parabolic case ES won\u2019t even get down to 7516 on a dip; instead it will either hold the 7649 backtest or put in a Failed Breakdown of 7632 (the 5:30AM low). Next targets are 7803, 7826, then 7855. If ES stays truly parabolic there won\u2019t be any dip to 7649\u20137632 at all and it just remains in lockout \u2014 nothing to do in that case beyond watching for flushes and recoveries of 7742 if desperate.",
+  bear:"No remote bear case until 7418 fails \u2014 nearly 400 points down. Below 7632 is a higher-risk breakdown trade (Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, expect 60%+ of these to fail, with 2-3 losses in a row before one pays out huge). For the 7632 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7624 trigger down.",
+  summary:"Wednesday (Aug 5 plan): Monday evening's flagged 7549 shelf never got its acceptance pattern \u2014 ES was too strong to pause there and just kept drifting upward with no entry taken. Tuesday morning brought the same story: ES was already up in the 7650s by 7:30AM with zero to do anywhere near there, and the parabolic rip to all-time highs continued all day. Adam took no new trades either session, simply holding the 10% runner from Wednesday July 29's 4:36PM 7325 FBD \u2014 now, in his words, \u2018one of the best of the year.\u2019 Big picture: the whole board has shifted up again \u2014 7707/7673 are now the (untouchable, too-close-to-highs) micro supports, 7632 remains the one level Adam actually wants, and upside targets extend to 7803/7826/7855, with any real bear case still requiring a 7418 failure.",
   },
   { date:"08/04/2026", title:"Massive breakout for SPX \u2014 can the run continue?", control:"bull", setups:[
     {level:7567,type:"FBD",priority:"b",notes:"A shelf ES broke out through Monday morning. One can try the backtest long here, but Adam won\u2019t take this personally."},
@@ -3018,6 +3059,32 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "08/10/2026": {
+    intro: "Friday delivered the clean trigger Thursday's plan had flagged \u2014 ES recovered the 7751 shelf right on schedule and Adam caught it cleanly off the non-acceptance protocol, banking a full win before sitting on his hands for the rest of the session.",
+    adamTrade: {
+      label: "7751 Failed Breakdown Long (NAP)",
+      entryPrice: 7757,
+      entryTime: "~8:25 AM Fri",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7763, portion:"75%", status:"hit"},
+        {label:"T2", price:7772, portion:"more, left 10% to go", status:"hit"},
+        {label:"Runner", price:null, portion:"10%", status:"open"}
+      ],
+      narrative: "ES spent Thursday evening chopping between 7725 and 7748 with no trigger. At 7:30AM Friday, Adam checked price and found ES at 7755, sitting just under the 7756 non-acceptance trigger (7751+5). At 8:25AM ES popped to 7757 and he took the long. Locked 75% at 7763 (T1), locked more at 7772 (T2), left 10% to run \u2014 a clean, single-trade day with no size-downs or chop, unlike Tuesday's stalled 7751 attempt."
+    },
+    recapSetups: [
+      { level:"7725\u20137748 range", setupLabel:"Overnight Chop", time:"Thu evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"ES spent until midnight Thursday drifting between 7725 and 7748 \u2014 no acceptance or non-acceptance pattern formed overnight, so no entry until Friday morning's trigger." }
+    ],
+    whatsDifferent: [
+      "The exact setup flagged in Thursday's plan (a 7751 recovery) triggered cleanly Friday morning \u2014 the first fully clean win of the week, without the stalling and size-downs that marked Tuesday's 7751 attempt.",
+      "7751 itself flips from actionable to \u2018heavily used up\u2019 \u2014 Monday's plan explicitly downgrades it and shifts the primary actionable level to 7744 instead.",
+      "For the first time, Adam is carrying two separate 10% runners simultaneously \u2014 the original from the 7325 FBD (July 29) and a new one from Friday's 7751 FBD \u2014 rather than a single position.",
+      "The range gets named explicitly as a digestion/consolidation range for the first time (7800\u20137724, pivot at 7751), a shift in framing from Friday's plan, which treated the dip as still resolving toward a breakout continuation.",
+      "Bear trigger tightens to 7720 (just under 7724), up from Friday's 7705 trigger \u2014 tracking the range's higher floor."
+    ]
+  },
   "08/07/2026": {
     intro: "Thursday's session finally broke the 3-day lockout rally \u2014 Adam's Tuesday-evening 7751 long went nowhere overnight and got progressively sized down as the shelf gave way Thursday morning.",
     adamTrade: {
@@ -3040,6 +3107,45 @@ var dissections = {
       "First genuine caveat on setup quality this week \u2014 both 7751 and 7673 are explicitly downgraded (\u2018not a ton here,\u2019 \u2018I won\u2019t buy it\u2019), a shift from the higher-conviction language used through the rally.",
       "The 7325 runner is now well past a week old (Jul 30 \u2192 Aug 6), by far the longest hold of the entire move, after absorbing the sized-down remainder of Tuesday's 7751 trade.",
       "Bear case gets slightly more concrete for the first time in over a week \u2014 a 7719 breakdown short with a 7705 trigger \u2014 though Adam still frames anything resembling real bearishness as over 250 points away at 7516."
+    ]
+  },
+  "08/06/2026": {
+    intro: "Wednesday brought the first real pause after three straight days of parabolic upside \u2014 Adam passed on the immediate 7763 recovery long at midday, then quietly added a small piece of size at 7768 late in the session.",
+    adamTrade: {
+      label: "7763 Failed Breakdown Long (NAP, partial add)",
+      entryPrice: 7768,
+      entryTime: "late Wed, right before newsletter",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"Entry", price:7768, portion:"tiny/partial size", status:"hit"},
+        {label:"Runner", price:null, portion:"open", status:"open"}
+      ],
+      narrative: "ES opened Wednesday near 7800 and spiked to the 7820s for fresh all-time highs before a small elevator-down sell hit around noon, dropping to 7751 and sweeping the 7763 low set 4PM Tuesday. ES recovered it by 12:15PM, and the non-acceptance trigger (7763+5=7768) was there for the taking \u2014 Adam passed on it in the moment. Late in the day, right before this newsletter went out, he added a small piece of size at 7768 on that same setup, layering it in alongside the existing 7325 runner rather than treating it as a full standalone entry."
+    },
+    recapSetups: [
+      { level:"7632", setupLabel:"Failed Breakdown", time:"Tue evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"Recap of Tuesday's low of day. ES was too strong to dip anywhere near it Tuesday evening and just continued drifting upward with no entry taken." }
+    ],
+    whatsDifferent: [
+      "First real pause after three straight days of parabolic upside \u2014 Wednesday's noon elevator-down sell to 7751 was the first sell of any size since the breakout began.",
+      "7763/7751 becomes the new pivot zone, replacing 7707/7673 as the levels actually in play \u2014 those deeper levels are still on the board but now further from price.",
+      "Adam breaks from his usual full-decision entries here, adding only a \u2018tiny bit of size\u2019 at 7768 rather than a standard sized entry \u2014 the first partial/hesitant add of the rally.",
+      "Bear case gets a nearer (if still low-probability) trigger for the first time \u2014 7751/7745 \u2014 versus the 7418 level that had anchored every bear case since the breakout.",
+      "Language shifts from pure continuation (\u2018there is 0 to do but ride the runner\u2019) to consolidation planning \u2014 \u2018my general lean is ES can begin building sideways structure.\u2019"
+    ]
+  },
+  "08/05/2026": {
+    intro: "No new trade this newsletter \u2014 Monday evening's 7549 setup never triggered (ES was too strong to pause there), and Tuesday was pure runner-riding as ES ripped straight to all-time highs.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7549", setupLabel:"Failed Breakdown", time:"Mon evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"Recap of the complex shelf set 4:20AM Monday (swept to 7542 at 9:40AM, then ripped to 7600+). ES was too strong to see any acceptance pattern Monday evening \\u2014 it just continued drifting upward with no entry taken." }
+    ],
+    whatsDifferent: [
+      "ES ripped straight to all-time highs Tuesday with zero pullback \u2014 the 7549 shelf flagged Monday never even got tested, let alone triggered.",
+      "Reference levels jump again \u2014 from 7549/7517 (Tuesday's plan) to 7707/7673 as the new (untouchable, \u2018too close to highs\u2019) micro supports, with 7632 remaining the one level Adam still actually wants.",
+      "Upside targets extend further into new territory \u2014 7803, 7826, 7855 \u2014 beyond Tuesday's more modest 7683+ ladder.",
+      "Bear trigger shifts from 7508 up to 7624, tracking the higher range, though Adam still frames any real bear case as requiring a 7418 failure \u2014 nearly 400 points down.",
+      "The 7325 runner gets its most explicit endorsement yet \u2014 \u2018one of the best of the year\u2019 \u2014 after nearly a week open."
     ]
   },
   "08/04/2026": {
@@ -4208,6 +4314,15 @@ function tdWeekday(d) {
   var p = tdParseDate(d);
   return new Date(p.y, p.m - 1, p.day).getDay(); // 0=Sun..6=Sat
 }
+function tdWeekKey(d) {
+  // Returns a "YYYY-MM-DD" key for the Monday that starts d's week.
+  var p = tdParseDate(d);
+  var dt = new Date(p.y, p.m - 1, p.day);
+  var wd = dt.getDay(); // 0=Sun..6=Sat
+  var daysSinceMonday = (wd + 6) % 7; // Mon=0, Tue=1, ... Sun=6
+  dt.setDate(dt.getDate() - daysSinceMonday);
+  return dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
+}
 
 function buildTodaySidebarData() {
   // group setupDays by month (desc), dates desc within month
@@ -4227,6 +4342,7 @@ function buildTodaySidebarData() {
 function renderTodaySidebar() {
   var data = buildTodaySidebarData();
   var html = "";
+  var prevWeekKey = null; // tracks across the whole descending-chronological list, spanning months
   for (var mi = 0; mi < data.length; mi++) {
     var mo = data[mi];
     var dates = mo.dates.slice().sort(function(a,b){ return tdParseDate(b).day - tdParseDate(a).day; });
@@ -4234,7 +4350,10 @@ function renderTodaySidebar() {
     for (var di = 0; di < dates.length; di++) {
       var p = tdParseDate(dates[di]);
       var label = TODAY_MONTH_NAMES[p.m-1].slice(0,3) + " " + p.day;
-      datesHtml += "<span class='tsb-date' data-date='" + dates[di] + "' onclick='selectTodayDate(\"" + dates[di] + "\")'>" + label + "</span>";
+      var wk = tdWeekKey(dates[di]);
+      var weekStartCls = (prevWeekKey !== null && wk !== prevWeekKey) ? " tsb-week-start" : "";
+      prevWeekKey = wk;
+      datesHtml += "<span class='tsb-date" + weekStartCls + "' data-date='" + dates[di] + "' onclick='selectTodayDate(\"" + dates[di] + "\")'>" + label + "</span>";
     }
     html += "<div class='tsb-month" + (mi===0 ? " open" : "") + "'>" +
       "<div class='tsb-month-head' onclick='this.parentElement.classList.toggle(\"open\")'>" +
@@ -4288,8 +4407,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runner from 7325 FBD";
-    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM (8 sessions)";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7325 FBD & 7751 FBD";
+    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM & Fri 8:25AM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
