@@ -2330,6 +2330,19 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/13/2026", title:"Ultra-Low Volatility In SPX \u2014 Calm Before The Storm?", control:"bull", setups:[
+    {level:7767,type:"FBD",priority:"b",notes:"Well tested and totally used up by now \u2014 not touching this directly. If desperate, wait for it to flush and recover at least."},
+    {level:7750,type:"FBD",priority:"a",notes:"A nice low set 9:40PM Tuesday from which ES rallied to Wednesday\u2019s highs. A Failed Breakdown of this low is actionable."},
+    {level:7738,type:"FBD",priority:"a",notes:"Wednesday\u2019s daily low. Nothing under it until the 7724 shelf \u2014 the Failed Breakdown here is an obvious quality trade."},
+    {level:7724,type:"FBD",priority:"b",notes:"A multi-touch shelf of lows from last week. Wouldn\u2019t buy it directly, but a trap-and-recover here is actionable. Should collapse to flag support at 7695 if lost."},
+    {level:7695,type:"FBD",priority:"a",notes:"The actual flag channel support (major). Buy directly on a controlled, slow-grind dip into the zone; if flushing hard, wait for it to flush and recover first."},
+    {level:7650,type:"FBD",priority:"b",notes:"Backtest of the overnight resistance shelf (last Monday into Tuesday) that broke out to fuel the recent squeeze. Tradeable, though Adam prefers the safer entry just below at 7632."},
+    {level:7632,type:"FBD",priority:"a",notes:"The safer, preferred entry \u2014 a massive low set ~5:30AM Thursday from which ES rallied to 7700+. A Failed Breakdown of this low is actionable."}
+  ],
+  bull:"After last week\u2019s 400+ point rally, ES remains in a large flag \u2014 downsloping channel with supports at 7724 and (structurally) 7695, resistance at 7794. The lean is ES stays above Wednesday\u2019s 7738 low (or just a quick trap below) and continues filling out the structure via the levels above before eventually breaking out to 7820, 7845, then 7879. In an ultra bull case, ES won\u2019t even lose 7767.",
+  bear:"Begins below 7726 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, and even a well-executed breakdown short should expect 60%+ to fail (2-3 losses in a row before one pays out huge). For the 7726 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7720 trigger down.",
+  summary:"Thursday (Aug 13 plan): Tuesday\u2019s pending 7744/7749 setup finally resolved \u2014 ES flushed to 7738 at 2:30PM, recovered, and hit the 7749 non-acceptance trigger by 3:15PM. Adam longed there: 75% off at 7752 (T1), more at 7758 (T2), left 10% to run, then sat in full profit-protection mode. Wednesday brought nothing new \u2014 ES was already up in the 7760s by 7:30AM with CPI still ahead, so the only job was riding the runner and waiting; ES ran to 7794 flag resistance almost exactly before dipping back, confirming the flag structure again without breaking it. Volatility has now contracted to ultra-low levels inside the coil. Big picture: still the same 7724\u20137794 flag (structural support all the way down at 7695), just tighter and more compressed \u2014 7750/7738/7695/7632 are the fresh actionable levels for Thursday, with breakout targets unchanged at 7820/7845/7879 and the bear trigger still 7720.",
+  },
   { date:"08/12/2026", title:"CPI Tomorrow \u2014 Can It Break The Coil For SPX?", control:"bull", setups:[
     {level:7767,type:"FBD",priority:"b",notes:"Key pivot inside the range \u2014 the spot to add on strength. A three-four touch shelf of lows formed here from noon Monday into 4AM Tuesday that acted as support into Tuesday before being lost; its recovery remains actionable."},
     {level:7751,type:"FBD",priority:"b",notes:"The other key pivot inside the range, still heavily used-up and not something Adam buys directly. Watch for a recovery here alongside the 7744 setup below."},
@@ -3085,12 +3098,36 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
-  "08/11/2026": {
-    intro: "Another quiet, coiling session. Monday evening's flagged 7756 recovery never triggered \u2014 ES was too strong to see it. Tuesday brought a slow grind lower into the 7744 zone, sweeping to 7738, but the 7749 non-acceptance trigger still hadn't printed as of the newsletter's 3PM writing. No new trade taken.",
+  "08/12/2026": {
+    intro: "A quiet, profit-protection session \u2014 Tuesday's 7744 win left a 10% runner working, and Wednesday's only job was riding it while volatility contracted to ultra-low levels ahead of CPI. ES tagged 7794 flag resistance almost exactly, then dipped back. No new trade.",
     adamTrade: null,
+    recapSetups: [],
+    whatsDifferent: [
+      "Tuesday's pending 7744/7749 setup finally resolved \u2014 the trigger hit at 3:15PM and worked cleanly (T1 7752, T2 7758, 10% runner), the first new trade since Friday's 7751 win.",
+      "Adam names \u2018ultra-low volatility\u2019 explicitly for the first time \u2014 a step beyond the prior \u2018low volatility, rangebound, summer grind\u2019 framing, describing the coil as tightening further rather than just persisting.",
+      "ES tagged 7794 flag resistance almost exactly Wednesday before dipping \u2014 the cleanest touch of the range top since the flag was first named, reinforcing (not breaking) the structure.",
+      "The support ladder gets fully rebuilt around the new 7738 daily low, pushing 7744 and 7751 out of the picture as fresh entries \u2014 7767 is now explicitly \u2018totally used up.\u2019",
+      "7724 is reframed as a two-part structure for the first time: the well-known shelf, and a deeper, more technical channel support all the way down at 7695 \u2014 a dip to 7695 would not invalidate the flag.",
+      "Breakout targets shift slightly (7820/7845/7879, replacing 7893) while the bear trigger holds steady at 7720."
+    ]
+  },
+  "08/11/2026": {
+    intro: "Tuesday's pending 7744 setup finally resolved \u2014 ES swept to 7738 at 2:30PM, recovered, and hit the 7749 non-acceptance trigger by 3:15PM. Adam caught it cleanly, banking a full win and leaving a fresh 10% runner before shifting into profit-protection mode.",
+    adamTrade: {
+      label: "7744 Failed Breakdown Long (NAP)",
+      entryPrice: 7749,
+      entryTime: "~3:15 PM Tue",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7752, portion:"75%", status:"hit"},
+        {label:"T2", price:7758, portion:"more, left 10% to go", status:"hit"},
+        {label:"Runner", price:null, portion:"10%", status:"open"}
+      ],
+      narrative: "ES went elevator down from the 7790s to a 7738 low of day, then at 2:30PM flushed down to 7738 and bounced. The non-acceptance trigger (7744+5=7749) hit by 3:15PM and held for a few minutes \u2014 Adam longed there. Locked 75% at 7752 (T1), locked more at 7758 (T2), left 10% to run, then moved straight into full profit-protection mode: sit on the runner, no other trades, don't touch it unless it stops below break-even and a new pre-planned setup appears."
+    },
     recapSetups: [
-      { level:"7756", setupLabel:"Failed Breakdown (NAP)", time:"Mon evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"Recap of the 2:30PM Friday shelf. ES was too strong to see any acceptance pattern Monday evening and just continued pushing higher \u2014 the 7761 non-acceptance trigger never hit." },
-      { level:"7744", setupLabel:"Failed Breakdown (NAP)", time:"Tue afternoon", outcome:"notrigger", outcomeLabel:"No Trigger (as of writing)", note:"ES ground lower from the 7790s to 7747 by 1:15PM, then swept down to 7738 by 2:30PM, testing the 10:30AM Friday low. The 7749 non-acceptance trigger (7744+5) had not hit as of the newsletter's 3PM writing." }
+      { level:"7756", setupLabel:"Failed Breakdown (NAP)", time:"Mon evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"Recap of the 2:30PM Friday shelf. ES was too strong to see any acceptance pattern Monday evening and just continued pushing higher \u2014 the 7761 non-acceptance trigger never hit." }
     ],
     whatsDifferent: [
       "Adam explicitly names the range dynamic for the first time as a \u2018low volatility, rangebound, summer grind\u2019 and warns against over-trading it \u2014 new framing not used in prior plans.",
@@ -3098,7 +3135,7 @@ var dissections = {
       "The range holds at 7724\u20137800 for a third straight plan, with 7751 still the pivot \u2014 the longest a single range has persisted without resolving since the breakout began.",
       "Both runners (7325 FBD + 7751 FBD) remain untouched for a second straight session \u2014 no adds, no trims, just holding through the chop.",
       "Upside targets tighten slightly (7820/7845/7893) while the bear trigger holds steady at 7720.",
-      "Tuesday's actual action (a slow drip from 7790s down into the 7744 zone) is the first real test of that lower range boundary since it was set \u2014 unresolved as of the newsletter's writing, with Wednesday's plan carrying the same 7744 setup forward into CPI."
+      "Tuesday's actual action (a slow drip from 7790s down into the 7744 zone) is the first real test of that lower range boundary since it was set \u2014 it resolved into a clean win at 3:15PM, the first new trade since Friday's 7751 FBD."
     ]
   },
   "08/10/2026": {
@@ -4449,8 +4486,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7325 FBD & 7751 FBD";
-    document.getElementById("td-runner-since").textContent = "since Wed 4:36PM & Fri 8:25AM";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7325 FBD, 7751 FBD & 7744 FBD";
+    document.getElementById("td-runner-since").textContent = "since Wed 7/29 4:36PM, Fri 8/8 8:25AM & Tue 8/11 3:15PM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
