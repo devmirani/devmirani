@@ -1173,6 +1173,13 @@ var weeks = [
 ];
 
 var trades = [
+  { id:162, date:"08/12/2026", entryTime:"8:00 PM", entryPrice:7772.00, stopPrice:7762.00, setup:"FBD", result:"win", contracts:5, tradeLabel:"7767 FBD (Overnight)",
+    targets:[
+      {label:"Partial",price:7781.50,contracts:3,status:"hit",pnl:142.50,exitTime:"5:26 AM"},
+      {label:"Runner",price:7793.75,contracts:2,status:"open",pnl:0}
+    ],
+    times:[{label:"Entry",value:"8:00 PM"},{label:"Partial",value:"5:26 AM (9 hr 26 min)"}],
+    totalPts:28.50, totalPnl:142.50, exitNote:"MESU6, 5 lots \u2014 overnight long off the 7767 recovery. ES recovered 7767 twice: once right before RTH closed, once again between 9\u201310PM. Right before that second test, around 8PM, with price holding 5+ points above 7767, sized into the full 5 at 7772.00 with a hard 10-point stop at 7762.00 (never hit \u2014 the second 7767 flush/recovery/test held well above it). No formal T1/T2 this time, just the stop plus a standing sell-limit on the full remaining size at 7794 (placed at 7793.75) if price got up there. Checked back around 5AM to find ES near 7780, above yesterday\u2019s 7776 resistance shelf (now flipped support) \u2014 liked the momentum and cut 3 of 5 at 7781.50 (+9.50 pts, +$142.50). Left 2 to run toward the standing 7793.75 limit. CPI hit at 8:30AM and produced a long-wicked candle that didn\u2019t do much net damage \u2014 ES dipped toward the 7776 shelf before holding the range between there and 7794 resistance. Runner (2 contracts) still open as of writing.", journal:"" },
   { id:161, date:"07/31/2026", entryTime:"10:44 AM", entryPrice:27.00, stopPrice:0, setup:"SPY_CALL", result:"win", contracts:3, tradeLabel:"SPY $746 Call (0DTE)", type:"options",
     targets:[
       {label:"T1",price:93.00,contracts:2,status:"hit",pnl:132.00,exitTime:"1:24 PM",exitPrice:93.00},
@@ -2330,6 +2337,17 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/14/2026", title:"Breakout For SPX \u2014 Can SPX Run, Or Is It A Trap?", control:"bull", setups:[
+    {level:7794,type:"FBD",priority:"b",notes:"Old flag resistance, now a backtest zone after Thursday\u2019s breakout. Adam won\u2019t personally buy it directly, but a flush-and-recover here is tradeable for those who want it."},
+    {level:7777,type:"FBD",priority:"a",notes:"A significant low set ~8:30AM Thursday. Wait for price to flush this low (ideally down to 7767) and recover it for a Failed Breakdown."},
+    {level:7756,type:"FBD",priority:"a",notes:"A 3-4 touch shelf of lows from 6:50AM\u201311:30AM Wednesday (staggered 7756\u20137760) from which ES rallied to the highs. The Failed Breakdown of this shelf is actionable."},
+    {level:7738,type:"FBD",priority:"a",notes:"Tuesday\u2019s daily low \u2014 an obvious quality trade if it gets tested again. Passed on Wednesday evening when ES was too strong to see clean acceptance."},
+    {level:7695,type:"FBD",priority:"a",notes:"The actual flag channel support (major). Buy directly on a controlled dip into the zone; if flushing hard, wait for it to flush and recover first."}
+  ],
+  bull:"Bulls are now fully in control after Thursday\u2019s flag breakout \u2014 this doesn\u2019t change until the flag itself breaks down at 7695, and even then it would still be overwhelmingly bullish (just a backtest of last week\u2019s rip). In an ultra-bull case, ES holds 7794 (or a quick trap below). In a more moderate bull case, ES holds 7756 (or a quick trap below). Next targets are 7836, 7856, 7898. There\u2019s nowhere to add on strength up here \u2014 a sweep of 7820 is a desperation long at best, not something Adam would personally take.",
+  bear:"Begins below 7726 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, and even a well-executed breakdown short should expect 60%+ to fail (2-3 losses in a row before one pays out huge). For the 7726 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7720 trigger down.",
+  summary:"Friday (Aug 14 plan): The bull flag (7794 resistance / 7724\u20137695 support) that held for most of the week finally broke Thursday \u2014 ES pushed out of the structure and ran to 7820+. Wednesday evening produced one obvious-quality setup (the 7738 Tuesday daily low FBD) that Adam passed on when ES was too strong to give clean acceptance; otherwise it was pure Mode 2 chop into the close. Thursday brought nothing to do but ride the runner \u2014 woke up at 7:30AM already in the 7780s and just let it work as the range resolved upward. This is now Mode 1 price action (the rare open-to-close trend day) rather than the rangebound Mode 2 grind of the past week, so the day-trader playbook shifts: no new entries expected up here, just holding the runner through the squeeze. If a pullback does come, 7777/7756/7738/7695 are the levels to watch for the next Failed Breakdown, with 7836/7856/7898 as the next targets and the bear trigger still 7720 below 7726.",
+  },
   { date:"08/13/2026", title:"Ultra-Low Volatility In SPX \u2014 Calm Before The Storm?", control:"bull", setups:[
     {level:7767,type:"FBD",priority:"b",notes:"Well tested and totally used up by now \u2014 not touching this directly. If desperate, wait for it to flush and recover at least."},
     {level:7750,type:"FBD",priority:"a",notes:"A nice low set 9:40PM Tuesday from which ES rallied to Wednesday\u2019s highs. A Failed Breakdown of this low is actionable."},
@@ -3098,6 +3116,21 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "08/13/2026": {
+    intro: "Breakout day \u2014 the 7794/7724\u20137695 flag that held all week finally gave way, and ES ran to 7820+. Wednesday evening had one obvious-quality setup (the 7738 daily-low FBD) that never got clean acceptance and was passed on; Thursday was pure Mode 1 trending price action with nothing to do but hold the runner.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7738", setupLabel:"Failed Breakdown (Daily Low)", time:"Wed evening", outcome:"notrigger", outcomeLabel:"Passed / No Trigger", note:"Tuesday's daily low \u2014 an obvious quality trade by definition, but ES was too strong to see clean acceptance or hit the 7743 non-acceptance trigger Wednesday evening. No trade taken, despite it being flagged as a high-quality level." }
+    ],
+    whatsDifferent: [
+      "The entire framing shifts from Mode 2 (rangebound, level-to-level) to Mode 1 (open-to-close trend day) for the first time this cycle \u2014 the rare 10%-of-sessions price action Adam has referenced but not seen since the post-FOMC rip.",
+      "The 7794/7724\u20137695 flag that anchored every plan for a full week is explicitly retired as the active structure \u2014 7794 is now just a backtest zone, not resistance to defend.",
+      "\u2018No spots to add on strength\u2019 language returns for the first time since the initial 7325 breakout \u2014 a sweep of 7820 is labeled a desperation long only, not a real setup.",
+      "The support ladder gets fully rebuilt above the old flag (7805/7794/7783/7777/7767/7756\u2026) while the old actionable levels (7744, 7751, 7767-as-primary) drop out of the picture entirely.",
+      "Targets extend meaningfully higher for the first time \u2014 7836/7856/7898, well beyond the prior 7820/7845/7879 breakout targets, since those have now already printed.",
+      "The bear case is unchanged (below 7726, 7720 trigger) \u2014 even in the bear scenario, Adam notes it would remain \u2018overwhelmingly bullish,\u2019 just a backtest of last week\u2019s rip rather than a real reversal."
+    ]
+  },
   "08/12/2026": {
     intro: "A quiet, profit-protection session \u2014 Tuesday's 7744 win left a 10% runner working, and Wednesday's only job was riding it while volatility contracted to ultra-low levels ahead of CPI. ES tagged 7794 flag resistance almost exactly, then dipped back. No new trade.",
     adamTrade: null,
@@ -4461,9 +4494,7 @@ function selectTodayDate(dateStr) {
   var todayStats = getDayStats(dateStr);
   var todayStatsEl = document.getElementById("td-daystats");
   if (todayStats.count > 0) {
-    var tPnlCls = todayStats.pnl >= 0 ? "pos" : "neg";
-    var tPnlStr = (todayStats.pnl >= 0 ? "+$" : "-$") + Math.abs(todayStats.pnl).toFixed(2);
-    todayStatsEl.innerHTML = "<span class='" + tPnlCls + "'>" + tPnlStr + "</span><span class='sep'>&middot;</span>" + todayStats.count + " trade" + (todayStats.count === 1 ? "" : "s") + " logged";
+    todayStatsEl.innerHTML = todayStats.count + " trade" + (todayStats.count === 1 ? "" : "s") + " logged \u2014 see Dissect for detail";
   } else {
     todayStatsEl.innerHTML = "No trades logged this day";
   }
