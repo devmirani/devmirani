@@ -2337,6 +2337,19 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/17/2026", title:"Will The Trend Higher Continue Next Week In SPX?", control:"bull", setups:[
+    {level:7794,type:"FBD",priority:"b",notes:"Backtests the bull flag broken out Thursday. A much safer play than insta-buying is to wait for this zone to defend, then recover 7797."},
+    {level:7797,type:"FBD",priority:"a",notes:"A clear significant low set around noon Thursday from which ES rallied to the highs. The recovery of this is actionable."},
+    {level:7777,type:"FBD",priority:"a",notes:"A significant low set ~8:30AM Friday. Wait for price to flush this low (ideally down to 7767) and recover it for a Failed Breakdown."},
+    {level:7756,type:"FBD",priority:"a",notes:"A 3-4 touch shelf of lows from 6:50AM\u201311:30AM Wednesday (staggered 7756\u20137760) from which ES rallied to the highs. The Failed Breakdown of this shelf is actionable."},
+    {level:7738,type:"FBD",priority:"a",notes:"Tuesday\u2019s daily low \u2014 an obvious quality trade if tested. Should collapse below here to the flag support at 7695 if lost."},
+    {level:7695,type:"FBD",priority:"a",notes:"The actual flag channel support (major). The deepest level of real interest below the breakout structure."},
+    {level:7820,type:"Reclaim",priority:"b",notes:"For those desperate to add on strength: a 3-touch shelf of lows formed between 4PM Thursday and 2:40AM Friday. Its recovery could see an actionable long, though not something Adam would personally take."}
+  ],
+  bull:"Bulls fully control, and this doesn\u2019t change until the flag breaks down at 7695 \u2014 even then it would still be overwhelmingly bullish, just a backtest of last week\u2019s rip. In an ultra-bull case, ES holds 7794 (or a quick trap below). In a more moderate bull case, ES holds 7756 (or a quick trap below). Next targets are 7835, 7854, 7903. There are no spots to add on strength Adam would personally take, but for those desperate, 7820 reclaims are one option.",
+  bear:"Begins below 7726 \u2014 a breakdown trade below a support. Adam\u2019s core edge is failed breakdowns, so he doesn\u2019t take these personally \u2014 ~80% of breakdowns trap, and even a well-executed breakdown short should expect 60%+ to fail (2-3 losses in a row before one pays out huge). For the 7726 short: ideally a final bounce there, or a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7720 trigger down.",
+  summary:"Monday (Aug 17 plan): ES closed Thursday at all-time highs after the flag breakout, and Thursday evening produced one recap-quality setup (the 7756 shelf) that never triggered \u2014 ES was too strong to see acceptance, so it was runner-only. Friday brought a genuine low-volatility grind above 7800; the 7794 backtest zone got tagged at 7796 around 1:30PM and popped 10 points, but Adam passed on it \u2014 volatility is fuel, and Friday didn\u2019t have any. Two full sessions now without a single new day-trade, just holding the 7325/7751/7744 runners through the squeeze. Monday\u2019s plan rebuilds the ladder entirely above the old flag: 7794 (wait for defend + 7797 reclaim, the safer play) leads into 7777/7756/7738/7695 underneath, while 7820 emerges as a new (optional, desperation-only) add-on-strength spot off an overnight 3-touch shelf. Targets nudge up to 7835/7854/7903, and the bear case is unchanged for a fourth straight plan \u2014 below 7726, 7720 trigger.",
+  },
   { date:"08/14/2026", title:"Breakout For SPX \u2014 Can SPX Run, Or Is It A Trap?", control:"bull", setups:[
     {level:7794,type:"FBD",priority:"b",notes:"Old flag resistance, now a backtest zone after Thursday\u2019s breakout. Adam won\u2019t personally buy it directly, but a flush-and-recover here is tradeable for those who want it."},
     {level:7777,type:"FBD",priority:"a",notes:"A significant low set ~8:30AM Thursday. Wait for price to flush this low (ideally down to 7767) and recover it for a Failed Breakdown."},
@@ -3116,6 +3129,21 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "08/14/2026": {
+    intro: "A genuine low-volatility grind \u2014 ES held above 7800 most of the session with no elevator-down sell to trade. The 7794 backtest zone got tagged at 7796 around 1:30PM and popped 10 points, but Adam passed on it; no trade taken, second straight session on runner-only.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7756", setupLabel:"Failed Breakdown (Shelf)", time:"Thu evening", outcome:"notrigger", outcomeLabel:"No Trigger", note:"Recap of the Wednesday 6:50AM\u201311:30AM shelf. ES was too strong Thursday evening to see any acceptance pattern or hit the 7761 non-acceptance trigger \u2014 no trade, just held the runner through the close at all-time highs." },
+      { level:"7794", setupLabel:"Backtest / Flag Resistance Reclaim", time:"Fri ~1:30PM", outcome:"notrigger", outcomeLabel:"Tagged, Not Taken", note:"ES tagged 7796 around 1:30PM and popped 10 points \u2014 a viable backtest long per the plan, but Adam doesn't trade this kind of low-volatility grind. Volatility is fuel for markets; Friday simply didn't have any." }
+    ],
+    whatsDifferent: [
+      "The support ladder gets rebuilt a second time above the breakout \u2014 7797 enters as a new, clearer significant low (noon Thursday) sitting just above the old 7794 zone, with an explicit note that waiting for 7794 to defend then recovering 7797 is the safer play versus insta-buying the backtest.",
+      "7820 appears for the first time as a named add-on-strength spot (a 4PM Thursday\u20132:40AM Friday three-touch shelf) \u2014 the first new add-on level floated since the original breakout, though still framed as desperation-only, not something Adam would personally take.",
+      "Targets nudge higher again \u2014 7835/7854/7903, up modestly from Friday's 7836/7856/7898 \u2014 a small, incremental lift rather than a big reset, consistent with 'no predicting.'",
+      "The bear case (below 7726, 7720 trigger) is now unchanged for a fourth straight plan \u2014 the longest any single trigger has held constant since the range began.",
+      "Two consecutive sessions (Thursday evening, Friday) have now passed with zero new trades \u2014 the longest pure-runner stretch since the flag broke, matching Adam's own warning that a major breakout can mean a day or two (or rarely three) before the next entry presents."
+    ]
+  },
   "08/13/2026": {
     intro: "Breakout day \u2014 the 7794/7724\u20137695 flag that held all week finally gave way, and ES ran to 7820+. Wednesday evening had one obvious-quality setup (the 7738 daily-low FBD) that never got clean acceptance and was passed on; Thursday was pure Mode 1 trending price action with nothing to do but hold the runner.",
     adamTrade: null,
