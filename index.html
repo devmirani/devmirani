@@ -738,6 +738,14 @@
   .today-case p { font-family: var(--font-voice); font-size: 14px; line-height: 1.7; color: #333333; margin: 0; }
   .today-reading { margin-bottom: 32px; }
   .today-reading p { font-family: var(--font-voice); font-size: 15.5px; line-height: 1.8; color: #111111; margin: 0; }
+  .today-targets { margin-bottom: 36px; }
+  .today-targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .today-targets-col-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 600; color: #757575; }
+  .today-targets-col-label.major { color: #a8720f; }
+  .today-target-list { display: flex; flex-direction: column; gap: 6px; }
+  .today-target-chip { font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 7px 10px; border-radius: 6px; background: #f7f7f5; color: #333333; }
+  .today-target-chip.major { background: #f5ecd8; color: #8a5c0f; font-weight: 600; }
+  .today-target-empty { font-size: 13px; color: #9a9a9a; font-family: 'Inter', sans-serif; }
   .today-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #f7f7f5; border-radius: 10px; margin: 0; }
   .today-footer-text { font-size: 13px; color: #555555; font-family: 'Inter', sans-serif; }
   .today-footer-btn { font-size: 12px; color: #111111; background: none; border: 1px solid #d6d6d6; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; transition: border-color 0.15s; }
@@ -1013,6 +1021,20 @@
       <div class="today-reading">
         <div class="today-section-label">Reading the range</div>
         <p id="td-summary">&mdash;</p>
+      </div>
+
+      <div class="today-targets" id="td-targets-section">
+        <div class="today-section-label">Profit targets</div>
+        <div class="today-targets-grid">
+          <div class="today-targets-col">
+            <div class="today-targets-col-label major">Major levels</div>
+            <div class="today-target-list" id="td-targets-major"></div>
+          </div>
+          <div class="today-targets-col">
+            <div class="today-targets-col-label">Minor levels</div>
+            <div class="today-target-list" id="td-targets-minor"></div>
+          </div>
+        </div>
       </div>
 
       <div class="today-footer">
@@ -2337,6 +2359,27 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"08/28/2026", title:"Is The Bottom In For SPX?", control:"bear", setups:[
+    {level:7734,type:"FBD",priority:"b",notes:"First support down \u2014 not a level Adam would personally bid, but for those desperate to trade, wait for a small flush, recovery, and the non-acceptance protocol trigger."},
+    {level:7714,type:"FBD",priority:"a",notes:"A clear resistance shelf since last Friday until it broke and flipped to support Wednesday evening \u2014 trapped below numerous times since. Safer to wait for it to clear outright, though it can also be bid directly (riskier)."},
+    {level:7704,type:"FBD",priority:"b",notes:"The lowest low of the recent traps beneath 7714 \u2014 flushing and recovering this is the safer alternative to bidding 7714 directly."},
+    {level:7671,type:"FBD",priority:"a",notes:"A big low set Tuesday, also Wednesday's low of day. Not much support between here and 7714, and a Failed Breakdown here is highly actionable."},
+    {level:7658,type:"FBD",priority:"a",notes:"Major range support \u2014 low of day last Thursday, swept a couple points Monday, and defended since. Ideal if ES can tag 7649 or 7637 in the process, both tied to the August 4th breakout shelf at 7640."},
+    {level:7663,type:"Reclaim",priority:"b",notes:"If ES just defends 7659 exact without flushing it, this \u2014 Tuesday's low of day \u2014 is the alternative recovery to long."},
+    {level:7637,type:"FBD",priority:"a",notes:"A big level from August 3rd/4th \u2014 wait for both 7632 (the Aug 4th massive low) AND 7637 to recover before taking this long. Not much support below here until 7612."},
+    {level:7627,type:"FBD",priority:"b",notes:"Could be bid directly, but the safer play is waiting for it to hold and for 7637 to recover instead."},
+    {level:7612,type:"FBD",priority:"b",notes:"One level of interest below 7627."},
+    {level:7592,type:"FBD",priority:"b",notes:"A spot of interest further down."},
+    {level:7567,type:"FBD",priority:"b",notes:"A spot of interest further down."}
+  ],
+  bull:"ES had spent the last several days rangebound between 7658 support and 7714 resistance. It ripped through 7714 after Nvidia earnings, and 7714 has since flipped to support, holding after numerous traps below. The bull case is that ES can continue to defend 7714 (or quick traps below). Since we've broken out, we simply continue up \u2014 7758, 7771, 7797 are targets, and above there, all-time highs. Spots to add on strength are minimal from here.",
+  bear:"Begins below 7659 \u2014 a breakdown trade below a support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7659 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7648 trigger down.",
+  summary:"Friday (Aug 28 plan): Nvidia earnings finally delivered the push higher Adam had been waiting on \u2014 ES ripped through the 7714 resistance shelf (in place since last Friday) Wednesday evening, and 7714 flipped to support, holding through numerous traps into Thursday. Adam woke Thursday to ES already in the 7720s and had nothing to do but ride his existing 10% runner from Tuesday's 7680 reclaim as the session drifted upward all day \u2014 no new trade, pure profit-protection mode. Big picture: this is the clearest breakout since losing the 7797 shelf on August 18th \u2014 the multi-day 7658\u20137714 range has resolved higher, and with 7714 now support, the remaining hurdle is the 7797 shelf itself. Friday's plan: continue defending 7714 (or a quick trap below) for a push to 7758, 7771, then 7797, with all-time highs above. Quality entries are otherwise far lower \u2014 7734 (not a level Adam would bid), then 7714 itself (safer to wait for it to clear, or for 7704 \u2014 the low of the recent traps \u2014 to flush and recover), then 7671 (a big Tuesday/Wednesday low, highly actionable), then the 7658 major shelf, with 7649/7637 ideal tags below. Bear trigger unchanged at 7648, well below current price action.",
+  targets: {
+    major: [7930,7889,7874,7862,7836,7820,7797,7771,7758],
+    minor: [7917,7905,7883,7846,7829,7812,7803,7792,7782,7763,7745]
+  },
+  },
   { date:"08/27/2026", title:"Nvidia Earnings Incoming. Will It Move SPX?", control:"bear", setups:[
     {level:7680,type:"FBD",priority:"a",notes:"Tested to death but still key support \u2014 a small low was set at 7677\u201380 at 9AM Wednesday. Flushing and recovering it is an actionable Failed Breakdown; ideally bulls don't lose it at all."},
     {level:7659,type:"FBD",priority:"a",notes:"Major shelf \u2014 low of day Thursday, swept a couple points Monday, and defended since. Ideal if ES can tag 7649 or 7637 in the process, both tied to the August 4th breakout shelf at 7640."},
@@ -2351,6 +2394,10 @@ var setupDays = [
   bull:"ES is rangebound, with 7659 the key support shelf since last week. If bulls are really in control, they won't even lose 7680 (or a quick trap below). From there ES can rip up range to 7714, 7733, 7745, and eventually the 7797 backtest. A desperation long also sits at recoveries of 7714.",
   bear:"Begins below 7659 \u2014 a breakdown trade below a support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7659 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7648 trigger down.",
   summary:"Thursday (Aug 27 plan): Tuesday evening ES drifted up to 7691, where Adam further derisked, trimming his 25% runner down to a core 10%. Overnight ES sold to 7671 by 10PM, popped back to 7685 by midnight and held there all evening \u2014 a clean NAP long (7680+5=7685) was available, but waking to it still glued there at 7:30AM Wednesday, Adam passed, already long and wary of a region that's stayed trappy for days; he simply held his 10% runner. Big picture: ES has now spent close to a week rangebound between the 7659 support shelf and the 7797 resistance overhead, with 7714 and 7745 the key levels inside that range. Nvidia earnings hit after Wednesday's close \u2014 Adam treats the first move as likely, but not guaranteed, to be a trap, and won't chase it, instead waiting for a Failed Breakdown to present. Thursday's plan: defend 7659 (or a quick trap below, ideal tag 7649/7637) and ideally hold 7680 without losing it \u2014 a flush-and-recover of the 9AM 7677-80 low is also actionable. Above, the range extends to 7714 (desperation long), 7733, 7745, then the 7797 backtest. Below 7659, the ladder runs 7637 (needs both 7632 and 7637 to recover) / 7627 / 7612 / 7592 / 7567. Bear trigger holds at 7648.",
+  targets: {
+    major: [7988,7968,7926,7911,7871,7858,7828,7797,7764,7745,7733,7714],
+    minor: [7978,7962,7946,7941,7935,7920,7900,7886,7880,7852,7842,7835,7820,7811,7805,7792,7783,7772,7767,7747,7722,7717,7698]
+  },
   },
   { date:"08/26/2026", title:"Are The Lows In For SPX?", control:"bear", setups:[
     {level:7680,type:"Reclaim",priority:"a",notes:"Reclaims are actionable via the non-acceptance protocol \u2014 a push through here targets 7721, 7746, 7771, and eventually the 7797 backtest."},
@@ -2366,6 +2413,10 @@ var setupDays = [
   bull:"The bull case is that ES can defend 7659 (or a quick trap below). From there, ES can rip to 7721, 7746, 7771, and 7797. Reclaims of 7680 are actionable via the non-acceptance protocol, and a desperation long sits at recoveries of 7716.",
   bear:"Begins below 7659 \u2014 a breakdown trade below a support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7659 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7648 trigger down.",
   summary:"Wednesday (Aug 26 plan): Monday evening's flagged 7680 NAP zone triggered overnight around 2:40AM, but Adam was asleep and missed it \u2014 waking Tuesday with ES already up at 7700, he held his runner and waited for a fresh setup rather than chase. At 10:35AM ES ran an elevator-down sell from the 7690s to the 7660s, then recovered 7680 by 11:30AM; Adam caught the NAP trigger at 7687, locking 75% at 7692 and leaving a 25% runner to work. Big picture: bears still control the board until the 7797 shelf recovers, but ES has now built and re-defended a support shelf at 7659 \u2014 Thursday's low, swept again Monday, and held all Tuesday evening. Wednesday's plan: defend 7659 (or a quick trap below, ideal tag 7649/7637) then reclaim 7680 via NAP for a push to 7721, 7746, 7771, then the 7797 backtest \u2014 with a 7663 recovery as the alternative if 7659 holds exact, and a 7716 desperation long further up. Below 7659, the ladder runs 7637 (needs both 7632 and 7637 to recover) / 7627 / 7612 / 7592 / 7567. Bear trigger holds at 7648, just below the 7659 shelf.",
+  targets: {
+    major: [7950,7924,7911,7870,7854,7828,7819,7797,7771,7746,7733,7721,7698],
+    minor: [7941,7932,7917,7900,7892,7883,7861,7847,7838,7813,7805,7793,7782,7762,7758,7750,7742,7716,7707]
+  },
   },
   { date:"08/25/2026", title:"Can SPX Rally Before The End of August?", control:"bear", setups:[
     {level:7680,type:"Reclaim",priority:"a",notes:"Recoveries of 7680 are actionable via the non-acceptance protocol; a push through here targets 7698, then 7716\u201320, 7746, and eventually the 7794\u201397 backtest."},
@@ -3238,6 +3289,19 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "08/27/2026": {
+    intro: "Thursday was another no-new-trade day \u2014 pure runner management following Wednesday's Nvidia-earnings breakout. Adam woke at 7:30AM to find ES already up in the 7720s, well past any fresh entry, and simply rode his existing 10% runner from Tuesday's 7680 reclaim as the session drifted upward through the day.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7659", setupLabel:"Failed Breakdown (Shelf)", time:"Wed afternoon", outcome:"notrigger", outcomeLabel:"No Trigger \u2014 Too Strong", note:"The flagged 7659 FBD (with 7649/7637 as ideal tags) never triggered \u2014 ES was far too strong to see any flush, and instead kept ripping through the range targets into the close. After Nvidia earnings hit, the rip continued straight through to 7733+, with nothing to do but let the existing runner pay." }
+    ],
+    whatsDifferent: [
+      "Second straight no-new-trade day \u2014 Wednesday's flagged 7659 FBD never got the chance to trigger as ES simply broke out through the whole range instead, and Thursday continued the drift with no fresh entry either.",
+      "The multi-day 7658\u20137714 range finally resolved to the upside on the Nvidia earnings catalyst \u2014 the clearest directional move since losing the 7797 shelf on August 18th.",
+      "7714 flips from a resistance ceiling (held since last Friday) to support, defended through multiple traps into Thursday \u2014 mirroring the same role 7659 played after Monday's Failed Breakdown.",
+      "The existing 10% runner from Tuesday's 7680 reclaim is now carrying the bulk of the week's gains \u2014 a clean illustration of why runners are left to work rather than trimmed prematurely."
+    ]
+  },
   "08/26/2026": {
     intro: "Wednesday was a quiet, no-trade day spent purely managing the existing runner. Tuesday evening ES drifted up to 7691, where Adam trimmed his 25% runner down to a core 10% to further derisk. Overnight ES sold to 7671 by 10PM, popped back to 7685 by midnight and held there \u2014 a clean NAP trigger (7680+5=7685) was sitting there at 7:30AM, but with ES glued to the same trappy region for days and already long, Adam passed and simply held his 10% runner through the session.",
     adamTrade: null,
@@ -4848,6 +4912,34 @@ function selectTodayDate(dateStr) {
   document.getElementById("td-bull").textContent = sd.bull || "Not recorded for this date.";
   document.getElementById("td-bear").textContent = sd.bear || "Not recorded for this date.";
   document.getElementById("td-summary").textContent = sd.summary || "Not recorded for this date.";
+
+  var targetsSection = document.getElementById("td-targets-section");
+  var hasMajor = sd.targets && sd.targets.major && sd.targets.major.length;
+  var hasMinor = sd.targets && sd.targets.minor && sd.targets.minor.length;
+  if (hasMajor || hasMinor) {
+    targetsSection.style.display = "";
+    var majorHtml = "";
+    if (hasMajor) {
+      for (var mti = 0; mti < sd.targets.major.length; mti++) {
+        majorHtml += "<div class='today-target-chip major'>" + sd.targets.major[mti] + "</div>";
+      }
+    } else {
+      majorHtml = "<div class='today-target-empty'>None recorded.</div>";
+    }
+    document.getElementById("td-targets-major").innerHTML = majorHtml;
+
+    var minorHtml = "";
+    if (hasMinor) {
+      for (var nti = 0; nti < sd.targets.minor.length; nti++) {
+        minorHtml += "<div class='today-target-chip'>" + sd.targets.minor[nti] + "</div>";
+      }
+    } else {
+      minorHtml = "<div class='today-target-empty'>None recorded.</div>";
+    }
+    document.getElementById("td-targets-minor").innerHTML = minorHtml;
+  } else {
+    targetsSection.style.display = "none";
+  }
 
   // highlight active date in sidebar, expand its month if collapsed
   var allDates = document.querySelectorAll(".tsb-date");
