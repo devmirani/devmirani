@@ -2496,6 +2496,23 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"09/04/2026", title:"Has SPX Broken Out?", control:"bull", setups:[
+    {level:7722,type:"Reclaim",priority:"b",notes:"First support of interest down to backtest the bull flag breakout. Not a personal long (no significant low, so not a true Failed Breakdown), but a viable backtest for those wanting to engage. If ES is knifing lower at full speed, wait for a trap and recovery rather than knife-catching."},
+    {level:7695,type:"Reclaim",priority:"b",notes:"Next support down \u2014 a shelf of highs that built overnight and broke out this morning. Not a personal engage (no significant low), but if trading it, wait for the shelf to flush and recover for a Level Reclaim long rather than a Failed Breakdown."},
+    {level:7670,type:"FBD",priority:"a",notes:"A clear shelf of lows meeting the significant-low criteria, built between 3PM Wednesday and 7:30AM Thursday, then flushed to 7662 around 1:30AM to set another low. The Failed Breakdown of this entire structure (ideally tagging 7662) is actionable \u2014 wait for 7670 to recover before longing."},
+    {level:7649,type:"FBD",priority:"b",notes:"A weak support below 7670 \u2014 not something Adam will personally touch, but biddable for those wanting a more desperate long."},
+    {level:7618,type:"FBD",priority:"a",notes:"Thursday's daily low, with little interest between here and 7649. A Failed Breakdown here would be highly actionable \u2014 nothing below until 7587."},
+    {level:7613,type:"FBD",priority:"b",notes:"Bear trigger just below 7618. Ideally a final bounce at 7618, OR a Failed Breakdown then short beneath the lows of that bounce."},
+    {level:7587,type:"FBD",priority:"b",notes:"Support of the yellow bull flag. Tradeable on a slow, controlled sell into the zone; if ES is knifing down at full speed, wait for a flush and recovery instead."}
+  ],
+  bull:"The bull case is simply that ES can continue pushing. In an ultra-bull case, bulls want to defend 7722 on any dips (or a quick trap below). In a more mild bull case, ES will defend 7670 lowest (or a quick trap below). Next targets are 7770, then 7797 to backtest the early-August breakdown \u2014 react there, then head to 7828, then all-time highs. Given the recent strength, there are minimal spots to add on strength here that wouldn't constitute chasing.",
+  bear:"Begins below 7618 \u2014 a breakdown trade below Thursday's daily low. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7618 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7613 trigger down.",
+  summary:"Friday (Sept 4th plan): Wednesday's 10% runner from the 7622 Failed Breakdown rode straight through a breakout with zero new trades Thursday \u2014 ES held the flagged 7672 extreme-bull level all night, even trapping it by 10 points around 1:30AM and recovering while Adam slept, then ripped through 7704, 7714, 7733 and on to 7770+ by the close. Big picture: the week-long 7659\u20137733 range and bull flag has now clearly broken out, flipping control decisively bullish for the first time in weeks. Friday's plan: an ultra-bull case wants 7722 defended on dips; a milder bull case wants 7670 defended (or a quick trap below) \u2014 the shelf built 3PM Wednesday to 7:30AM Thursday, later swept to 7662 at 1:30AM, with a Failed Breakdown of that structure highly actionable. Above, targets run 7770, then 7797 to backtest the early-August breakdown, then 7828 and all-time highs. Below, 7649 is weak and only for desperate longs, then little until 7618 (Thursday's daily low, highly actionable), then 7587 (bull flag support). Bear trigger sits at 7613.",
+  targets: {
+    major: [8004,7964,7928,7890,7828,7797,7770],
+    minor: [7978,7953,7945,7914,7906,7875,7859,7846,7836,7820,7811,7805,7792,7782]
+  },
+  },
   { date:"09/03/2026", title:"Bulls Bought Yesterday\u2019s Dip, But Can The Bounce Sustain?", control:"contested", setups:[
     {level:7704,type:"Reclaim",priority:"a",notes:"The key add-on-strength spot above the range, though a complex entry \u2014 ideally with clear acceptance (dip, return to the zone, rip through) before engaging. If using the non-acceptance protocol here, wait for very strong momentum."},
     {level:7672,type:"FBD",priority:"b",notes:"An extreme-bull-case level \u2014 in the strongest scenario, ES won't even lose this. Traps here are a riskier, more aggressive add-on-strength option."},
@@ -3502,6 +3519,20 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "09/03/2026": {
+    intro: "Thursday was a pure runner day \u2014 no new trades. Wednesday evening's flagged 7618 Failed Breakdown never came close to triggering as ES stayed far too strong. Checking price at 7:30AM Thursday, ES was already up in the 7670s, having held the flagged 7672 extreme-bull level all night and even trapped it by 10 points around 1:30AM before recovering \u2014 Adam was asleep for that and had nothing to do but let his existing 10% runner from Wednesday's 7622 Failed Breakdown ride. ES ripped all day, clearing the week-long 7659\u20137733 range and bull flag resistance to close above 7733, tagging 7770+.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7618", setupLabel:"Failed Breakdown (Wednesday Daily Low)", time:"Wed evening", outcome:"notrigger", outcomeLabel:"No Trigger \u2014 Too Strong", note:"The 7618 Failed Breakdown (7618+5=7623 non-acceptance trigger) flagged in Wednesday's plan never came close \u2014 ES was far too strong to dip anywhere near it Wednesday evening." },
+      { level:"7672", setupLabel:"Extreme-Bull Trap Level", time:"Thu ~1:30 AM", outcome:"notrigger", outcomeLabel:"Held Overnight, Not Traded", note:"Flagged Wednesday as an extreme-bull-case level ES 'won't even lose.' It held all night and even trapped by 10 points around 1:30AM before recovering \u2014 Adam was asleep and had no reason to trade it anyway, since his existing runner was already positioned for exactly this kind of continuation." }
+    ],
+    whatsDifferent: [
+      "First fully passive, no-trade day since the current runner opened \u2014 the entire session's gain came from letting Wednesday's 10% 7622 FBD runner ride rather than any new entry.",
+      "The week-long 7659\u20137733 range and bull flag decisively breaks out \u2014 ES clears 7733 and closes well above it at 7770+, the first genuine breakout since the range began forming in late August.",
+      "Control flips from contested (Wednesday's plan) to outright bull \u2014 the first bullish control designation since before the multi-week chop began.",
+      "The flagged 7672 extreme-bull level does exactly what it was labeled for \u2014 traps by 10 points overnight and holds, confirming just how little room bears had left."
+    ]
+  },
   "09/02/2026": {
     intro: "Wednesday was a clean one-trade green day. ES dipped to 7618 at 7AM, sweeping Tuesday's 7622 daily low by 4 points before recovering \u2014 a textbook Failed Breakdown. Checking price at 7:30AM with ES already up at 7639, well above the 7627 trigger (7622+5), Adam entered immediately. He locked 75% at 7649, locked more at 7659, and left a 10% runner to work \u2014 which carried through the rest of the session as ES ripped back into the 7659\u20137733 range, tagging 7681+ by the close.",
     adamTrade: {
