@@ -998,8 +998,8 @@
 
       <div class="today-runner" id="td-runner-row">
         <span class="today-runner-dot" id="td-runner-dot"></span>
-        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28) &amp; 7622 FBD (9/2)</span>
-        <span class="today-runner-since" id="td-runner-since">since Wed 1:15PM</span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) &amp; 7603 Reclaim (9/10 8:36PM)</span>
+        <span class="today-runner-since" id="td-runner-since">since Thu 8:36PM</span>
       </div>
 
       <div class="today-levels">
@@ -2627,6 +2627,40 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"09/14/2026", title:"Is the Bottom In For SPX?", control:"bull", setups:[
+    {level:7650,type:"FBD",priority:"b",notes:"First support down as of Friday's writing, but a weaker zone. Safer than a direct bid is waiting for the 7653 low set at 10:45AM Friday (from which ES rallied to the high of day) to recover \u2014 that would be an actionable Failed Breakdown."},
+    {level:7627,type:"FBD",priority:"b",notes:"The Wednesday shelf that triggered this week's reversal, but now so used up it's been downgraded from a major level. Below 7650, this is the next zone, though a lower-conviction one."},
+    {level:7620,type:"FBD",priority:"a",notes:"The low set right after Thursday's CPI release. A much safer, highly actionable Failed Breakdown than bidding 7627 direct \u2014 bonus if ES can also tag 7610 in the process."},
+    {level:7595,type:"FBD",priority:"b",notes:"A big low set 8PM Thursday that carried ES to the current highs. Watch for the Failed Breakdown of this level."},
+    {level:7588,type:"FBD",priority:"b",notes:"Thursday's daily low. The Failed Breakdown of this level is actionable, being a major daily low."},
+    {level:7568,type:"FBD",priority:"b",notes:"Where things get interesting \u2014 the shelf broken out August 3rd that preceded a parabolic multi-hundred-point run, so this is the backtest of that shelf. If ES is knifing full speed, a higher quality trade waits for a test of 7557 with a recovery of 7567."},
+    {level:7542,type:"FBD",priority:"b",notes:"If ES keeps heading lower beneath 7568, watch for the Failed Breakdown of this level \u2014 the August 3rd low of day."}
+  ],
+  bull:"Wednesday's ~7627 low of day was defended for half an hour Thursday morning before finally being lost, sending ES elevator down to 7586 \u2014 then recovered Friday morning to trigger the rip to 7671+ after CPI. Bulls now need to hold roughly 7620 (or a quick trap below) to keep full control. In a very strong bull case, ES won't even get close to down there \u2014 instead defending 7650 (or quick traps below) and resuming up toward 7693, 7714, 7746, then 7763, with a major breakout above there opening the door to 7797 and likely all-time highs. Adding on strength is difficult here since ES is already rallying \u2014 doing so would mean chasing.",
+  bear:"Begins below 7610 \u2014 a breakdown trade below a support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7610 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7605 trigger down.",
+  summary:"Monday plan: With price too strong to cleanly catch the 7586 daily-low Failed Breakdown Thursday evening, Adam caught a second 7603 reclaim trigger (7608 non-acceptance) at 8:36PM after minor early drawdown, managing it overnight via limit orders \u2014 locked 75% at 7622, more at 7627, left a 10% runner. The 7622/7627 shelf recovery itself also fired around 4:15AM for overnight traders. Checking price Friday at 7:30AM with ES already at 7640, there was nothing to do but hold the runner into CPI \u2014 which sent ES ripping to 7671+ afterward, with the 10% runner still open heading into Monday. Big picture: this was a textbook elevator-down/Failed-Breakdown cycle \u2014 Wednesday's ~7627 low of day was defended Thursday morning, lost outright into the 7586 elevator-down sell, then recovered Friday to spark the squeeze. Monday's plan: 7650 is a weaker first support \u2014 safer to wait for the 7653 Friday 10:45AM low to recover than bid it direct. 7627 is now so used up it's been downgraded from major; a safer entry is the Failed Breakdown of the post-CPI 7620 low (bonus tag 7610), then 7595 (Thursday 8PM low), 7588 (Thursday's daily low), 7568 (a much stronger August 3rd breakout backtest), and 7542 further down. Bulls need to hold ~7620 to keep full control; in an ultra-strong case ES defends 7650 outright and resumes toward 7693, 7714, 7746, 7763. Bear trigger sits at 7610, with a breakdown likely triggering near 7605. Housekeeping: the ES contract rolls from September (ESU2026) to December (ESZ2026) effective Monday September 14th at 6PM, with September expiring and ceasing to trade Friday September 18th \u2014 this is also the last full day trading the September contract.",
+  targets: {
+    major: [7671,7693,7714,7746,7763,7782,7797,7812,7836,7847,7870,7913,7923,7944,7981],
+    minor: [7680,7704,7722,7736,7755,7772,7793,7805,7820,7828,7857,7890,7904,7932,7961,7966]
+  },
+  },
+  { date:"09/11/2026", title:"4 Red Days For SPX \u2014 Green Friday Coming?", control:"bear", setups:[
+    {level:7586,type:"FBD",priority:"a",notes:"The first support of real interest \u2014 a big low set Thursday around 9:30AM during the morning's elevator-down sell. The Failed Breakdown of this major daily low is highly actionable."},
+    {level:7603,type:"FBD",priority:"b",notes:"First support down, but no longer a firm zone after being lost outright Thursday \u2014 bears control here so supports run softer. Only buyable on a fast trap-and-recover, not a direct bid."},
+    {level:7567,type:"FBD",priority:"b",notes:"Where things get interesting \u2014 the shelf broken out August 3rd that preceded a parabolic multi-hundred-point run, so this is the backtest of that shelf. If ES is knifing full speed, a higher quality trade waits for a test of 7557 with a recovery of 7567."},
+    {level:7542,type:"FBD",priority:"b",notes:"If ES keeps heading lower beneath 7567, watch for the Failed Breakdown of this level \u2014 the August 3rd low of day."},
+    {level:7516,type:"FBD",priority:"b",notes:"An excellent spot to try a backtest long further down \u2014 ES broke out here on July 31st, previously heavy resistance."},
+    {level:7627,type:"Reclaim",priority:"a",notes:"Wednesday's low of day, just above the 7622 shelf. Wait specifically for 7627 to recover \u2014 given the size of the rally into this zone, want clear non-acceptance protocol or obvious acceptance before entering, not a direct bid."},
+    {level:7622,type:"Reclaim",priority:"a",notes:"The major shelf of lows from last Tuesday/Wednesday whose loss triggered Thursday's elevator-down sell. Bears retain control until this recovers; recovery opens the door back to 7649, 7671, then 7704, 7745+."}
+  ],
+  bull:"ES lost the shelf of lows from last Tuesday/Wednesday at 7622/7627 and sold off hard. The bull case is simply that ES recovers this zone \u2014 wait specifically for 7627 to reclaim given the size of the rally into it, with clear non-acceptance or obvious acceptance required. From there ES can rally to 7649, 7671, then rip to 7704, 7745+. Recoveries of 7622/7627 are the actionable add-on-strength spot.",
+  bear:"Resumes below 7567 \u2014 a breakdown trade below the August 3rd breakout shelf. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7567 short: ideally a final bounce there, OR a Failed Breakdown then short beneath the lows of that bounce \u2014 likely a 7558 trigger down. Bears retain control until 7622/7627 recovers.",
+  summary:"Friday plan: Wednesday evening's 7649 shelf finally triggered the 7654 non-acceptance long at 8:30PM \u2014 Adam locked 75% at 7658 and left a 25% runner, which he had to cut near 8AM Thursday after ES dipped into the mid-7640s to protect the small profit. ES then drifted lower into 7630 and finally got its elevator-down sell by 8:20AM, flushing to 7586 by 9:30AM \u2014 a genuine volatility injection after days of chop. A bounce off 7589 set up the 7603 reclaim, which Adam caught around 10:20AM via the 7608 non-acceptance trigger; he locked 75% at 7611, then trimmed the 25% down to a 10% runner near 7614 after ES struggled to clear 7622 a second time. That 10% runner remains open heading into Friday. Big picture: ES lost the 7622/7627 shelf (last Tuesday/Wednesday's lows) Thursday morning, breaking the range down and triggering Wednesday's bear case \u2014 bears now control until that zone recovers. Friday's plan: 7603 is no longer a firm level and only buyable on a fast trap-and-recover, not a direct bid. 7586 (Thursday's major low) is the first real support of interest and highly actionable. Below there, 7567 is a much stronger backtest of the August 3rd breakout shelf \u2014 wait for a 7557 test and 7567 recovery if ES is knifing fast. Then 7542 (August 3rd low of day) and 7516 (a July 31st breakout backtest) further down. Above, recoveries of 7627 then 7622 are the key add-on-strength spots, opening the door back to 7649, 7671, then 7704, 7745+. Bear trigger sits at 7567, with a breakdown likely triggering near 7558.",
+  targets: {
+    major: [7622,7627,7649,7662,7671,7692,7704,7723,7745,7763,7783,7797],
+    minor: [7609,7618,7638,7644,7659,7683,7714,7735,7757,7771,7794]
+  },
+  },
   { date:"09/10/2026", title:"Will September Bring Its Usual Volatility For SPX?", control:"bear", setups:[
     {level:7649,type:"Reclaim",priority:"a",notes:"Major support tested all morning Wednesday before ES pushed lower into noon to 7630, then returned here into the close. Recoveries are actionable, but ideally paired with the 7644 shelf recovering alongside it."},
     {level:7644,type:"FBD",priority:"a",notes:"A shelf set around 8AM Wednesday that held much of the morning. Want both 7644 and 7649 recovered together before longing rather than either level in isolation."},
@@ -3704,6 +3738,46 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "09/11/2026": {
+    intro: "Friday was a pure runner day, capped by a CPI-driven rip. With price too strong to cleanly catch the 7586 daily-low Failed Breakdown Thursday evening, Adam caught a second 7603 reclaim trigger (7608 non-acceptance) at 8:36PM Thursday after eating some minor early drawdown. He managed it overnight via limit orders while asleep: locked 75% at 7622, more at 7627, left a 10% runner. The 7622/7627 shelf recovery itself also fired independently around 4:15AM for overnight traders. Checking price Friday at 7:30AM with ES already up at 7640, there was nothing to do but hold the runner into CPI \u2014 which sent ES ripping to 7671+ afterward, with the 10% runner still open heading into Monday.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7603", setupLabel:"Reclaim Long (Evening Re-Entry, Resolved Overnight)", time:"Thu 8:36 PM \u2192 Fri ~2 AM", outcome:"notrigger", outcomeLabel:"Closed Before Friday's Session", note:"With ES too strong to cleanly trigger the flagged 7586 daily-low Failed Breakdown, Adam caught a second 7603 reclaim (7608 non-acceptance trigger) at 8:36PM Thursday after minor early drawdown. Managed overnight via limit orders: locked 75% at 7622, more at 7627, left a 10% runner \u2014 fully resolved before Friday's session began. The same 7622/7627 shelf recovery fired again independently around 4:15AM for overnight traders watching that trigger directly." }
+    ],
+    whatsDifferent: [
+      "CPI day delivers the confirmation squeeze \u2014 ES ripped to 7671+ after the release, capping off the elevator-down/Failed-Breakdown/short-squeeze cycle that began with Thursday's flush to 7586.",
+      "ES fully reclaims the 7622/7627 shelf lost Thursday morning, playing out exactly as flagged in Thursday's bear case (\u201cBears control until 7622/27 recover\u201d).",
+      "Third distinct entry trigger off the 7603/7622/7627 zone within about 24 hours \u2014 the 10:20AM Thursday reclaim, the 8:36PM Thursday re-entry, and the independent 4:15AM 7622/7627 recovery \u2014 underscoring how reusable a single zone can be across a session and overnight.",
+      "Control flips decisively back to bull for the first time since early in the week, after four straight red days.",
+      "Housekeeping note carried forward: ES rolls from the September (ESU2026) to December (ESZ2026) contract effective Monday September 14th at 6PM, with September expiring and ceasing to trade Friday September 18th \u2014 the last full day trading the September contract will be Monday."
+    ]
+  },
+  "09/10/2026": {
+    intro: "Thursday was a two-trade green day, capped by a genuine elevator-down sell that finally broke the low-volatility chop of the past week. Wednesday evening's 7649 shelf finally triggered the 7654 non-acceptance long at 8:30PM \u2014 Adam locked 75% at 7658 and left a 25% runner. Checking price at 7:30AM Thursday with ES back at 7649, he had to cut that runner near 8AM after a dip into the mid-7640s, protecting a small profit. ES drifted lower into 7630 before finally going elevator down by 8:20AM, flushing to 7586 by 9:30AM. A bounce off 7589 set up the 7603 reclaim, which he caught around 10:20AM via the 7608 non-acceptance trigger \u2014 locking 75% at 7611, then trimming the 25% runner down to 10% near 7614 after ES struggled to clear 7622 a second time. That 10% runner didn't survive the afternoon chop (per Thursday's own newsletter, ES had slipped back below 7603 by 3PM) \u2014 setting up a fresh evening re-entry of the same zone that carried into Friday (see Friday's dissection).",
+    adamTrade: {
+      label: "7603 Level Reclaim Long (10:20 AM Trigger)",
+      entryPrice: 7608,
+      entryTime: "10:20 AM Thu",
+      setup: "Reclaim",
+      result: "win",
+      targets: [
+        {label:"T1", price:7611, portion:"75%", status:"hit"},
+        {label:"Runner", price:7614, portion:"trimmed from 25% to 10% after ES struggled to clear 7622 a second time \u2014 stopped out on the afternoon dip back below 7603, ahead of a fresh evening re-entry of the same zone", status:"stopped"}
+      ],
+      narrative: "After Thursday's elevator-down sell took ES from 7630 to 7586 by 9:30AM, price bounced off the 7589 support Adam had flagged Wednesday. Rather than bid 7589 direct, he tweeted the 7603 reclaim as the actionable trigger at 9:58AM \u2014 the next level up. ES cleared the 7608 non-acceptance trigger (7603+5) a little after 10:20AM and he entered the long there. It followed through nicely: 75% locked at 7611 (T1) on the first push. ES then struggled all afternoon to clear 7622 for a second level up, running to 7618 a few times and dipping back, so Adam trimmed the 25% runner down to a 10% runner near 7614 \u2014 easier to hold through chop. By 3PM ES had slipped back below 7603, taking out that runner. The zone reset for a fresh evening re-entry (see Friday's dissection for the 8:36PM re-trigger and overnight follow-through)."
+    },
+    recapSetups: [
+      { level:"7649", setupLabel:"Failed Breakdown (Prior Trade, Resolved)", time:"Wed 8:30 PM \u2192 Thu ~8 AM", outcome:"notrigger", outcomeLabel:"Closed Before Main Trade", note:"Wednesday evening's 7644/7649 shelf finally triggered the 7654 non-acceptance protocol at 8:30PM; Adam locked 75% at 7658 and left a 25% runner. Checking price at 7:30AM Thursday with ES back at 7649, he had to cut the runner near 8AM after a dip into the mid-7640s, protecting a small profit ahead of the day's main setup." },
+      { level:"7589", setupLabel:"Elevator-Down Bounce (Untraded)", time:"~9:30 AM Thu", outcome:"notrigger", outcomeLabel:"Watched, Not Traded", note:"ES finally delivered a genuine elevator-down sell, losing 7630 and flushing to 7586 by 8:30\u20139:30AM before bouncing off 7589. Adam didn't bid this directly, instead flagging the 7603 reclaim above as the actionable trigger." }
+    ],
+    whatsDifferent: [
+      "First genuine elevator-down volatility injection in over a week \u2014 ES flushed from 7630 to 7586 in under an hour after days of grinding, low-volatility chop.",
+      "Two-trade green day, both level-to-level wins \u2014 the evening 7649 FBD and the 10:20AM 7603 reclaim, each locking 75% at T1 with runners trimmed down for chop rather than run to full targets.",
+      "ES decisively loses the 7622/7627 shelf that had anchored the last two weeks of range \u2014 confirming Wednesday's bear trigger and flipping control fully to bears until that zone recovers.",
+      "Fourth straight red day for SPX per Adam's framing, with Friday flagged as the potential snap-back session if 7622/7627 reclaims.",
+      "Housekeeping note carried forward: ES rolls from the September (ESU2026) to December (ESZ2026) contract effective Monday September 14th at 6PM, with September expiring and ceasing to trade Friday September 18th."
+    ]
+  },
   "09/09/2026": {
     intro: "Wednesday was a no-new-trade day, closing out Tuesday evening's Failed Breakdown roughly flat. Checking price at 2:50PM Tuesday, ES had swept 7680 down to 7676 and recovered, holding above the 7685 non-acceptance trigger for a few minutes; Adam took the long at 7688. The trade went nowhere for hours, sweeping to 7673 and returning to 7688 repeatedly into midnight, so rather than hold full size overnight with no momentum, he trimmed down to a 10% runner before bed. Waking Wednesday to find ES had finally gotten an injection of volatility and sold down to 7649, he found his runner stopped out on the loss of the 7671/7676 structure \u2014 a blank slate for the day. ES never recovered 7671, grinding lower to 7630 by noon before returning to the 7644/7649 shelf into the close; the 7654 non-acceptance trigger (7649+5) never fired despite hours spent glued to the level, so no second trade was taken.",
     adamTrade: {
@@ -5448,8 +5522,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28) & 7622 FBD (9/2)";
-    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM & Wed 9/2 7:30AM";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) & 7603 Reclaim (9/10 8:36PM)";
+    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM & Thu 9/10 8:36PM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
