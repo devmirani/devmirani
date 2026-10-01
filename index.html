@@ -998,8 +998,8 @@
 
       <div class="today-runner" id="td-runner-row">
         <span class="today-runner-dot" id="td-runner-dot"></span>
-        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) &amp; 7716 FBD (9/29)</span>
-        <span class="today-runner-since" id="td-runner-since">since Tue 11:30AM</span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) &amp; 7707 FBD (10/1)</span>
+        <span class="today-runner-since" id="td-runner-since">since Thu 1:21PM</span>
       </div>
 
       <div class="today-levels">
@@ -2627,6 +2627,22 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"10/02/2026", title:"SPX Is Coiled Tighter and Tighter. Is The Move Close?", control:"bull", setups:[
+    {level:7707,type:"FBD",priority:"b",notes:"First support down. This major shelf (last Thursday's low of day + Wednesday's low) already recovered once today, so risky to re-engage direct. The lower-risk entry waits for the 2PM low here to flush and recover."},
+    {level:7681,type:"FBD",priority:"b",notes:"Next support down of interest. Heavily engaged for hours this morning, so risky to bid now. A safer entry waits for a Failed Breakdown of today's 7672 daily low that recovers BOTH 7672 and 7682."},
+    {level:7672,type:"FBD",priority:"a",notes:"Today's daily low. Pair this recovery with 7682 rather than bidding either in isolation."},
+    {level:7655,type:"FBD",priority:"b",notes:"A decent support below there. If ES is knifing down at full speed though, wait for a Failed Breakdown of the zone rather than just buying it direct and hoping for the best."},
+    {level:7616,type:"FBD",priority:"b",notes:"Very little of interest until here. A nice low was set at 6PM last Wednesday. A slow, controlled dip into the zone is bid-able; otherwise wait for it to flush and recover."},
+    {level:7575,type:"FBD",priority:"b",notes:"Watch for a Failed Breakdown of last Wednesday's low further down."}
+  ],
+  bull:"We saw a monster Failed Breakdown today. ES sold ~100 points down to the 7670s. In doing so, ES lost a big shelf of lows at 7707 comprising last Thursday's low of day and this Wednesday's low of day. We recovered this and ripped into the 7730s. Generally, ES is rangebound though mostly 7707 to 7768 or so. In the bull case, ES will continue to defend this range and fill it out. This means holding 7707 (or quick trap below). If we flush it hard, bulls want to keep it no lower than a fast trap of today's daily 7674 low and back up again. In a strong bull case, ES won't even visit 7707 again and rather will just continue up to 7749, 7768, perhaps dip there, then onto 7792. Possible dip there then we should be all clear for 7822, 7866+. In terms of spots to add on strength, chasing strength inside a choppy range is always risky \u2014 reclaims of 7748 are one option but Adam won't take this himself.",
+  bear:"Risky short available below 7698 \u2014 a breakdown trade below support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7698 short: ideally one final bounce here, OR a Failed Breakdown, then short beneath the lows of that bounce \u2014 likely a 7690 trigger down.",
+  summary:"Friday plan: Wednesday afternoon's 7720 Failed Breakdown (entered 4:15PM after a sweep to 7705.50) locked 75% at 7736, more at 7748, leaving a 10% runner. A tighter 'double-dip' Failed Breakdown of that same 7705.50 low fired again at 4:20AM Thursday \u2014 untraded, Adam asleep. Around 10AM, ES went elevator down from 7748 to 7681, losing the 7707 shelf in the process; Adam cut his existing runner here, willing to re-enter on a 7707 recovery. ES held 7681 exact and bounced to 7707, backtested it between 10:40AM and 12:40PM, then cleared the 7712 non-acceptance trigger \u2014 Adam took the long at 1:21PM: 75% locked at 7725, more at 7736, 10% left to run. Big picture: a genuine ~100-point elevator-down sell from the 7770s to the 7670s fully recovered within the same session \u2014 one of the largest single-day round trips logged this stretch. Friday's plan: 7707 is first support down but already recovered once today, so risky to re-engage directly \u2014 the lower-risk entry is waiting for the 2PM low there to flush and recover. 7681 was heavily engaged this morning and is risky to bid now; safer is waiting for a Failed Breakdown of today's 7672 daily low that recovers both 7672 and 7682. Below, 7655 is a decent support (direct-bid risky if knifing), then very little until 7616 (slow controlled dip bid-able, otherwise wait for flush-and-recover), then last Wednesday's 7575 low further down. Bear case has loosened to a 'risky short available below 7698,' with a breakdown likely triggering near 7690.",
+  targets: {
+    major: [7725,7748,7768,7792,7823,7846,7866,7895,7903,7915,7964,7970,7982,8006],
+    minor: [7737,7758,7771,7780,7802,7811,7831,7838,7860,7872,7879,7886,7908,7932,7939,7950,7973,7996]
+  },
+  },
   { date:"10/01/2026", title:"Is The Bottom Near For SPX?", control:"bull", setups:[
     {level:7748,type:"FBD",priority:"a",notes:"First support down. Not one to buy direct \u2014 wait for it to flush and recover, ideally to 7736. There's a nice shelf of lows here set at 9:40AM and 1:40PM."},
     {level:7720,type:"FBD",priority:"a",notes:"Today's low of day, set at 7:20AM. The Failed Breakdown of this is actionable on its own \u2014 one option is waiting for 7716 to hold, then recover 7720 to get long."},
@@ -3952,6 +3968,33 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "10/01/2026": {
+    intro: "Thursday delivered a genuine ~100-point elevator-down sell and a full intraday round trip. Wednesday afternoon's 7720 Failed Breakdown (entered 4:15PM after an elevator-down sweep to 7705.50) had locked 75% at 7736, more at 7748, leaving a 10% runner. A second, tighter 'double-dip' Failed Breakdown of that same 7705.50 low fired again at 4:20AM Thursday \u2014 untraded, Adam was asleep. Around 10AM, ES went elevator down from 7748 all the way to 7681, losing the 7707 shelf in the process; Adam cut his existing runner here, willing to re-enter on a 7707 recovery. ES held 7681 exact and bounced to 7707, backtested that zone between 10:40AM and 12:40PM, then cleared the 7712 non-acceptance trigger \u2014 Adam took the long at 1:21PM. It followed through nicely: 75% locked at 7725, more at 7736, 10% left to run.",
+    adamTrade: {
+      label: "7707 Failed Breakdown Long (1:21 PM)",
+      entryPrice: 7712,
+      entryTime: "1:21 PM Thu",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7725, portion:"75%", status:"hit"},
+        {label:"T2", price:7736, portion:"more locked in, leaving 10%", status:"hit"},
+        {label:"Runner", price:null, portion:"10%, left to run \u2014 the current open runner", status:"open"}
+      ],
+      narrative: "Around 10AM, ES went elevator down again from 7748 down to 7681 \u2014 the risky bid spot flagged the day before. It held exact and ripped to 7707, but since that move lost the major 7707 shelf (comprising last Thursday's low of day and Wednesday's low), Adam cut his existing runner there rather than risk it on a level that had just given way. ES spent between 10:40AM and 12:40PM backtesting 7707, and Adam was willing to re-long on the non-acceptance protocol (7707+5=7712), which triggered at 1:21PM. The trade followed through cleanly: 75% locked at 7725 (T1), more locked at 7736 (T2), 10% left to run."
+    },
+    recapSetups: [
+      { level:"7720", setupLabel:"Failed Breakdown (Wed 4:15 PM Entry, Stopped This Morning)", time:"Wed 3:50 PM \u2192 Thu ~10:00 AM", outcome:"notrigger", outcomeLabel:"Resolved \u2014 Stopped on 7707 Shelf Loss", note:"Wednesday afternoon's 7720 Failed Breakdown (entered 4:15PM after a sweep to 7705.50) locked 75% at 7736 and more at 7748, leaving a 10% runner. That runner was cut around 10AM Thursday when ES lost the 7707 shelf during the elevator-down move to 7681, with Adam willing to re-enter on a 7707 recovery \u2014 which he did a few hours later." },
+      { level:"7705.50", setupLabel:"Double-Dip Failed Breakdown (Untraded, Asleep)", time:"4:20 AM Thu", outcome:"notrigger", outcomeLabel:"Triggered While Asleep", note:"A second, tighter Failed Breakdown of the 3:50PM Wednesday 7705.50 low swept by half a point at 4:20AM and recovered, running to the 7740s \u2014 a textbook 'double dip' Failed Breakdown that Adam was asleep for." }
+    ],
+    whatsDifferent: [
+      "First true 'double-dip' Failed Breakdown explicitly named and explained this stretch \u2014 two Failed Breakdowns of essentially the same low (7705.50) within about 13 hours.",
+      "A genuine, significant ~100-point elevator-down sell (7770s to 7681/7674) fully recovers within the same session \u2014 one of the largest single-session round trips logged this stretch.",
+      "Adam actively cuts an existing runner mid-stream specifically because the underlying shelf gave way (not chop, not a stall) \u2014 then re-enters hours later on the recovery of that same shelf.",
+      "The bear case loosens materially \u2014 from 'begins below 7716' to a hedged 'risky short available below 7698' \u2014 notably softer bear-case language than recent days.",
+      "The trading range is redefined yet again, now explicitly '7707 to 7768' \u2014 continuing the week-long pattern of daily range recalibration."
+    ]
+  },
   "09/30/2026": {
     intro: "Wednesday was a pure runner day, still riding the same 10% position from Tuesday's 11:30AM 7716 Failed Breakdown. Tuesday evening's flagged 7716 daily-low Failed Breakdown never triggered \u2014 ES stayed too strong to sell back down into it. Instead, the next planned setup, a 7736 reclaim, fired by 3PM (7741 trigger), but since Adam was already long the runner he didn't need to re-engage. ES ran to 7756 into the evening before dipping back to 7735 overnight. Checking price at 7:30AM Wednesday, conditions were choppy and trappy with poor follow-through \u2014 nothing to do but stay sidelined holding the runner unless an elevator-down sell appeared. None did, and ES pushed higher through the session to 7782 exact, the high of day \u2014 precisely the target flagged the day before.",
     adamTrade: null,
@@ -6016,8 +6059,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) & 7716 FBD (9/29)";
-    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM & Tue 9/29 11:30AM";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) & 7707 FBD (10/1)";
+    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM & Thu 10/1 1:21PM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
