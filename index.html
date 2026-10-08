@@ -746,6 +746,27 @@
   .today-target-chip { font-family: 'JetBrains Mono', monospace; font-size: 14px; padding: 7px 10px; border-radius: 6px; background: #f7f7f5; color: #333333; }
   .today-target-chip.major { background: #f5ecd8; color: #8a5c0f; font-weight: 600; }
   .today-target-empty { font-size: 13px; color: #9a9a9a; font-family: 'Inter', sans-serif; }
+  .today-range { margin-bottom: 36px; }
+  .range-status { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: #eaf3de; color: #3b6d11; font-family: 'Inter', sans-serif; margin-bottom: 10px; }
+  .range-headline { font-family: var(--font-voice); font-size: 15.5px; line-height: 1.7; color: #111111; margin: 0 0 10px 0; }
+  .range-summary { font-family: var(--font-voice); font-size: 14.5px; line-height: 1.8; color: #333333; margin: 0 0 20px 0; }
+  .range-ladder { border-left: 2px solid #ececec; margin: 0 0 22px 6px; }
+  .range-row { display: flex; align-items: baseline; gap: 14px; padding: 9px 12px 9px 18px; position: relative; }
+  .range-row::before { content: ''; position: absolute; left: -7px; top: 16px; width: 12px; height: 12px; border-radius: 50%; background: #d6d6d6; border: 2px solid #ffffff; }
+  .range-row.target::before { background: #9bc47a; }
+  .range-row.price { background: #f7f7f5; border-radius: 0 8px 8px 0; }
+  .range-row.price::before { background: #111111; }
+  .range-row.ceiling::before { background: #a8720f; }
+  .range-row.floor::before { background: #3b6d11; }
+  .range-row.below::before { background: #a8362e; }
+  .range-level { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #333333; min-width: 118px; flex-shrink: 0; }
+  .range-row.price .range-level { color: #111111; font-weight: 700; }
+  .range-row.ceiling .range-level { color: #a8720f; font-weight: 600; }
+  .range-row.floor .range-level { color: #3b6d11; font-weight: 600; }
+  .range-row.below .range-level { color: #a8362e; }
+  .range-label { font-family: var(--font-voice); font-size: 14px; line-height: 1.65; color: #444444; }
+  .range-notes { margin: 0; padding-left: 18px; }
+  .range-notes li { font-family: var(--font-voice); font-size: 14px; line-height: 1.7; color: #333333; margin-bottom: 8px; }
   .today-footer { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #f7f7f5; border-radius: 10px; margin: 0; }
   .today-footer-text { font-size: 13px; color: #555555; font-family: 'Inter', sans-serif; }
   .today-footer-btn { font-size: 12px; color: #111111; background: none; border: 1px solid #d6d6d6; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; transition: border-color 0.15s; }
@@ -998,8 +1019,8 @@
 
       <div class="today-runner" id="td-runner-row">
         <span class="today-runner-dot" id="td-runner-dot"></span>
-        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) &amp; 7707 FBD (10/1)</span>
-        <span class="today-runner-since" id="td-runner-since">since Thu 1:21PM</span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) &amp; 7845 reclaim (10/7, 25%)</span>
+        <span class="today-runner-since" id="td-runner-since">since Wed 10/7 1:00PM</span>
       </div>
 
       <div class="today-levels">
@@ -1024,7 +1045,7 @@
       </div>
 
       <div class="today-targets" id="td-targets-section">
-        <div class="today-section-label">Profit targets</div>
+        <div class="today-section-label">Resistance levels (profit targets)</div>
         <div class="today-targets-grid">
           <div class="today-targets-col">
             <div class="today-targets-col-label major">Major levels</div>
@@ -1035,6 +1056,31 @@
             <div class="today-target-list" id="td-targets-minor"></div>
           </div>
         </div>
+      </div>
+
+      <div class="today-targets" id="td-supports-section" style="display:none">
+        <div class="today-section-label">Support levels</div>
+        <div class="today-targets-grid">
+          <div class="today-targets-col">
+            <div class="today-targets-col-label major">Major levels</div>
+            <div class="today-target-list" id="td-supports-major"></div>
+          </div>
+          <div class="today-targets-col">
+            <div class="today-targets-col-label">Minor levels</div>
+            <div class="today-target-list" id="td-supports-minor"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="today-range" id="td-range-section" style="display:none">
+        <div class="today-section-label">The range &mdash; ceiling, floor &amp; where price sits</div>
+        <span class="range-status" id="td-range-status"></span>
+        <p class="range-headline" id="td-range-headline"></p>
+        <p class="range-summary" id="td-range-summary"></p>
+        <div class="today-targets-col-label">Range map (top to bottom)</div>
+        <div class="range-ladder" id="td-range-ladder"></div>
+        <div class="today-targets-col-label">How to read it</div>
+        <ul class="range-notes" id="td-range-notes"></ul>
       </div>
 
       <div class="today-footer">
@@ -2627,6 +2673,93 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"10/08/2026", title:"When Will Today's Dip Get Bought In SPX?", control:"bull", setups:[
+    {level:7845,type:"Reclaim",priority:"a",notes:"First support: a trappy, well-tested, noisy region (the Sept 21-23 shelf of highs ES broke out of Tuesday) that Adam won't simply buy. Flushes and recoveries are actionable, with a bonus if ES tags 7839 on the flush (in noisy zones, the more the level fails by, the safer the recovery). Reclaims of 7845 are also where to add on strength."},
+    {level:7811,type:"FBD",priority:"a",notes:"Next big support. Rather than bidding it directly, wait for 7811 to hold, then recover 7816-7820 for a Failed Breakdown. Why: Monday 4PM set a big low at 7820 that ripped to the highs, and Wednesday morning set another low at 7816 - a shelf."},
+    {level:7782,type:"FBD",priority:"b",notes:"Below 7811. If it is a slow grind into the zone one can try a long; if ES is knifing at full speed, wait for the next setup down at 7766."},
+    {level:7766,type:"FBD",priority:"a",notes:"A huge shelf of lows from midnight Monday until 8:30AM Monday, staggered across a 5-point range. Instead of buying it, wait for ES to sweep the 7760 cluster of lows from Tuesday morning and recover BOTH 7760 AND 7766 for a Failed Breakdown."},
+    {level:7737,type:"FBD",priority:"b",notes:"The big low from 2:50AM Friday. Watch for a Failed Breakdown of it, with a bonus if ES tags 7725 on the flush."}
+  ],
+  bull:"This current leg up was caused by the same thing that causes all major longs: a huge Failed Breakdown last Thursday where ES went elevator down to 7674, recovered 7707 (a huge low from the day before), then went parabolic. ES then broke out the multi-day 7706-7766 range, ripped Tuesday, and began a retrace Wednesday. Bulls retain full 100% control above 7766 and 7707 - ES could dip there and nothing would have happened. In an ultra bull case it never gets near: the task for bulls is to recover and hold 7845 (or a quick trap below it). From there we simply continue up. The next big macro magnet is the big red megaphone resistance at roughly 8020. En route, targets are 7884, 7904, 7930, 7958. To add on strength, reclaims of 7845 are actionable.",
+  bear:"There is no real bear case until 7707 fails. In advance of that there is a risky short below 7811 - a breakdown trade below support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). Ideally price puts in one final bounce or a Failed Breakdown at 7811, then one shorts beneath the lows of that bounce - roughly a 7805 trigger down.",
+  summary:"Thursday plan: Tuesday evening's flagged 7839/7845 Failed Breakdown (7850 non-acceptance trigger) did not trigger overnight - ES dipped to 7836 by 7:50AM, rallied to 7846, then dipped into the 7820s and 7815 by 10:50AM, a few points shy of the 7811 support Adam didn't plan to bid anyway. ES rallied back to 7845 by 12:50PM, tapped the 7850 reclaim trigger at 1:00PM and Adam got long, locking 75% at about 7859 and leaving a 25% runner (alongside the 10% runner from last Thursday's 7707 Failed Breakdown). Big picture: the elevator down flushed Tuesday's 6AM low, and ES spent the day battling around 7845 after failing back from 7895. Lean: ES defends or recovers 7845, then sees 7884 (perhaps a dip), 7904, 7930, 7958. Sell < 7811.",
+  targets: {
+    major: [7866,7884,7893,7930,7958,7989,8010,8038,8066,8088],
+    minor: [7859,7872,7887,7904,7911,7919,7947,7963,7973,7978,7995,8001,8020,8027,8047,8057,8079]
+  },
+  supports: {
+    major: [7845,7820,7811,7793,7766,7737,7707,7681,7655,7634,7616],
+    minor: [7839,7832,7816,7803,7782,7774,7758,7748,7741,7725,7716,7698,7688,7671,7662,7645,7627]
+  },
+  range: {
+    status: "Two breakouts, now retracing into the first shelf",
+    headline: "Two ranges have broken out: the old 7707-7766 range (floor 7707, ceiling 7766) and the 7845 shelf of Sept 21-23 highs. ES ran to 7895 Tuesday, then failed back into 7845 on Wednesday, which is where it spent the day battling.",
+    summary: "Adam frames the last week as a stack of broken ranges. The first was the smaller range with 7707 support and 7768 resistance: ES broke out of it last Friday, backtested it from above on Monday, then ripped. The second is 7845, the shelf of highs from Sept 21-23: it cleared Tuesday to 7895, then failed back in Wednesday morning. He says that is normal - it typically takes price many attempts, with numerous traps, to break a range out, which is why he trades the traps instead of the breakouts. 7845 is now first support and a trappy, noisy zone. Bulls keep full control above 7766 and 7707; the job for them is to recover and hold 7845.",
+    ladder: [
+      {level:"8020", kind:"target", label:"The big macro magnet: resistance of the big red megaphone on Adam's chart."},
+      {level:"7884 / 7904 / 7930 / 7958", kind:"target", label:"Targets on the way up if 7845 holds or is recovered. Adam says 7884 may see a dip."},
+      {level:"7895", kind:"price", label:"Tuesday's high, a rough retest of the prior all-time high. ES failed back below 7845 after reaching it."},
+      {level:"7859", kind:"mid", label:"Where Adam locked 75% on Wednesday's 1PM 7845 reclaim long (first level up)."},
+      {level:"7845", kind:"ceiling", label:"The contested shelf: highs of Sept 21-23, broken out Tuesday and battled around all of Wednesday. Flushes and recoveries are actionable (bonus at 7839); reclaims are where to add. Not a level to simply buy."},
+      {level:"7816 - 7820", kind:"mid", label:"A shelf: Monday 4PM low at 7820 and Wednesday morning's 7816 low. Wait for 7811 to hold and recover this zone for a Failed Breakdown."},
+      {level:"7811", kind:"below", label:"Next big support. The risky breakdown short sits below it (roughly 7805 trigger after a bounce or Failed Breakdown). Sell < 7811."},
+      {level:"7766", kind:"ceiling", label:"Old range ceiling (7768 in earlier letters). Huge shelf of lows, staggered in 5 points. Wait for a sweep of the 7760 cluster that recovers both 7760 and 7766."},
+      {level:"7737", kind:"mid", label:"The big low from 2:50AM Friday. Failed Breakdown spot, with a bonus at 7725."},
+      {level:"7707", kind:"floor", label:"THE FLOOR. The shelf of lows ES recovered last Thursday. Bulls retain full control above it; Adam says there is no real bear case until it fails."},
+      {level:"7674", kind:"below", label:"Last Thursday's flush low (7681-7674 by 10AM), the far end of the rubber band that snapped back."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7845 is breakout territory; 7766 to 7845 is backtest territory where only Failed Breakdowns at 7845, 7811 (recovering 7816-20), and 7766 interest him; 7707 to 7766 is the old range; below 7707 is where a real bear case starts.",
+      "This is the first dip since the breakout, and Adam's read is the usual one: dips in this trend get bought, and the elevator-down flush that cleared Tuesday's 6AM low is the setup. His question is when this one gets bought, not whether.",
+      "Bulls retain 100% control above 7766 and 7707. The ultra bull case never gets that low: defend or recover 7845, or trap just below it.",
+      "His 7845 caveat: it is noisy and well tested, so the more it fails by on a flush (ideally tagging 7839), the safer the recovery.",
+      "Dates Adam gives inconsistently: the 7845 shelf is Sept 21-23 in most places but Sept 23-25 in the bull case text; the old ceiling is 7766 here versus 7768/7782 earlier. The levels themselves are consistent."
+    ]
+  },
+  },
+  { date:"10/07/2026", title:"SPX Goes Parabolic. Where To Now?", control:"bull", setups:[
+    {level:7867,type:"FBD",priority:"b",notes:"First support, and a major one \u2014 the zone ES broke down from in late August that started the early-September selloff (Adam writes August 27th today; Monday's plan said August 17th). ES recovered it today. Adam has no interest in supports this shallow from the highs; one can try the bid, or if ES is knifing, wait for it to flush and recover."},
+    {level:7845,type:"FBD",priority:"a",notes:"Where things get more interesting \u2014 the late-September highs ES broke out of today. One can trade the backtest long (Adam doesn't). What he WILL take: at 6AM today ES set a nice low at 7839, and if ES flushes that and recovers BOTH 7839 and 7845, that's a good long."},
+    {level:7839,type:"FBD",priority:"a",notes:"The 6AM Tuesday low. Pair its recovery with 7845 rather than bidding either in isolation."},
+    {level:7811,type:"FBD",priority:"b",notes:"One spot to try longs, though Adam won't take it. Nothing of interest below here until 7766."},
+    {level:7766,type:"FBD",priority:"a",notes:"A huge shelf of lows from midnight Monday to 8:30AM Monday, but staggered across a roughly 5-point range. Instead of just buying it, wait for ES to sweep the 7760 morning cluster of lows from Monday and recover BOTH that AND 7766 for a Failed Breakdown."}
+  ],
+  bull:"The bull case has played out nicely and now there is nothing to do but ride the runner, wait for the next 'elevator down' dip, then get long to do it all over again. This current move was caused by the same thing that causes all major rallies: a huge Failed Breakdown last Thursday where ES went elevator down to 7674, recovered 7707 (a huge low from the day before), then went parabolic. ES then broke out of a multi-day range that had mostly been 7706 to 7766, and ripped Tuesday. Bulls retain full 100% control above 7766 and 7707 \u2014 ES could dip there and nothing would have happened. In an ultra bull case ES won't get anywhere near there; it will just defend 7867 or 7845 (or a quick trap below them \u2014 7845 was the late-September highs, broken out today) and continue up. The next big macro magnet is the resistance of the big red megaphone on Adam's chart, around 8020. En route, targets are 7905, 7925, 7955. There is nowhere to add on strength that would not constitute chasing.",
+  bear:"There is no real bear case until 7707 fails. In advance of that, there is a risky short below 7845 \u2014 a breakdown trade below support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7845 short: ideally one final bounce here, OR a Failed Breakdown, then short beneath the lows of that bounce \u2014 likely a 7835 trigger down.",
+  summary:"Wednesday plan: Monday evening's flagged 7760 Failed Breakdown (7765 trigger) never triggered \u2014 ES was far too strong, so Adam simply rode his 10% runner from Thursday's 7707 Failed Breakdown. Checking price at 7:30AM Tuesday, ES was already in the 7860s with nothing to trade; it hit 7867 early and kept going to 7895, roughly retesting the prior all-time high. Big picture: Adam attributes the move to a Failed Breakdown (Thursday's flush to 7674 and recovery of 7707) paired with a range breakout (the 7707\u20137766 range) \u2014 about a 190-point rip, and 'there is literally nothing to trade now until we get another elevator down sell.' He trades when people are panicking and top-calling, not after the rip. Wednesday's plan: there are no supports until 7867, which is shallow from the highs \u2014 try the bid or wait for a flush-and-recover if ES is knifing. 7845 (late-September highs, broken out today) is where it gets more interesting; the trade he'd take is a flush of Tuesday's 6AM 7839 low that recovers both 7839 and 7845. 7811 is a spot to try, but not one he takes, and nothing of interest sits below until 7766 \u2014 where the entry is a sweep of Monday's 7760 cluster of lows that recovers both 7760 and 7766. Targets: 7905, 7925, 7955, with the 8020 megaphone resistance as the macro magnet. No real bear case until 7707 fails; a risky short exists below 7845, trigger near 7835. If 7845 fails, Adam says further retracement is even more bullish \u2014 'more red = more upside afterwards.'",
+  targets: {
+    major: [7867,7879,7904,7925,7955,7985,8000,8020],
+    minor: [7859,7872,7887,7895,7914,7940,7946,7967,7975,7989,8010]
+  },
+  supports: {
+    major: [7867,7845,7822,7811,7782,7766,7736,7707,7687,7673],
+    minor: [7859,7839,7829,7803,7792,7774,7755,7742,7725,7715,7699,7681]
+  },
+  range: {
+    status: "Extended \u2014 well above the old range",
+    headline: "The old range \u2014 floor 7707, ceiling 7766 \u2014 is now far below. ES ran to 7895 Tuesday, roughly retesting the prior all-time high: about 130 points above the old ceiling and about 190 above the floor.",
+    summary: "Adam's explanation for how ES got here is two ingredients: a Failed Breakdown (last Thursday ES went elevator down to 7674, then recovered 7707, the prior day's low) plus a range breakout (the multi-day range of roughly 7707 to 7766 broke out). 'If you pair a Failed Breakdown + a range break, you get today' \u2014 a roughly 190-point rip. Because the squeeze is done, he says there's nothing to trade until the next elevator-down sell, and he doesn't chase after the rip. The old ceiling and floor still matter as the levels where bulls keep full control, but price is far enough above them that the working levels now are the ones just under the highs: 7867 and 7845.",
+    ladder: [
+      {level:"8020", kind:"target", label:"The big macro magnet: resistance of the big red megaphone on Adam's chart."},
+      {level:"7905 / 7925 / 7955", kind:"target", label:"The next slate of targets on the way to 8020. Adam lists 7925 and 7955 as spots short-sellers might try."},
+      {level:"7895", kind:"price", label:"Tuesday's high, a rough retest of the prior all-time high. Nothing to do up here without chasing."},
+      {level:"7867", kind:"mid", label:"First support. The zone ES broke down from in late August, recovered Tuesday. Too shallow from the highs for Adam to engage; try the bid, or wait for a flush and recover if ES is knifing."},
+      {level:"7845", kind:"ceiling", label:"The late-September highs, broken out Tuesday and now the key backtest line. Adam's preferred long: flush Tuesday's 6AM 7839 low and recover BOTH 7839 and 7845."},
+      {level:"7835", kind:"below", label:"Risky short trigger. The bear case in advance of 7707 is a short below 7845, triggering around 7835 after a final bounce or a Failed Breakdown."},
+      {level:"7811", kind:"mid", label:"A spot to try longs, though Adam won't take it. Nothing of interest below until 7766."},
+      {level:"7766", kind:"ceiling", label:"Old range ceiling. A huge shelf of lows from midnight to 8:30AM Monday, staggered in a roughly 5-point range. Wait for a sweep of the 7760 cluster that recovers both 7760 and 7766."},
+      {level:"7707", kind:"floor", label:"THE FLOOR. The prior day's low that ES recovered last Thursday. Bulls retain full control above it, and Adam says there is no real bear case until it fails."},
+      {level:"7674", kind:"below", label:"Last Thursday's flush low (7681 to 7674 by 10AM), the far end of the stretched rubber band that snapped back."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7845 is extended territory with nothing to chase; between 7766 and 7845 is backtest territory where only the 7839/7845 and 7766 Failed Breakdowns interest him; 7707 to 7766 is the old range; and below 7707 is where a real bear case starts.",
+      "Bulls retain full 100% control above 7766 and 7707. ES could dip all the way there and nothing would have happened. In the ultra bull case it never gets near, defends 7867 or 7845 (or a quick trap below), and continues up.",
+      "If 7845 fails, Adam says retracing further is 'even more bullish': more red means more upside afterwards, because every point of selling feeds the next squeeze, as long as a Failed Breakdown triggers it.",
+      "Details Adam gives inconsistently across newsletters, so treat them as approximate: the old ceiling is 7766 today versus 7768/7782 yesterday; the late-September highs are dated Sept 23\u201325 in one place and Sept 21\u201323 in another; and the 7867 breakdown is dated Aug 27th today versus Aug 17th yesterday. The levels themselves are consistent.",
+      "Size, from his numbers: the old range was about 59 points wide (7707 to 7766). Tuesday's 7895 high is about 129 points above the old ceiling and about 188 above the floor, which matches his 'we just had a 190 point rip.'"
+    ]
+  },
+  },
   { date:"10/06/2026", title:"Are All Time Highs Coming For SPX?", control:"bull", setups:[
     {level:7782,type:"FBD",priority:"b",notes:"First support down. Adam isn't interested in buying this (he only trades high-quality Failed Breakdowns), but you can try the bid here if you want to trade."},
     {level:7768,type:"FBD",priority:"a",notes:"Support, but heavily used up and noisy now. Instead of just buying it, wait for ES to sweep the 7760 morning cluster of lows and recover BOTH that AND 7768 for a Failed Breakdown."},
@@ -2644,6 +2777,37 @@ var setupDays = [
   targets: {
     major: [7845,7867,7886,7923,7975],
     minor: [7830,7838,7858,7871,7879,7895,7903,7915,7931,7943,7960,7968]
+  },
+  supports: {
+    major: [7823,7811,7782,7768,7741,7707,7686,7672,7656,7635,7616,7584,7566,7541,7512],
+    minor: [7803,7791,7774,7755,7749,7736,7725,7716,7698,7682,7662,7645,7627,7605,7594,7573,7559,7548,7533,7526]
+  },
+  range: {
+    status: "Broken out to the upside",
+    headline: "A roughly two-week range \u2014 floor 7707, ceiling 7768/7782 \u2014 broke out Monday. ES ran to 7823, about 40 points above the old ceiling and about 115 above the floor.",
+    summary: "Adam calls rangebound action 'Mode 2' \u2014 the default state, which he says covers about 90% of days: price goes one way for a few hours, traps, reverses, and repeats. Since around September 23rd ES had been deeply rangebound, held up by big lows at 7707 (set last Wednesday and Thursday) and capped by 7768, which was resistance most of last week with numerous traps above it, plus 7782 just over it. Monday ES trended out of the range \u2014 in his words, 'price trends when it trends and it did today.' Because that was the squeeze he'd been waiting on, he says the work is done until the next elevator-down sell, Failed Breakdown and rip; with price extended, there is nothing he would chase.",
+    ladder: [
+      {level:"All-time highs", kind:"target", label:"End of the path. Adam's lean: 7845, react, 7867, react, then all-time highs."},
+      {level:"7867", kind:"target", label:"Second stop up. It backtests where ES broke down on August 17th, so a reaction or dip is likely here. Also a spot short-sellers might try."},
+      {level:"7845", kind:"target", label:"First stop up. It retests the late-September highs."},
+      {level:"7823", kind:"price", label:"Monday's high, where price ran to. Adam lists it as a spot for short-sellers, not one he takes. Up here there is nothing to do that doesn't involve chasing into resistance."},
+      {level:"7811", kind:"mid", label:"A dip here that traps and recovers would be a lower-quality entry. Adam says he wouldn't take it."},
+      {level:"7782", kind:"ceiling", label:"Outer edge of the old ceiling and the first support down. Adam isn't interested in buying it, but others can try the bid."},
+      {level:"7768", kind:"ceiling", label:"Main ceiling of the old range: resistance most of last week, with numerous traps above it. Now backtest support, but 'heavily used up and noisy.' The better entry is a sweep of the 7760 morning cluster of lows that recovers both 7760 and 7768."},
+      {level:"7741 \u2013 7755", kind:"mid", label:"Mid-range shelf. 7741 is a late-Thursday shelf and 7755 is Friday's 11:20AM low. A test of 7741 that recovers 7755 would be a good Failed Breakdown."},
+      {level:"7725", kind:"mid", label:"Thursday 9:30PM low that launched the rally to the highs. Wait for a Failed Breakdown of it rather than bidding it."},
+      {level:"7707", kind:"floor", label:"THE FLOOR. Big lows from last Wednesday and Thursday, plus Thursday's 1:30PM low. Adam: bulls retain full control above 7707. Risky to buy directly; a Failed Breakdown of this low is the safer entry."},
+      {level:"7700", kind:"below", label:"Bear trigger. The bear case begins below 7707; a short would trigger around 7700 after a final bounce or a Failed Breakdown."},
+      {level:"7686 / 7672", kind:"below", label:"Thursday's flush zone. 7686 is the shelf from that morning and 7672 is last Thursday's daily low, the lowest print of the flush. A Failed Breakdown of 7672 is Adam's preferred entry down here."}
+    ],
+    notes: [
+      "Three zones, using Adam's levels: above the old ceiling (7768/7782) is breakout territory where he sees nothing to do without chasing; between 7707 and 7782 is the old range, now backtest territory where only high-quality Failed Breakdowns count; below 7707 is where the bear case begins.",
+      "Strong bull case: ES defends the backtest of the ceiling \u2014 7782/7768, or a quick trap below, at the lowest \u2014 and simply resumes up. Ultra bull case: it never retests 7782/7768 and runs straight to 7845.",
+      "Mild bull case: ES simply stays above 7707, where Adam says bulls are 'fully and completely' in control.",
+      "What would change the picture: losing the 7707 floor opens the bear case. Even then, Adam notes that about 80% of breakdowns trap, and he doesn't take those shorts himself.",
+      "The ceiling is a zone, not a single line: Adam quotes it both as 7768 and as 7768/82. Read 7782 as the outer edge and 7768 as the inner, most-tested line.",
+      "Size, from his numbers: the old range was about 61 points wide to 7768 (75 to 7782). Price now sits about 40 points above the ceiling and about 115 above the floor, which is why he's standing down until the next elevator-down sell."
+    ]
   },
   },
   { date:"10/05/2026", title:"Will The SPX Strength Continue Next Week?", control:"bull", setups:[
@@ -4005,6 +4169,48 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "10/07/2026": {
+    intro: "Wednesday was the first real dip since the breakout, and Adam got a long. Tuesday evening's flagged 7839/7845 Failed Breakdown (Tuesday's 6AM 20+ point low at 7839 plus the Sept 21-23 shelf at 7845, trigger 7850 via the non-acceptance protocol) did not trigger overnight: ES dipped to 7836 by 7:50AM, rallied to 7846, then dipped again into the 7820s and 7815 by 10:50AM, a few points shy of the 7811 support Adam had said he wouldn't take. ES rallied back to 7845 by 12:50PM, tapped the 7850 reclaim trigger at 1PM, and Adam got long, locking 75% at about 7859 and leaving a 25% runner.",
+    adamTrade: {
+      label: "7845 Reclaim Long (1:00 PM)",
+      entryPrice: 7850,
+      entryTime: "1:00 PM Wed",
+      setup: "Reclaim",
+      result: "win",
+      targets: [
+        {label:"T1", price:7859, portion:"75%", status:"hit"},
+        {label:"Runner", price:null, portion:"25%, left to run - open alongside the 10% runner from last Thursday's 7707 Failed Breakdown", status:"open"}
+      ],
+      narrative: "Adam's morning plan was the 7839/7845 Failed Breakdown: flush the 6AM low at 7839, then recover both 7839 and 7845 with the 7850 non-acceptance trigger. ES dipped to 7836 by 7:50AM but never triggered before the open, rallying to 7846 and dipping again. He did nothing through the elevator down to the 7820s (7815 by 10:50AM), then waited for the 7845 reclaim as ES rallied back by 12:50PM. At 1PM it tapped the 7850 trigger, he got long, and the trade followed through to about 7859 where he locked 75%. With a green trade in the books he went into profit protection mode: no more trades, just riding the runners."
+    },
+    recapSetups: [
+      { level:"7839 / 7845", setupLabel:"Failed Breakdown (Overnight, Untriggered)", time:"Tue Evening - Wed 7:50 AM", outcome:"notrigger", outcomeLabel:"No Trigger Before The Open", note:"The 7839 low (a 20+ point move) paired with the Sept 21-23 shelf at 7845 meant ES had to recover both, with 7850 as the non-acceptance trigger. ES dipped to 7836 by 7:50AM and rallied to 7846 but never held, then dipped again. Adam simply waited for it to recover." },
+      { level:"7811", setupLabel:"Support Bid (Not Taken)", time:"10:50 AM", outcome:"notrigger", outcomeLabel:"Missed By A Few Points, No Interest", note:"Adam had flagged 7811 as one spot to try longs, though he wouldn't take it. ES bottomed at 7815 by 10:50AM, a few points shy, so there was little to do." }
+    ],
+    whatsDifferent: [
+      "The first dip since the breakout above 7845: ES reached 7895 Tuesday, then failed back into 7845 and spent Wednesday battling it.",
+      "The elevator down in the morning flushed Tuesday's 6AM low, setting the cycle for the reclaim.",
+      "Adam's entry is a reclaim of 7845 at the 7850 trigger rather than a classic deep flush Failed Breakdown - the flush was shallow (7836 vs 7839).",
+      "He is now managing two runners: the 10% from last Thursday's 7707 Failed Breakdown and a fresh 25% from the 7845 reclaim.",
+      "Profit protection is spelled out: after a win, sit on the runner, no other trades, and only a second trade if the runner stops below break-even and a new planned setup appears.",
+      "A new line is added to the plan: sell < 7811, with the risky short trigger near 7805."
+    ]
+  },
+  "10/06/2026": {
+    intro: "Tuesday was another pure runner day, and ES pushed right back to the prior all-time high area. Monday evening's flagged 7760 Failed Breakdown (7765 trigger) never triggered \u2014 ES was far too strong to sell back into it, so Adam simply waited for the next elevator down. Checking price at 7:30AM Tuesday, ES was already in the 7860s with nothing to do up there; the long from Thursday had paid nicely and he was running targets with the 10% runner from the 7707 Failed Breakdown. ES hit 7867 early in the morning and kept going to 7895, roughly retesting the prior all-time high. Since ES ripped all day, there was nothing to do but ride the runner.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7760 / 7766", setupLabel:"Failed Breakdown (Flagged, Untriggered \u2014 ES Too Strong)", time:"Mon Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong for Entry", note:"The first actionable Failed Breakdown after Monday's rip was down at 7760, Monday's low of day. Adam had asked for a sweep of the 7760 cluster that recovered both 7760 and 7768, because there was plenty of Friday and early-Monday price action at 7766\u201368 \u2014 and there's no point longing a clean low at 7760 if small lows and structure sit 5 points higher. ES was far too strong to ever sell back into it, so Adam waited for the next elevator down." }
+    ],
+    whatsDifferent: [
+      "ES reaches 7895, a rough retest of the prior all-time high \u2014 the first time all-time highs have been touched during this stretch of the journal, after Monday's flagged path of 7845, then 7867, then all-time highs.",
+      "Adam attributes the roughly 190-point rip to two ingredients paired together: a Failed Breakdown (Thursday's flush to 7674 and recovery of 7707) plus a range breakout \u2014 'if you pair a Failed Breakdown + a range break, you get today.'",
+      "For the first time there are no supports for a long way: the nearest support is 7867, a level ES only just broke out through, so no actionable Failed Breakdown sits within about a hundred points of price. Adam says he has no interest in supports that shallow from the highs.",
+      "He spells out why he pairs 7760 with 7766\u201368: enter only after price cuts through all the noisy structure above a clean low.",
+      "The bear case is stated as 'no real bear case until 7707 fails,' with only a risky short below 7845 in advance.",
+      "Small inconsistencies in the newsletter dates: the 7867 breakdown is called August 27th today (August 17th on Monday), and the late-September highs are dated Sept 23\u201325 in one place and Sept 21\u201323 in another."
+    ]
+  },
   "10/05/2026": {
     intro: "Monday was a pure runner day and a clean range breakout. Sunday evening's flagged 7749 Failed Breakdown (a nice 20+ point low) never triggered \u2014 ES gapped up and was far too strong to ever sell back into it, so Adam sat back and waited for the next elevator down. Checking price at 7:30AM Monday, ES had spent most of the early morning (2AM to 6:45AM) just testing and trapping 7768 support, and Adam had no interest in engaging it. ES then rallied through the session to 7823 \u2014 precisely the first target flagged Friday afternoon \u2014 breaking out of the roughly two-week 7707\u20137768/82 range he called a 'perfect session.' The 10% runner from Thursday's 1:21PM 7707 Failed Breakdown remains open.",
     adamTrade: null,
@@ -6127,8 +6333,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) & 7707 FBD (10/1)";
-    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM & Thu 10/1 1:21PM";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) & 7845 reclaim (10/7, 25%)";
+    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM, Thu 10/1 1:21PM & Wed 10/7 1:00PM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
@@ -6183,6 +6389,57 @@ function selectTodayDate(dateStr) {
     document.getElementById("td-targets-minor").innerHTML = minorHtml;
   } else {
     targetsSection.style.display = "none";
+  }
+
+  var supportsSection = document.getElementById("td-supports-section");
+  var hasSupMajor = sd.supports && sd.supports.major && sd.supports.major.length;
+  var hasSupMinor = sd.supports && sd.supports.minor && sd.supports.minor.length;
+  if (hasSupMajor || hasSupMinor) {
+    supportsSection.style.display = "";
+    var supMajorHtml = "";
+    if (hasSupMajor) {
+      for (var smi = 0; smi < sd.supports.major.length; smi++) {
+        supMajorHtml += "<div class='today-target-chip major'>" + sd.supports.major[smi] + "</div>";
+      }
+    } else {
+      supMajorHtml = "<div class='today-target-empty'>None recorded.</div>";
+    }
+    document.getElementById("td-supports-major").innerHTML = supMajorHtml;
+
+    var supMinorHtml = "";
+    if (hasSupMinor) {
+      for (var sni = 0; sni < sd.supports.minor.length; sni++) {
+        supMinorHtml += "<div class='today-target-chip'>" + sd.supports.minor[sni] + "</div>";
+      }
+    } else {
+      supMinorHtml = "<div class='today-target-empty'>None recorded.</div>";
+    }
+    document.getElementById("td-supports-minor").innerHTML = supMinorHtml;
+  } else {
+    supportsSection.style.display = "none";
+  }
+
+  var rangeSection = document.getElementById("td-range-section");
+  if (sd.range && sd.range.ladder && sd.range.ladder.length) {
+    var rangeEsc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+    rangeSection.style.display = "";
+    document.getElementById("td-range-status").textContent = sd.range.status || "";
+    document.getElementById("td-range-headline").textContent = sd.range.headline || "";
+    document.getElementById("td-range-summary").textContent = sd.range.summary || "";
+    var ladderHtml = "";
+    for (var rli = 0; rli < sd.range.ladder.length; rli++) {
+      var rl = sd.range.ladder[rli];
+      ladderHtml += "<div class='range-row " + rangeEsc(rl.kind || "mid") + "'><span class='range-level'>" + rangeEsc(rl.level) + "</span><span class='range-label'>" + rangeEsc(rl.label) + "</span></div>";
+    }
+    document.getElementById("td-range-ladder").innerHTML = ladderHtml;
+    var notesHtml = "";
+    var rangeNotes = sd.range.notes || [];
+    for (var rni = 0; rni < rangeNotes.length; rni++) {
+      notesHtml += "<li>" + rangeEsc(rangeNotes[rni]) + "</li>";
+    }
+    document.getElementById("td-range-notes").innerHTML = notesHtml;
+  } else {
+    rangeSection.style.display = "none";
   }
 
   // highlight active date in sidebar, expand its month if collapsed
