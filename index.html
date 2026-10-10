@@ -1019,7 +1019,7 @@
 
       <div class="today-runner" id="td-runner-row">
         <span class="today-runner-dot" id="td-runner-dot"></span>
-        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) &amp; 7803 FBD (10/8, 25%)</span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) &amp; 7803 FBD (10/8)</span>
         <span class="today-runner-since" id="td-runner-since">since Thu 10/8 2:15PM</span>
       </div>
 
@@ -2673,6 +2673,52 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"10/12/2026", title:"Are All Time Highs In Sight For SPX?", control:"bull", setups:[
+    {level:7840,type:"FBD",priority:"b",notes:"First support down, but so well tested now it is hard to engage and Adam won't trade it. It is a complex, trappy region: at 6:45AM Friday ES set a nice low at 7840 and bounced, then another at 8:50AM at 7833. If you want to trade it, wait for 7833 to test and then recover 7840."},
+    {level:7822,type:"FBD",priority:"a",notes:"7820-22 was a big support shelf all week, with a nice low set at 8PM Thursday. Wait for it to flush and recover. Or, if ES just holds 7820-22, wait for it to defend and recover 7827 - the nice low set at 10AM Friday, whose recovery is a Failed Breakdown."},
+    {level:7803,type:"FBD",priority:"a",notes:"The massive 6:30AM Thursday low that ES flushed and recovered Thursday at 2:15PM. One could try just buying it, but if ES is knifing down at full speed, wait for the zone to flush and recover - much safer."},
+    {level:7782,type:"FBD",priority:"a",notes:"Thursday's low of day. Nothing between 7803 and here. The Failed Breakdown of this low is high quality."},
+    {level:7765,type:"FBD",priority:"a",notes:"A huge shelf of lows from midnight Monday until 8:30AM Monday, staggered across a 5-point range. Instead of just buying it, wait for ES to sweep the 7760 morning cluster of lows from Monday and recover BOTH 7760 AND 7765 for a Failed Breakdown."},
+    {level:7737,type:"FBD",priority:"b",notes:"The big low from 2:50AM last Friday. Watch for a Failed Breakdown, with a bonus if ES tags 7725 on the flush. Nothing below there until 7707."},
+    {level:7707,type:"FBD",priority:"a",notes:"A nice low set around 2:10PM on October 1st (Adam writes 'October 31st') from which ES ripped to the highs. Watch for a Failed Breakdown here."}
+  ],
+  bull:"The 50+ point rally into Friday was caused by the same dynamic that causes all rallies: a Failed Breakdown. From 12:15PM to 1:15PM Thursday ES went elevator down 81 points to 7782, then recovered 7803 (a massive 6:30AM Thursday low) at 2:15PM and ripped. ES has spent this week rangebound, mostly 7822 (with several traps below) to 7858. Just above is 7872, the shelf that broke down last Thursday to start the recent leg down. The bull case is simply that ES preserves this range and breaks it out: 7872, react, then 7884, 7904 (which re-tests the all-time high). Clear that and the leg to brand-new highs starts: 7914, 7935, 7985. In an ultra bull case ES just defends 7845-40 (or a quick trap below) and heads up. Adding on strength is risky and amounts to chasing after the recent rally; a 7872 recovery is one option but high risk and complex.",
+  bear:"Begins below 7803 - a breakdown trade below support. ~80% of breakdowns trap even though these are low win-rate, high R/R trades (expect 60%+ to fail before one pays out huge). For the 7803 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce - roughly a 7795 trigger down. Backtest short Adam lists: 7872, the shelf of lows broken down last Thursday to trigger the selling; nothing above until 7914.",
+  summary:"Monday plan: Thursday evening's flagged Failed Breakdown of the 7782 low of day never triggered - ES was too strong, and the only add-on spot was a 7822 reclaim after 6PM (7827 non-acceptance trigger), which Adam did not engage. At 7:30AM Friday ES had already ripped to 7845+ and then to 7858, so there was nothing to do except ride the 10% runner from Thursday's 2:15PM 7803 Failed Breakdown. Big picture: all of this week was ES retracing, digesting and consolidating the 190+ point leg from the first week of October, in a Mode 2 range of roughly 7822 to 7858. Lean: fill out the range, break out to 7884, 7904 (an ATH retest), then new highs at 7914, 7935, 7985. Sell < 7803.",
+  targets: {
+    major: [7857,7872,7884,7914,7935,7953,7985,7999,8005,8039],
+    minor: [7862,7867,7879,7887,7895,7904,7916,7930,7941,7947,7959,7965,7971,7977,8010,8016,8027]
+  },
+  supports: {
+    major: [7853,7840,7822,7803,7782,7765,7742,7727,7707,7686,7672,7657,7616,7585],
+    minor: [7857,7835,7811,7789,7774,7756,7749,7737,7716,7698,7682,7661,7645,7635,7627,7605,7596]
+  },
+  range: {
+    status: "Mode 2 range, bulls aiming to break it out",
+    headline: "This week's Mode 2 range is roughly 7822 (with several traps below) to 7857/7858. Above it sits 7872, the shelf that broke down last Thursday; below it, 7803 and 7782 are the Failed Breakdown lows from Thursday.",
+    summary: "Adam says ES spent the whole week consolidating after the 190+ point leg from early October. Mode 2 means consolidation (about 90% of days): price goes one way, traps, goes the other. Mode 1 is a clean open-to-close trend (about 10%). The week's boundaries: a floor around 7822 with several traps beneath it, and a ceiling at 7857/7858. Just above the ceiling is 7872, which backtests the shelf of lows ES broke down on October 1st to begin the leg lower - his magnet and the obvious first reaction level. His bull case is simply that ES preserves the range and breaks it out, then retests the all-time high around 7904. The real downside line is 7803 (the bear case begins below it); bulls retain control as long as they hold 7765 on a deeper retrace.",
+    ladder: [
+      {level:"7985", kind:"target", label:"Far target on the leg to brand-new highs. Path: 7914, 7935, 7985."},
+      {level:"7904", kind:"target", label:"Re-tests the all-time high. Adam wants this cleared before the leg to new highs starts."},
+      {level:"7884", kind:"target", label:"Next stop after 7872, reached on a range breakout."},
+      {level:"7872", kind:"target", label:"Just above the range: the shelf of lows broken down last Thursday to trigger the recent leg down. A magnet and react zone; also the backtest short Adam lists."},
+      {level:"7857 / 7858", kind:"ceiling", label:"RANGE CEILING. Friday's high of about 7858 and the top of the week's range. Major resistance."},
+      {level:"7845 / 7840", kind:"mid", label:"Ultra bull case: ES just defends 7845-40 (or a quick trap below). 7840 is the first support but too well tested for Adam; wait for 7833 to test and 7840 to recover."},
+      {level:"7822 - 7827", kind:"floor", label:"RANGE FLOOR. The big shelf of lows all week, with several traps below. An 8PM Thursday low at 7820-22 and a 10AM Friday low at 7827 give two Failed Breakdown options."},
+      {level:"7803", kind:"below", label:"Thursday's massive 6:30AM low, recovered at 2:15PM Thursday. The bear case begins below it; a short would trigger around 7795 after a final bounce or Failed Breakdown."},
+      {level:"7782", kind:"below", label:"Thursday's low of day (the 81-point elevator down ended here). High-quality Failed Breakdown."},
+      {level:"7765", kind:"mid", label:"Staggered 5-point shelf of lows from Monday. Wait for a sweep of 7760 that recovers both 7760 and 7765."},
+      {level:"7707", kind:"floor", label:"Structural floor: the shelf from the late-September/October lows. A Failed Breakdown is watched here."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7858 is breakout territory with 7872 as the first reaction; 7822 to 7858 is the Mode 2 range (an ultra bull defends 7845-40); 7782 to 7822 is where Failed Breakdowns at 7803 and 7782 interest him; below 7803 the bear case begins; and 7707 is the structural floor.",
+      "Adam's main message: the whole week was a consolidation, not a new trend. 'A new trend leg is coming. Is it setting up for ATHs?' - and his lean (deferring to the trend) is yes: fill out the range, break out to 7884 and 7904, then new highs.",
+      "On Friday ES ripped to about 7845+ the evening before, then ran to 7858 after defending 7811/7803, matching Thursday's plan; there was nothing for Adam to trade.",
+      "Adding on strength is described as risky here and amounts to chasing; 7872 recovery is an option but 'high risk and complex'.",
+      "Dates and levels Adam gives inconsistently, so treat them as approximate: the range is '7822 to 7857' in one place and '7858 to 7822' in another; the October 1st low is dated 'October 31st'; and the shelf broken down 'last Thursday' is called 'Wednesday morning' elsewhere in the letter."
+    ]
+  },
+  },
   { date:"10/09/2026", title:"SPX Is Consolidating For A Move. What Way?", control:"bull", setups:[
     {level:7803,type:"FBD",priority:"b",notes:"First support and a major one: a well-engaged, trappy zone now (Adam won't trade it again). If ES can flush below it - perhaps to 7791 - and recover, that is a decent long. Reclaims of 7803 are also where to add on strength. It was the overnight low, and the 6:30AM low from which Thursday's 2:15PM Failed Breakdown triggered."},
     {level:7782,type:"FBD",priority:"a",notes:"A nice low set at 1:30PM Thursday from which ES rallied 20+ points. The Failed Breakdown of this low is actionable."},
@@ -4213,6 +4259,22 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "10/09/2026": {
+    intro: "Friday was a pure runner day. Thursday evening's flagged Failed Breakdown of the 7782 low of day (non-acceptance trigger 7787) never triggered: ES closed around 7810 and was too strong to sell back into it. The only add-on spot was a reclaim of 7822 after 6PM Thursday (7827 non-acceptance trigger), which popped to 7845+ that evening, but Adam did not engage. At 7:30AM Friday ES had already ripped to 7845+, then ran to 7858 after defending 7811/7803, exactly the path from Thursday's plan - leaving nothing to trade and the 10% runner from Thursday's 2:15PM 7803 Failed Breakdown to work.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7782", setupLabel:"Failed Breakdown (Flagged, Untriggered - ES Too Strong)", time:"Thu Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong for Entry", note:"The Failed Breakdown of Thursday's 7782 low of day was the first obvious setup into the close, but ES closed around 7810 and never sold back down to it. A significant low here fit definition #1, the prior day's low. Adam simply waited for the next elevator down." },
+      { level:"7822", setupLabel:"Add-On Reclaim (Not Engaged)", time:"After 6 PM Thu", outcome:"notrigger", outcomeLabel:"Reclaim Worked, Adam Passed", note:"ES reclaimed 7822 after 6PM Thursday, which could have been longed via the non-acceptance protocol (7822 + 5 = 7827). It popped from there to 7845+ that evening. Adam did not engage and held the 10% runner instead." }
+    ],
+    whatsDifferent: [
+      "Thursday's 7803 Failed Breakdown is described as the cycle in action: an 81-point straight-line elevator down from 12:15PM to 1:15PM to 7782, then a recovery of the 46-point 6:30AM low at 2:15PM and a rip of 50+ points.",
+      "ES hit 7858, exactly the first part of Thursday's called path (7845, 7858, then 7872), another pre-flagged target reached essentially to the tick. 7872 remains the next magnet.",
+      "Adam labels the whole week as consolidation: 'ES retracing/digesting/consolidating the 190+ point leg' with 'a new trend leg coming', and asks whether it is setting up for all-time highs.",
+      "The Mode 2 range is spelled out numerically for the first time this stretch: roughly 7822 (with traps below) to 7857/7858.",
+      "Runner sizing: Adam says he is holding a 10% runner from Thursday's 7803 trade, down from the 25% left after 75% was locked at 7816, implying he trimmed more at the next level; he doesn't state the exit.",
+      "A new level is introduced: the 7840 / 7833 pair (Friday's 6:45AM and 8:50AM lows), with Adam calling that zone too well tested to engage."
+    ]
+  },
   "10/08/2026": {
     intro: "Thursday delivered two winning Failed Breakdown longs in the cycle Adam describes. Wednesday evening's flagged 7820 Failed Breakdown (the 4PM Monday low, 7825 non-acceptance trigger) was set up when ES dipped to 7802 by 6:30AM. At 7:30AM ES was bouncing off 7802, so Adam waited, got long at 7825 around 8:30AM and locked 75% at 7832 and more at 7839. ES ran to about 7845, then went elevator down again; the 10% runner trailed out 5-6 points below break-even (and the 25% runner from Wednesday's 7845 trade had already trailed out overnight). ES dipped to 7782 by 1:27PM, which Adam skipped, but the 6:30AM 7803 low offered a safer Failed Breakdown, triggered via non-acceptance (7803 + 7809) at 2:15PM for a second win.",
     adamTrade: {
@@ -6405,7 +6467,7 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) & 7803 FBD (10/8, 25%)";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2), 7707 FBD (10/1) & 7803 FBD (10/8)";
     document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM, Thu 10/1 1:21PM & Thu 10/8 2:15PM";
   } else {
     runnerRow.style.display = "";
