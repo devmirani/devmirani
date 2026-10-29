@@ -2673,6 +2673,106 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"10/29/2026", title:"Are All Time Highs Coming For SPX?", control:"bull", setups:[
+    {level:7835,type:"BACKTEST",priority:"b",notes:"Where ES broke down two Wednesdays ago (Oct 14) to start the recent cycle of selling. React there; then Adam sees an all-clear path for bulls to 7900+ and then all-time highs at 7920+. Also a backtest-short spot."},
+    {level:7803,type:"BACKTEST",priority:"b",notes:"Range resistance (the highs on Oct 16th and Oct 21st; the ceiling for the last couple weeks). The most obvious backtest-short spot. In the bull case ES keeps ripping up the range: 7803, react, then 7835."},
+    {level:7772,type:"Reclaim",priority:"b",notes:"First support of interest down. Adam has no interest in touching it, but reclaims are actionable; if you want it, at least wait for it to flush and recover."},
+    {level:7752,type:"FBD",priority:"a",notes:"A nice 3-touch shelf of lows between 6:20PM Wednesday and 9:40AM Thursday (the 7748-57 key zone). Its Failed Breakdown is actionable; bonus if ES tags 7748, then recovers 7752. Bulls want to hold 7752 (or a quick trap below)."},
+    {level:7732,type:"DIRECT BID",priority:"b",notes:"Adam has no interest, but you can try a risky bid or wait for it to flush and recover."},
+    {level:7712,type:"FBD",priority:"a",notes:"A great low set at 10:15AM Wednesday; its Failed Breakdown is actionable."},
+    {level:7703,type:"FBD",priority:"a",notes:"7703-7699: the complex shelf of lows from noon Monday to 4AM Tuesday. Its Failed Breakdown is actionable. There is no bear case at all until below 7703."},
+    {level:7677,type:"FBD",priority:"a",notes:"The 9AM Monday low and the long-standing 4-5 touch shelf (Sep 18, Oct 1, Oct 16, Oct 22), very noisy now. Its Failed Breakdown is actionable; bulls control above 7677."},
+    {level:7663,type:"FBD",priority:"a",notes:"A 3-touch shelf of lows (2:30-7AM Monday). Adam won't buy it directly (risky, below 7677) but the Failed Breakdown is a high-quality long."},
+    {level:7649,type:"FBD",priority:"a",notes:"Friday's low of day (the 160-point sell); the Failed Breakdown is actionable, with a bonus if ES tags 7635."},
+    {level:7616,type:"FBD",priority:"a",notes:"High-quality Failed Breakdown: the large 6PM September 16th low. Nothing beneath it until the Sept 16 7575 major low."}
+  ],
+  bull:"ES is in a large, constantly morphing range (since about Oct 16th): 7677 support (a 4-5 touch shelf, now noisy) to 7803 resistance (the highs on Oct 16th and 21st). After Friday's sweep of 7677 down to 7649 (a 160-point sell), ES worked up the range all week, reaching the 7790s Wednesday. In the bull case, ES keeps ripping up the range: 7803, react, then 7835, where it broke down two Wednesdays ago. React there, and it should be an all-clear path for bulls to 7900+ and then all-time highs at 7920+. Bulls control above 7677, but in a strong bull case ES goes nowhere near it, defends 7752 (or a quick trap below) and resumes up. There is nowhere to add on strength without chasing.",
+  bear:"No bear case at all until below 7703 - a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail). For the 7703 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce, likely near 7695. Backtest shorts: 7803 range resistance (the most obvious) and 7835 (where ES broke down two weeks ago). Adam does not short.",
+  summary:"Thursday plan: ES closed Tuesday around 7790, too strong to reach the flagged 7703-7699 Failed Breakdown. Wednesday at 7:30AM ES had pushed up the 7677-7803 range and, with FOMC at 2PM, Adam just held his 10% Sunday runner. ES chopped 7750-7780 all morning, there was little change after the 2PM FOMC release, and it ran to about 7795. No new trade. Lean: work up the range to 7803, react, then head to 7835; bulls want to hold 7752 or a quick trap below. Beyond 7835 Adam sees an all-clear path to 7900+ and all-time highs at 7920+. No bear case until below 7703.",
+  targets: {
+    major: [7803,7835,7845,7863,7873,7903,7918],
+    minor: [7782,7792,7808,7811,7825,7853,7884,7893,7907]
+  },
+  supports: {
+    major: [7772,7752,7748,7732,7720,7712,7703,7677,7645,7616,7585,7545],
+    minor: [7761,7757,7740,7724,7695,7686,7670,7662,7652,7635,7627,7604,7593,7575,7567,7558]
+  },
+  range: {
+    status: "Near the top of the range",
+    headline: "ES has worked up the multi-week 7677-7803 range to the 7790s after FOMC and sits just under range resistance. Ceiling 7803, then 7835; floor/key zone 7748-57, then 7703-7699.",
+    summary: "Adam's framework is unchanged: 7677 is range support (noisy), 7803 is range resistance, in a range since about Oct 16th. After Friday's trap of range support (the 160-point sell to 7649) ES ran up the range for three days, which he notes is typical: after a major range traps dramatically and recovers, we get a level-to-level day trade on a Failed Breakdown, and price often gravitates to the range's resistance. For Thursday the lean is 7803, react, then 7835 and, if bulls recover it, an all-clear path to 7900+ and all-time highs at 7920+. Bulls want to hold 7752 or a quick trap below; a bear case only exists below 7703.",
+    ladder: [
+      {level:"7920+", kind:"target", label:"All-time highs; Adam sees an all-clear path from 7835 to 7900+ and then 7920+."},
+      {level:"7835", kind:"ceiling", label:"The Oct 14 breakdown shelf. React here; also a backtest-short spot."},
+      {level:"7803", kind:"ceiling", label:"RANGE CEILING. The highs on Oct 16th and 21st; the most obvious backtest-short spot."},
+      {level:"7782 / 7795", kind:"price", label:"Wednesday's push after the 2PM FOMC release reached about 7795; 7782 is the first resistance listed."},
+      {level:"7772", kind:"mid", label:"First support of interest. Reclaims actionable; wait for a flush and recover."},
+      {level:"7748 - 7757", kind:"floor", label:"KEY ZONE / FLOOR for the day. 7752 is a 3-touch shelf of lows (6:20PM Wed-9:40AM Thu); its Failed Breakdown is actionable, bonus if ES tags 7748 then recovers 7752."},
+      {level:"7712", kind:"below", label:"A great low set at 10:15AM Wednesday; Failed Breakdown actionable."},
+      {level:"7703 - 7699", kind:"below", label:"Complex shelf of lows (noon Monday to 4AM Tuesday). Failed Breakdown actionable; no bear case until below 7703."},
+      {level:"7677", kind:"below", label:"Range support: the 9AM Monday low and the 4-5 touch shelf. Noisy but bulls control above it."},
+      {level:"7663 / 7649", kind:"below", label:"7663 is a 3-touch shelf (won't buy directly); 7649 is Friday's low of day, with a bonus if ES tags 7635."},
+      {level:"7616", kind:"below", label:"The 6PM September 16th low; a high-quality Failed Breakdown long."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7835 is an all-clear path to 7900+ and all-time highs; 7803 is the range ceiling; 7752 to 7803 is the upper range where ES now sits; 7677 to 7752 is the lower range he doesn't expect to visit in a strong bull case; below 7703 the bear case begins.",
+      "FOMC was at 2PM Wednesday: little changed initially; ES had chopped 7750-7780 all morning and then ran to about 7795 after the release. Adam held his runner and didn't engage.",
+      "Adam notes that after a major range traps dramatically and recovers, the only thing that matters practically is the level-to-level day trade on the Failed Breakdown with a runner; price gravitating to the range resistance is 'irrelevant for practical purposes'.",
+      "No trade Wednesday: he held the 10% Sunday runner, which remains his only open position, as ES moved up the range.",
+      "Details Adam gives inconsistently, so treat them as approximate: 'Friday October 18th' for the 7677 low again (Friday was Oct 16); the Friday sell is '160 points' here but '138 points' for Oct 16; the opening text says ES 'pushed Monday to 7705, getting to 7784+' while the body says 7730s Monday and 7790s today; and the key zone is '7748-57' in the summary but '7752' elsewhere."
+    ]
+  },
+  },
+  { date:"10/28/2026", title:"FOMC Tomorrow. Can SPX Keep The Green Going?", control:"bull", setups:[
+    {level:7835,type:"BACKTEST",priority:"b",notes:"The shelf broken down Oct 14 that began the current cycle of selling. After a reaction at 7802-03 range resistance, ES backtests it; recovering it would send ES toward all-time highs. Also listed as a backtest-short spot."},
+    {level:7802,type:"BACKTEST",priority:"b",notes:"Range resistance: the highs on Oct 16th and Oct 21st. The most obvious backtest-short spot above 7756; ES reacts here, then heads to 7835."},
+    {level:7756,type:"BACKTEST",priority:"b",notes:"Big support last Wednesday that failed, now a target and a backtest-short spot. In the strong bull case ES defends 7730 and heads to 7756, 7783, then 7802."},
+    {level:7748,type:"FBD",priority:"b",notes:"First support down. Adam won't touch it, but if you want to trade it, let it flush and recover."},
+    {level:7730,type:"FBD",priority:"b",notes:"A low-quality support Adam wouldn't engage. If you want it, wait for a flush to about 7720 and a recovery of 7730."},
+    {level:7712,type:"FBD",priority:"a",notes:"A great low set at 10:15AM Tuesday; its Failed Breakdown is actionable."},
+    {level:7703,type:"FBD",priority:"a",notes:"7703-7699: a complex shelf of lows from about noon Monday to 4AM Tuesday (swept to 7698 and recovered by 4:10AM, the overnight long). Its Failed Breakdown is actionable. The bear case: a dip below 7703."},
+    {level:7677,type:"FBD",priority:"a",notes:"The nice low set at 9AM Monday and the long-standing 4-5 touch shelf (Sep 18, Oct 1, Oct 16, Oct 22). Very noisy; the Failed Breakdown of the Monday low is actionable."},
+    {level:7663,type:"FBD",priority:"a",notes:"A 3-touch shelf of lows (2:30-7AM Monday). Adam won't buy it directly (risky, below 7677), but its Failed Breakdown is a high-quality long."},
+    {level:7649,type:"FBD",priority:"a",notes:"Friday's low of day; the Failed Breakdown is actionable, with a bonus if ES tags 7635."},
+    {level:7616,type:"FBD",priority:"a",notes:"High-quality Failed Breakdown: the large 6PM September 16th low. Nothing beneath it until the Sept 16 7575 major low."}
+  ],
+  bull:"ES is in a large, constantly morphing range (since about Oct 16th): 7677 support (a 4-5 touch shelf; now noisy) to 7803 resistance (the highs on Oct 16th and 21st). After Friday's sweep of 7677 down to 7649 and its recovery, the expectation was to work up the range, and ES did, to about 7755 Tuesday. Typically when price does a big Failed Breakdown of range support it heads to range resistance. In the strong bull case ES defends 7730 (or traps quickly below) and heads to 7756, 7783, then 7803; react there, then 7835 to backtest the breakdown from two weeks ago. If bulls recover 7835, ES heads to all-time highs. Bulls have the ball above 7677.",
+  bear:"Likely a dip below 7703 - a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail). For the 7703 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce, likely near 7695. Backtest shorts: 7756 (big support last Wednesday that failed), 7802 range resistance (the most obvious), and 7835. Adam does not short.",
+  summary:"Wednesday plan (FOMC day): Monday evening ES stayed too strong to reach the flagged 7663 Failed Breakdown (it closed near 7710). At 4AM Tuesday ES dipped to 7698, sweeping the 7703 shelf of lows set Monday at 12:50PM, 3PM and 7PM, and recovered 7703 plus 5 (7708) by 4:10AM - an overnight long Adam didn't take. At 7:30AM ES was in the 7730s and Adam just rode his 10% Sunday 7677 runner as ES drifted up to about 7755. No new trade Tuesday. Lean: work up the range to 7783 then 7803, react, then head to 7835. FOMC: no predictions; the first move after FOMC is often, but not always, a trap. Sell: dip below 7703.",
+  targets: {
+    major: [7756,7783,7802,7827,7835,7846,7874,7910],
+    minor: [7764,7773,7791,7809,7819,7863,7884,7894,7903]
+  },
+  supports: {
+    major: [7748,7731,7712,7703,7677,7663,7649,7635,7616,7584,7565,7545],
+    minor: [7737,7720,7686,7658,7628,7604,7595,7574,7558,7550]
+  },
+  range: {
+    status: "Working up the range into FOMC",
+    headline: "ES has worked up the multi-week 7677-7803 range to about 7755 and is going into FOMC. Ceiling 7802-03, then 7835; first support 7748, then 7730, 7712 and the 7703-7699 shelf.",
+    summary: "Adam's framework is unchanged: 7677 is range support (noisy now) and 7803 range resistance, a range ES has been stuck in since about Oct 16th. A big Failed Breakdown of range support usually heads to range resistance, and ES has done that this week: Friday's 7649 flush and recovery, Sunday's reclaim, Monday's run to the 7730s, a 4AM Tuesday sweep and recovery of 7703, and a push to 7755 Tuesday. For Wednesday his lean is to work up to 7783, then 7803, react, then 7835. He stresses tomorrow is FOMC: no predictions, react to triggers, and be mindful that the first move after FOMC is often (not always) a trap.",
+    ladder: [
+      {level:"7835", kind:"ceiling", label:"The Oct 14 breakdown shelf. Backtest after reacting at 7803; also a backtest-short spot. Recovery sends ES to all-time highs."},
+      {level:"7802 / 7803", kind:"ceiling", label:"RANGE CEILING. The highs on Oct 16th and Oct 21st; the most obvious backtest-short spot. React here."},
+      {level:"7783", kind:"mid", label:"Target en route (major resistance)."},
+      {level:"7756", kind:"mid", label:"Big support last Wednesday that failed; a target and backtest-short spot. ES pushed to about 7755 Tuesday."},
+      {level:"7748", kind:"mid", label:"First support down. Won't touch; if you must, let it flush and recover."},
+      {level:"7730", kind:"floor", label:"Low-quality support; strong bull case defends it. Wait for a flush to ~7720 and a recovery of 7730 if you want it."},
+      {level:"7712", kind:"floor", label:"A great low set at 10:15AM Tuesday; its Failed Breakdown is actionable."},
+      {level:"7703 - 7699", kind:"floor", label:"FLOOR. A complex shelf of lows from noon Monday to 4AM Tuesday. Its Failed Breakdown is actionable; the bear case is a dip below 7703."},
+      {level:"7677", kind:"below", label:"Range support. The 9AM Monday low and the 4-5 touch shelf; very noisy but its Failed Breakdown is actionable."},
+      {level:"7663 / 7649", kind:"below", label:"7663 is a 3-touch shelf (2:30-7AM Monday), won't buy directly; 7649 is Friday's low of day, with a bonus if ES tags 7635."},
+      {level:"7616", kind:"below", label:"The 6PM September 16th low; a high-quality Failed Breakdown long."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7835 is full bull control; 7803 is the range ceiling; 7756 to 7803 is the upper range with 7783 en route; 7730 to 7756 is the base bulls want held; below 7703 the bear case begins and 7677 is the noisy range floor.",
+      "FOMC: Adam's standing rule is no predictions on FOMC days, only reacting to triggers. The action is 'highly random, trappy and complex'; the first move after FOMC is often but not always a trap.",
+      "No trade Tuesday: ES ran to the 7730s overnight, so Adam rode the 10% runner from the Sunday 6PM 7677 long as ES drifted up. The 4AM overnight 7703 Failed Breakdown was an available long that he did not take.",
+      "The 7703 recovery pattern repeats the week's theme: a shelf of lows (noon, 3PM and 7PM Monday) swept to 7698 at 4AM and recovered by 4:10AM, followed by a run to the 7730s and 7755.",
+      "Details Adam gives inconsistently, so treat them as approximate: 7730 and 7731 are used for the same support; the low is called 'Friday October 18th' again (Friday was Oct 16); the range is '7677 to 7803' in the lean but 7802 in the resistance list; 7703 is both a shelf of lows and the bear-case line; and he says the day's push went to 7755 while his first resistance is listed as 7756."
+    ]
+  },
+  },
   { date:"10/27/2026", title:"Is The Bottom In For SPX?", control:"bull", setups:[
     {level:7835,type:"BACKTEST",priority:"b",notes:"The shelf broken down on Oct 14 that started the cycle of sell-and-bounce for the last couple of weeks. Remains a magnet for the next large squeeze; reached after reacting at 7803."},
     {level:7803,type:"BACKTEST",priority:"b",notes:"Range resistance: the highs since Oct 3rd and the ceiling for the last couple of weeks. The most obvious backtest-short spot above 7755-60; ES can react here, then head to 7835."},
@@ -4763,6 +4863,40 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "10/28/2026": {
+    intro: "Wednesday was FOMC day and a no-trade day for Adam: he held his 10% runner from the Sunday 6PM 7677 long. Tuesday evening ES closed around 7790, so there was no quality Failed Breakdown for a long way lower, the first being the 7703-7699 shelf of lows (Monday midday to 4AM Tuesday, non-acceptance trigger 7704). ES was too strong to reach it. At 7:30AM ES had continued up the 7677-7803 range. It chopped between 7750 and 7780 all morning; FOMC hit at 2PM with little change initially and little to engage, then ES ran to about 7795. Adam rode the runner and did nothing, in line with his rule of not trading chop or news.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7703 - 7699", setupLabel:"Failed Breakdown Of The Monday-Tuesday Shelf (Flagged, Not Needed)", time:"Tue Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong, Never Sold That Far", note:"At Tuesday's close ES was around 7790. The first quality Failed Breakdown was the 7703-7699 shelf (definitions #1 and #3: Tuesday's low of day plus a cluster of lows from Monday into Tuesday; non-acceptance trigger 7704). Adam's Tuesday plan called it actionable, but ES never came near." },
+      { level:"7750 - 7780", setupLabel:"Morning Chop (No Trade)", time:"7:30 AM - 2:00 PM Wed", outcome:"notrigger", outcomeLabel:"Chopped 7750-7780, Nothing To Trade", note:"At 7:30AM ES continued pushing up the range, then chopped between 7750 and 7780 all morning. With FOMC at 2PM, Adam's only job was holding his runner." },
+      { level:"7795", setupLabel:"FOMC Release (No Engagement)", time:"2:00 PM Wed", outcome:"notrigger", outcomeLabel:"Little Change At First, Then Ran To 7795", note:"FOMC hit at 2PM with little change initially. ES then ran to 7795. Adam rode the runner and didn't engage; his stated rule is to react to triggers only, and the first FOMC move is often a trap." }
+    ],
+    whatsDifferent: [
+      "Another no-entry day: with no elevator-down sell, Adam simply held the 10% Sunday runner through FOMC.",
+      "FOMC as a non-event for him: there was little change at first and 'little to engage'; ES ran to 7795 later, but he didn't chase.",
+      "Plan played out as projected: Adam's Friday lean to work up the range toward 7803 continued, with ES now in the 7790s.",
+      "Flagged levels kept in reserve: the 7703-7699 Failed Breakdown he flagged Tuesday was never reached.",
+      "A new key zone: a 3-touch shelf of lows at 7752 formed between 6:20PM Wednesday and 9:40AM Thursday and becomes the 'hold' level for the bulls in Thursday's plan.",
+      "Bigger picture: with ES near 7803, Adam is looking for a react there, then 7835, with an all-clear path to all-time highs at 7920+ if bulls recover the Oct 14 breakdown shelf."
+    ]
+  },
+  "10/27/2026": {
+    intro: "Tuesday was a no-trade day for Adam: he rode his 10% runner from the Sunday 6PM 7677 long while ES drifted up. Monday evening ES closed around 7710, too strong to reach the 7663 Failed Breakdown he flagged (the Monday low of day and a 3-touch shelf of lows from 2:30-7AM; non-acceptance trigger 7668). Overnight, ES dipped at 4AM to 7698, sweeping the 7703 shelf of lows set Monday at 12:50PM, 3PM and 7PM, and by 4:10AM recovered 7703 plus 5 (7708): an overnight long that Adam did not take. At 7:30AM ES had already run to the 7730s, so there was nothing to do but ride the runner as ES drifted up to about 7755 into the close, ahead of Wednesday's FOMC.",
+    adamTrade: null,
+    recapSetups: [
+      { level:"7663", setupLabel:"Failed Breakdown Of The 3-Touch Shelf (Flagged, Not Needed)", time:"Mon Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong, Never Sold That Far", note:"At Monday's close ES was around 7710. The first quality Failed Breakdown was 7663 (definitions #1 and #3: the Monday low of day and a cluster of lows; non-acceptance trigger 7668). Adam wrote it was actionable but he wouldn't buy it directly. ES never came near." },
+      { level:"7703", setupLabel:"Failed Breakdown Of The Monday Shelf (Overnight Long, Not Taken)", time:"4:00 AM Tue", outcome:"notrigger", outcomeLabel:"Swept To 7698, Recovered 7708 By 4:10AM", note:"Adam's Monday plan said to wait for 7698 to defend, then recover 7703. At 4AM ES dipped to 7698, sweeping the shelf of lows from 12:50PM, 3PM and 7PM Monday, and by 4:10AM recovered 7703 plus 5 (7708). Overnight traders could have longed; ES ran to the 7730s. Adam was not trading overnight." },
+      { level:"7755", setupLabel:"Runner Ride (No New Trade)", time:"Tue", outcome:"notrigger", outcomeLabel:"Drifted Up To About 7755, Held The Runner", note:"At 7:30AM ES was already in the 7730s. Adam held his 10% runner from the Sunday 7677 long (stop under the previous day's low) and did nothing as ES drifted to about 7755." }
+    ],
+    whatsDifferent: [
+      "A day with no entry: profit-protection mode in action. Adam's only job was riding the runner while ES drifted up, since no elevator-down sell appeared.",
+      "Overnight setup he skipped: the 4AM sweep of the 7703 shelf and recovery to 7708 was a textbook Failed Breakdown, but Adam notes only that overnight traders could have longed it.",
+      "Flagged levels kept in reserve: the 7663 Failed Breakdown he flagged Monday was never reached; ES was too strong to need it.",
+      "Plan went as projected: Adam's Friday lean to 'work up range' with 7705-10, 7755 and 7784 targets played out, with ES pushing to about 7755 Tuesday.",
+      "FOMC context: Adam reminds readers that FOMC action is highly random and trappy, so he reacts to triggers only and treats the first post-FOMC move as often a trap.",
+      "7677 is now range support in a range since about Oct 16th, but it's 'very noisy'; the cleaner entries are the 7703-7699 and 7712 Failed Breakdowns."
+    ]
+  },
   "10/26/2026": {
     intro: "Monday's session began Sunday evening with Adam's quick 7677 reclaim win. At Friday's close ES was around 7670, with no quality Failed Breakdown nearby except the 7649 Friday low of day (non-acceptance trigger 7655); ES was too strong to reach it. Instead, at the 6PM Sunday open futures gapped up from 7673 to 7678, pushing through the 7677 shelf (Sep 18, Oct 1, Oct 16 and Oct 22 lows). Adam longed via non-acceptance at 7682 (7677+5), locked 75% at 7686 and more at 7698, and left a 10% runner. At 7:30AM ES was in the low 7680s after chopping around 7677 all night, so there was nothing to do. ES then continued up the range through 7705-10, 7755 and 7784, as Adam's Friday plan targeted. By the Monday plan, he had one 10% runner and no further entries.",
     adamTrade: {
