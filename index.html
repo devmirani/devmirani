@@ -1256,6 +1256,14 @@ var weeks = [
 ];
 
 var trades = [
+  { id:209, date:"11/26/2026", entryTime:"12:55 AM", entryPrice:7240.75, stopPrice:0, setup:"SHORT", result:"win", contracts:3, direction:"short", tradeLabel:"7240 Short (Thu Overnight)",
+    targets:[
+      {label:"Cover 1",price:7235.75,contracts:1,status:"hit",pnl:25.00,exitTime:"1:00 AM"},
+      {label:"Cover 2",price:7235.75,contracts:1,status:"hit",pnl:25.00,exitTime:"1:00 AM"},
+      {label:"Cover 3",price:7227.00,contracts:1,status:"hit",pnl:68.75,exitTime:"1:10 AM"}
+    ],
+    times:[{label:"Entry",value:"12:55 AM"},{label:"Cover 1",value:"1:00 AM (5 min 34 sec)"},{label:"Cover 2",value:"1:00 AM (5 min 34 sec)"},{label:"Cover 3",value:"1:10 AM (15 min 6 sec)"}],
+    totalPts:23.75, totalPnl:118.75, exitNote:"MESZ6, 3 lots short, Thursday 12:55AM, sold @ 7240.75. Covered 2 @ 7235.75 (+$50.00) at about 1:00AM and the last 1 @ 7227.00 (+$68.75) at about 1:10AM. Total +$118.75.", journal:"" },
   { id:208, date:"11/26/2026", entryTime:"9:02 PM", entryPrice:7229.25, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7229 Long (Wed Evening)",
     targets:[
       {label:"T1",price:7234.0,contracts:3,status:"hit",pnl:71.25,exitTime:"9:10 PM"},
