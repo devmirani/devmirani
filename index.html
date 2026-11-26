@@ -975,6 +975,29 @@
     .routine-sections { grid-template-columns: 1fr; margin: 12px 16px 28px; }
     .routine-stat-value { font-size: 22px; }
   }
+
+  /* PAYOUTS PAGE */
+  .po-wrap { margin: 0 40px; padding: 24px 0 8px; }
+  @media (max-width: 768px) { .po-wrap { margin: 0 16px; padding-top: 16px; } }
+  .po-title { font-size: 20px; font-weight: 600; color: var(--text); margin: 4px 0 4px; }
+  .po-lede { font-size: 13px; color: var(--text2); margin: 0 0 14px; line-height: 1.5; }
+  .po-lede b { color: var(--text); font-weight: 600; }
+  .po-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .po-head { display: flex; align-items: center; justify-content: space-between; }
+  .po-head h2 { margin: 0; font-size: 15px; font-weight: 600; color: var(--text); }
+  .po-chip { font-size: 11px; padding: 2px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--text2); }
+  .po-chip.ok { color: var(--green); border-color: var(--green); }
+  .po-chip.warn { color: var(--red); border-color: var(--red); }
+  .po-hero { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .po-hero b { font-size: 32px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+  .po-hero span { font-size: 12px; color: var(--text2); }
+  .po-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text2); margin-bottom: 4px; }
+  .po-row b { color: var(--text); font-weight: 600; }
+  .po-track { height: 10px; border-radius: 5px; background: var(--border); overflow: hidden; }
+  .po-fill { height: 100%; border-radius: 5px; }
+  .po-dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; margin: 0; font-size: 12px; }
+  .po-dl dt { color: var(--text2); }
+  .po-dl dd { margin: 0; text-align: right; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -993,7 +1016,7 @@
   <button class="nav-tab active" onclick="switchTab('today-page', this)">Today</button>
   <!-- Journal tab archived/hidden — page & data preserved below, just not linked from nav.
        To restore: uncomment this button. -->
-  <!-- <button class="nav-tab" onclick="switchTab('journal-page', this)">Journal</button> -->
+  <button class="nav-tab" onclick="switchTab('journal-page', this)">Journal</button>
 </div>
 
 <!-- TODAY PAGE -->
@@ -1019,8 +1042,8 @@
 
       <div class="today-runner" id="td-runner-row">
         <span class="today-runner-dot" id="td-runner-dot"></span>
-        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) &amp; 7309 FBD (11/18)</span>
-        <span class="today-runner-since" id="td-runner-since">since Wed 11/18 11:20AM</span>
+        <span class="today-runner-text" id="td-runner-text">Holding 10% runners from 7025 FBD (11/22), 7175 FBD (11/24) &amp; 6992 FBD (11/25)</span>
+        <span class="today-runner-since" id="td-runner-since">since Sun 11/22 6:20PM, Tue 11/24 9:20AM &amp; Wed 11/25 9:45AM</span>
       </div>
 
       <div class="today-levels">
@@ -1132,11 +1155,14 @@
 
 <!-- JOURNAL PAGE -->
 <div class="site-wrap"><div id="journal-page" class="page">
-  <div class="asset-toggle">
-    <button class="asset-btn active" id="btn-all" onclick="switchAsset('all')">All</button>
-    <button class="asset-btn" id="btn-es" onclick="switchAsset('es')">ES Futures</button>
-    <button class="asset-btn" id="btn-spy" onclick="switchAsset('spy')">SPY Options</button>
-  </div>
+  <div class="po-wrap">
+          <div class="po-card">
+                <div class="po-hero"><b id="po-dd"></b><span>drawdown left</span><span class="po-chip" id="po-flag"></span></div>
+        <div><div class="po-row"><span>Drawdown remaining</span><b id="po-dd-pct"></b></div><div class="po-track"><div class="po-fill" id="po-dd-bar"></div></div></div>
+        <div><div class="po-row"><span>Progress to payout balance</span><b id="po-prog"></b></div><div class="po-track"><div class="po-fill" id="po-prog-bar" style="background:var(--blue)"></div></div></div>
+        <dl class="po-dl" id="po-dl"></dl>
+      </div>
+    </div>
   <div class="dash-section" id="dash-section" style="padding-top:24px;"></div>
 
 
@@ -1152,17 +1178,6 @@
     <div class="cal-drill" id="cal-drill"></div>
   </div>
 
-  <!-- Setup Calendar -->
-  <div class="cal-section">
-    <div class="cal-section-title">SETUP CALENDAR</div>
-    <div class="cal-nav">
-      <button class="cal-nav-btn" onclick="prevSetupMonth()">&#8592;</button>
-      <div class="cal-month-label" id="setup-cal-month-label"></div>
-      <button class="cal-nav-btn" onclick="nextSetupMonth()">&#8594;</button>
-    </div>
-    <div class="setup-cal-grid" id="setup-cal-grid"></div>
-  </div>
-  <div class="setup-drill" id="setup-drill"></div>
 
 
 
@@ -1241,6 +1256,70 @@ var weeks = [
 ];
 
 var trades = [
+  { id:208, date:"11/26/2026", entryTime:"9:02 PM", entryPrice:7229.25, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7229 Long (Wed Evening)",
+    targets:[
+      {label:"T1",price:7234.0,contracts:3,status:"hit",pnl:71.25,exitTime:"9:10 PM"},
+      {label:"T2",price:7239.0,contracts:1,status:"hit",pnl:48.75,exitTime:"9:20 PM"},
+      {label:"Runner",price:7249.0,contracts:1,status:"hit",pnl:98.75,exitTime:"11:28 PM"}
+    ],
+    times:[{label:"Entry",value:"9:02 PM"},{label:"T1",value:"9:10 PM (7 min)"},{label:"T2",value:"9:20 PM (18 min)"},{label:"Runner",value:"11:28 PM (2 hr 25 min)"}],
+    totalPts:43.75, totalPnl:218.75, exitNote:"MESZ6, 5 lots, Wednesday 9:02PM at 7229.25 (after 6PM, so it counts to the Thursday 11/26 session). Sold 3 @ 7234.00 (+$71.25), 1 @ 7239.00 (+$48.75) and the last @ 7249.00 (+$98.75). Total +$218.75.", journal:"" },
+  { id:207, date:"11/25/2026", entryTime:"2:31 PM", entryPrice:7206.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:3, tradeLabel:"7206 Long",
+    targets:[
+      {label:"T1",price:7212.5,contracts:2,status:"hit",pnl:65.00,exitTime:"2:31 PM"},
+      {label:"Runner",price:7207.25,contracts:1,status:"hit",pnl:6.25,exitTime:"3:57 PM"}
+    ],
+    times:[{label:"Entry",value:"2:31 PM"},{label:"T1",value:"2:31 PM (33 sec)"},{label:"Runner",value:"3:57 PM (1 hr 25 min)"}],
+    totalPts:14.25, totalPnl:71.25, exitNote:"MESZ6, 3 lots, Wednesday 2:31PM at 7206. Sold 2 @ 7212.50 (+$65.00); the last closed @ 7207.25 (+$6.25). Total +$71.25.", journal:"" },
+  { id:206, date:"11/25/2026", entryTime:"9:51 AM", entryPrice:7007.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7007 Long",
+    targets:[
+      {label:"T1",price:7013.0,contracts:3,status:"hit",pnl:90.00,exitTime:"9:53 AM"},
+      {label:"T2",price:7017.75,contracts:1,status:"hit",pnl:53.75,exitTime:"9:53 AM"},
+      {label:"Runner",price:7100.0,contracts:1,status:"hit",pnl:465.00,exitTime:"12:10 PM"}
+    ],
+    times:[{label:"Entry",value:"9:51 AM"},{label:"T1",value:"9:53 AM (2 min)"},{label:"T2",value:"9:53 AM (2 min)"},{label:"Runner",value:"12:10 PM (2 hr 18 min)"}],
+    totalPts:121.75, totalPnl:608.75, exitNote:"MESZ6, 5 lots, Wednesday 9:51AM at 7007. Sold 3 @ 7013.00 (+$90.00), 1 @ 7017.75 (+$53.75) and the last @ 7100.00 (+$465.00). Total +$608.75.", journal:"" },
+  { id:205, date:"11/25/2026", entryTime:"6:50 AM", entryPrice:7094.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"loss", contracts:5, tradeLabel:"7094 Long",
+    targets:[
+      {label:"Stop",price:7078.25,contracts:5,status:"stopped",pnl:-393.75,exitTime:"7:04 AM"}
+    ],
+    times:[{label:"Entry",value:"6:50 AM"},{label:"Stop",value:"7:04 AM (13 min)"}],
+    totalPts:-78.75, totalPnl:-393.75, exitNote:"MESZ6, 5 lots, Wednesday 6:50AM at 7094. Stopped 7078.25 at 7:04AM (-$393.75).", journal:"" },
+  { id:204, date:"11/24/2026", entryTime:"9:21 AM", entryPrice:7173.25, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7173 Long",
+    targets:[
+      {label:"T1",price:7178.25,contracts:2,status:"hit",pnl:50.00,exitTime:"9:25 AM"},
+      {label:"T2",price:7178.25,contracts:1,status:"hit",pnl:25.00,exitTime:"9:28 AM"},
+      {label:"T3",price:7183.25,contracts:1,status:"hit",pnl:50.00,exitTime:"9:30 AM"},
+      {label:"Runner",price:7222.75,contracts:1,status:"hit",pnl:247.50,exitTime:"9:46 AM"}
+    ],
+    times:[{label:"Entry",value:"9:21 AM"},{label:"T1",value:"9:25 AM (4 min)"},{label:"T2",value:"9:28 AM (7 min)"},{label:"T3",value:"9:30 AM (9 min)"},{label:"Runner",value:"9:46 AM (25 min)"}],
+    totalPts:74.50, totalPnl:372.50, exitNote:"MESZ6, 5 lots, Tuesday 9:21AM at 7173.25. Sold 2 @ 7178.25 (+$50.00), 1 @ 7178.25 (+$25.00), 1 @ 7183.25 (+$50.00) and the last @ 7222.75 (+$247.50). Total +$372.50.", journal:"" },
+  { id:203, date:"11/23/2026", entryTime:"1:41 AM", entryPrice:7077.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:3, tradeLabel:"7077 Long (Mon Overnight)",
+    targets:[
+      {label:"T1",price:7100.25,contracts:2,status:"hit",pnl:232.50,exitTime:"3:07 AM"},
+      {label:"Runner",price:7150.5,contracts:1,status:"hit",pnl:367.50,exitTime:"8:55 AM"}
+    ],
+    times:[{label:"Entry",value:"1:41 AM"},{label:"T1",value:"3:07 AM (1 hr 25 min)"},{label:"Runner",value:"8:55 AM (7 hr 14 min)"}],
+    totalPts:120.00, totalPnl:600.00, exitNote:"MESZ6, 3 lots, Monday 1:41AM at 7077. Sold 2 @ 7100.25 (+$232.50), held the last 7 hr 14 min and closed @ 7150.50 (+$367.50). Total +$600.00.", journal:"" },
+  { id:202, date:"11/23/2026", entryTime:"10:50 PM", entryPrice:7091.50, stopPrice:0, setup:"LEVEL_RECLAIM", result:"loss", contracts:3, tradeLabel:"7091 Long (Sun Night)",
+    targets:[
+      {label:"Stop",price:7078.5,contracts:3,status:"stopped",pnl:-195.00,exitTime:"1:20 AM"}
+    ],
+    times:[{label:"Entry",value:"10:50 PM"},{label:"Stop",value:"1:20 AM (2 hr 30 min)"}],
+    totalPts:-39.00, totalPnl:-195.00, exitNote:"MESZ6, 3 lots, Sunday 10:50PM at 7091.50. Stopped out 7078.50 at 1:20AM Monday (-$195.00). Opened in the Sunday session but sold Monday, so it counts to Monday.", journal:"" },
+  { id:201, date:"11/22/2026", entryTime:"6:44 PM", entryPrice:7036.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7036 Long (Sun Evening)",
+    targets:[
+      {label:"T1",price:7041.0,contracts:3,status:"hit",pnl:75.00,exitTime:"6:50 PM"},
+      {label:"T2",price:7055.75,contracts:1,status:"hit",pnl:98.75,exitTime:"6:53 PM"},
+      {label:"Runner",price:7081.75,contracts:1,status:"hit",pnl:228.75,exitTime:"7:47 PM"}
+    ],
+    times:[{label:"Entry",value:"6:44 PM"},{label:"T1",value:"6:50 PM (6 min)"},{label:"T2",value:"6:53 PM (9 min)"},{label:"Runner",value:"7:47 PM (1 hr 3 min)"}],
+    totalPts:80.50, totalPnl:402.50, exitNote:"MESZ6, 5 lots, Sunday 6:44PM at 7036. Sold 3 @ 7041.00 (+$75.00), 1 @ 7055.75 (+$98.75) and the last @ 7081.75 (+$228.75). Total +$402.50.", journal:"" }
+];
+
+// ARCHIVE: trades before 11/22/2026. Kept for reference only; not used by the P&L calendar, stats or equity curve.
+// To restore, move entries back into the trades array above.
+var tradesArchive = [
   { id:200, date:"09/03/2026", entryTime:"12:42 PM", entryPrice:20.00, stopPrice:0, setup:"SPY_CALL", result:"loss", contracts:2, tradeLabel:"SPY $775 Call", type:"options",
     targets:[
       {label:"Exit",price:1.00,contracts:2,status:"stopped",pnl:-38.00,exitTime:"3:57 PM",exitPrice:1.00}
@@ -2673,6 +2752,195 @@ var watchDays = [
 ];
 
 var setupDays = [
+  { date:"11/26/2026", title:"Holiday Trading Incoming For SPX. Will The Green Continue? Nov 26 and 27 Plan", control:"bear", setups:[
+    {level:7519,type:"BACKTEST",priority:"b",notes:"The third backtest-short location: a big shelf of lows from Friday Nov 13th and Sunday Nov 16th. Adam doesn't short."},
+    {level:7405,type:"BACKTEST",priority:"b",notes:"The second backtest-short location: a major shelf from early Thursday morning (11/19) whose failure started the cascade lower. Also the next gateway bulls must recover above 7306-09."},
+    {level:7238,type:"BACKTEST",priority:"b",notes:"A higher-risk short spot ahead of 7306-09. Adam does not short."},
+    {level:7306,type:"BACKTEST",priority:"b",notes:"7306-09: the shelf of lows (Tue/Wed 11/17-18) lost Thursday 11/19. The first backtest-short location, but it already hit once so it is weak now. Bears control below it; recovering it starts the shift back to bull control."},
+    {level:7150,type:"Reclaim",priority:"b",notes:"First support (major). Nothing Adam would touch, but an option for a lower win rate: if ES is knifing, wait for it to flush and recover (bonus if it hits 7132). A 7120 level is next down."},
+    {level:7086,type:"Reclaim",priority:"b",notes:"Big lows from Monday that acted as a resistance shelf Wednesday morning. Adam won't buy it (he never buys levels). For others: if price drifts in a controlled manner one can try the bid; if knifing, wait for a flush to something like 7071 and a recovery."},
+    {level:7036,type:"Reclaim",priority:"b",notes:"No interest for Adam. If desperate, try a bid or wait for a flush and recovery."},
+    {level:7008,type:"FBD",priority:"a",notes:"Where Adam gets interested: a very nice shelf set between 10:20AM and 11:40AM Wednesday. Its Failed Breakdown is highly actionable."},
+    {level:6984,type:"FBD",priority:"a",notes:"A huge low set at 9:45AM Wednesday (the low of day). A safer entry: wait for the Failed Breakdown of this low, and for ES to recover it AND 6992 before going long."},
+    {level:6964,type:"Reclaim",priority:"b",notes:"Little useful support below 6984. If it is a slow grind into this one a long can be tried (Adam won't touch it); if knifing, wait for a flush and recovery."},
+    {level:6900,type:"FBD",priority:"a",notes:"The roughly 6900 Friday (11/20) low of day. Its Failed Breakdown is highly actionable. Little between 6964 and here."},
+    {level:6879,type:"FBD",priority:"b",notes:"Little below 6900 until here. Watch for a sweep and recovery of this level. From there a gap down to 6845."}
+  ],
+  bull:"On Thursday 11/19 ES lost 7306-09 and went elevator down into 6900 on Friday, the way it always does when a big shelf fails. Sunday evening ES recovered the 7025 shelf (a Failed Breakdown), ripped 280+ points to backtest 7306-09 Monday, sold to 6984 Wednesday morning (a 9:40AM low), then triggered another Failed Breakdown of the Sunday 6992 low and went up again. The bull case is that this bounce from the 6992 Failed Breakdown sticks and ES can backtest and then recover 7306-09. Above it, ES can contest the next two major breakdown shelves: 7405 and 7519. In a strong bull case Thursday or Friday, ES stays above 7150 and heads to 7223, 7238 and 7306-09. Adam normally gives spots to add on strength, but because ES ripped Wednesday there are none that would not constitute chasing. Markets like to drift up on Thanksgiving.",
+  bear:"Resumes under 7008, a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail with a huge payout on the fourth; an advanced setup). For the 7008 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce, likely near 6993. Backtest shorts above: 7238 (higher risk), 7306-09 (already hit once, so weak), 7405 and 7519. Adam does not short.",
+  summary:"Plan for Thursday Nov 26 and Friday Nov 27. Thursday US markets are closed for Thanksgiving, with futures open until 1PM, and the newsletter covers Thursday and Friday. Basic context is unchanged: bears control under 7306-09. ES sold Tuesday evening to 7078 by 7AM (too weak to give a 7086 Failed Breakdown), then to 6982-6984 by 9:40AM Wednesday, and recovered the Sunday 6992 low: Adam went long about 7007 after waiting, locking 75% at 7025 and more at 7039 with 10% left. ES then ripped massively. His job is to trade Failed Breakdowns like 6992 and then ride the runner, so he won't touch price until ES sells hard. Spots for those less strict: 7150, 7086, 7036; his interest starts at the 7008 shelf and the 6984/6992 Failed Breakdown. Lean: ES tests 7306-09 again, reacts, then continues toward 7405, the next gateway bulls must recover.",
+  targets: {
+    major: [7208,7223,7238,7277,7306,7309,7334,7362,7405,7424,7457,7472,7519],
+    minor: [7216,7241,7252,7265,7295,7323,7350,7380,7391,7414,7437,7445,7461,7493,7501,7509]
+  },
+  supports: {
+    major: [7185,7150,7122,7105,7086,7071,7036,7025,7008,6992,6984,6964,6927,6900,6879,6845,6821,6809,6792,6772,6750],
+    minor: [7198,7172,7160,7140,7132,7117,7097,7051,7012,6998,6970,6956,6948,6940,6916,6910,6891,6885,6866,6857,6833,6826,6815,6797,6784,6760]
+  },
+  range: {
+    status: "Bears control under 7306-09",
+    headline: "ES bounced from 6984 after a 6992 Failed Breakdown and ripped; bears still control under 7306-09. Adam's lean: another test of 7306-09, then 7405. His interest starts at the 7008 shelf and the 6984/6992 Failed Breakdown.",
+    summary: "The cycle again: elevator down Tuesday night into 7078, then down to 6982-6984 by 9:40AM Wednesday, a Failed Breakdown of the Sunday 6992 low, and a massive rip. He doesn't buy levels, and after a win he rides the runner and does nothing, waiting for the next elevator down. He still lists spots for those who aren't as strict: 7150, 7086 (waiting for a flush to ~7071 if ES is knifing), 7036 and 6964. Resistances are 7208, 7223, 7238, then 7306-09. In a strong bull case ES stays above 7150 and heads to 7223, 7238 and 7306-09. Bears control below 7306-09; recovering it starts a shift to bull control, with 7405 and 7519 above. The bear case begins below 7008.",
+    ladder: [
+      {level:"7519", kind:"ceiling", label:"Third backtest-short shelf (Fri Nov 13th and Sun Nov 16th lows). Nearly full bull control above it."},
+      {level:"7405", kind:"ceiling", label:"Second backtest-short shelf and the next major gateway after 7306-09 (an early 11/19 shelf whose failure started the cascade)."},
+      {level:"7306 - 7309", kind:"ceiling", label:"The lost Tuesday/Wednesday shelf. Hit once Monday, so weak as a short. Bears control under it; recovering it starts a shift back to bulls."},
+      {level:"7223 - 7238", kind:"mid", label:"The strong bull case targets: 7208, 7223 and 7238 (a higher-risk short spot ahead of 7306-09)."},
+      {level:"7150", kind:"price", label:"First support. In a strong bull case ES stays above it."},
+      {level:"7086 - 7036", kind:"mid", label:"Monday's big lows (a resistance shelf Wednesday morning) and 7036: spots for the less strict, only on a controlled drift or after a flush and recovery."},
+      {level:"7008", kind:"floor", label:"The 10:20-11:40AM Wednesday shelf: its Failed Breakdown is highly actionable. The bear case begins below it."},
+      {level:"6984 / 6992", kind:"below", label:"Wednesday's low of day (9:45AM) and the Sunday low: wait for the Failed Breakdown of 6984 and for ES to recover both."},
+      {level:"6900 / 6879", kind:"below", label:"Friday's low of day (Failed Breakdown highly actionable), then 6879 (sweep and recovery) with a gap to 6845."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7306-09 bulls retake control (7405 and 7519 next); 7150 to 7306 is the rally zone; 7008 to 7150 is where he only engages on a Failed Breakdown or a controlled drift; below 7008 the bear case begins. I set control to bear because he says bears control under 7306-09.",
+      "This plan covers Thursday Nov 26 (Thanksgiving: US markets closed, futures open until 1PM) and Friday Nov 27, and there will be no newsletter on Tuesday Dec 1 because Adam is travelling; he suggests using the Monday newsletter and will post updates on Twitter.",
+      "Adam's runner line is cut off: 'I am still holding my 10% long runner from .' (blank). Context: he was holding the Sunday 6:20PM 7025 Failed Breakdown runner and the 9:20AM Tuesday 7175 add, then Wednesday's 7007 entry added another 10%. I show all three in the runner strip, which is my inference.",
+      "The recap's Tuesday Evening section repeats text about the 7086 Failed Breakdown and the Monday 7:40AM low, but its Failed Breakdown definition mentions 7105 as the daily low, so the level name and the explanation don't line up.",
+      "Adam says he 'got long at 7007 or so' after waiting, rather than at the 6997 trigger (6992+5). Wednesday's low of day is given as 6982 and 6984 in different places, and he says 6975 would be a bonus on the Sunday low's Failed Breakdown."
+    ]
+  },
+  },
+  { date:"11/25/2026", title:"Is A Stable Bottom In For SPX? November 25 Plan", control:"bear", setups:[
+    {level:7519,type:"BACKTEST",priority:"b",notes:"The third backtest-short location (a big shelf of lows from Friday Nov 13th and Sunday Nov 16th). Adam doesn't short."},
+    {level:7405,type:"BACKTEST",priority:"b",notes:"The second backtest-short location: a big shelf from early Thursday morning (11/19) whose failure started the cascade lower."},
+    {level:7306,type:"BACKTEST",priority:"b",notes:"7306-09: the Tue/Wed (11/17-18) shelf lost Thursday 11/19. The first backtest short, but it already hit once Monday, so it is weak now."},
+    {level:7223,type:"Reclaim",priority:"b",notes:"A spot to add on strength: reclaims of 7223 are actionable."},
+    {level:7177,type:"Reclaim",priority:"b",notes:"For anyone desperate on the 7170-72 buy (a two-touch shelf set between 6:20AM and 7:30AM Tuesday that ES flushed to 7144 and recovered): at least wait for it to tag then recover 7177. Adam has no interest in buying it."},
+    {level:7144,type:"Reclaim",priority:"b",notes:"7140 is next down, a shelf of highs from early Monday morning that broke out. One could buy it as a backtest, but a safer bet is to wait for it to hold then recover 7144, the 8:10AM Tuesday low."},
+    {level:7086,type:"FBD",priority:"a",notes:"Where Adam gets interested: a nice low set at 7:40AM Monday that led to a 100+ point rally. Instead of buying it, the Failed Breakdown of this low is actionable (ideal if ES tags 7070 on it)."},
+    {level:7052,type:"FBD",priority:"a",notes:"A big low set at 9:20PM Sunday. Its Failed Breakdown is actionable. Bears strongly control, so be cautious about bidding supports and stick to Failed Breakdowns."},
+    {level:7025,type:"DIRECT BID",priority:"b",notes:"The Sunday evening Failed Breakdown level. A high-risk long if wanted: only trade it on a slow, controlled sell into the zone. If ES is knifing lower no support holds, so never long; only trade clear Failed Breakdowns or flush-and-reclaims."},
+    {level:6992,type:"FBD",priority:"a",notes:"The Sunday low. The Failed Breakdown here is highly actionable, with a bonus if ES tags 6975 on it."},
+    {level:6900,type:"FBD",priority:"a",notes:"Nothing under 6992 until the Friday (11/20) daily low at about 6900. Its Failed Breakdown is highly actionable."},
+    {level:6879,type:"FBD",priority:"b",notes:"Little below 6900 until here. Watch for a sweep and recovery of this level. From there a gap down to 6845."}
+  ],
+  bull:"On Thursday 11/19 ES lost 7306-09 and went elevator down; ES then sold to 6900 on Friday and recovered the 7025 shelf on Sunday evening (a Failed Breakdown), and the rip targeted the backtest of 7309, which it hit Monday before dipping. The bull case is that the bounce from the Sunday 7025 Failed Breakdown sticks and ES can backtest (again) and recover 7306-09. Above it ES can contest the next two major breakdown shelves: 7405 and 7519. In an ultra bull case ES won't get anywhere near 7025: it will defend 7140/7086 (or quickly trap below) on any retracement, the resistance it broke out Monday morning. Spots to add on strength: 7223 reclaims are actionable.",
+  bear:"Resumes under 7025, a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail with a big payout eventually; an advanced setup). For the 7025 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce, likely near 7020. Backtest shorts above: 7306-09 (already hit once, so weak), 7405 and 7519. Adam does not short.",
+  summary:"Wednesday plan. The week followed the usual cycle: elevator down Friday (the 7306-09 loss) into 6900, a Failed Breakdown of the 7025 shelf Sunday evening, a 280+ point rip to 7306-09 Monday, then a dip. Tuesday ES went elevator down to 7144 by 8AM, swept the 7170 low, and recovered it by 9:20AM, and Adam longed 7175, locking 75% at 7188 and more at 7192, leaving 10%. He is still holding his 10% runner from the Sunday 6:20PM 7025 Failed Breakdown plus the Tuesday add. Bulls kept control Tuesday; bears still control under 7306-09. Lean: ES tests 7306-09 again, reacts, then continues to 7405, the next major gateway bulls need. His interest starts at the 7086 Failed Breakdown.",
+  targets: {
+    major: [7223,7241,7277,7306,7309,7320,7333,7361,7380,7404,7424,7457,7472,7519],
+    minor: [7235,7253,7265,7289,7302,7328,7350,7369,7394,7414,7437,7445,7461,7493,7501,7509]
+  },
+  supports: {
+    major: [7198,7177,7172,7140,7122,7105,7086,7070,7052,7025,6988,6962,6930,6897,6873,6837,6792,6777],
+    minor: [7216,7208,7192,7187,7160,7150,7133,7114,7092,7077,7060,7039,7012,7000,6972,6948,6938,6916,6904,6892,6862,6857,6846,6821,6814,6805,6784]
+  },
+  range: {
+    status: "Bears control under 7306-09",
+    headline: "A relief rally from the Sunday 7025 Failed Breakdown hit 7306-09 Monday and bulls held control Tuesday. Bears still control under 7306-09. Adam's lean: test 7306-09 again, then 7405.",
+    summary: "Elevator down, Failed Breakdown, short squeeze. Tuesday ES sold to 7144 by 8AM, swept the 7170 low and recovered it by 9:20AM, and Adam's 7175 long paid 75% at 7188 and more at 7192, leaving a 10% runner (still holding the Sunday 6:20PM 7025 runner too). Plan: the first support of interest is 7170-72 (he won't buy it; at least wait for a recover of 7177), then 7140 (wait for a hold then recover 7144), then the actionable Failed Breakdowns at 7086 (ideal tag of 7070), 7052 and 6992. The 7025 level is a high-risk long only on a slow, controlled sell. Resistances: 7223, 7241, 7277, then 7306-09. Bears control below 7306-09; recovering it starts a shift to bulls with 7405 and 7519 above. The bear case begins below 7025.",
+    ladder: [
+      {level:"7519", kind:"ceiling", label:"Third backtest-short shelf (11/13 and 11/16 lows). Nearly full bull control above it."},
+      {level:"7405", kind:"ceiling", label:"Second backtest-short shelf and the next gateway after 7306-09 (an early 11/19 shelf whose failure began the cascade)."},
+      {level:"7306 - 7309", kind:"ceiling", label:"The lost Tue/Wed shelf. Hit once Monday, so weak as a short. Bears control under it; recovering it shifts control back toward bulls."},
+      {level:"7223", kind:"mid", label:"A spot to add on strength: 7223 reclaims are actionable. Also the first resistance (major) above."},
+      {level:"7170 - 7177", kind:"price", label:"A two-touch shelf from Tuesday morning ES flushed to 7144 and recovered. Adam won't buy it; at least wait for a recover of 7177."},
+      {level:"7140 - 7144", kind:"mid", label:"A shelf of highs from early Monday morning that broke out: wait for a hold then recover of 7144 (the 8:10AM Tuesday low)."},
+      {level:"7086", kind:"floor", label:"The 7:40AM Monday low that led to a 100+ point rally: its Failed Breakdown is actionable (ideal to tag 7070). Where Adam gets interested."},
+      {level:"7052 / 7025", kind:"below", label:"7052 (a big 9:20PM Sunday low): Failed Breakdown actionable. 7025: a high-risk long only on a slow sell. The bear case begins below 7025."},
+      {level:"6992 / 6900", kind:"below", label:"6992 (the Sunday low): Failed Breakdown highly actionable, bonus if ES tags 6975. Then Friday's 6900 low (Failed Breakdown highly actionable) and 6879."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7306-09 bulls retake control (7405 and 7519 next); 7140 to 7306 is the bull-case area (ultra bulls defend 7140/7086 on retracements); 7025 to 7140 is where he engages only on a Failed Breakdown; below 7025 the bear case begins. I set control to bear because he says bears control under 7306-09.",
+      "There will be no newsletter on Tuesday December 1st because Adam is travelling. He suggests using the Monday newsletter and will try to provide updates on Twitter.",
+      "He says he is still holding his 10% long runner from the Sunday 6:20PM 7025 Failed Breakdown, and the most recent add was this morning's 9:20AM Failed Breakdown. I show both in the runner strip, which is my inference.",
+      "The recap says ES 'flushed 7223' at 'Monday around 3am', but the context (the 7223 low was set Monday 11:40AM and ES was in the 7180s by Tuesday 7:30AM) suggests Tuesday around 3AM. I left his wording alone in the dissection and flagged it here.",
+      "Small date/time slips in the recap: the 7086 low is a 7:40AM Monday low, the 7223 low a Monday 11:40AM low, and the 7144 sweep at 8AM Tuesday is described as a low at 8:10AM in the plan."
+    ]
+  },
+  },
+  { date:"11/23/2026", title:"6 Red In A Row For SPX. Will The Streak Continue Monday?", control:"bear", setups:[
+    {level:7306,type:"BACKTEST",priority:"a",notes:"7306-09: the Tuesday/Wednesday lows lost Thursday and the highest-odds backtest short (they get higher odds the higher they go; Adam doesn't short). Bulls take the ball back partially above it."},
+    {level:7223,type:"BACKTEST",priority:"b",notes:"The second backtest-short location, and the first big test for bulls on a rally from 7025."},
+    {level:7086,type:"BACKTEST",priority:"b",notes:"The first backtest-short location. Also a reclaim spot for bulls (see below)."},
+    {level:7105,type:"Reclaim",priority:"b",notes:"A nice big low set at 8:30AM Friday: recoveries of 7105 are another spot to try a reclaim long."},
+    {level:7086,type:"Reclaim",priority:"b",notes:"Reclaims of 7086 are one spot to try a long to start a push toward the lost shelves."},
+    {level:7025,type:"Reclaim",priority:"a",notes:"A clear shelf of lows set between 12:30PM and 2PM Friday. Recovering it is the first actionable long and the highest quality trade available for Monday; it starts a push to 7086, 7125 and 7223. When bears strongly control, Adam's only interest is reclaims of key levels."},
+    {level:6960,type:"FBD",priority:"a",notes:"The first support down (6963 major): Friday's low of day. Its Failed Breakdown is actionable. The bear case begins below it."},
+    {level:6933,type:"FBD",priority:"a",notes:"A nice April 13th low: its Failed Breakdown is actionable. Bonus if ES tags 6922 on it."},
+    {level:6897,type:"FBD",priority:"a",notes:"A massive low set Friday April 10th with nothing between 6922 and here: its Failed Breakdown is actionable."},
+    {level:6879,type:"FBD",priority:"b",notes:"Nothing below 6897 until here. Watch for a sweep and recovery of this level. There's a gap from here down to 6845."}
+  ],
+  bull:"Roughly since last Friday ES has been selling off, the way it always does: when a well-tested, previously defended shelf of lows fails. Four have gone in the last week: last Friday ES lost 7600/7572 (the shelf that began the flush), Monday morning it lost 7519 (the Friday lows plus a Monday morning low), Tuesday it lost 7421 (Monday's low of day plus 1:30AM and 9:30AM Tuesday lows), and Thursday it lost 7306-09 (the Tuesday and Wednesday lows of day). Bulls need to recover these to gradually restore control: partially above 7306-09, more above 7421, and nearly full control above 7519. Until then bounces should fizzle. With bears in strong control Adam doesn't buy supports; his only interest is reclaims of key levels. 7025 is the first spot: a clear shelf of lows set 12:30PM-2PM Friday, and the highest quality trade for Monday. 7086 and 7105 (an 8:30AM Friday low) reclaims are other spots. The bull case is that ES recovers 7025 and then rips to 7086, 7125 and 7223. 7223 is the first big test; if it clears, ES can see 7306-09.",
+  bear:"Bears fully control here, so Adam says any bear case is hard to discuss as shorting at the lows is dangerous chasing. It begins below 6963 though, for those interested - a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail; an advanced setup). For the 6963 short, ideally price puts in one final bounce or a Failed Breakdown, then one shorts beneath the lows of that bounce, likely near 6953. Backtest shorts above: 7086, 7223 and 7306-09 (higher odds the higher they go). Adam does not short.",
+  summary:"Monday plan (a resend: the newsletter was originally sent Friday at 3PM, and Monday's date is Nov 23). ES lost the 7306-09 shelf Thursday, so bears have full control; it was around 7210 at Thursday's close, the 7210 Failed Breakdown never triggered, and ES dipped to 7153 by midnight and swept it at 2:20AM for a pop to 7181 (Adam was asleep). Friday ES drifted to 7105 by 8:35AM, then recovered 7153 by 9:25AM: Adam longed 7158, locking 75% at 7164 and more at 7180, but ES then sold to 7080 and cut his runner below break-even. He'd have re-added at 7120-25; ES rejected there at 11:15AM and resumed lower to the 6960s. Lean: bulls first need to recover 7025 (the highest quality Monday trade), which starts a move up to 7086, 7125 and 7223. Bears fully control below 7306-09. Levels below are more limited than usual because of the speed of the sell.",
+  targets: {
+    major: [6980,6983,7002,7025,7050,7057,7086,7120,7125,7152,7180,7192,7210,7223,7272,7306,7309],
+    minor: [6971,6998,7010,7018,7036,7066,7079,7095,7105,7114,7138,7149,7162,7170,7188,7204,7216,7242,7251,7258,7265,7277,7283,7290]
+  },
+  supports: {
+    major: [6963,6933,6922,6897,6879,6845],
+    minor: [6953,6948,6918,6910,6891,6885,6872,6865]
+  },
+  range: {
+    status: "Bears fully control below 7306-09",
+    headline: "ES sold to the 6960s Friday, losing every support. Bears fully control below 7306-09; the first actionable long is a recovery of the 7025 shelf (12:30-2PM Friday), then 7086, 7125 and 7223.",
+    summary: "Adam's cycle repeated, but bears were in control: Thursday's 7210 Failed Breakdown never triggered, ES swept 7153 at 2:20AM and popped to 7181, and Friday's 9:25AM 7153 Failed Breakdown paid 75% at 7164 and more at 7180 before ES elevator-downed to 7080 and cut his runner. He expects most Failed Breakdowns to go a level or two and fail while the daily bear case is active and ES is under major lost shelves, until a big one rips. Plan: with bears in strong control, only trade reclaims. 7025 is the first spot, then 7086 and 7105; the lean is 7025, then 7086, 7125 and 7223, the first big test, then 7306-09. A note says levels are slightly limited on the downside due to the speed of the sell; if ES exceeds them Monday he'll tweet new levels. Bears fully control below 7306-09, and the bear case begins below 6963.",
+    ladder: [
+      {level:"7306 - 7309", kind:"ceiling", label:"The Tuesday/Wednesday lows lost Thursday: the highest-odds backtest short. Bulls take the ball back partially above it."},
+      {level:"7223", kind:"ceiling", label:"The first big test for bulls on a rally from 7025 (also the second backtest-short location). If it clears, ES sees 7306-09."},
+      {level:"7086 - 7125", kind:"mid", label:"Steps on the lean: 7086 (a reclaim spot and first backtest short), 7105 (an 8:30AM Friday low, a reclaim spot) and 7125 (the 7120-25 zone Adam would re-add on)."},
+      {level:"7025", kind:"price", label:"A clear shelf of lows from 12:30PM-2PM Friday: recovering it is the first actionable long and the highest quality Monday trade."},
+      {level:"6960 / 6963", kind:"floor", label:"Friday's low of day (6963 major): its Failed Breakdown is actionable. The bear case begins below it."},
+      {level:"6933 / 6922", kind:"below", label:"A nice April 13th low: actionable Failed Breakdown, a bonus if ES tags 6922."},
+      {level:"6897", kind:"below", label:"A massive April 10th low with nothing between 6922 and here: its Failed Breakdown is actionable."},
+      {level:"6879 / 6845", kind:"below", label:"Watch for a sweep and recovery of 6879; there is a gap down to 6845."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7306-09 bulls retake some control (more above 7421, nearly full above 7519); 7025 to 7306 is the recovery path (7086, 7125, 7223); below 7025 bears control; below 6963 the bear case begins. I set control to bear because he says bears have full control below 7306-09.",
+      "This PDF is a resend: it's the newsletter originally sent Friday November 20th at 3PM, so it covers Thursday evening and Friday only and says nothing about Monday's open. The note at the top calls it the newsletter for 'Monday November 22nd', but Monday is November 23rd.",
+      "Adam's Friday 9:25AM 7153 Failed Breakdown runner was cut below break-even when ES sold to 7080, leaving him a 'blank slate' with no open runners. I cleared the runner strip, including the Thursday 7216 runner and the older August/September runners, since ES is far below every earlier entry (my inference for the older ones).",
+      "He expects most Failed Breakdowns to go a level or two and fail while the bear case is active and ES is under three major lost shelves, and says to take them all anyway; a big one eventually rips.",
+      "He gives some details inconsistently, so treat them as approximate: the recap heading calls the Friday trade the '925AM 7353 Failed Breakdown' (it is 7153); the shelf lost Thursday is the 'Tuesday and Wednesday lows' in most places but 'Monday and Tuesday lows' in the summary; the number of lost shelves is three in the recap but four in the plan; and Friday's low is '6960s' in the recap, with the first support at 6960 but major at 6963."
+    ]
+  },
+  },
+  { date:"11/20/2026", title:"Can SPX Close The Week Green?", control:"bear", setups:[
+    {level:7405,type:"BACKTEST",priority:"a",notes:"7405/21: backtests where ES broke down Thursday morning, so it's a high quality backtest short (Adam doesn't short). The next big test for bulls."},
+    {level:7334,type:"Reclaim",priority:"a",notes:"A spot to add on strength (also a backtest-short spot). For 7334 Adam wants acceptance: wait for ES to dip there, return to it, and long a few points above."},
+    {level:7306,type:"Reclaim",priority:"a",notes:"7306-09: the shelf of the Tuesday and Wednesday lows, lost Thursday. Its recovery is the first major task for bulls and the highest quality add-on-strength spot."},
+    {level:7258,type:"Reclaim",priority:"b",notes:"Recoveries of 7258 are one zone to add on strength."},
+    {level:7240,type:"DIRECT BID",priority:"b",notes:"The first support down; Adam has no interest. If you want to trade it, wait for a flush (ideally to 7234 or lower) and recover."},
+    {level:7220,type:"FBD",priority:"a",notes:"7220-25: a nice low at 12:15PM Thursday and again after 1PM, a shelf all afternoon. Its Failed Breakdown is actionable."},
+    {level:7210,type:"FBD",priority:"a",notes:"Thursday's low of day, just under 7220: its Failed Breakdown is high quality. A bonus if ES tags 7196. The bear case begins below it."},
+    {level:7180,type:"FBD",priority:"a",notes:"Nothing between 7196 and here: a huge April 16th low. Its Failed Breakdown is actionable."},
+    {level:7153,type:"DIRECT BID",priority:"b",notes:"A big support. In a slow grind one can try a bid; if it's a full knife, let it flush by a few points and recover before going long."}
+  ],
+  bull:"Starting last Friday, ES sold off the way it always does: when a well-tested, previously defended shelf of lows fails. There were three: last Friday ES lost 7600/7572 (giving bears some control), Monday morning it lost 7519 (the Friday lows plus a Monday morning low), and Tuesday it lost 7421 (Monday's low of day plus lows at 1:30AM and 9:30AM Tuesday). Bulls need to recover these to restore control gradually. Wednesday ES put in a monster Failed Breakdown (down 75+ points, losing Tuesday's 7309 low, recovering and ripping to 7430s). Bulls couldn't sustain above 7421 Thursday and ES fell to 7210, losing yet another big shelf at 7309-05 (the Tuesday and Wednesday lows). Its recovery is the first major task for bulls. Very simply, bears fully control under 7306-09. The bull case is that ES defends Thursday's 7210 low and recovers 7309-06, then rips to 7334, 7365, 7405/21; that zone is the next big test for bulls. Spots to add on strength: 7258 recoveries, 7306-09 recoveries (the highest quality) and 7334 (ideally with acceptance).",
+  bear:"Begins below 7210 (Thursday's low of day) - a breakdown trade (about 80% of breakdowns trap; expect 60%+ to fail; an advanced setup). For the 7210 short, ideally price puts in one final bounce or a Failed Breakdown there, then one shorts beneath the lows of that bounce, likely near 7198. Backtest shorts above: 7334 and 7405 (7405 is high quality as it backtests the Thursday morning breakdown). Adam does not short.",
+  summary:"Friday plan: Wednesday evening ES was too strong to trigger the 7305 Failed Breakdown, so the 6PM 7348 reclaim (trigger 7353) was the available long, which Adam passed and ES ripped to 7370+. Thursday at 7:30AM ES was in the 7420s with nothing to trade. Around 9:45AM it went elevator down to 7293 by 10:30AM, recovered 7305 by 10:40AM, and Adam longed 7310, locking 75% at 7317 and more at 7323. ES ripped to 7348 by 11:30AM, then went elevator down again to 7210 by noon: it hit 7210 at 12:06PM, recovered 7216, and Adam got in at about 7225, locking 75% at 7241 and more at 7250, leaving 10%. Lean: ES can try to recover and defend 7306-09, taking it to 7334, 7365 and 7405/21. Bears fully control under 7306-09. Sell < 7210.",
+  targets: {
+    major: [7258,7277,7305,7309,7320,7334,7351,7363,7405,7421,7434,7458,7474,7494,7509,7526,7549,7572,7598,7600],
+    minor: [7250,7265,7272,7285,7293,7329,7343,7348,7372,7381,7390,7398,7414,7425,7439,7449,7470,7489,7512,7519,7534,7558,7586]
+  },
+  supports: {
+    major: [7240,7225,7220,7209,7196,7180,7153,7125,7120],
+    minor: [7234,7216,7203,7188,7184,7167,7164,7138,7133]
+  },
+  range: {
+    status: "Bears fully control under 7306-09",
+    headline: "ES lost the 7309-05 shelf and flushed to 7210 Thursday, then popped. Bears fully control under 7306-09; bulls need to defend 7210 and recover 7306-09, then 7334, 7365 and 7405/21.",
+    summary: "Adam's cycle repeated twice in one session: Thursday's 9:45AM elevator down to 7293 and a recovery of 7305 (a Failed Breakdown of Wednesday's daily low), then a second elevator down to 7210 by noon with a Failed Breakdown of the April 20-23 7216 shelf. The Wednesday rip to 7430s met rejection at 7421, so ES lost the 7309-05 shelf of the Tuesday and Wednesday lows. For bulls to regain control they must recover the lost shelves (7306-09, 7405/21, 7519) one at a time, each taking some control back. His lean: ES can try to recover and defend 7306-09, taking it to 7334, 7365 and 7405/21. The bear case begins below 7210.",
+    ladder: [
+      {level:"7405 - 7421", kind:"ceiling", label:"7405/21: where ES broke down Thursday morning (the 7421 Monday/Tuesday low shelf). A high quality backtest short and the next big test for bulls."},
+      {level:"7334 - 7365", kind:"ceiling", label:"7334: a spot to add on strength, ideally with acceptance (dip, return, long a few points above). 7365 (7363 in the resistance list) is the next step toward 7405/21."},
+      {level:"7306 - 7309", kind:"ceiling", label:"The shelf of the Tuesday and Wednesday lows, lost Thursday. Its recovery is the first major task for bulls and the highest quality add-on spot; bears fully control under it."},
+      {level:"7258 / 7240", kind:"mid", label:"7258: recoveries are one add-on zone. 7240: the first support down; Adam has no interest (wait for a flush to 7234 or lower and recover)."},
+      {level:"7220 - 7225", kind:"price", label:"A 12:15PM Thursday low and again after 1PM, a shelf all afternoon: its Failed Breakdown is actionable."},
+      {level:"7210 / 7196", kind:"floor", label:"7210: Thursday's low of day; its Failed Breakdown is high quality (bonus if ES tags 7196). The bear case begins below it."},
+      {level:"7180", kind:"below", label:"A huge April 16th low with nothing between 7196 and here: its Failed Breakdown is actionable."},
+      {level:"7153", kind:"below", label:"A big support: in a slow grind one can try a bid; in a full knife let it flush a few points and recover."}
+    ],
+    notes: [
+      "Zones, using Adam's levels: above 7405/21 bulls begin recovering control; 7306 to 7405 is the recovery path (7334, 7365); 7210 to 7306 is where ES traded Thursday (7220-25 shelf); below 7210 the bear case begins. I set control to bear because he says bears fully control under 7306-09.",
+      "Adam made two long entries Thursday (the 10:40AM 7305 Failed Breakdown at 7310 and the roughly 12:06PM 7216 Failed Breakdown at about 7225). The plan doesn't say which runners are still open after ES fell to 7210; I show the later 7216 runner as the one held and removed the Wednesday 7309 runner, whose stop sat under 7305 (my inference).",
+      "Wednesday evening ES was too strong to trigger the 7305 Failed Breakdown, so the 7348 reclaim (trigger 7353 at 6PM) was available; Adam passed on it and ES ripped to 7370+.",
+      "Volatility is high and he calls Thursday 'an absolute goldmine of setups'; he stresses day traders don't care about direction, only volatility.",
+      "He gives some details inconsistently, so treat them as approximate: the recap's Wednesday heading says the first good Failed Breakdown was of '7320' but it describes the 7305 daily low; the shelf is '7306-09', '7305-09' and '7309-05' in different places; the Wednesday sell was '75+ points' in the plan and '100+' elsewhere; the 7430s rip is 'today' in the intro but 'last evening' in the plan; the next target is '7365' in the lean but 7363 in the resistance list; and the first 7216 entry time isn't stated (it was 7225 'by the time I could hop in', right after the 12:06PM recovery)."
+    ]
+  },
+  },
   { date:"11/19/2026", title:"Are SPX Bulls Trying To Build A Sustained Low?", control:"contested", setups:[
     {level:7600,type:"BACKTEST",priority:"a",notes:"The lost 7600/7572 shelf from last Friday: one of the two highest-odds backtest shorts (Adam doesn't short). Above 7519 ES can return here."},
     {level:7519,type:"BACKTEST",priority:"a",notes:"The Friday lows and Monday morning shelf, lost Monday: the 'magnet' for bulls and one of the two highest-odds backtest shorts. Bulls need to recover it to restore control."},
@@ -5594,6 +5862,120 @@ var setupDays = [
 // discloses lot/contract counts or dollar P&L), so it's rendered with a dedicated
 // card, not the $-based MES/SPY renderCard() used for Dev's own trades.
 var dissections = {
+  "11/25/2026": {
+    intro: "Tuesday evening and Wednesday morning followed Adam's cycle: elevator down, then a Failed Breakdown and a rip. ES was too weak Tuesday night to give the 7086 Failed Breakdown: it began going elevator down and was at 7078 by 7AM, and in the mid-7070s when Adam checked at 7:30AM. It continued lower to 6982-6984 by about 9:40AM, then recovered the Sunday 6992 low by 9:45AM. Adam longed the 6992 Failed Breakdown (trigger 6997) at about 7007 after waiting a little. It followed through cleanly: he locked 75% at 7025 (1st up), left 25%, locked more at 7039 (2nd up) and left 10%, then moved into profit protection mode. ES then ripped massively into Thursday's plan.",
+    adamTrade: {
+      label: "6992 Failed Breakdown Long (~9:45 AM Wed)",
+      entryPrice: 7007,
+      entryTime: "~9:45 AM Wed",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7025, portion:"75%", status:"hit"},
+        {label:"T2", price:7039, portion:"more locked in, leaving 10%", status:"hit"},
+        {label:"Runner", price:null, portion:"10% still being held", status:"open"}
+      ],
+      narrative: "Adam wrote Tuesday that nothing under 7052 mattered until 6992, the Sunday low, whose Failed Breakdown was highly actionable (bonus if ES tagged 6975). ES sold overnight to 6982-6984 by 9:40AM, recovered 6992 by 9:45AM, and the recovery plus 5 points put the trigger at 6997. He got long at about 7007 since that is where ES was after he waited a little. Locked 75% at 7025 (1st up), left 25% to run, locked more at 7039 (2nd up) and left 10% to go. With a green trade booked it was time for profit protection mode: sit on the runner and do nothing."
+    },
+    recapSetups: [
+      { level:"7086", setupLabel:"Failed Breakdown Of The 7:40AM Monday Low (Not Triggered)", time:"Tue Evening", outcome:"notrigger", outcomeLabel:"ES Too Weak - Elevator Down To 7078", note:"His plan said the Failed Breakdown of this low was actionable (ideal to tag 7070). ES began elevator down Tuesday evening, was at 7078 by 7AM and was too weak to recover it, continuing lower to 6982 by 9:40AM. The recap text describes the 7105 daily low as the significant low, but names 7086." },
+      { level:"7078", setupLabel:"Wed 7:30AM Check: Sidelined In The Mid-7070s", time:"7:30 AM Wed", outcome:"notrigger", outcomeLabel:"Elevator Down Overnight - No Trigger Yet", note:"When he checked at 7:30AM ES was in the mid-7070s after an overnight elevator down, meaning he could trade if triggers appeared. None had: ES was too weak to recover 7086 and continued down to 6982-6984." }
+    ],
+    whatsDifferent: [
+      "A bear-controlled bounce day: bears still control under 7306-09 after ES backtested it Monday, so he keeps taking Failed Breakdowns but expects no sustained bottoms until the shelves above (7306-09, 7405, 7519) recover.",
+      "A second Failed Breakdown of the week: the Sunday 7025 recovery started the rip to 7306-09, the sell then ran to 6984 Wednesday morning, and the Sunday 6992 low triggered the next one.",
+      "Profit protection mode: after a win he sits on the runner and does nothing; a second trade is allowed only if the runner stops below break-even and a new planned setup emerges, risking only the profit.",
+      "Entry at 7007 rather than the 6997 trigger: he waited a little before entering, so his entry was about 10 points above the recovery of 6992.",
+      "He takes about 15 minutes a day, enters at pre-planned zones on A+ setups, and says he rarely trades the 11AM-2PM window because it is often chop."
+    ]
+  },
+  "11/24/2026": {
+    intro: "Monday evening into Tuesday morning gave Adam one winner. Because ES had ripped so hard on Monday (it recovered the 7025 shelf and hit 7306-09), the first good Failed Breakdown wasn't until the loss of the 7086 low set at 7:40AM Monday, and ES was too strong to give it; he also notes the 7223 Failed Breakdown (a big low set at 11:40AM Monday) never worked: ES went elevator down again around 3AM and flushed 7223, unable to recover. When he woke Tuesday at 7:30AM ES was in the 7180s after an elevator down, and it kept going to 7144 at 8AM, sweeping the 7170 low (a low set at 9:40AM Monday at 7167-70). By 9:20AM ES recovered 7170 and the long triggered (7170 + 5 = 7175). He locked 75% at 7188 (1st up), left 25%, locked more at 7192 (2nd up) and left 10%, then switched to profit protection mode, holding the runner along with his Sunday 6:20PM 7025 runner.",
+    adamTrade: {
+      label: "7170 Failed Breakdown Long (9:20 AM Tue)",
+      entryPrice: 7175,
+      entryTime: "9:20 AM Tue",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7188, portion:"75%", status:"hit"},
+        {label:"T2", price:7192, portion:"more locked in, leaving 10%", status:"hit"},
+        {label:"Runner", price:null, portion:"10% still being held", status:"open"}
+      ],
+      narrative: "Adam's Monday plan said 7170 was a slightly more interesting support: ES set a low at 9:40AM Monday at 7167-70, and the Failed Breakdown of it was actionable. ES swept it at 8AM Tuesday down to 7144, and by 9:20AM it recovered 7170, triggering the long at 7175 (7170 + 5). It followed through: locked 75% at 7188 (1st up), left 25% to run, locked more at 7192 (2nd up) and left 10%. With a green trade booked it was time for profit protection mode, sitting on the runners and doing nothing the rest of the day."
+    },
+    recapSetups: [
+      { level:"7086", setupLabel:"Failed Breakdown Of The 7:40AM Monday Low (Not Triggered)", time:"Mon Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong - No Loss Of 7086", note:"Because ES ripped so hard Monday, the first good Failed Breakdown wasn't until the loss of this major low, which ES never gave. He says there were no supports or zones to trade until much lower and he wouldn't touch price until it sold hard. Ideal tag was 7070." },
+      { level:"7223", setupLabel:"Failed Breakdown Of The 11:40AM Monday Low (Not Recovered)", time:"~3 AM", outcome:"failed", outcomeLabel:"ES Flushed 7223 And Couldn't Recover", note:"ES went elevator down around 3AM (the recap says Monday, but it appears to be the overnight into Tuesday) and flushed this low, unable to recover. The Failed Breakdown never triggered." },
+      { level:"7144", setupLabel:"7:30AM Tuesday: Sidelined After The Elevator Down", time:"7:30 AM Tue", outcome:"notrigger", outcomeLabel:"In The 7180s, Then 7144 At 8AM - Waiting", note:"When Adam woke at 7:30AM ES was in the 7180s after an elevator down. He was waiting for the Failed Breakdown; ES kept going to 7144 at 8AM before recovering 7170 by 9:20AM." }
+    ],
+    whatsDifferent: [
+      "A relief rally day: ES backtested 7306-09 for the first time Monday after the Sunday 7025 Failed Breakdown, and Adam does nothing but ride a runner and wait for the next elevator down after a rip.",
+      "A morning entry with profit protection: the 9:20AM Failed Breakdown was a win, so he held the runner(s) and took no more trades the rest of the day.",
+      "He only trades one hyper-specific condition: an elevator down sell into a Failed Breakdown. He doesn't short, chase, flip, or trade chop, low volume or news.",
+      "Failed Breakdown lesson: a significant low is a prior-day low, a multi-hour or 20+ point-move low, or a shelf of lows; the non-acceptance protocol (recover by 5 points and hold a few minutes) applies when there is no clear acceptance."
+    ]
+  },
+  "11/20/2026": {
+    intro: "Thursday evening gave Adam nothing, but an overnight sweep paid for those who were awake, and Friday gave him one winning long before ES elevator-downed again with bears fully in control. ES was around 7210 at Thursday's close, and the first very good Failed Breakdown was of the 7210 Thursday low of day (a daily low, high quality in his 2:30PM newsletter). It never triggered; ES dipped into the evening down to the 7153 support by midnight. Adam was asleep, but ES based there for two hours and at about 2:20AM swept it by 5 points, recovered and popped to 7181, a great trade for those awake. It continued to drift lower into the early morning. At 7:30AM Friday ES was around 7135, and he was good sidelined until it recovered the 7153 shelf as the only planned setup; ES drifted to 7105 by 8:35AM. By 9:25AM ES had bounced from 7105 to 7153 and recovered it, hitting the 7158 trigger, and he longed, locking 75% at 7164 and more at 7180, leaving 10%. ES ran to about 7210 and then went elevator down to 7080, cutting his 10% runner below break-even and leaving a blank slate. He said he'd re-add on a recovery of 7120-25; ES returned there by 11:15AM, rejected and couldn't trigger, resumed lower into the afternoon (to the 6960s), and he stayed sidelined.",
+    adamTrade: {
+      label: "7153 Failed Breakdown Long (9:25 AM Fri)",
+      entryPrice: 7158,
+      entryTime: "9:25 AM Fri",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7164, portion:"75%", status:"hit"},
+        {label:"T2", price:7180, portion:"more locked in, leaving 10%", status:"hit"},
+        {label:"Runner", price:null, portion:"10%, cut below break-even when ES sold to 7080", status:"stopped"}
+      ],
+      narrative: "Adam's Thursday plan said 7153 was a big support; in a full knife, let it flush by a few points and recover to try long. ES had drifted down to 7105 by 8:35AM Friday, then by 9:25AM bounced to 7153, recovering it to trigger the long (7153+5=7158). He took it, locked 75% at 7164 (first up), left 25% to run, locked more at 7180 (second up), and left 10% to go. ES ran to about 7210 and then went elevator down to 7080, which cut his 10% runner below his break-even, giving him a 'blank slate'. A small win overall. The recap heading mislabels it the '7353 Failed Breakdown'; the level is 7153."
+    },
+    recapSetups: [
+      { level:"7210", setupLabel:"Failed Breakdown Of Thursday's Low Of Day (Never Triggered)", time:"Thu Evening", outcome:"notrigger", outcomeLabel:"ES Never Triggered - Drifted To 7153", note:"ES was around 7210 at the close and he flagged the Failed Breakdown of the daily low as high quality in his 2:30PM newsletter (trigger 7215). It never triggered, and ES dipped into the evening down to 7153 by midnight." },
+      { level:"7153", setupLabel:"Overnight 7153 Sweep And Recovery (Not Taken - Asleep)", time:"~2:20 AM Fri", outcome:"notrigger", outcomeLabel:"Swept 5 Points, Popped To 7181 - Asleep", note:"His plan said if it's a full knife into 7153, let it flush by a few points and recover. ES based there for two hours, then at about 2:20AM swept it by 5 points, recovered and popped to 7181, a great trade for those awake overnight. ES then drifted lower into the early morning." },
+      { level:"7135", setupLabel:"Friday 7:30AM: Sidelined Until 7153 Recovered", time:"7:30 AM Fri", outcome:"notrigger", outcomeLabel:"Slightly Lower (7135) - No Trade", note:"When he checked at 7:30AM ES was around 7135 and he was good sidelined unless 7153 recovered. ES drifted to 7105 by 8:35AM, and the daily bear case (below 7210, short near 7198) triggered into Thursday's close." },
+      { level:"7125", setupLabel:"7120-25 Re-Add After The Runner Was Cut (Not Triggered)", time:"~11:15 AM Fri", outcome:"notrigger", outcomeLabel:"Rejected At 7120-25 - Sidelined", note:"After ES cut his runner below break-even at 7080, he said he'd happily re-add on a recovery of 7120-25 (he tweeted this at 11AM). ES returned there by 11:15AM but was rejected and couldn't trigger an entry, then resumed lower into the afternoon." }
+    ],
+    whatsDifferent: [
+      "A bear-controlled market: with the daily bear case active and ES under three major lost shelves, Adam says to expect most Failed Breakdowns to go a level or two and fail until a big one rips; he takes them all anyway.",
+      "A runner cut below break-even: ES sold to 7080 after the 7153 trade, so the 10% runner stopped and he had a blank slate. After a win a second trade is allowed only if the runner stops out below break-even and a new planned setup appears, risking only profits, which is why he wanted the 7120-25 re-add.",
+      "An overnight trade he slept through: ES swept 7153 by 5 points at about 2:20AM and popped to 7181; he never needs to be up for it, and says he catches whatever piece correlates with his edge, about 15 minutes a day.",
+      "Failed Breakdown follow-through statistics: he gives the distribution for returns (about 70% cluster near 30-50 points, about 15% go 70-600, about 15% only 4-15 points) and says in a heavy red Mode 1 day, 3 or 4 Failed Breakdowns go one level and fail before a big one.",
+      "A short bounce day: Friday was the sixth red day in a row, ES falling from 7430s to the 6960s with each bounce rejected, so supports don't matter and only reclaims do.",
+      "The bigger picture: bears fully control below 7306-09, with 7421 and 7519 also lost; bulls need 7025 first."
+    ]
+  },
+  "11/19/2026": {
+    intro: "Wednesday evening gave Adam nothing he took, and Thursday gave him two Failed Breakdown longs as ES went elevator down twice. The first good Failed Breakdown was of Wednesday's 7305 daily low, but ES was too strong to see it. Another entry was available: the 7348 reclaim he'd flagged (wait for a flush, perhaps to 7333, then recover). ES sold to 7333 between 3PM and 5PM and by 6PM ripped through 7348, hitting the 7353 trigger. He did not take it, and ES ripped to 7370+. At 7:30AM Thursday ES was in the 7420s and there was literally nothing to trade. Around 9:45AM ES went elevator down to 7293 by 10:30AM; by 10:40AM it recovered 7305, and he longed 7310 (7305+5), locking 75% at 7317 and more at 7323, leaving 10%. ES ripped to 7348 by 11:30AM and then went elevator down again to 7210 by noon. It hit 7210 at 12:06PM and recovered the 7216 shelf, which was a big shelf from April 20th to 23rd. It ripped so hard he was in at about 7225 by the time he could hop in, locking 75% at 7241 and more at 7250, leaving 10%.",
+    adamTrade: {
+      label: "7216 Failed Breakdown Long (~12:06 PM Thu)",
+      entryPrice: 7225,
+      entryTime: "~12:06 PM Thu",
+      setup: "FBD",
+      result: "win",
+      targets: [
+        {label:"T1", price:7241, portion:"75%", status:"hit"},
+        {label:"T2", price:7250, portion:"more locked in, leaving 10%", status:"hit"},
+        {label:"Runner", price:null, portion:"10%, left to work - the current open runner", status:"open"}
+      ],
+      narrative: "Adam's Wednesday plan said that if ES was full knifing (like Thursday morning), wait for the Failed Breakdown of 7209/7216: a massive noon April 23rd low that has held since, requiring ES to recover both 7209 and 7216. He had no interest in just buying 7216 given the knife down but happily traded the flush and recovery. ES hit 7210 by 12:06PM and recovered 7216 right after. It ripped hard and he was in at 7225 by the time he could hop in. He locked 75% at 7241 (first up), left 25% to run, locked more at 7250 (second up) and left 10% to work. The exact entry time isn't stated, so ~12:06PM is approximate."
+    },
+    recapSetups: [
+      { level:"7305", setupLabel:"Wednesday Evening: Failed Breakdown Of The 7305 Daily Low (Too Strong)", time:"Wed Evening", outcome:"notrigger", outcomeLabel:"ES Too Strong - Not Triggered", note:"The first good Failed Breakdown was of Wednesday's 7305 daily low (the recap heading says 7320 but describes the 7305 low). ES was too strong to see it, so he looked at the other planned entries." },
+      { level:"7348", setupLabel:"7348 Reclaim - 6PM Wednesday (Not Taken)", time:"~6:00 PM Wed", outcome:"notrigger", outcomeLabel:"Trigger 7353 Hit - Passed, Ripped To 7370+", note:"His plan said not to buy 7348 directly but to wait for a flush (perhaps to 7333) and recover. ES sold to 7333 between 3PM and 5PM, then by 6PM ripped through 7348 and hit the 7353 trigger (7348+5). One could long there; he did not take it, and ES ripped to 7370+." },
+      { level:"7420", setupLabel:"Thursday 7:30AM: Nothing To Trade", time:"7:30 AM Thu", outcome:"notrigger", outcomeLabel:"ES In The 7420s - No Reason To Open The Platform", note:"When he checked at 7:30AM ES was up in the 7420s and there was literally nothing to trade. He says he only trades an elevator down into a Failed Breakdown, or rides a long runner with a stop under the previous day's low." },
+      { level:"7305", setupLabel:"10:40AM Thursday 7305 Failed Breakdown (Win)", time:"10:40 AM Thu", outcome:"notrigger", outcomeLabel:"Triggered At 7310 - 75% At 7317, More At 7323, 10% Left", note:"Around 9:45AM ES went elevator down to 7293 by 10:30AM, setting up the Failed Breakdown of Wednesday's 7305 daily low (highly actionable in his plan). ES recovered by 10:40AM and he longed 7310 (7305+5), locking 75% at 7317 and more at 7323. ES ripped to 7348 by 11:30AM, then went elevator down to 7210 by noon." }
+    ],
+    whatsDifferent: [
+      "Two elevator-down Failed Breakdowns in one session: the 9:45AM flush to 7293 (a 7305 Failed Breakdown) and the noon flush to 7210 (a 7216 Failed Breakdown). Adam calls it an absolute goldmine of setups.",
+      "A chase of a fast rip: the 7216 recovery ripped so hard that he was in at 7225, nine points above the level, as soon as he could get in.",
+      "Wait for flush and recovery, not a bid: given the knife down he had no interest in buying 7216, but happily traded its flush and recovery, requiring ES to recover both 7209 and 7216.",
+      "Failing to hold the first control point: ES ripped to 7430s on the Wednesday Failed Breakdown but couldn't sustain above 7421, then lost the 7309-05 shelf and sold to 7210.",
+      "A passed entry: he did not long the 6PM Wednesday 7348 reclaim trigger (7353) although it ripped to 7370+, because he only trades his planned setups.",
+      "The bigger picture: bears fully control under 7306-09; bulls must recover it first, then 7405/21 and 7519, each taking some control back."
+    ]
+  },
   "11/18/2026": {
     intro: "Tuesday afternoon gave Adam a second Failed Breakdown win in front of Nvidia earnings, and Wednesday gave him an 11:20AM double-dip Failed Breakdown of Tuesday's low. The first good Failed Breakdown was of Tuesday's 7309 low of day (flagged in his early 2PM newsletter), but ES was too strong to see it. There was another available: the 7320 Failed Breakdown he flagged (a big 11:45AM Tuesday low). At 3PM ES swept it to 7316, and by 3:05PM recovered with the 7321 trigger (7316+5); Adam longed, locking 75% at 7333 and more at 7343, leaving 10%. ES ripped to 7430+ after Nvidia earnings. At 7:30AM Wednesday ES was down at 7380s and there was nothing for him to do. Around 9:40AM ES went elevator down from the 7380s and got to 7305 by 11:15AM, a double dip of Tuesday's 7309 low. By 11:20AM ES recovered 7309 (trigger 7314, 7309+5), and he longed at 7314, locking 75% at 7329 and more at 7333, leaving 10% to work. Up it went again, and he still holds that runner.",
     adamTrade: {
@@ -7585,6 +7967,7 @@ var macroEvents = [
 
 var currentFilter = "all";
 var calYear = 2026; var calMonth = 6;
+(function(){ var d = trades[0] && trades[0].date; if (d) { calMonth = parseInt(d.slice(0,2),10)-1; calYear = parseInt(d.slice(6),10); } })();
 var setupCalYear = 2026; var setupCalMonth = 6;
 var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 var dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -7613,6 +7996,25 @@ function scLabel(t) {
   return t.label + " --";
 }
 function getDayMap() { var m = {}; for (var i = 0; i < trades.length; i++) m[trades[i].date] = true; return m; }
+
+// ===== PAYOUTS =====
+var PO_ACCOUNTS = [{account:"PA 1",type:"Legacy",balance:50959.0,highest:51344.16,drawdown_size:2500,liquidation:48844.16,drawdown_left:2114.84,cushion_flag:"Cushion OK",request:2000,balance_needed:54100,profit_needed:3141.0,progress:0.2339,per_day:392.62,per_day_min_days:392.62,best_day_cap:1230}];
+var PO_THIN = 500;
+function renderPayouts() {
+  var a = PO_ACCOUNTS[0], u0 = function(n){return "$" + Math.round(n).toLocaleString("en-US");}, u2 = function(n){return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});};
+  var $ = function(id){return document.getElementById(id);};
+  $("po-dd").textContent = u2(a.drawdown_left);
+  var fl = $("po-flag"); fl.textContent = a.cushion_flag; fl.className = "po-chip " + (a.drawdown_left < PO_THIN ? "warn" : "ok");
+  var ddf = a.drawdown_left / a.drawdown_size;
+  $("po-dd-pct").textContent = Math.round(ddf*100) + "%";
+  var b1 = $("po-dd-bar"); b1.style.width = Math.max(0,Math.min(1,ddf))*100 + "%"; b1.style.background = a.drawdown_left < PO_THIN ? "var(--red)" : "var(--green)";
+  $("po-prog").textContent = Math.round(a.progress*100) + "%";
+  $("po-prog-bar").style.width = Math.max(0,Math.min(1,a.progress))*100 + "%";
+  var rows = [["Balance today",u2(a.balance)],["Liquidation level",u2(a.liquidation)],["Balance needed before withdrawal",u0(a.balance_needed)],["Profit still needed",u2(a.profit_needed)],["Per day, fewest qualifying days",u0(a.per_day_min_days)],["Best single day allowed",u0(a.best_day_cap)]];
+  var h = ""; for (var i=0;i<rows.length;i++) h += "<dt>" + rows[i][0] + "</dt><dd>" + rows[i][1] + "</dd>";
+  $("po-dl").innerHTML = h;
+}
+renderPayouts();
 
 function switchTab(pageId, btn) {
   var pages = document.querySelectorAll(".page");
@@ -8419,6 +8821,7 @@ function renderMacroSection() {
 
 // Setups calendar
 function renderSetupCalendar() {
+  if (!document.getElementById("setup-cal-grid")) return; // Setup Calendar removed (plan archive replaces it)
   var map = {};
   for (var i = 0; i < setupDays.length; i++) map[setupDays[i].date] = setupDays[i];
   document.getElementById("setup-cal-month-label").textContent = monthNames[setupCalMonth] + " " + setupCalYear;
@@ -8576,8 +8979,8 @@ function selectTodayDate(dateStr) {
   if (isLatest) {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot";
-    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7751 FBD, 7744 FBD, 7797 FBD, 7680 FBD (8/21), 7687 FBD (8/25), 7739 FBD (8/28), 7622 FBD (9/2) & 7309 FBD (11/18)";
-    document.getElementById("td-runner-since").textContent = "since Fri 8/8 8:25AM, Tue 8/11 3:15PM, Fri 8/14 2:10PM, Fri 8/21 7:30AM, Tue 8/25 11:30AM, Fri 8/28 10:15AM, Wed 9/2 7:30AM & Wed 11/18 11:20AM";
+    document.getElementById("td-runner-text").textContent = "Holding 10% runners from 7025 FBD (11/22), 7175 FBD (11/24) & 6992 FBD (11/25)";
+    document.getElementById("td-runner-since").textContent = "since Sun 11/22 6:20PM, Tue 11/24 9:20AM & Wed 11/25 9:45AM";
   } else {
     runnerRow.style.display = "";
     document.getElementById("td-runner-dot").className = "today-runner-dot none";
