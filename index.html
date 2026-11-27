@@ -1256,6 +1256,13 @@ var weeks = [
 ];
 
 var trades = [
+  { id:211, date:"11/27/2026", entryTime:"12:39 AM", entryPrice:7324.50, stopPrice:0, setup:"SHORT", result:"win", contracts:2, direction:"short", tradeLabel:"7324 Short (Fri Overnight)",
+    targets:[
+      {label:"Cover 1",price:7314.75,contracts:1,status:"hit",pnl:48.75,exitTime:"2:16 AM"},
+      {label:"Cover 2",price:7316.75,contracts:1,status:"hit",pnl:38.75,exitTime:"2:19 AM"}
+    ],
+    times:[{label:"Entry",value:"12:39 AM"},{label:"Cover 1",value:"2:16 AM (1 hr 37 min)"},{label:"Cover 2",value:"2:19 AM (1 hr 40 min)"}],
+    totalPts:17.50, totalPnl:87.50, exitNote:"MESZ6, 2 lots short, Friday 12:39AM, sold @ 7324.50. Covered 1 @ 7314.75 (+$48.75) at about 2:16AM and 1 @ 7316.75 (+$38.75) at about 2:19AM. Total +$87.50.", journal:"" },
   { id:210, date:"11/27/2026", entryTime:"10:45 PM", entryPrice:7305.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7305 Long (Thu Evening)",
     targets:[
       {label:"T1",price:7310.00,contracts:3,status:"hit",pnl:75.00,exitTime:"10:53 PM"},
@@ -1330,12 +1337,7 @@ var trades = [
       {label:"Runner",price:7081.75,contracts:1,status:"hit",pnl:228.75,exitTime:"7:47 PM"}
     ],
     times:[{label:"Entry",value:"6:44 PM"},{label:"T1",value:"6:50 PM (6 min)"},{label:"T2",value:"6:53 PM (9 min)"},{label:"Runner",value:"7:47 PM (1 hr 3 min)"}],
-    totalPts:80.50, totalPnl:402.50, exitNote:"MESZ6, 5 lots, Sunday 6:44PM at 7036. Sold 3 @ 7041.00 (+$75.00), 1 @ 7055.75 (+$98.75) and the last @ 7081.75 (+$228.75). Total +$402.50.", journal:"" }
-];
-
-// ARCHIVE: trades before 11/22/2026. Kept for reference only; not used by the P&L calendar, stats or equity curve.
-// To restore, move entries back into the trades array above.
-var tradesArchive = [
+    totalPts:80.50, totalPnl:402.50, exitNote:"MESZ6, 5 lots, Sunday 6:44PM at 7036. Sold 3 @ 7041.00 (+$75.00), 1 @ 7055.75 (+$98.75) and the last @ 7081.75 (+$228.75). Total +$402.50.", journal:"" },
   { id:200, date:"09/03/2026", entryTime:"12:42 PM", entryPrice:20.00, stopPrice:0, setup:"SPY_CALL", result:"loss", contracts:2, tradeLabel:"SPY $775 Call", type:"options",
     targets:[
       {label:"Exit",price:1.00,contracts:2,status:"stopped",pnl:-38.00,exitTime:"3:57 PM",exitPrice:1.00}
@@ -8014,7 +8016,7 @@ function scLabel(t) {
 function getDayMap() { var m = {}; for (var i = 0; i < trades.length; i++) m[trades[i].date] = true; return m; }
 
 // ===== PAYOUTS =====
-var PO_ACCOUNTS = [{account:"PA 1",type:"Legacy",balance:51292.0,highest:51344.16,drawdown_size:2500,liquidation:48844.16,drawdown_left:2447.84,cushion_flag:"Cushion OK",request:2000,balance_needed:54100,profit_needed:2808.0,progress:0.3151,per_day:351.0,per_day_min_days:351.0,best_day_cap:1230}];
+var PO_ACCOUNTS = [{account:"PA 1",type:"Legacy",balance:51377.0,highest:51377.00,drawdown_size:2500,liquidation:48877.00,drawdown_left:2500.00,cushion_flag:"Cushion OK",request:2000,balance_needed:54100,profit_needed:2723.0,progress:0.3359,per_day:340.38,per_day_min_days:340.38,best_day_cap:1230}];
 var PO_THIN = 500;
 function renderPayouts() {
   var a = PO_ACCOUNTS[0], u0 = function(n){return "$" + Math.round(n).toLocaleString("en-US");}, u2 = function(n){return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});};
@@ -8432,7 +8434,10 @@ function switchAsset(asset) {
 function renderDashboard() {
   var isSpy = currentAsset === 'spy';
   var isAll = currentAsset === 'all';
+  // Stats cards + equity curve start fresh on 11/22/2026 (the P&L calendar below still shows every trade)
+  var statsStart = "2026-11-22";
   var filtered = trades.filter(function(t) {
+    var p = t.date.split("/"); if (p[2] + "-" + p[0] + "-" + p[1] < statsStart) return false;
     if (isAll) return true;
     return isSpy ? t.type === 'options' : t.type !== 'options';
   });
@@ -8444,7 +8449,7 @@ function renderDashboard() {
   }
   var wr = count ? Math.round(wins/count*100) : 0;
   var days = 0;
-  if (!isSpy) { days = Object.keys(getDayMap()).length; }
+  if (!isSpy) { var dayKeys = {}; filtered.forEach(function(t){ dayKeys[t.date] = 1; }); days = Object.keys(dayKeys).length; }
 
   var cards;
   if (isSpy && !isAll) {
@@ -8758,6 +8763,15 @@ function renderCalendar() {
     if (wCnt > 0) { var ws2 = (wPnl>=0?"+$":"-$")+Math.abs(wPnl).toFixed(2); html += "<div class='cal-cell week-total-cell" + wtBg2 + "'><div class='cal-week-label'>WEEK</div><div class='cal-pnl " + (wPnl>=0?"pos":"neg") + "'>" + ws2 + "</div><div class='cal-meta'>Trades: " + wCnt + "<br>Win%: " + Math.round(wWins/wCnt*100) + "</div></div>"; }
     else html += "<div class='cal-cell week-total-cell'><div class='cal-week-label'>WEEK</div></div>";
   }
+  // Month total: its own row, sitting under the WEEK TOTAL column
+  var mKeyPrefix = calYear + "-" + String(calMonth+1).padStart(2,"0") + "-";
+  var mPnl = 0, mCnt = 0, mWins = 0;
+  Object.keys(map).forEach(function(k){ if (k.indexOf(mKeyPrefix) === 0) { mPnl += map[k].pnl; mCnt += map[k].count; mWins += map[k].wins; } });
+  for (var me = 0; me < 6; me++) html += "<div class='cal-cell empty'></div>";
+  if (mCnt > 0) {
+    var mStr = (mPnl>=0?"+$":"-$")+Math.abs(mPnl).toFixed(2);
+    html += "<div class='cal-cell week-total-cell month-total-cell" + (mPnl>=0?" week-green":" week-red") + "'><div class='cal-week-label'>MONTH</div><div class='cal-pnl " + (mPnl>=0?"pos":"neg") + "'>" + mStr + "</div><div class='cal-meta'>Trades: " + mCnt + "<br>Win%: " + Math.round(mWins/mCnt*100) + "</div></div>";
+  } else html += "<div class='cal-cell week-total-cell month-total-cell'><div class='cal-week-label'>MONTH</div></div>";
   document.getElementById("cal-grid").innerHTML = html;
 }
 
