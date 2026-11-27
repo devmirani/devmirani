@@ -1256,6 +1256,14 @@ var weeks = [
 ];
 
 var trades = [
+  { id:210, date:"11/27/2026", entryTime:"10:45 PM", entryPrice:7305.00, stopPrice:0, setup:"LEVEL_RECLAIM", result:"win", contracts:5, tradeLabel:"7305 Long (Thu Evening)",
+    targets:[
+      {label:"T1",price:7310.00,contracts:3,status:"hit",pnl:75.00,exitTime:"10:53 PM"},
+      {label:"T2",price:7315.00,contracts:1,status:"hit",pnl:50.00,exitTime:"10:53 PM"},
+      {label:"Runner",price:7325.00,contracts:1,status:"hit",pnl:100.00,exitTime:"12:16 AM"}
+    ],
+    times:[{label:"Entry",value:"10:45 PM"},{label:"T1",value:"10:53 PM (7 min 31 sec)"},{label:"T2",value:"10:53 PM (7 min 32 sec)"},{label:"Runner",value:"12:16 AM (1 hr 31 min)"}],
+    totalPts:45.00, totalPnl:225.00, exitNote:"MESZ6, 5 lots, Thursday 10:45PM at 7305 (after 6PM, so it counts to the Friday 11/27 session). Sold 3 @ 7310.00 (+$75.00) and 1 @ 7315.00 (+$50.00) at about 10:53PM, and the last @ 7325.00 (+$100.00) at 12:16AM Friday. Total +$225.00.", journal:"" },
   { id:209, date:"11/26/2026", entryTime:"12:55 AM", entryPrice:7240.75, stopPrice:0, setup:"SHORT", result:"win", contracts:3, direction:"short", tradeLabel:"7240 Short (Thu Overnight)",
     targets:[
       {label:"Cover 1",price:7235.75,contracts:1,status:"hit",pnl:25.00,exitTime:"1:00 AM"},
@@ -8006,7 +8014,7 @@ function scLabel(t) {
 function getDayMap() { var m = {}; for (var i = 0; i < trades.length; i++) m[trades[i].date] = true; return m; }
 
 // ===== PAYOUTS =====
-var PO_ACCOUNTS = [{account:"PA 1",type:"Legacy",balance:50959.0,highest:51344.16,drawdown_size:2500,liquidation:48844.16,drawdown_left:2114.84,cushion_flag:"Cushion OK",request:2000,balance_needed:54100,profit_needed:3141.0,progress:0.2339,per_day:392.62,per_day_min_days:392.62,best_day_cap:1230}];
+var PO_ACCOUNTS = [{account:"PA 1",type:"Legacy",balance:51292.0,highest:51344.16,drawdown_size:2500,liquidation:48844.16,drawdown_left:2447.84,cushion_flag:"Cushion OK",request:2000,balance_needed:54100,profit_needed:2808.0,progress:0.3151,per_day:351.0,per_day_min_days:351.0,best_day_cap:1230}];
 var PO_THIN = 500;
 function renderPayouts() {
   var a = PO_ACCOUNTS[0], u0 = function(n){return "$" + Math.round(n).toLocaleString("en-US");}, u2 = function(n){return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});};
